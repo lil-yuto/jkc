@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/anchor-link-item-small",
+  "version": "0.1.0",
+  "title": "アンカーリンクボタン（小）/アイテム",
+  "category": "jkc-block",
+  "parent": ["jkc-block/anchor-link-small"],
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "アンカーリンクボタン（小）/アイテム",
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": false,
+    "anchor": true
+  },
+  "attributes": {
+    "content": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": "a",
+      "role": "content"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "テキストを追加..."
+    },
+    "rel": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "rel"
+    },
+    "linkTarget": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "target"
+    },
+    "url": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "href"
+    }
+  },
+  "textdomain": "anchor-link",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

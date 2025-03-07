@@ -1,0 +1,134 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+.c-tab-item {
+	display: contents;
+}
+
+.c-tab-item__label-container {
+	width: 100%;
+	@include mq-down() {
+		overflow-x: scroll;
+	}
+}
+
+.c-tab-item__scroll-notice {
+	font-size: rem(18);
+	margin-bottom: 1em;
+}
+
+.c-tab-item__label-wrapper {
+	width: 100%;
+
+	display: flex;
+	gap: 0 rem(5);
+	flex-wrap: wrap;
+	@include mq-down() {
+		width: max-content;
+		flex-wrap: nowrap;
+	}
+}
+
+.c-tab.c-tab--alphabet .c-tab-item__label-wrapper {
+	gap: 0 calc(math.div(5, 1100) * 100%);
+	@include mq-down() {
+		// gap: 0 calc(math.div(5, 360) * 100%);
+		gap: 0 rem(5);
+	}
+}
+
+.c-tab.c-tab--katakana .c-tab-item__label-wrapper {
+	gap: 0 calc(math.div(5, 1100) * 100%);
+	@include mq-down() {
+		// gap: 0 calc(math.div(5, 360) * 100%);
+		gap: 0 rem(5);
+	}
+}
+
+.c-tab-item > label,
+.c-tab-item label {
+	--border-top-color: #{$color-accent-yellow};
+	--margin-bottom: #{rem(5)};
+	flex: 1 1;
+	order: -1;
+	min-width: rem(160);
+
+	display: grid;
+	place-items: center;
+
+	font-size: rem(18);
+	font-weight: $bold;
+	letter-spacing: math.div(50, 1000) * 1em;
+	color: $color-text-base;
+	padding-block: em(25.5, 18);
+	padding-inline: em(24, 18);
+	border-radius: rem(5) rem(5) 0 0;
+	border-top: var(--border-top-color) rem(10) solid;
+	background-color: #ffffff;
+	text-align: center;
+	cursor: pointer;
+	margin-bottom: var(--margin-bottom);
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.c-tab--alphabet .c-tab-item > label,
+.c-tab--alphabet .c-tab-item label {
+	flex: 0 1 auto;
+	min-width: auto;
+	width: calc(math.div(80, 1100) * 100%);
+	padding-block: em(25.5, 18);
+	padding-inline: em(0, 18);
+	@include mq-down() {
+		// width: calc(math.div(55.8, 360) * 100%);
+		width: rem(80);
+	}
+}
+
+.c-tab--katakana .c-tab-item > label,
+.c-tab--katakana .c-tab-item label {
+	flex: 0 1 auto;
+	min-width: auto;
+	width: calc(math.div(105.5, 1100) * 100%);
+	padding-block: em(25.5, 18);
+	padding-inline: em(0, 18);
+	@include mq-down() {
+		// width: calc(math.div(68, 360) * 100%);
+		width: rem(105.5);
+	}
+}
+
+// .c-tab-item > label:hover {
+//   opacity: $hover-opacity;
+// }
+
+.c-tab-item input {
+	display: none;
+}
+
+.c-tab-item > .c-tab-item__content {
+	display: none;
+	width: 100%;
+	padding-inline: rem(40);
+	padding-block: rem(52) rem(95);
+	background-color: #ffffff;
+}
+
+.c-tab-item label:has(:checked) {
+	--border-top-color: #{$color-accent-green};
+	--margin-bottom: 0;
+}
+
+.c-tab-item label:has(:checked) + .c-tab-item__content {
+	display: block;
+}
+
+.c-tab-item label:has(:checked) + .c-tab-item__content.js-tabContent {
+	display: none;
+}
+
+.c-tab-item > .c-tab-item__content.active {
+	display: block;
+}

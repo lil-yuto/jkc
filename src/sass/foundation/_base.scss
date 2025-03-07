@@ -1,0 +1,76 @@
+@use "global" as *;
+@use "sass:math";
+
+:root {
+  --block-margin-top: #{rem(30)};
+  --block-margin-bottom: #{rem(30)};
+}
+
+html {
+  scroll-behavior: smooth;
+
+  // 375px~767px
+  font-size: 16px;
+
+  // ~375px
+  @media (max-width: 375px) {
+    font-size: vw(375, 16);
+  }
+
+  // 768px~inner
+  @media screen and (min-width: $layout-width-sp) {
+    font-size: vw(strip-unit($layout-width-inner), 16);
+  }
+
+  // inner~max-screen
+  @media (min-width: $layout-width-inner) {
+    font-size: 16px;
+  }
+}
+
+body {
+  font-family: $font-family-japanese;
+  color: $color-text-base;
+  background-color: $color-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  letter-spacing: math.div($kerning-value, 1000) * 1em;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
+}
+
+a {
+  transition: opacity $duration-default;
+}
+
+@media (any-hover: hover) {
+  a:hover {
+    opacity: $hover-opacity;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+// tableとtd,thの線を消す
+table {
+  border-collapse: collapse;
+  border: none;
+}
+td,
+th {
+  border: none;
+}
+
+small {
+  font-size: 100%;
+}
+
+strong {
+  font-weight: $bold;
+}

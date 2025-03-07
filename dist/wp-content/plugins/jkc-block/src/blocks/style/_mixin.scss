@@ -1,0 +1,32 @@
+// @import "variable";
+@use "sass:math";
+
+// メディアクエリー(モバイル)
+@mixin mq-up($breakpoint: 'sp') {
+  @media #{map-get($breakpoints-up, $breakpoint)} {
+    @content;
+  }
+}
+
+// メディアクエリー(デスクトップ)
+@mixin mq-down($breakpoint: 'sp') {
+  @media #{map-get($breakpoints-down, $breakpoint)} {
+    @content;
+  }
+}
+
+// z-index
+@mixin z-index($key) {
+  z-index: map-get($layer, $key);
+}
+//clamp（viewport範囲指定）
+@function clamp-vw($min, $max, $min-view-port: 320, $max-view-port: 1200) {
+  $valiable-part: calc(($max - $min) / ($max-view-port - $min-view-port));
+  $constant: calc(($max - $max-view-port * $valiable-part) / 16);
+  $min-rem: calc($min / 16 * 1rem);
+  $max-rem: calc($max / 16 * 1rem);
+  $variable-rem: calc($constant * 1rem);
+  $variable-vw: calc(100 * $valiable-part * 1vw);
+
+  @return clamp($min-rem, $variable-rem + $variable-vw, $max-rem);
+}

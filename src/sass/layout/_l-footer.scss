@@ -1,0 +1,131 @@
+@use 'global' as *;
+@use "sass:math";
+
+.l-footer {
+  position: relative;
+  background-color: #fafafa;
+}
+.l-footer {
+  // margin-top: rem(-40);
+  @include mq-down() {
+    // margin-top: rem(-16);
+  }
+}
+.l-footer__container {
+  padding-block: rem(28);
+  @include mq-down() {
+    padding-block: rem(28) rem(42);
+  }
+}
+.l-footer__logos {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  column-gap: rem(14);
+  @include mq-down() {
+    justify-content: center;
+  }
+}
+.l-footer__logo {
+  width: rem(368);
+  @include mq-down() {
+    width: rem(285);
+  }
+}
+.l-footer__logo-fci {
+  width: rem(58);
+  @include mq-down() {
+    width: rem(46);
+  }
+}
+.l-footer__top {
+  display: flex;
+  column-gap: rem(70);
+  margin-top: 20px;
+  @include mq-down() {
+    display: none;
+  }
+}
+.l-footer__column {
+  max-width: 292px;
+}
+.l-footer__menu {
+}
+.l-footer__menu + .l-footer__menu {
+  margin-top: rem(38);
+}
+.l-footer__menu-title {
+  font-size: rem(18);
+  font-weight: $bold;
+  color: $color-accent-green-dark;
+}
+.l-footer__menu-list {
+  margin-top: rem(14);
+  display: grid;
+  row-gap: rem(6);
+}
+.l-footer__menu-item {
+  position: relative;
+  display: flex;
+  padding-left: 0.5em;
+  font-size: rem(16);
+}
+.l-footer__menu-item::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  top: -0.1em;
+}
+.l-footer__bottom {
+  margin-top: rem(50);
+  @include mq-down() {
+    margin-top: rem(32);
+  }
+}
+.l-footer__links {
+  display: flex;
+  @include mq-down() {
+    flex-direction: column;
+    row-gap: rem(10);
+    justify-content: center;
+    text-align: center;
+  }
+}
+.l-footer__link-item {
+  position: relative;
+  font-size: rem(15);
+  @include mq-down() {
+    font-size: rem(14);
+  }
+}
+.l-footer__link-item + .l-footer__link-item::before {
+  content: "/";
+  @include mq-down() {
+    display: none;
+  }
+}
+
+.l-footer__link {
+  position: relative;
+  font-size: rem(14);
+  padding-inline: rem(3);
+}
+.l-footer__copyright {
+  padding-block: rem(22);
+  background-color: $color-accent-green-dark;
+  @include mq-down() {
+  padding-block: rem(18);
+  }
+}
+.l-footer__copyright-inner {
+  max-width: 1280px;
+}
+.l-footer__copyright-text {
+  font-size: rem(16);
+  font-weight: $bold;
+  color: $color-sub-text;
+  @include mq-down() {
+    font-size: rem(11);
+    text-align: center;
+  }
+}

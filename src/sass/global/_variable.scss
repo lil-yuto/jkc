@@ -1,0 +1,135 @@
+// -----------------------------------------------
+// カラー
+// -----------------------------------------------
+// パレット
+$palette-alabaster: #f7f7f7;
+$palette-mediumGray: #d3d3d3;
+$palette-gold: #edad23;
+$palette-lightGreen: #edf5ef;
+$palette-darkGray: #373737;
+
+$palette-creamCan: #f6d25e;
+$palette-scotchMist: #fffbd9;
+$palette-saltpan: #edf5ef;
+$palette-salem: #0a6934;
+$palette-eucalyptus: #22804c;
+$palette-kaitokeGreen: #004622;
+$palette-persianRed: #c83030;
+$palette-fairPink: #ffebeb;
+$palette-alto: #cecece;
+$palette-gray: #898989;
+
+// ベースカラー
+$color-base: #ffffff;
+// メインカラー
+$color-main: #000000;
+// メインカラー(濃)
+$color-main-dark: #062345;
+// メインカラー(薄)
+$color-main-light: #838383;
+
+// アクセントカラー
+$color-accent-green: $palette-salem;
+$color-accent-green-light: $palette-saltpan;
+$color-accent-green-dark: $palette-kaitokeGreen;
+$color-accent-yellow: $palette-creamCan;
+$color-accent-yellow-light: $palette-scotchMist;
+$color-accent-yellow-dark: $palette-gold;
+$color-accent-red: $palette-persianRed;
+$color-accent-red-light: $palette-fairPink;
+$color-accent-gray: $palette-gray;
+$color-accent-gray-light: $palette-alabaster;
+
+// ベーステキストカラー
+$color-text-base: $palette-darkGray;
+// サブテキストカラー
+$color-sub-text: $palette-alabaster;
+// ボーダーカラー
+$color-border-gray: $palette-alto;
+// リンクカラー
+$color-text-link: $color-accent-red;
+$color-text-link-hover: $color-accent-green;
+// 外部リンクカラー
+$color-text-link-external: $color-accent-gray;
+// PDFリンクカラー
+$color-text-link-pdf: $color-accent-red;
+// 透過度
+$hover-opacity: 0.7;
+
+// -----------------------------------------------
+// ブレイクポイント
+// -----------------------------------------------
+// レイアウト幅
+$layout-width-canvas: 1440px;
+$layout-width-inner: 1100px;
+$layout-width-sp: 768px;
+
+// ブレークポイント(モバイル)
+$breakpoints-up: (
+	sp: "screen and (min-width: #{$layout-width-sp})",
+	pc: "screen and (min-width: #{$layout-width-inner})",
+);
+
+// ブレークポイント(デスクトップ)
+$breakpoints-down: (
+	sp: "screen and (max-width: #{$layout-width-sp - 1px})",
+	pc: "screen and (min-width: #{$layout-width-inner})",
+);
+
+// ヘッダー高さ
+$header-height: 90px;
+$header-height-sp: 60px;
+
+// 余白
+$padding-pc: 25px;
+$padding-sp: 15px;
+// ※PC時：デザインカンプの余白の幅ではない。PC時は通常25pxで大丈夫！
+
+// カーニング（字寄せ）
+$kerning-value: 50;
+
+$duration-default: 0.3s;
+// -----------------------------------------------
+// レイヤー
+// -----------------------------------------------
+$layer: (
+	default: 1,
+	header: 30,
+	floating: 50,
+	drawer: 40,
+	toTop: 20,
+);
+
+// -----------------------------------------------
+// フォント
+// -----------------------------------------------
+// フォントファミリー
+$font-family-default: "游ゴシック体", "Yu Gothic", yugothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", meiryo, "MS Pゴシック", "MS PGothic", sans-serif; // 標準フォント
+$font-family-english: sans-serif;
+$font-family-base: $font-family-default;
+$font-size-base: 16px;
+
+// Noto Sans Japanese
+// @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap");
+// 日本語フォント
+$font-family-japanese: "Noto Sans JP", sans-serif;
+
+// Noto Serif Japanese
+// @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap");
+$font-family-notoSerif: "Noto Serif JP", sans-serif;
+
+// 欧文フォント
+$font-family-english: "Roboto", sans-serif;
+
+// フォントウェイト
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semiBold: 700;
+$bold: 700;
+$black: 900;
+
+$font-weight-base: $regular;
+
+// ラインハイト
+$line-height-base: 1.5;

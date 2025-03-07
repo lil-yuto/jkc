@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/anchor-link",
+  "version": "0.1.0",
+  "title": "アンカーリンクボタン（大）",
+  "category": "jkc-block",
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "Example block scaffolded with Create Block tool.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "variations": [
+    {
+      "name": "jkc-block/anchor-link-grid-2",
+      "title": "ボタン/2列",
+      "description": "2列のグリッドレイアウトでボタンを表示します。",
+      "icon": {
+        "src": "smiley",
+        "foreground": "#0A6934"
+      },
+      "scope": ["block"],
+      "innerBlocks": [["jkc-block/anchor-link-item"], ["jkc-block/anchor-link-item"]]
+    }
+  ],
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

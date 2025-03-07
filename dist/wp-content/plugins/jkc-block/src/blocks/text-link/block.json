@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jkc-block/text-link",
+	"version": "0.1.0",
+	"title": "テキストリンク",
+	"category": "jkc-block",
+	"icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+  "styles": [
+    {
+      "name": "text-link-direction-row",
+      "label": "横並び",
+      "isDefault": true
+    },
+    {
+      "name": "text-link-direction-column",
+      "label": "縦並び"
+    }
+  ],
+	"textdomain": "jkc-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

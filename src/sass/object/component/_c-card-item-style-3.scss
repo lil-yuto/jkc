@@ -1,0 +1,221 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+.c-card-item-style-3 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
+	margin-inline: auto;
+}
+
+.c-card-item-style-3.c-card-item-style-3--subgrid {
+	display: grid;
+	grid-template-rows: subgrid;
+	grid-row: span 5;
+	row-gap: 0;
+}
+
+.c-card-item-style-3__link {
+	transition: none;
+}
+
+@media (any-hover: hover) {
+	.c-card-item-style-3__link:hover {
+		opacity: 1;
+	}
+}
+.c-card-item-style-3__img-wrapper {
+	overflow: hidden;
+}
+.c-card-item-style-3__img-wrapper--tall {
+	width: calc(math.div(160, 340) * 100%);
+	margin-inline: auto;
+}
+.c-card-item-style-3__img-wrapper img {
+	width: 100%;
+	object-fit: cover;
+	aspect-ratio: 800 / 367;
+	transition: scale $duration-default ease-out;
+}
+.c-card-grid-3--define .c-card-item-style-3__img-wrapper img {
+	aspect-ratio: calc(math.div(34, 24));
+}
+
+.c-card-item-style-3__img-wrapper--tall img {
+	object-fit: cover;
+	object-position: center;
+	aspect-ratio: 160 /226;
+}
+@media (any-hover: hover) {
+	.c-card-item-style-3 a:hover .c-card-item-style-3__img-wrapper img {
+		scale: 1.1;
+	}
+}
+.c-card-item-style-3__content {
+	margin-block: rem(20) 0;
+}
+.c-card-grid-3--define .c-card-item-style-3__content {
+	margin-block: rem(15) 0;
+}
+.c-card-item-style-3__img-wrapper--tall + .c-card-item-style-3__content {
+	margin-block: rem(15) 0;
+}
+.c-card-item-style-3__type-wrapper {
+	display: flex;
+	column-gap: rem(5);
+	margin-block-end: rem(5);
+}
+
+.c-card-item-style-3__contents-type {
+	display: block;
+	width: rem(32);
+	height: auto;
+}
+.c-card-item-style-3__contents-type img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: calc(math.div(1, 1));
+	object-fit: contain;
+	object-position: center;
+}
+
+
+
+.c-card-item-style-3__title {
+	font-size: rem(20);
+	font-weight: $bold;
+	color: $color-accent-green;
+	@include mq-down() {
+		font-size: rem(18);
+	}
+}
+.c-card-item-style-3--subgrid  .c-card-item-style-3__title {
+	line-height: calc(math.div(23, 20));
+	text-align: center;
+	margin-block: rem(20) 0;
+}
+
+.c-card-item-style-3__subtitle {
+	font-size: rem(18);
+	font-weight: $bold;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(30, 18));
+	margin-block: rem(13) rem(0);
+	text-align: center;
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.c-card-item-style-3__description {
+	font-size: rem(18);
+	font-weight: $regular;
+	letter-spacing: math.div(30, 1000) * 1em;
+	margin-top: rem(15);
+	@include mq-down() {
+		font-size: rem(16);
+		letter-spacing: math.div(50, 1000) * 1em;
+	}
+}
+
+.c-card-item-style-3__img-wrapper--tall + div .c-card-item-style-3__description {
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(30, 18));
+	margin-block: rem(5);
+}
+.c-card-item-style-3__button-wrapper {
+	width: rem(130);
+	margin-inline: 0 auto;
+	margin-top: rem(30);
+}
+.c-card-item-style-3__button {
+	--color: #ffffff;
+	--border-color: transparent;
+	--bg-color: #0a6934;
+	--translate: 0;
+	display: inline grid;
+	width: 100%;
+	grid-template-columns: 1fr auto 1fr;
+	column-gap: em(8);
+	align-items: center;
+	font-size: rem(15);
+	letter-spacing: math.div(50, 1000) * 1em;
+	color: var(--color);
+	padding-block: em(3, 15);
+	padding-inline: em(12, 15);
+	border-radius: rem(5);
+	border: 1px solid var(--border-color);
+	background-color: var(--bg-color);
+	transition: background-color $duration-default, color $duration-default, border-color $duration-default;
+	@include mq-down() {
+		font-size: rem(13);
+		padding-block: em(9, 13);
+	}
+}
+
+.c-card-item-style-3__button::before {
+	content: "";
+}
+
+.c-card-item-style-3__button::after {
+	content: "";
+	justify-self: end;
+	width: em(6.76, 13);
+	aspect-ratio: 6.76 / 11.83;
+	background-color: var(--color);
+	mask-image: url("../images/common/cmn-arrow-forward-ico01.svg");
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+	rotate: 0deg;
+	translate: 0;
+	transition: translate $duration-default, background-color $duration-default;
+}
+
+@media (any-hover: hover) {
+	.c-card-item-style-3__button:hover {
+		--color: #0a6934;
+		--border-color: currentcolor;
+		--bg-color: #ffffff;
+		--translate: 0.22em 0;
+		color: var(--color);
+		border-color: var(--border-color);
+		background-color: var(--bg-color);
+	}
+	.c-card-item-style-3__button::after {
+		background-color: var(--color);
+		translate: var(--translate);
+	}
+}
+
+.c-card-item-style-3__define-lists {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.c-card-item-style-3__define-term {
+	width: calc(math.div(77, 340) * 100%);
+	font-size: rem(18);
+	font-weight: $bold;
+	line-height: calc(math.div(30, 18));
+	color: $palette-salem;
+}
+
+.c-card-item-style-3__define-term ~ .c-card-item-style-3__define-term {
+	margin-block: rem(6) 0;
+}
+.c-card-item-style-3__define-descr {
+	width: calc(math.div(263, 340) * 100%);
+	font-size: rem(18);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(30, 18));
+}
+
+.c-card-item-style-3__define-descr ~ .c-card-item-style-3__define-descr {
+	margin-block: rem(6) 0;
+}

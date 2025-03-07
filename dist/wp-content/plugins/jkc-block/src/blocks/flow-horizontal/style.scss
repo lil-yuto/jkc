@@ -1,0 +1,40 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-flow-horizontal {
+  .c-block-flow-horizontal {
+    --gap: #{rem(40)};
+    position: relative;
+    gap: var(--gap);
+    display: flex;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+    justify-content: center;
+    @include mq-down() {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .c-block-flow-horizontal > li + li::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: rem(15);
+    aspect-ratio: 15 / 25;
+    clip-path: polygon(0 0,100% 50%,0 100%);
+    background-color: $color-accent-green;
+    top: 50%;
+    left: 0;
+    translate: calc(-100% + rem(-12.5)) -50%;
+    @include mq-down() {
+      width: rem(25);
+      aspect-ratio: 25 / 15;
+      clip-path: polygon(50% 100%,100% 0,0 0);
+      top: 0;
+      left: 50%;
+      translate: -50% calc(-100% + rem(-12.5));
+    }
+  }
+
+}
+

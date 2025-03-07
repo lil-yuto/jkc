@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jkc-block/card-grid-1",
+	"version": "0.1.0",
+	"title": "カード/1列",
+	"category": "jkc-block",
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+	"description": "カードを1列で表示します。",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "jkc-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"cardCount": {
+			"type": "number",
+			"default": 1
+		}
+	}
+}

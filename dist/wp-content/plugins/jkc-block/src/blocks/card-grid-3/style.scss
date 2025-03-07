@@ -1,0 +1,25 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-card-grid-3 {
+  .c-card-grid {
+    --column: 1;
+    --gap-row: #{rem(60)};
+    --gap-column: #{rem(40)};
+    display: grid;
+    gap: var(--gap-row) var(--gap-column);
+    grid-template-columns: repeat(var(--column), 1fr);
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+    @include mq-down() {
+      --gap-row: #{rem(48)};
+    }
+  }
+  .c-card-grid.c-card-grid--3 {
+    --column: 3;
+    @include mq-down() {
+      --column: 1;
+      grid-template-columns: repeat(var(--column), 83%);
+      justify-content: center;
+    }
+  }
+}

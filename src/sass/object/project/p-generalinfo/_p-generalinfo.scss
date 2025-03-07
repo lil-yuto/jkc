@@ -1,0 +1,25 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-generalinfo__lead {
+	font-size: rem(18);
+	font-family: $font-family-japanese;
+	font-weight: $regular;
+	line-height: calc(math.div(30, 18));
+	text-align: center;
+	letter-spacing: 0.03em;
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.p-generalinfo__lists {
+	margin-block: rem(80) 0;
+	@include mq-down() {
+		margin-block: rem(40) 0;
+	}
+}
+
+.p-generalinfo__type {
+	margin-block: rem(60) 0;
+}

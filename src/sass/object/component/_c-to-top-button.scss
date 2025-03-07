@@ -1,0 +1,45 @@
+@use 'global' as *;
+@use "sass:math";
+
+.c-to-top-button {
+  position: sticky;
+  display: flex;
+  margin-left: auto;
+  width: rem(90.37);
+  bottom: rem(20);
+  right: rem(20);
+  @include z-index(toTop);
+  opacity: 0;
+  transition: opacity $duration-default ease; // transformのトランジションを削除
+  pointer-events: none;
+  @include mq-down() {
+    width: rem(52.88);
+    right: rem(15);
+  }
+}
+
+.c-to-top-button.is-visible {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0%) scale(1);
+  animation: bounce 0.5s ease;
+}
+
+.c-to-top-button.is-visible:hover {
+  opacity: 0.8;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(100%) scale(0); // 初期状態と一致
+  }
+  60% {
+    transform: translateY(-10%) scale(1.05);
+  }
+  80% {
+    transform: translateY(5%) scale(0.9);
+  }
+  100% {
+    transform: translateY(0%) scale(1); // 終了状態と一致
+  }
+}

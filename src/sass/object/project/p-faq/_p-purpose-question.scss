@@ -1,0 +1,10 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-purpose-question__anchor {
+	margin-block: rem(80) 0;
+}
+
+.p-purpose-question__category {
+	margin-block: rem(65) 0;
+}

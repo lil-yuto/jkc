@@ -1,0 +1,13 @@
+// @import "variable";
+@use "function" as *;
+@use "mixin" as *;
+@use "sass:math";
+
+:root {
+  --block-margin-top: #{rem(30)};
+  --block-margin-bottom: #{rem(30)};
+}
+
+b, strong {
+  font-weight: $bold;
+}

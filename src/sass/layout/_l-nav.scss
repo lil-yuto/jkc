@@ -1,0 +1,146 @@
+@use 'global' as *;
+@use "sass:math";
+
+.l-nav {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $palette-creamCan;
+  border-radius: 0 0 0 rem(30);
+  padding-left: rem(27);
+  @include mq-down() {
+    padding-inline: rem(15) rem(5);
+  }
+}
+.l-nav__icon {
+  width: rem(35);
+  @include mq-down() {
+    width: rem(30);
+  }
+}
+.l-nav__list {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: stretch;
+  margin-inline: clamp-vw(10, 20, 1100, 1440) clamp-vw(15, 30, 1100, 1440);
+  @include mq-down() {
+    margin-inline: 0;
+  }
+}
+
+.l-nav__item {
+  position: relative;
+  display: flex;
+  font-size: rem(15);
+  align-items: center;
+  @include mq-down() {
+    display: none;
+  }
+}
+.l-nav__item.l-nav__item--info {
+  @include mq-down() {
+    display: grid;
+  }
+}
+
+.l-nav__link {
+  --color: #373737;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--color);
+  font-size: rem(15);
+  font-weight: $bold;
+  padding-inline: rem(10);
+  padding-inline: clamp-vw(5, 10, 1100, 1440);
+  transition: color $duration-default;
+  @include mq-down() {
+    flex-direction: column;
+    font-size: rem(12);
+    padding-inline: rem(6);
+    row-gap: rem(6);
+  }
+}
+
+@media (any-hover: hover) {
+  .l-nav__link:hover {
+    --color: #0a6934;
+    color: var(--color);
+    opacity: 1;
+  }
+}
+
+.l-nav__link::after {
+  content: "";
+  display: none;
+  justify-self: start;
+  width: rem(6);
+  aspect-ratio: 1;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  rotate: 135deg;
+  @include mq-down() {
+    display: block;
+  }
+}
+.l-nav__item + .l-nav__item::before {
+  position: relative;
+  content: "";
+  width: 0.8em;
+  height: 1px;
+  background-color: currentColor;
+  rotate: 90deg;
+  @include mq-down() {
+    display: none;
+  }
+}
+
+.l-nav__link-panel {
+  --color: #ffffff;
+  position: relative;
+  display: grid;
+  row-gap: rem(3);
+  place-items: center;
+  font-size: rem(14);
+  color: var(--color);
+  align-self: stretch;
+  padding-inline: clamp-vw(10, 16, 1100, 1440);
+  padding-block: rem(14) rem(10);
+  font-weight: $bold;
+  width: 100%;
+  letter-spacing: 0;
+  transition: color $duration-default;
+}
+
+@media (any-hover: hover) {
+  .l-nav__link-panel:hover {
+    --color: #f6d25e;
+    color: var(--color);
+    opacity: 1;
+  }
+}
+
+.l-nav__link-panel.l-nav__link-panel--seearch {
+  background-color: $palette-eucalyptus;
+}
+.l-nav__link-panel.l-nav__link-panel--download {
+  background-color: $color-accent-green;
+}
+.l-nav__link-panel.l-nav__link-panel--qa {
+  background-color: $palette-kaitokeGreen;
+}
+
+.l-nav__panels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  @include mq-down() {
+    display: none;
+  }
+}
+.l-nav__item-panel {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+}

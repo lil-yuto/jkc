@@ -1,0 +1,23 @@
+// html :where(.wp-block) {
+//   margin-bottom: 0;
+//   margin-top: 0;
+//   max-width: 1100px;
+// }
+
+// html .wp-block-list .block-editor-rich-text__editable {
+//   display: inline-block;
+// }
+
+// html .editor-styles-wrapper .block-editor-block-list__block li {
+//   margin-left: 0;
+//   margin-right: 0;
+// }
+
+// :where(.editor-styles-wrapper) ol,:where(.editor-styles-wrapper) ul{
+//   list-style-type: none;
+// }
+
+// :where(.editor-styles-wrapper) ol ul,
+// :where(.editor-styles-wrapper) ul ul {
+//   list-style-type: none;
+// }

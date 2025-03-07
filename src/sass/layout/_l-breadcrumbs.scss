@@ -1,0 +1,13 @@
+@use "sass:math";
+@use "global" as *;
+
+.l-breadcrumbs {
+	width: 100%;
+	max-width: 1330px;
+	padding-inline: $padding-pc;
+	margin-inline: auto;
+	margin-block: rem(10) 0;
+	@include mq-down() {
+		padding-inline: $padding-sp;
+	}
+}

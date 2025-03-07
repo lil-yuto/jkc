@@ -1,0 +1,14 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-tab {
+  --block-padding-top: #{rem(80)};
+  --block-padding-bottom: #{rem(80)};
+  padding-block: var(--block-padding-top) var(--block-padding-bottom);
+  border-image: linear-gradient($color-accent-gray-light 0 0) fill 0 / /0 100lvi;
+}
+.c-block-tab {
+  display: flex;
+  gap: 0 rem(5);
+  flex-wrap: wrap;
+}

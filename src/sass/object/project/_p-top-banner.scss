@@ -1,0 +1,37 @@
+@use 'global' as *;
+@use "sass:math";
+
+.p-top-banner {
+}
+.l-banner {
+  padding-block: rem(30) rem(72);
+  @include mq-down() {
+    padding-block: rem(27);
+  }
+}
+.p-top-banner__list {
+  --column: 4;
+  --column-gap: 10px;
+  --row-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  gap: var(--row-gap) var(--column-gap);
+
+  @include mq-down() {
+    --column: 2;
+    --column-gap: 5px;
+  }
+}
+.p-top-banner__list > * {
+  flex-basis: calc((100% - var(--column-gap) * (var(--column) - 1)) / var(--column));
+}
+.p-top-banner__list > *:nth-child(n + 5) {
+  --column: 3;
+  @include mq-down() {
+    --column: 2;
+  }
+}
+.p-top-banner__item {
+
+}

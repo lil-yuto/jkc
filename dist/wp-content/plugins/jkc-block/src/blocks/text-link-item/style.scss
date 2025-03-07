@@ -1,0 +1,82 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-text-link-item {
+  list-style: none;
+  .c-block-text-link-item {
+    --color: #{$color-text-link};
+    --translate: 0;
+    display: inline-flex;
+    align-items: center;
+    font-size: rem(18);
+    line-height: math.div(24, 18);
+    letter-spacing: math.div(50, 1000) * 1em;
+    color: var(--color);
+    column-gap: em(8, 18);
+    font-weight: $bold;
+    transition: color $duration-default;
+    list-style-type: none;
+    @include mq-down() {
+      font-size: rem(16);
+    }
+  }
+
+  .c-block-text-link-item::after {
+    content: "";
+    display: inline-block;
+    width: 1.333em;
+    aspect-ratio: 1;
+    background-color: var(--color);
+    mask-image: url("./images/cmn-arrow-forward-circle-ico01.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    translate: var(--translate);
+    transition:
+      background-color $duration-default,
+      translate $duration-default;
+  }
+
+  // PDFリンク用のアイコン
+  .c-block-text-link-item[href$=".pdf"]::after {
+    content: "";
+    display: inline-block;
+    width: em(26, 18);
+    aspect-ratio: 26 / 27.24;
+    background-color: $color-text-link-pdf;
+    mask-image: url("./images/cmn-link-pdf-ico01.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // vertical-align: baseline;
+    // background-image: url("./images/cmn-link-pdf-ico01.svg");
+    // mask: none;
+  }
+
+  // 外部リンク用のアイコン
+  .c-block-text-link-item[target="_blank"]::after {
+    content: "";
+    display: inline-block;
+    width: em(22, 18);
+    aspect-ratio: 1;
+    background-color: $color-text-link-external;
+    mask-image: url("./images/cmn-link-blank-ico01.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+
+  @media (any-hover: hover) {
+    .c-block-text-link-item:hover {
+      --color: #{$color-text-link-hover};
+      --translate: 0.22em 0;
+      opacity: 1;
+    }
+    .c-block-text-link-item[href$=".pdf"]:hover::after,
+    .c-block-text-link-item[target="_blank"]:hover::after {
+      --translate: 0;
+    }
+  }
+}

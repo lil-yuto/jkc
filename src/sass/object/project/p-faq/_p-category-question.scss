@@ -1,0 +1,26 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-category-question__lists {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(550px, 100%), 1fr));
+	margin-block: rem(45) 0;
+}
+
+.p-category-question__item a.c-text-link-item__link {
+	display: flex;
+	line-height: calc(math.div(30, 18));
+	letter-spacing: 0.03em;
+	// padding-inline: em(13, 18) 0;
+	padding-block: em(10, 18);
+ 
+}
+
+.p-category-question__item a.c-text-link-item__link::before {
+	display: block;
+	content: "";
+	width: em(5, 18);
+	height: em(5, 18);
+	border-radius: 50%;
+	background-color: var(--color);
+}

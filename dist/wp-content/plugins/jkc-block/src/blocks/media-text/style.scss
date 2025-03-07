@@ -1,0 +1,52 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-media-text {
+  .c-block-media-text {
+    --column-gap: #{rem(40)};
+    display: flex;
+    column-gap: var(--column-gap);
+    align-items: start;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+    @include mq-down() {
+      flex-direction: column;
+      row-gap: rem(30);
+    }
+  }
+  .c-block-media-text.c-block-media-text--reverse {
+    flex-direction: row-reverse;
+    @include mq-down() {
+      flex-direction: column;
+    }
+  }
+  .c-block-media-text__body {
+    flex: 1;
+    font-size: rem(18);
+    font-weight: $regular;
+    letter-spacing: math.div(30, 1000) * 1em;
+    @include mq-down() {
+      font-size: rem(16);
+    }
+  }
+  .c-block-media-text__button {
+    width: 100%;
+    margin-top: rem(45);
+  }
+
+  .c-block-media-text__img-wrapper {
+    flex-basis: calc(50% - (var(--column-gap) / 2));
+    overflow: hidden;
+  }
+  .c-block-media-text__img-wrapper.c-block-media-text__img-wrapper--30 {
+    flex-basis: calc(31% - (var(--column-gap) / 2));
+    flex-basis: 31%;
+  }
+  .c-block-media-text__img-wrapper.c-block-media-text__img-wrapper--50 {
+    flex-basis: calc(50% - (var(--column-gap) / 2));
+  }
+
+  .c-block-media-text__img-wrapper img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

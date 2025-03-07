@@ -1,0 +1,97 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+.c-button-link-item {
+	.c-button-item {
+	}
+
+	.c-button-item.contents {
+		display: contents;
+	}
+
+	.c-button-item__link {
+		--color: #{$color-text-base};
+		--border-color: #{$color-accent-green};
+		--bg-color: transparent;
+		--translate: 0;
+		display: inline grid;
+		width: 100%;
+		grid-template-columns: 1fr auto 1fr;
+		column-gap: em(8);
+		align-items: center;
+		font-size: rem(18);
+		font-weight: $bold;
+		letter-spacing: math.div(30, 1000) * 1em;
+		color: var(--color);
+		padding-block: em(31, 18);
+		padding-inline: em(24, 18);
+		border-radius: rem(5);
+		border: 1px solid var(--border-color);
+		background-color: var(--bg-color);
+		transition: background-color $duration-default, border-color $duration-default;
+		@include mq-down() {
+			font-size: rem(13);
+		}
+	}
+
+	// .c-button-item__link.subgrid.column {
+	// 	--background-color: #ffffff;
+	// 	--border-color: #{$color-accent-green};
+	// 	--arrow-color: #0a6934;
+	// 	position: relative;
+	// 	display: grid;
+	// 	grid-template-columns: subgrid;
+	// 	grid-template-rows: subgrid;
+	// 	// grid-row: span 1;
+	// 	// grid-column: 1 / -1;
+
+	// 	padding-block: em(20, 18);
+	// 	padding-inline: em(20, 18);
+	// 	border-radius: rem(5);
+	// 	font-size: rem(18);
+	// 	border: 1px solid var(--border-color);
+	// 	font-weight: $regular;
+	// 	letter-spacing: 0.03em;
+	// 	line-height: calc(math.div(26, 18));
+	// 	background-color: var(--background-color);
+	// 	transition: background-color 0.3s;
+	// }
+
+	.c-button-item__link::before {
+		content: "";
+	}
+
+	.c-button-item__link::after {
+		content: "";
+		justify-self: end;
+		width: em(24, 18);
+		aspect-ratio: 1;
+		background-color: var(--border-color);
+		mask-image: url("./images/cmn-arrow-circle-ico01.svg");
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: contain;
+		rotate: 0deg;
+		translate: 0;
+		transition: translate $duration-default, background-color $duration-default;
+	}
+
+	@media (any-hover: hover) {
+		.c-button-item__link:hover {
+			// --border-color: #{$color-accent-yellow-dark};
+			--translate: 0.22em 0;
+			// border-color: var(--border-color);
+			opacity: 1;
+		}
+		.c-button-item__link:hover::after {
+			// background-color: var(--border-color);
+			background-color: #fff;
+			translate: var(--translate);
+		}
+	}
+}
+
+.c-button-link-item.contents {
+	display: contents;
+}

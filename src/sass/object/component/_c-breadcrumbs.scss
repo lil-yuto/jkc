@@ -1,0 +1,38 @@
+@use "sass:math";
+@use "global" as *;
+
+
+.c-breadcrumbs {
+	font-family: $font-family-japanese;
+	font-size: rem(16);
+	font-weight: 400;
+	line-height: calc(math.div(36, 16));
+	letter-spacing: 0.03em;
+	color: $palette-darkGray;
+	// color: red;
+	@include mq-down() {
+		line-height: calc(math.div(24, 16));
+	}
+}
+
+.c-breadcrumbs > span + span {
+	margin-inline: calc(math.div(35, 16) * 1em) 0;
+	position: relative;
+}
+
+.c-breadcrumbs > span + span::before {
+	position: absolute;
+	top: 0.7em;
+	bottom: auto;
+	left: calc(math.div(-26, 16) * 1em);
+	right: auto;
+	transform: translate(0, -50%) rotate(-45deg);
+	display: block;
+	content: "";
+	width: calc(math.div(8, 16) * 1em);
+	height: calc(math.div(8, 16) * 1em);
+	border-right: 1px solid #cecece;
+	border-bottom: 1px solid #cecece;
+	// border-right: 1px solid red;
+	// border-bottom: 1px solid red;
+}

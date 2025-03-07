@@ -1,0 +1,32 @@
+{
+  "scripts": {
+    "wp:env": "wp-env",
+    "wp:start": "npm run wp:env start",
+    "wp:stop": "npm run wp:env stop",
+    "wp:destroy": "npm run wp:env destroy",
+    "wp-debug": "wp-env start --xdebug",
+    "db:import": "gzip -dfk sql/wpenv.sql.gz && npm run wp:env run cli wp db import sql/wpenv.sql && rm -f sql/wpenv.sql",
+    "db:export": "npm run wp:env run cli wp db export sql/wpenv.sql; gzip -f sql/wpenv.sql"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10.4.0",
+    "autoprefixer": "^10.4.20",
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^10.0.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-sass-glob-use-forward": "^0.1.3",
+    "gulp-sourcemaps": "^3.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-svgo": "^7.1.0",
+    "postcss": "^8.5.1",
+    "sass": "^1.43.4"
+  },
+  "dependencies": {
+    "del": "^6.0.0"
+  }
+}

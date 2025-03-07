@@ -1,0 +1,178 @@
+@use "global" as *;
+@use "sass:math";
+
+.l-gnav {
+	// position: relative;
+	display: block;
+	// color: red;
+	@include mq-down() {
+		// display: none;
+		position: absolute;
+		top: auto;
+		bottom: 1px;
+		left: 0;
+		right: auto;
+		transform: translate(0, 100%);
+		background-color: $palette-lightGreen;
+		// background-color: red;
+		// background-color: yellow;
+		width: 100%;
+		max-height: calc(100vh - rem(65));
+		padding-block: rem(25);
+		overflow-y: scroll;
+		pointer-events: none;
+		opacity: 0;
+		transition: pointer-events 0s ease-out, opacity 0.3s ease-out;
+	}
+}
+
+.burgerOpen .l-gnav {
+	@include mq-down() {
+		pointer-events: auto;
+		opacity: 1;
+	}
+}
+
+.l-gnav__list {
+	// position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include mq-down() {
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+	}
+}
+
+.l-gnav__item {
+	@include mq-down() {
+		width: 100%;
+		position: relative;
+		// background-color: yellow;
+	}
+}
+
+.l-gnav__item::before {
+	@include mq-down() {
+		position: absolute;
+		top: rem(33);
+		bottom: auto;
+		left: auto;
+		right: rem(20);
+		transform: translate(0, 0);
+		display: block;
+		content: "";
+		width: rem(19);
+		height: 2px;
+		border-radius: 50vw;
+		background-color: $palette-darkGray;
+	}
+}
+
+.l-gnav__item::after {
+	@include mq-down() {
+		position: absolute;
+		top: rem(24);
+		bottom: auto;
+		left: auto;
+		right: rem(28.5);
+		transform: translate(0, 0);
+		display: block;
+		content: "";
+		width: 2px;
+		height: rem(19);
+		border-radius: 50vw;
+		background-color: $palette-darkGray;
+		transition: transform 0.3s ease-out;
+	}
+}
+
+.megaOpen.l-gnav__item::after {
+	@include mq-down() {
+		transform: translate(0, 0) rotate(90deg);
+	}
+}
+
+.l-gnav__link {
+	position: relative;
+	display: inline-block;
+	font-size: rem(18);
+	padding-inline: rem(23);
+	padding-inline: clamp-vw(10, 23, 1100, 1440);
+	padding-block: rem(8);
+	font-weight: $bold;
+	cursor: pointer;
+	z-index: 1;
+	@include mq-down() {
+		display: block;
+		font-size: rem(20);
+		padding-inline: rem(15);
+		padding-block: rem(18);
+		border-bottom: 2px solid;
+		border-image: linear-gradient(90deg, transparent 0 rem(15), $palette-salem rem(15) calc(100% - rem(15)), transparent calc(100% - rem(15)) 100%) 1 / 0 0 2px;
+		border-style: solid;
+	}
+}
+
+.l-gnav__link:hover {
+	opacity: 1;
+	@include mq-down() {
+	}
+}
+
+.l-gnav__link::after {
+	position: absolute;
+	content: "";
+	background: url("../images/common/cmn-footprint-ico01.svg") no-repeat center / contain;
+	width: rem(44);
+	aspect-ratio: 1;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity $duration-default;
+	@include mq-down() {
+		display: none;
+	}
+}
+.l-gnav__item:hover .l-gnav__link::after,
+.l-gnav__item.is-current .l-gnav__link::after {
+	opacity: 1;
+	@include mq-down() {
+	}
+}
+
+.l-gnav__meganav {
+	position: absolute;
+	bottom: rem(10);
+	left: auto;
+	right: 0;
+	transform: translate(0, 100%);
+	width: 100%;
+	background-color: transparent;
+	height: 0;
+	overflow: hidden;
+	// padding-block: rem(10) 0;
+	z-index: 29;
+	// color: red;
+	@include mq-down() {
+		position: static;
+		bottom: auto;
+		right: auto;
+		transform: translate(0, 0);
+		// height: auto;
+		height: 0;
+		overflow: hidden;
+		background-color: #f3f3f3;
+	}
+}
+
+.l-gnav__list-sp {
+	display: none;
+	@include mq-down() {
+		display: flex;
+		margin-block: rem(30) 0;
+	}
+}

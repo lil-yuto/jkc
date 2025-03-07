@@ -1,0 +1,35 @@
+@use 'global' as *;
+@use "sass:math";
+
+.c-link-icon {
+  --color:  #0A6934;
+  --translate: 0;
+  display: flex;
+  align-items: center;
+  font-size: rem(30);
+  color: var(--color);
+  column-gap: 0.611em;
+  font-weight: $bold;
+  transition: color $duration-default;
+}
+
+.c-link-icon::after {
+  content: "";
+  display: inline-block;
+  width: 1.333em;
+  aspect-ratio: 1;
+  background-color: var(--color);
+  mask-image: url("../images/common/cmn-arrow-forward-circle-ico01.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  translate: var(--translate);
+  transition: background-color $duration-default, translate $duration-default;
+}
+
+@media (any-hover: hover) {
+  .c-link-icon:hover {
+    --color: #EDAD23;
+    --translate: 0.22em 0
+  }
+}

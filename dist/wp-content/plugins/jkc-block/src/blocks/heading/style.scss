@@ -1,0 +1,98 @@
+@use "sass:math";
+@import '../style/common';
+
+.wp-block-jkc-block-heading {
+  .c-post-heading {
+    --block-margin-top: #{rem(80)};
+    color: $color-text-base;
+    position: relative;
+    display: block;
+    font-weight: $bold;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+  }
+  
+  .c-post-heading.c-post-heading--lv2.u-text-align-center {
+    background-position: center bottom;
+  }
+  
+  .c-post-heading.c-post-heading--lv2.u-text-align-right {
+    background-position: right bottom;
+  }
+  
+  .c-post-heading.c-post-heading--lv2.u-text-align-left {
+    background-position: left bottom;
+  }
+  
+  .c-post-heading.c-post-heading--lv2 {
+    --block-margin-bottom: #{rem(60)};
+    font-size: rem(36);
+    line-height: math.div(52, 36);
+    letter-spacing: math.div(50, 1000) * 1em;
+    text-align: center;
+    padding-bottom: 0.5em;
+    background-image: linear-gradient(90deg, $color-accent-green 0 50%, #FFE59B 50%);
+    background-repeat: no-repeat;
+    background-size: rem(71) rem(6);
+    background-position: center bottom;
+    @include mq-down() {
+      font-size: rem(26);
+      background-size: rem(54) rem(6);
+      --block-margin-bottom: #{rem(40)};
+    }
+  }
+  
+  .c-post-heading.c-post-heading--lv3 {
+    --block-margin-bottom: #{rem(40)};
+    font-size: rem(28);
+    line-height: math.div(42, 28);
+    letter-spacing: math.div(50, 1000) * 1em;
+    text-align: left;
+    
+    padding-left: rem(26);
+    background-image: linear-gradient($color-accent-green 0 50%, #FFE59B 50%);
+    background-repeat: no-repeat;
+    background-size: rem(6) 0.9em;
+    background-position: left center;
+    
+    padding-bottom: rem(15);
+    padding-block: rem(15);
+    border-bottom: 1px solid $color-border-gray;
+    @include mq-down() {
+      font-size: rem(24);
+      padding-left: rem(20);
+      --block-margin-bottom: #{rem(30)};
+    }
+  }
+  
+  .c-post-heading.c-post-heading--lv4 {
+    --block-margin-top: #{rem(40)};
+    --block-margin-bottom: #{rem(25)};
+    color: $color-accent-green;
+    font-size: rem(20);
+    line-height: math.div(26, 20);
+    letter-spacing: math.div(30, 1000) * 1em;
+    text-align: left;
+
+    padding-left: rem(15);
+    background-image: linear-gradient($color-accent-green 0 100%);
+    background-repeat: no-repeat;
+    background-size: rem(6) 100%;
+    background-position: left center;
+    @include mq-down() {
+      --block-margin-bottom: #{rem(20)};
+    }
+  }
+
+  .c-post-heading.c-post-heading--lv5 {
+    --block-margin-top: #{rem(40)};
+    --block-margin-bottom: #{rem(25)};
+    color: $color-accent-green;
+    font-size: rem(20);
+    line-height: math.div(26, 20);
+    letter-spacing: math.div(30, 1000) * 1em;
+    text-align: left;
+    @include mq-down() {
+      --block-margin-bottom: #{rem(20)};
+    }
+  }
+}

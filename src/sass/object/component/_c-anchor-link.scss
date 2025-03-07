@@ -1,0 +1,29 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+.c-anchor-link {
+	.c-anchor-button {
+	}
+
+	.c-anchor-button__items {
+		--column: 3;
+		display: grid;
+		column-gap: rem(8);
+		row-gap: rem(22);
+		// grid-template-columns: repeat(auto-fill, minmax(min(269px, 100%), 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+		margin-block: var(--block-margin-top) var(--block-margin-bottom);
+		@include mq-down() {
+			grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+		}
+	}
+}
+
+.c-anchor-button__items.c-anchor-button__items--column4 {
+	--column: 4;
+		grid-template-columns: repeat(auto-fill, minmax(min(269px, 100%), 1fr));
+	@include mq-down() {
+		grid-template-columns: repeat(auto-fill, minmax(min(269px, 100%), 1fr));
+	}
+}

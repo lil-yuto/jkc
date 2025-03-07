@@ -1,0 +1,46 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-flow-horizontal-title-text {
+  position: relative;
+  display: flex;
+  width: rem(150);
+  min-height: rem(120);
+  @include mq-down() {
+    width: 100%;
+  }
+
+  .c-block-flow-horizontal-title-text {
+    flex-grow: 1;
+    --gap: #{rem(12)};
+    display: grid;
+    place-items: center;
+    gap: var(--gap);
+    padding: rem(10);
+    background-color: $color-accent-green-light;
+    @include mq-down() {
+      flex-direction: column;
+    }
+  }
+  .c-block-flow-horizontal-title-text__title {
+    color: $color-text-base;
+    font-size: rem(18);
+    letter-spacing: math.div(30, 1000) * 1em;
+    line-height: math.div(28, 18);
+    font-weight: $bold;
+    align-self: end;
+    @include mq-down() {
+      font-size: rem(16);
+    }
+  }
+  .c-block-flow-horizontal-title-text__description {
+    color: $color-text-base;
+    font-size: rem(18);
+    letter-spacing: math.div(30, 1000) * 1em;
+    font-weight: $regular;
+    align-self: start;
+    @include mq-down() {
+      font-size: rem(16);
+    }
+  }
+}

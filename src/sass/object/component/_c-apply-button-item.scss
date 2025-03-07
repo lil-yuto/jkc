@@ -1,0 +1,244 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+.c-apply-button-item {
+	width: 100%;
+	.c-apply-button-item {
+		width: min(rem(530), 100%);
+		margin-inline: auto;
+		@include mq-down() {
+			width: min(rem(300), 100%);
+		}
+	}
+
+	.c-apply-button-item__link {
+		--color: #{$color-sub-text};
+		--border-color: transparent;
+		--bg-color: #{$color-accent-green};
+		--translate: 0;
+		--height: #{rem(80)};
+		display: inline grid;
+		width: 100%;
+		grid-template-columns: 1fr auto 1fr;
+		column-gap: em(8, 18);
+		align-items: center;
+		font-size: rem(18);
+		font-weight: $bold;
+		letter-spacing: math.div(50, 1000) * 1em;
+		color: var(--color);
+		padding-block: em(25.5, 18);
+		padding-inline: em(24, 18);
+		border-radius: rem(5);
+		border: 1px solid var(--border-color);
+		background-color: var(--bg-color);
+		transition: background-color $duration-default, color $duration-default, border-color $duration-default;
+		height: var(--height);
+		@include mq-down() {
+			font-size: rem(13);
+		}
+	}
+
+	.c-apply-button-item__link::before {
+		content: "";
+		justify-self: start;
+	}
+
+	.c-apply-button-item__link::after {
+		--bg-color: currentColor;
+		--translate: 0;
+		content: "";
+		justify-self: end;
+		width: em(15, 18);
+		aspect-ratio: 1;
+		background-color: var(--bg-color);
+		mask-image: url("../images/common/cmn-arrow-forward-ico01.svg");
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: contain;
+		rotate: 0deg;
+		translate: var(--translate);
+		transition: translate $duration-default, background-color $duration-default;
+		@include mq-down() {
+			width: em(17, 13);
+		}
+	}
+
+	@media (any-hover: hover) {
+		.c-apply-button-item__link:hover {
+			--color: #{$color-accent-green};
+			--border-color: currentcolor;
+			--bg-color: #ffffff;
+			opacity: 1;
+		}
+		.c-apply-button-item__link:hover::after {
+			--bg-color: currentColor;
+			--translate: 0.22em 0;
+		}
+	}
+}
+
+// デフォルト
+.c-apply-button-item.is-style-default {
+	.c-apply-button-item__link {
+		--color: #{$color-sub-text};
+		--border-color: transparent;
+		--bg-color: #{$color-accent-green};
+		--translate: 0;
+		--height: #{rem(80)};
+	}
+
+	.c-apply-button-item__link::before {
+		content: "";
+		background: none;
+	}
+
+	.c-apply-button-item__link::after {
+		--bg-color: currentColor;
+		--translate: 0;
+	}
+
+	@media (any-hover: hover) {
+		.c-apply-button-item__link:hover {
+			--color: #{$color-accent-green};
+			--border-color: currentcolor;
+			--bg-color: #ffffff;
+		}
+		.c-apply-button-item__link:hover::after {
+			--bg-color: currentColor;
+			--translate: 0.22em 0;
+		}
+	}
+}
+// 郵送
+.c-apply-button-item.is-style-post {
+	.c-apply-button-item__link {
+		--color: #{$color-text-base};
+		--border-color: transparent;
+		--bg-color: #{$color-accent-yellow};
+		--translate: 0;
+		--height: #{rem(100)};
+		padding-block: em(29, 18);
+	}
+
+	.c-apply-button-item__link::before {
+		width: em(46.9, 18);
+		aspect-ratio: 46.9 / 40.88;
+		background: url("../images/common/cmn-post-ico01.svg") no-repeat center / contain;
+	}
+
+	.c-apply-button-item__link::after {
+		--bg-color: currentColor;
+		--translate: 0;
+	}
+
+	@media (any-hover: hover) {
+		.c-apply-button-item__link:hover {
+			--border-color: #{$color-accent-yellow};
+			--bg-color: #ffffff;
+		}
+		.c-apply-button-item__link:hover::after {
+			--bg-color: #{$color-accent-yellow};
+			--translate: 0.22em 0;
+		}
+	}
+}
+// ドッグショー
+.c-apply-button-item.is-style-dog-show {
+	.c-apply-button-item__link {
+		--color: #{$color-text-base};
+		--border-color: transparent;
+		--bg-color: #{$color-accent-yellow};
+		--translate: 0;
+		--height: #{rem(100)};
+		padding-block: em(29, 18);
+	}
+
+	.c-apply-button-item__link::before {
+		width: em(31.44, 18);
+		aspect-ratio: 31.44 / 40.16;
+		background: url("../images/common/cmn-dog-show-ico01.svg") no-repeat center / contain;
+	}
+
+	.c-apply-button-item__link::after {
+		--bg-color: currentColor;
+		--translate: 0;
+	}
+
+	@media (any-hover: hover) {
+		.c-apply-button-item__link:hover {
+			--border-color: #{$color-accent-yellow};
+			--bg-color: #ffffff;
+		}
+		.c-apply-button-item__link:hover::after {
+			--bg-color: #{$color-accent-yellow};
+			--translate: 0.22em 0;
+		}
+	}
+}
+// ウェブ
+.c-apply-button-item.is-style-web {
+	.c-apply-button-item__link {
+		--color: #{$color-text-base};
+		--border-color: transparent;
+		--bg-color: #{$color-accent-yellow};
+		--translate: 0;
+		--height: #{rem(100)};
+		padding-block: em(29, 18);
+	}
+
+	.c-apply-button-item__link::before {
+		width: em(40.78, 18);
+		aspect-ratio: 40.78 / 28.75;
+		background: url("../images/common/cmn-web-ico01.svg") no-repeat center / contain;
+	}
+
+	.c-apply-button-item__link::after {
+		--bg-color: currentColor;
+		--translate: 0;
+	}
+
+	@media (any-hover: hover) {
+		.c-apply-button-item__link:hover {
+			--border-color: #{$color-accent-yellow};
+			--bg-color: #ffffff;
+		}
+		.c-apply-button-item__link:hover::after {
+			--bg-color: #{$color-accent-yellow};
+			--translate: 0.22em 0;
+		}
+	}
+}
+// PDF
+.c-apply-button-item.is-style-pdf {
+	.c-apply-button-item__link {
+		--color: #{$color-text-base};
+		--border-color: transparent;
+		--bg-color: #{$color-accent-yellow};
+		--translate: 0;
+		--height: #{rem(100)};
+		padding-block: em(29, 18);
+	}
+
+	.c-apply-button-item__link::before {
+		width: em(40.78, 18);
+		aspect-ratio: 40.78 / 42.73;
+		background: url("../images/common/cmn-pdf-ico01.svg") no-repeat center / contain;
+	}
+
+	.c-apply-button-item__link::after {
+		--bg-color: currentColor;
+		--translate: 0;
+	}
+
+	@media (any-hover: hover) {
+		.c-apply-button-item__link:hover {
+			--border-color: #{$color-accent-yellow};
+			--bg-color: #ffffff;
+		}
+		.c-apply-button-item__link:hover::after {
+			--bg-color: #{$color-accent-yellow};
+			--translate: 0.22em 0;
+		}
+	}
+}

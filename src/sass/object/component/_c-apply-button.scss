@@ -1,0 +1,16 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+	.c-apply-button {
+		margin-block: var(--block-margin-top) var(--block-margin-bottom);
+	}
+
+	.c-apply-button__items {
+		display: flex;
+		gap: rem(20) rem(40);
+		justify-content: center;
+		@include mq-down() {
+			flex-direction: column;
+		}
+}

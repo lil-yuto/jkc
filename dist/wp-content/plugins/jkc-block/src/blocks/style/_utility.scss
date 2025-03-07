@@ -1,0 +1,21 @@
+// @import "variable";
+@use "mixin" as *;
+@use "sass:math";
+
+// PC
+.u-hidden-pc {
+  @include mq-up() {
+    display: none;
+  }
+}
+
+// スマホ
+.u-hidden-sp {
+  @include mq-down() {
+    display: none;
+  }
+}
+
+.u-uppercase {
+  text-transform: uppercase;
+}

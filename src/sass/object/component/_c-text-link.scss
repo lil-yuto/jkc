@@ -1,0 +1,103 @@
+@use "sass:math";
+@use "global" as *;
+
+.c-text-link {
+  .c-text-link__items {
+    display: flex;
+    gap: rem(20) rem(30);
+    list-style: none;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+    @include mq-down() {
+      flex-direction: column;
+    }
+  }
+}
+
+
+.c-text-link.is-style-text-link-direction-row {
+	.c-text-link__items {
+		flex-direction: row;
+		@include mq-down() {
+			flex-direction: column;
+		}
+	}
+}
+
+.c-text-link.is-style-text-link-direction-column {
+	.c-text-link__items {
+		flex-direction: column;
+		@include mq-down() {
+			flex-direction: column;
+		}
+	}
+}
+
+.c-text-link.wrap {
+	.c-text-link__items {
+		flex-wrap: wrap;
+		@include mq-down() {
+		}
+	}
+}
+
+.c-text-link__items {
+	display: flex;
+	gap: rem(20) rem(30);
+	list-style: none;
+	@include mq-down() {
+		flex-direction: column;
+	}
+}
+
+.c-text-link__items {
+	flex-direction: column;
+	@include mq-down() {
+		flex-direction: column;
+	}
+}
+
+.c-text-link__link,
+a.c-text-link__link {
+	--color:  #{$color-text-link};
+	--translate: 0;
+	display: inline-flex;
+	align-items: center;
+	font-size: rem(18);
+	line-height: math.div(24, 18);
+	letter-spacing: math.div(50, 1000) * 1em;
+	color: var(--color);
+	column-gap: 0.611em;
+	font-weight: $bold;
+	transition: color $duration-default;
+	list-style-type: none;
+	cursor: pointer;
+	@include mq-down() {
+		display: flex;
+		justify-content: space-between;
+		font-size: rem(16);
+	}
+}
+
+.c-text-link__link::after,
+a.c-text-link__link::after {
+	content: "";
+	display: inline;
+	width: 1.333em;
+	aspect-ratio: 1;
+	background-color: var(--color);
+	mask-image: url("../images/common/cmn-arrow-forward-circle-ico01.svg");
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+	translate: var(--translate);
+	transition: background-color $duration-default, translate $duration-default;
+	flex-shrink: 0;
+}
+
+@media (any-hover: hover) {
+	.c-text-link__link:hover {
+		--color: #{$color-text-link-hover};
+		--translate: 0.22em 0;
+		opacity: 1;
+	}
+}

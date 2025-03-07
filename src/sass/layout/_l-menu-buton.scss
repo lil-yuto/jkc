@@ -1,0 +1,76 @@
+@use "global" as *;
+@use "sass:math";
+
+.l-menu-button {
+	position: relative;
+	display: none;
+	place-items: center;
+	width: rem(46);
+	aspect-ratio: 1;
+	background-color: #ffffff;
+	border-radius: 100vh;
+	@include mq-down() {
+		display: grid;
+	}
+}
+.l-menu-button__content {
+	position: relative;
+	display: inline-grid;
+	place-items: center;
+	width: rem(26);
+	color: $color-accent-green;
+	row-gap: calc(rem(3));
+	margin-top: rem(2.5);
+}
+.l-menu-button__icon {
+	position: relative;
+	display: grid;
+	width: 100%;
+	border-bottom: rem(2) solid currentColor;
+	margin-block: rem(5);
+	transition: border-color 0.3s ease-out;
+}
+
+.burgerOpen .l-menu-button__icon {
+	border-color: transparent;
+}
+
+.l-menu-button__icon::before,
+.l-menu-button__icon::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-bottom: rem(2) solid currentColor;
+	// transition: translate $duration-default;
+	transition: transform $duration-default;
+}
+
+.l-menu-button__icon::before {
+	// translate: 0 rem(-5);
+	transform: translate(0, rem(-5));
+	transition: transform 0.3s ease-out;
+}
+
+.burgerOpen .l-menu-button__icon::before {
+ transform: translate(0, rem(-1)) rotate(45deg);
+}
+
+.l-menu-button__icon::after {
+ // translate: 0 rem(5);
+	transform: translate(0, rem(5));
+	transition: transform 0.3s ease-out;
+}
+
+.burgerOpen .l-menu-button__icon::after {
+ transform: translate(0, rem(-1)) rotate(-45deg);
+}
+
+.l-menu-button__text {
+	position: relative;
+	display: block;
+	font-size: rem(16);
+	font-weight: $bold;
+	@include mq-down() {
+		font-size: rem(8);
+	}
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/text-link-item",
+  "version": "0.1.0",
+  "title": "リンク/アイテム",
+  "category": "jkc-block",
+  "parent": ["jkc-block/text-link"],
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "リンク/アイテム",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "content": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": "a",
+      "role": "content"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "テキストを追加..."
+    },
+    "rel": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "rel"
+    },
+    "linkTarget": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "target"
+    },
+    "url": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "href"
+    }
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

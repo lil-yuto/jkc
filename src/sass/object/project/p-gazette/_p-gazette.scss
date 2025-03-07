@@ -1,0 +1,80 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-gazette {
+	display: flex;
+	align-items: flex-start;
+	column-gap: rem(45);
+	@include mq-down() {
+		flex-direction: column;
+		row-gap: rem(45);
+	}
+}
+
+.p-gazette__img {
+	display: block;
+	width: rem(340);
+	height: auto;
+	@include mq-down() {
+		width: 100%;
+	}
+}
+
+.p-gazette__img img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: calc(math.div(340, 486.9));
+	object-fit: contain;
+	object-position: center;
+	@include mq-down() {
+	}
+}
+
+.p-gazette__contents {
+	flex: 1;
+	@include mq-down() {
+	}
+}
+
+.p-gazette__contents .c-heading:first-of-type,
+.p-gazette__contents .c-heading--lv4:first-of-type {
+	margin-top: 0;
+	@include mq-down() {
+	}
+}
+
+.p-gazzette__text {
+	ul {
+		font-size: rem(18);
+		letter-spacing: math.div(30, 1000) * 1em;
+		line-height: math.div(30, 18);
+		font-weight: $regular;
+		list-style-type: none;
+
+		margin-block: var(--block-margin-top) var(--block-margin-bottom);
+		@include mq-down() {
+			font-size: rem(16);
+			letter-spacing: math.div(50, 1000) * 1em;
+		}
+	}
+	ul ul {
+		margin-block: rem(20);
+	}
+
+	ul li {
+		position: relative;
+		padding-left: em(25, 18);
+	}
+	ul li:not(:first-child) {
+		margin-top: rem(10);
+	}
+	ul li::before {
+		content: "・";
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		color: $color-accent-green;
+		font-weight: $bold;
+	}
+}
