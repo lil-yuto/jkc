@@ -1,0 +1,216 @@
+@use 'global' as *;
+@use "sass:math";
+
+.p-top-news {
+  position: relative;
+  overflow: hidden;
+}
+.p-top-news::after {
+  content: "";
+  position: absolute;
+  width: rem(444);
+  aspect-ratio: 1;
+  background: url("../images/common/cmn-jkc-emblem-bg01.png") no-repeat center / contain;
+  top: rem(-50);
+  right: rem(-50);
+  opacity: 0.7;
+  z-index: -1;
+  @include mq-down() {
+    width: rem(222);
+    top: rem(-22);
+    right: rem(-22);
+  }
+}
+.l-news {
+}
+.p-top-news__container {
+}
+.p-top-news__title-area {
+  display: flex;
+  justify-content: space-between;
+}
+.p-top-news__title {
+  margin-bottom: rem(42);
+}
+.p-top-news__content {
+}
+.p-top-news__select-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.p-top-news__selectbox {
+  @include mq-down() {
+    flex: 1;
+  }
+}
+.p-top-news__more {
+}
+.p-top-news__title-area .p-top-news__more {
+  @include mq-down() {
+    margin-top: rem(8);
+  }
+}
+.p-top-news__more-link {
+  font-size: rem(18);
+  @include mq-down() {
+    font-size: rem(13);
+  }
+}
+.p-top-news__categories {
+  margin-top: rem(27);
+}
+.p-top-news__category-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: rem(10);
+  row-gap: rem(10);
+  @include mq-down() {
+    row-gap: rem(20);
+  }
+}
+.p-top-news__category-link {
+}
+.p-top-news__posts {
+  margin-top: rem(27);
+}
+
+.p-posts {
+  @include mq-down() {
+    border-image: linear-gradient($color-accent-green-light 0 0) fill 0 / /0 100lvi;
+    padding-block: rem(20);
+  }
+}
+.p-posts__list {
+  display: grid;
+  grid: "date category title" auto / max-content max-content 1fr;
+  @include mq-down() {
+    grid-template-columns: max-content 1fr;
+    padding-inline: rem(15);
+    column-gap: rem(24);
+    background-color: #ffffff;
+  }
+}
+.p-posts__list li {
+  display: contents;
+}
+.p-posts__list li + li .p-posts__item {
+  border-top: 1px solid #d3d3d3;
+}
+.p-posts__item {
+  display: grid;
+  grid: "date category title";
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  column-gap: rem(18);
+  padding-block: rem(21);
+  border-bottom: 1px solid transparent;
+  @include mq-down() {
+    grid:
+      "date category"
+      "title title";
+    grid-template-columns: max-content 1fr;
+    background-color: #ffffff;
+    padding-block: rem(16);
+    row-gap: rem(10);
+  }
+}
+.p-posts__item + .p-posts__item {
+}
+.p-posts__date {
+  grid-area: date;
+  font-size: rem(16);
+  font-weight: $bold;
+  @include mq-down() {
+    font-size: rem(15);
+    justify-self: start;
+  }
+}
+.p-posts__category {
+  grid-area: category;
+  align-self: start;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  font-size: rem(14);
+  font-weight: $medium;
+  color: $color-sub-text;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-accent-green;
+  border-radius: rem(5);
+  background-color: $color-accent-green;
+  padding-block: 0.107em;
+  padding-inline: 0.785em;
+  @include mq-down() {
+    font-size: rem(13);
+    display: block;
+    justify-self: start;
+    border-radius: 100vh;
+    padding-block: 0.321em;
+  }
+}
+.p-posts__title {
+  grid-area: title;
+  font-size: rem(18);
+  width: 100%;
+  @include mq-down() {
+    font-size: rem(16);
+  }
+}
+
+.p-top-news__selectbox {
+  position: relative;
+  flex: 0 1 rem(366);
+  // レスポンシブで横幅に拡縮するか
+  // @include mq-down() {
+  //   flex: 1;
+  // }
+}
+
+.p-top-news__selectbox::before,
+.p-top-news__selectbox::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  top: 0;
+}
+
+.p-top-news__selectbox::before {
+  display: inline-block;
+  right: 0;
+  width: rem(50);
+  aspect-ratio: 1;
+  border-radius: 0 rem(5) rem(5) 0;
+  background-color: $color-accent-green;
+}
+
+.p-top-news__selectbox::after {
+  display: inline-block;
+  right: 0;
+  width: rem(50);
+  aspect-ratio: 1;
+  background-color: #ffffff;
+  mask-image: url("../images/common/cmn-arrow-forward-ico01.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: rem(14);
+  rotate: 90deg;
+}
+
+.p-top-news__selectbox select {
+  appearance: none;
+  font-size: rem(18);
+  font-weight: $bold;
+  width: 100%;
+  padding-block: rem(11.5);
+  padding-left: rem(18);
+  border: none;
+  border-radius: rem(5);
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+
+.p-top-news__selectbox select:focus {
+  outline: 2px solid $color-accent-green;
+}

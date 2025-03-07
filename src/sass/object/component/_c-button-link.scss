@@ -1,0 +1,17 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+.c-button-link {
+}
+
+.c-button-link__items {
+	--column: 3;
+	display: grid;
+	gap: rem(10);
+	grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
+	margin-block: var(--block-margin-top) var(--block-margin-bottom);
+	@include mq-down() {
+		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+	}
+}

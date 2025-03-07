@@ -1,0 +1,18 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-button {
+  .c-block-button {
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+  }
+  
+  .c-block-button__items {
+    display: flex;
+    gap: rem(20) rem(40);
+    justify-content: center;
+    @include mq-down() {
+      flex-direction: column;
+    }
+}
+
+}

@@ -1,0 +1,22 @@
+node_modules/
+package-lock.json
+
+# wp-env
+dist/wp-content/themes/jkc/assets/css/styles.css
+dist/wp-content/themes/jkc/assets/css/styles.css.map
+dist/wp-content/themes/jkc/assets/css/style-editor.css
+dist/wp-content/themes/jkc/assets/css/style-editor.css.map
+dist/wp-content/themes/jkc/assets/images/
+
+# dist/wp-content/uploads/
+
+dist/wp-content/plugins/*
+!dist/wp-content/plugins/jkc-block/
+dist/wp-content/plugins/jkc-block/build
+
+# Editor directories and files
+.DS_Store
+
+c-text.css
+c-text.css.map
+_woody.scss

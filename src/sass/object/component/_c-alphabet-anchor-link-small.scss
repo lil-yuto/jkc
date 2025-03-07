@@ -1,0 +1,26 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+.c-alphabet-anchor-link-small {
+ @include mq-down(){
+  overflow-x: scroll;
+ 
+ } 
+
+	.c-alphabet-anchor-link-small__items {
+		--column: 7;
+		display: grid;
+		// gap: rem(10);
+		column-gap: calc(math.div(10, 1250) * 100%);
+		row-gap: rem(10);
+		// grid-template-columns: repeat(auto-fill, minmax(min(87px, 100%), 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(min(calc(math.div(86, 1250) * 100%), 100%), 1fr));
+		margin-block: var(--block-margin-top) var(--block-margin-bottom);
+		@include mq-down() {
+			width: max-content;
+			display: flex;
+			column-gap: rem(10);
+		}
+	}
+}

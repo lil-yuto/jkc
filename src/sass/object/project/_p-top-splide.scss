@@ -1,0 +1,16 @@
+@use 'global' as *;
+@use "sass:math";
+
+.p-top-splide__pagination {
+}
+.p-top-splide__pagination__page {
+  background-color: #FFFFFF;
+  width: rem(9);
+  height: rem(9);
+  margin: rem(3.5);
+  opacity: 1;
+}
+.p-top-splide__pagination__page.is-active {
+  background-color: $color-accent-yellow-dark;
+  transform: scale(1);
+}

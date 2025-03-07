@@ -1,0 +1,59 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-tab-item {
+}
+.c-block-tab-item {
+  display: contents;
+}
+.c-block-tab-item > label {
+  --border-top-color: #{$color-accent-yellow};
+  --margin-bottom: #{rem(5)};
+  flex: 1 1;
+  order: -1;
+  min-width: rem(160);
+
+  display: grid;
+  place-items: center;
+  
+  font-size: rem(18);
+  font-weight: $bold;
+  letter-spacing: math.div(50, 1000) * 1em;
+  color: $color-text-base;
+  padding-block: em(25.5, 18);
+  padding-inline: em(24, 18);
+  border-radius: rem(5) rem(5) 0 0;
+  border-top: var(--border-top-color) rem(10) solid;
+  background-color: #FFFFFF;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: var(--margin-bottom);
+  @include mq-down() {
+    font-size: rem(16);
+  }
+}
+// .c-block-tab-item > label:hover {
+//   opacity: $hover-opacity;
+// }
+
+.c-block-tab-item input {
+  display: none;
+}
+
+.c-block-tab-item > .c-block-tab-item__content {
+  display: none;
+  width: 100%;
+  padding-inline: rem(40);
+  // padding-block: rem(52) rem(95);
+  background-color: #FFFFFF;
+}
+
+.c-block-tab-item label:has(:checked) {
+  --border-top-color: #{$color-accent-green};
+  --margin-bottom: 0;
+}
+
+.c-block-tab-item label:has(:checked) + .c-block-tab-item__content {
+  display: block;
+}
+

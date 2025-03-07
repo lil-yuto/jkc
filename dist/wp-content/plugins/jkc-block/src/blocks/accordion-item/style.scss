@@ -1,0 +1,105 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-accordion-item {
+  width: 100%;
+  .c-block-accordion-item {
+    border: 1px solid $color-border-gray;
+  }
+  .c-block-accordion-item__summary {
+    display: grid;
+    grid-template: ". icon" / 1fr 1.78em;
+    column-gap: 1em;
+    align-items: center;
+    padding: rem(25);
+    cursor: pointer;
+  }
+
+  .c-block-accordion-item__text {
+    color: $color-text-base;
+    font-size: rem(18);
+    letter-spacing: math.div(30, 1000) * 1em;
+    @include mq-down() {
+      font-size: rem(16);
+      letter-spacing: math.div(50, 1000) * 1em;
+    }
+  }
+
+  .c-block-accordion-item__summary::before,
+  .c-block-accordion-item__summary::after {
+    content: "";
+    grid-area: icon;
+    color: $color-accent-green;
+    border-bottom: 2px solid;
+    writing-mode: initial;
+  }
+
+  .c-block-accordion-item__summary::after {
+    rotate: 90deg;
+  }
+
+  .c-block-accordion-item__summary:is([open] > *)::after {
+    opacity: 0;
+  }
+
+  .c-block-accordion-item__summary:is([open] > *)::before {
+    color: $color-accent-gray;
+  }
+
+  .c-block-accordion-item__content {
+    padding-inline: rem(40);
+  }
+  // ハイライトカラー
+  .has-red-color {
+    color: $color-accent-red;
+  }
+
+  .has-green-color {
+    color: $color-accent-green;
+  }
+
+  .has-green-background-color {
+    background-color: $color-accent-green;
+  }
+
+  .has-light-green-color {
+    color: $color-accent-green-light;
+  }
+
+  .has-light-green-background-color {
+    background-color: $color-accent-green-light;
+  }
+
+  .has-light-red-color {
+    color: $color-accent-red-light;
+  }
+
+  .has-light-red-background-color {
+    background-color: $color-accent-red-light;
+  }
+
+  .has-gray-color {
+    color: $color-accent-gray;
+  }
+
+  .has-gray-background-color {
+    background-color: $color-accent-gray;
+  }
+
+  .has-light-gray-color {
+    color: $color-accent-gray-light;
+  }
+
+  .has-light-gray-background-color {
+    background-color: $color-accent-gray-light;
+  }
+
+  .has-light-yellow-color {
+    color: $color-accent-yellow-light;
+  }
+
+  .has-light-yellow-background-color {
+    padding: rem(20);
+    background-color: $color-accent-yellow-light;
+  }
+}

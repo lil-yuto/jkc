@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/tab",
+  "version": "0.1.0",
+  "title": "タブ",
+  "category": "jkc-block",
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "タブ",
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": false
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

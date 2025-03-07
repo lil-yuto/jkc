@@ -1,0 +1,21 @@
+{
+  "core": "https://ja.wordpress.org/wordpress-6.7.1-ja.zip",
+  "phpVersion": "8.2",
+  "plugins": [],
+  "themes": [],
+  "port": 10011,
+  "env": {
+    "tests": {
+      "port": 10012
+    }
+  },
+  "config": {
+    "WP_DEBUG": true
+  },
+  "mappings": {
+    "wp-content/themes/jkc/": "./dist/wp-content/themes/jkc/",
+    "wp-content/plugins/": "./dist/wp-content/plugins/",
+    "wp-content/uploads/": "./dist/wp-content/uploads/",
+    "sql": "./sql"
+  }
+}

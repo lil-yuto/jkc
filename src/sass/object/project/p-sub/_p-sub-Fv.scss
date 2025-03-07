@@ -1,0 +1,30 @@
+@use "sass:math";
+@use "global" as *;
+
+
+.p-sub-fv {
+	width: 100%;
+	height: auto;
+	max-height: rem(226);
+	aspect-ratio: calc(math.div(1100, 226));
+	background-color: $palette-alabaster;
+	background-image: url(../images/common/cmn_sub-mvLogo.png);
+	background-repeat: no-repeat;
+	background-position: center calc(50% - rem(15));
+	background-size: rem(433) rem(399);
+	@include mq-down() {
+		max-height: none;
+		aspect-ratio: calc(math.div(375, 140));
+		background-size: rem(180) rem(180);
+		background-position: center calc(50% + rem(0));
+	}
+}
+
+.p-sub-fv__container {
+	height: 100%;
+	// background-color: red;
+	display: grid;
+	place-items: center;
+	@include mq-down() {
+	}
+}

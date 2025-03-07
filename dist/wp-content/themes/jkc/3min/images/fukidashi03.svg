@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 559.7 122.1">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3d62ad;
+        font-family: NotoSansJP-Bold, 'Noto Sans JP';
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #3d62ad;
+        stroke-width: .7px;
+      }
+
+      .cls-4 {
+        letter-spacing: -.5em;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <path class="cls-2" d="M557.6,61.2v-2s0-57.2-57.2-57.2H97.9s-49.9,0-56.5,46.7H6.3c0,.1,36.5,27.3,36.5,27.3,4.2,16.9,16.9,42.4,55.1,42.4h402.5s57.2,0,57.2-57.2"/>
+    <path class="cls-3" d="M559.3,61.2v-2c0-.6-.7-58.9-58.9-58.9H97.9c-.5,0-50.5.5-58,46.7-11.2,0-22.4,0-33.7.1H1s4.2,3.1,4.2,3.1c12,8.9,24,17.9,36.1,26.8,4.2,16.4,17.2,43.1,56.6,43.1h402.5c.6,0,58.9-.7,58.9-58.9Z"/>
+    <path class="cls-3" d="M555.9,61.2v-2c0-.1,0-14.1-7-27.9-9.2-18.3-25.5-27.5-48.4-27.5H97.9c-2,0-48.5.6-54.7,45.2l-.2,1.5h-1.5c-10,0-19.9,0-29.9,0,10.8,8,21.6,16,32.4,24l.5.4.2.6c4.7,18.7,17.7,41,53.4,41h402.5c.1,0,14.1,0,27.9-7,18.3-9.2,27.5-25.5,27.5-48.4Z"/>
+    <text class="cls-1" transform="translate(200.5 50.7)"><tspan class="cls-5" x="0" y="0">災害時に備え</tspan><tspan class="cls-4" x="189" y="0">、</tspan><tspan class="cls-5"><tspan x="-117.8" y="40">災害救助犬の育成をしています</tspan></tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-text-link {
+  .c-block-text-link__items {
+    display: flex;
+    gap: rem(20) rem(30);
+    list-style: none;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+    @include mq-down() {
+      flex-direction: column;
+    }
+  }
+}
+
+.wp-block-jkc-block-text-link.is-style-text-link-direction-row {
+  .c-block-text-link__items {
+    flex-direction: row;
+    @include mq-down() {
+      flex-direction: column;
+    }  }
+}
+
+.wp-block-jkc-block-text-link.is-style-text-link-direction-column {
+  .c-block-text-link__items {
+    flex-direction: column;
+    @include mq-down() {
+      flex-direction: column;
+    }  }
+}

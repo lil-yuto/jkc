@@ -1,0 +1,56 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-name_list.l-container.l-container--sub {
+	margin-block: rem(10);
+	@include mq-down() {
+		margin-block: rem(30);
+	}
+}
+
+.p-name_list__alphabet-inner {
+	width: 100%;
+	max-width: 1300px;
+	padding-inline: $padding-pc;
+	margin-inline: auto;
+	margin-block: rem(0);
+	@include mq-down() {
+		padding-inline: $padding-sp;
+		margin-block-start: rem(50);
+	}
+}
+
+.p-name_list__alphabet-anchor-link__items.c-alphabet-anchor-link-small__items {
+	@include mq-down() {
+		margin-block: rem(15) rem(10);
+	}
+}
+
+.p-name_list__initial.c-heading.c-heading--lv3 {
+	margin-block: rem(0) rem(40);
+}
+
+.p-name_list__alphabet-box {
+	margin-block: rem(45);
+}
+
+.p-name_list__lists {
+	--column: 4;
+	display: grid;
+	gap: rem(10);
+	grid-template-columns: repeat(auto-fill, minmax(min(267px, 100%), 1fr));
+	margin-block: var(--block-margin-top) var(--block-margin-bottom);
+	margin-block: 0;
+	@include mq-down() {
+		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+		margin-block: rem(20);
+	}
+}
+
+.p-name_list__item {
+	border-bottom: 1px solid $palette-alto;
+}
+
+.p-name-list__name.c-text {
+	margin-block: rem(15);
+}

@@ -1,0 +1,30 @@
+@use "global" as *;
+@use "sass:math";
+
+.l-container {
+	box-sizing: initial;
+	padding-inline: $padding-pc;
+	max-inline-size: $layout-width-inner;
+	margin-inline: auto;
+
+	@include mq-down() {
+		padding-inline: $padding-sp;
+	}
+}
+
+.l-container--narrow {
+}
+
+.l-container--wide {
+}
+
+.l-container.l-container--header {
+	max-inline-size: $layout-width-inner;
+}
+
+.l-container--sub {
+	margin-block: rem(85);
+	@include mq-down() {
+		margin-block: rem(40);
+	}
+}

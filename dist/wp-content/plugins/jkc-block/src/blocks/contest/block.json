@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jkc-block/contest",
+	"version": "0.1.0",
+	"title": "コンテスト",
+	"category": "jkc-block",
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+	"description": "コンテストの作品を表示します。",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "jkc-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"itemCount": {
+			"type": "number",
+			"default": 3
+		}
+	}
+}

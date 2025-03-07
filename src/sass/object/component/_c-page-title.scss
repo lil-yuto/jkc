@@ -1,0 +1,43 @@
+@use "sass:math";
+@use "global" as *;
+
+.c-page-title {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 1fr;
+	grid-template-areas: "main" "sub";
+	place-items: center;
+	row-gap: rem(11);
+	@include mq-down() {
+		row-gap: rem(6);
+	}
+}
+
+.c-page-title__main {
+	grid-area: main;
+	font-family: $font-family-japanese;
+	font-size: rem(42);
+	font-weight: $bold;
+	line-height: calc(math.div(58, 42));
+	color: #3d3d3d;
+	// color: red;
+	text-align: center;
+	@include mq-down() {
+		font-size: rem(19);
+	}
+}
+
+.c-page-title__sub {
+	grid-area: sub;
+	font-family: $font-family-notoSerif;
+	font-size: rem(18);
+	font-weight: $bold;
+	line-height: calc(math.div(24, 18));
+	letter-spacing: 0.05em;
+	text-align: center;
+	color: $palette-salem;
+	// color: red;
+	@include mq-down() {
+		font-size: rem(14);
+	}
+}

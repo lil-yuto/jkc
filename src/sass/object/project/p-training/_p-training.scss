@@ -1,0 +1,29 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-training__anchor.c-anchor-link {
+	margin-top: rem(50);
+}
+
+.p-training_term-description.c-text {
+	margin-block: rem(60);
+}
+
+.p-training__card-lists {
+	--column: 1;
+	--gap-row: #{rem(40)};
+	--gap-column: #{rem(40)};
+	display: grid;
+	gap: var(--gap-row) var(--gap-column);
+	grid-template-columns: repeat(var(--column), 1fr);
+	margin-block: var(--block-margin-top) var(--block-margin-bottom);
+	@include mq-down() {
+		--gap-row: #{rem(48)};
+	}
+}
+.p-training__card-lists.p-training__card-lists--2 {
+	--column: 2;
+	@include mq-down() {
+		--column: 1;
+	}
+}

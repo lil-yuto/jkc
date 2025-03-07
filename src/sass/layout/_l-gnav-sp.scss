@@ -1,0 +1,164 @@
+@use "sass:math";
+@use "global" as *;
+
+.l-gnav-sp {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	column-gap: rem(20);
+	padding-inline: rem(15);
+}
+
+.l-gnav-sp__item {
+	font-family: $font-family-japanese;
+	font-size: rem(20);
+	font-weight: $bold;
+	line-height: calc(math.div(26, 20));
+	width: calc(50% - rem(10));
+}
+
+.l-gnav-sp__item a {
+	display: flex;
+	justify-content: center;
+	padding-inline: 0 rem(25);
+	padding-block: rem(20);
+}
+
+.l-gnav-sp__item a span {
+	position: relative;
+}
+
+.l-gnav-sp__item a span::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	right: rem(-25);
+	left: auto;
+	transform: translate(0, -50%);
+	display: block;
+	content: "";
+	width: rem(10);
+	height: rem(18.5);
+	mask-image: url(../images/common/cmn-arrow-forward-ico01.svg);
+	background-color: $palette-darkGray;
+	background-color: red;
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+}
+
+.l-gnav-sp__item-panel {
+	font-size: rem(16);
+	font-weight: $bold;
+	color: $palette-alabaster;
+	width: calc(50% - rem(10));
+	margin-block: rem(12) 0;
+}
+
+.l-gnav-sp__item-panel a {
+	display: flex;
+	justify-content: center;
+	border-radius: rem(5);
+	padding: rem(25) 0 rem(25) rem(30);
+}
+
+.l-gnav-sp__link-panel--download {
+	background-color: $palette-salem;
+	background-image: url(../images/common/cmn-download-ico01.svg);
+	background-repeat: no-repeat;
+	background-size: rem(26) rem(28);
+	background-position: rem(13) center;
+}
+
+.l-gnav-sp__link-panel--qa {
+	background-color: $palette-kaitokeGreen;
+	background-image: url(../images/common/cmn-qa-ico01.svg);
+	background-repeat: no-repeat;
+	background-size: rem(33) rem(26);
+	background-position: rem(13) center;
+}
+
+.l-gnav-sp__item-search {
+	width: 100%;
+	margin-block: rem(40) 0;
+}
+
+.l-gnav-sp__item-search form {
+	display: flex;
+}
+
+.l-gnav-sp__item-search form input {
+	font-size: rem(15);
+	font-weight: $bold;
+	color: $palette-darkGray;
+	width: calc(100% - rem(48));
+	border-radius: rem(5) 0 0 rem(5);
+	background-color: #fff;
+	padding: rem(10) rem(15);
+}
+
+.l-gnav-sp__item-search form button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: rem(48);
+	height: rem(48);
+	background-color: $palette-salem;
+	border-radius: 0 rem(5) rem(5) 0;
+}
+
+.l-gnav-sp__item-search form button img {
+	display: block;
+	width: rem(22.5);
+	height: rem(22.5);
+	object-fit: contain;
+	object-position: center;
+}
+
+.l-gnav-sp__item-japanese,
+.l-gnav-sp__item-english {
+	font-family: $font-family-japanese;
+	font-size: rem(16);
+	font-weight: $bold;
+	letter-spacing: 0.05em;
+	line-height: calc(math.div(24, 16));
+	margin-block: rem(40) 0;
+}
+
+.l-gnav-sp__item-japanese {
+	width: calc(50% - rem(23));
+	margin-inline: 0 rem(13);
+}
+
+.l-gnav-sp__item-japanese a {
+	display: block;
+	width: 100%;
+	text-align: right;
+}
+
+.l-gnav-sp__item-english {
+	width: calc(50% - rem(23));
+	margin-inline: rem(13) 0;
+	position: relative;
+}
+
+.l-gnav-sp__item-english::before {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: rem(-20);
+	right: auto;
+	transform: translate(0, -50%);
+	display: block;
+	content: "";
+	width: 1px;
+	height: rem(12.2);
+	background-color: $palette-darkGray;
+	background-color: red;
+}
+
+.l-gnav-sp__item-english a {
+	display: block;
+	width: 100%;
+	text-align: left;
+}

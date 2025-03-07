@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/text",
+  "version": "0.1.0",
+  "title": "テキスト",
+  "category": "jkc-block",
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "Example block scaffolded with Create Block tool.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": true,
+    "color": { "background": true, "text": false }
+  },
+  "attributes": {
+    "textAlign": {
+      "type": "string"
+    },
+    "content": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": "p",
+      "role": "content"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "テキストを入力..."
+    }
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

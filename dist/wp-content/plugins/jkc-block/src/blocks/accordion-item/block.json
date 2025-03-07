@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/accordion-item",
+  "version": "0.1.0",
+  "title": "アコーディオン/アイテム",
+  "category": "jkc-block",
+  "parent": ["jkc-block/accordion"],
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "アコーディオン/アイテム",
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": false
+  },
+  "attributes": {
+    "summary": {
+      "type": "string",
+      "source": "html",
+      "selector": ".c-block-accordion-item__text"
+    },
+    "isOpen": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

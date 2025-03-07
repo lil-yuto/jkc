@@ -1,0 +1,162 @@
+@use "sass:math";
+@use "global" as *;
+// @import '../style/common';
+
+.c-headeing {
+}
+
+.c-headeing-lv2 {
+	position: relative;
+	display: inline-grid;
+	grid-template-columns: auto;
+	grid-template-rows: 1fr;
+	grid-template-areas: "main sub";
+	align-items: end;
+	column-gap: rem(19);
+	padding-bottom: rem(22);
+	background-image: linear-gradient(90deg, $color-accent-green 0 50%, #ffe59b 50%);
+	background-repeat: no-repeat;
+	background-size: rem(71) rem(6);
+	background-position: left bottom;
+	@include mq-down() {
+		column-gap: rem(7);
+		padding-bottom: rem(25);
+	}
+}
+
+.c-headeing-lv2__main {
+	grid-area: main;
+	position: relative;
+	font-size: rem(38);
+	font-weight: $bold;
+	line-height: 1;
+	letter-spacing: math.div(50, 1000) * 1em;
+	color: $color-accent-yellow;
+	@include mq-down() {
+		font-size: rem(32);
+	}
+}
+
+.c-headeing-lv2__sub {
+	grid-area: sub;
+	position: relative;
+	font-size: rem(18);
+	font-weight: $bold;
+	line-height: 1;
+	letter-spacing: math.div(50, 1000) * 1em;
+	@include mq-down() {
+		font-size: rem(15);
+	}
+}
+
+.c-headeing-lv2.c-headeing-lv2--row {
+	grid-template-areas:
+		"sub"
+		"main";
+	row-gap: rem(19);
+	justify-content: center;
+	place-items: center;
+	background-position: center bottom;
+	@include mq-down() {
+		background-position: left bottom;
+		grid-template-areas: "main sub";
+	}
+}
+
+.c-heading {
+	--block-margin-top: #{rem(80)};
+	color: $color-text-base;
+	position: relative;
+	display: block;
+	font-weight: $bold;
+	margin-block: var(--block-margin-top) var(--block-margin-bottom);
+}
+
+.c-heading.c-heading--lv2.u-text-align-center {
+	background-position: center bottom;
+}
+
+.c-heading.c-heading--lv2.u-text-align-right {
+	background-position: right bottom;
+}
+
+.c-heading.c-heading--lv2.u-text-align-left {
+	background-position: left bottom;
+}
+
+.c-heading.c-heading--lv2 {
+	--block-margin-bottom: #{rem(60)};
+	font-size: rem(36);
+	line-height: math.div(52, 36);
+	letter-spacing: math.div(50, 1000) * 1em;
+	text-align: center;
+	padding-bottom: 0.5em;
+	background-image: linear-gradient(90deg, $color-accent-green 0 50%, #ffe59b 50%);
+	background-repeat: no-repeat;
+	background-size: rem(71) rem(6);
+	background-position: center bottom;
+	@include mq-down() {
+		font-size: rem(26);
+		background-size: rem(54) rem(6);
+		--block-margin-bottom: #{rem(40)};
+	}
+}
+
+.c-heading.c-heading--lv3 {
+	--block-margin-bottom: #{rem(40)};
+	font-size: rem(28);
+	line-height: math.div(42, 28);
+	letter-spacing: math.div(50, 1000) * 1em;
+	text-align: left;
+
+	padding-left: rem(26);
+	background-image: linear-gradient($color-accent-green 0 50%, #ffe59b 50%);
+	background-repeat: no-repeat;
+	background-size: rem(6) 0.9em;
+	background-position: left center;
+
+	padding-bottom: rem(15);
+	padding-block: rem(15);
+	border-bottom: 1px solid $palette-alto;
+	@include mq-down() {
+		font-size: rem(24);
+		padding-left: rem(20);
+		--block-margin-bottom: #{rem(30)};
+	}
+}
+
+.c-heading.c-heading--lv4 {
+	--block-margin-top: #{rem(40)};
+	--block-margin-bottom: #{rem(25)};
+	color: $color-accent-green;
+	font-size: rem(20);
+	line-height: math.div(26, 20);
+	letter-spacing: math.div(30, 1000) * 1em;
+	text-align: left;
+
+	padding-left: rem(15);
+	background-image: linear-gradient($color-accent-green 0 100%);
+	background-repeat: no-repeat;
+	background-size: rem(6) 100%;
+	background-position: left center;
+	@include mq-down() {
+		--block-margin-bottom: #{rem(20)};
+	}
+}
+
+.c-heading.c-heading--lv5 {
+	--block-margin-top: #{rem(40)};
+	--block-margin-bottom: #{rem(25)};
+	color: $color-accent-green;
+	font-size: rem(20);
+	line-height: math.div(26, 20);
+	letter-spacing: math.div(30, 1000) * 1em;
+	text-align: left;
+	@include mq-down() {
+		--block-margin-bottom: #{rem(20)};
+	}
+}
+
+.c-heading.c-heading--lv5.u-text-align-center {
+	text-align: center;
+}

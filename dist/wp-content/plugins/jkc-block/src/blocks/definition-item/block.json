@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/definition-item",
+  "version": "0.1.0",
+  "title": "説明リスト/アイテム",
+  "category": "jkc-block",
+  "parent": ["jkc-block/definition-list"],
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "説明リスト/アイテム",
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": false
+  },
+  "attributes": {
+    "term": {
+      "type": "string",
+      "source": "html",
+      "selector": ".c-block-definition-list__term"
+    }
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

@@ -1,0 +1,12 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+ .c-accordion {
+  $color-border-gray: $palette-alto;
+		margin-block: var(--block-margin-top) var(--block-margin-bottom);
+	}
+	.c-accordion__items {
+		display: grid;
+		gap: rem(20);
+	}

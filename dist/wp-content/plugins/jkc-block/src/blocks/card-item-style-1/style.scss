@@ -1,0 +1,186 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-card-item-style-1 {
+
+  .c-block-card-item-style-1 {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin-inline: auto;
+  }
+  .c-block-card-item-style-1__link {
+    transition: none;
+  }
+  @media (any-hover: hover) {
+    .c-block-card-item-style-1__link:hover {
+      opacity: 1;
+    }
+  }
+  .c-block-card-item-style-1__img-wrapper {
+    overflow: hidden;
+  }
+  .c-block-card-item-style-1__img-wrapper img {
+    width: 100%;
+    object-fit: cover;
+    // aspect-ratio: 800 / 367;
+    transition: scale $duration-default ease-out;
+  }
+  @media (any-hover: hover) {
+    .c-block-card-item-style-1__link:hover .c-block-card-item-style-1__img-wrapper img {
+      scale: 1.1;
+    }
+  }
+  .c-block-card-item-style-1__content {
+    margin-top: rem(20);
+  }
+  .c-block-card-item-style-1__title {
+    font-size: rem(20);
+    font-weight: $bold;
+    color: $color-accent-green;
+    @include mq-down() {
+      font-size: rem(18);
+    }
+  }
+  .c-block-card-item-style-1__description {
+    font-size: rem(18);
+    font-weight: $regular;
+    letter-spacing: math.div(30, 1000) * 1em;
+    margin-top: rem(15);
+    @include mq-down() {
+      font-size: rem(16);
+      letter-spacing: math.div(50, 1000) * 1em;
+    }
+  }
+  .c-block-card-item-style-1__button-wrapper {
+    width: min(rem(530), 100%);
+    margin-inline: auto;
+    margin-top: rem(50);
+    @include mq-down() {
+      width: min(rem(300), 100%);
+    }
+  }
+  .c-block-card-item-style-1__button {
+    --color: #ffffff;
+    --border-color: transparent;
+    --bg-color: #0a6934;
+    --translate: 0;
+    display: inline grid;
+    width: 100%;
+    grid-template-columns: 1fr auto 1fr;
+    column-gap: em(8);
+    align-items: center;
+    font-size: rem(18);
+    color: var(--color);
+    padding-block: em(26, 18);
+    padding-inline: em(21, 18);
+    border-radius: rem(5);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    transition:
+      background-color $duration-default,
+      color $duration-default,
+      border-color $duration-default;
+    @include mq-down() {
+      font-size: rem(13);
+    }
+  }
+
+  .c-block-card-item-style-1__button::before {
+    content: "";
+  }
+
+  .c-block-card-item-style-1__button::after {
+    content: "";
+    justify-self: end;
+    width: em(15, 18);
+    aspect-ratio: 1;
+    background-color: var(--color);
+    mask-image: url("./images/cmn-arrow-forward-ico01.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    rotate: 0deg;
+    translate: 0;
+    transition:
+      translate $duration-default,
+      background-color $duration-default;
+    @include mq-down() {
+      width: em(17, 13);
+    }
+  }
+
+  @media (any-hover: hover) {
+    .c-block-card-item-style-1__link:hover .c-block-card-item-style-1__button {
+      --color: #0a6934;
+      --border-color: currentcolor;
+      --bg-color: #ffffff;
+      --translate: 0.22em 0;
+      color: var(--color);
+      border-color: var(--border-color);
+      background-color: var(--bg-color);
+    }
+    .c-block-card-item-style-1__link:hover .c-block-card-item-style-1__button::after {
+      background-color: var(--color);
+      translate: var(--translate);
+    }
+  }
+  // ハイライトカラー
+  .has-red-color {
+    color: $color-accent-red;
+  }
+
+  .has-green-color {
+    color: $color-accent-green;
+  }
+
+  .has-green-background-color {
+    padding: rem(20);
+    background-color: $color-accent-green;
+  }
+
+  .has-light-green-color {
+    color: $color-accent-green-light;
+  }
+
+  .has-light-green-background-color {
+    padding: rem(20);
+    background-color: $color-accent-green-light;
+  }
+
+  .has-light-red-color {
+    color: $color-accent-red-light;
+  }
+
+  .has-light-red-background-color {
+    padding: rem(20);
+    background-color: $color-accent-red-light;
+  }
+
+  .has-gray-color {
+    color: $color-accent-gray;
+  }
+
+  .has-gray-background-color {
+    padding: rem(20);
+    background-color: $color-accent-gray;
+  }
+
+  .has-light-gray-color {
+    color: $color-accent-gray-light;
+  }
+
+  .has-light-gray-background-color {
+    padding: rem(20);
+    background-color: $color-accent-gray-light;
+  }
+
+  .has-light-yellow-color {
+    color: $color-accent-yellow-light;
+  }
+
+  .has-light-yellow-background-color {
+    padding: rem(20);
+    background-color: $color-accent-yellow-light;
+  }
+}

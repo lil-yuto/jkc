@@ -1,0 +1,29 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-definition-list {
+  .c-block-definition-list {
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: rem(30);
+  }
+  .c-block-definition-list__description {
+  }
+
+  .c-block-definition-list__description > :first-child > * {
+    margin-block: 0;
+  }
+  
+  .c-block-definition-list__term {
+    font-size: rem(18);
+    letter-spacing: math.div(30, 1000) * 1em;
+    line-height: math.div(30, 18);
+    font-weight: $bold;
+
+    @include mq-down() {
+      font-size: rem(16);
+      letter-spacing: math.div(50, 1000) * 1em;
+    }
+  }
+}

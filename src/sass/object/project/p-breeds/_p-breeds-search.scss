@@ -1,0 +1,47 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-breeds-search__heading-wrapper {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+.p-breeds-search__howto {
+	margin-block: rem(5) rem(25);
+}
+
+.p-breeds-search__howto .c-text-link__items {
+	gap: rem(3);
+	align-items: flex-end;
+}
+
+.p-breeds-search__howto .c-text-link__link,
+.p-breeds-search__howto a.c-text-link__link {
+	font-size: rem(14);
+	justify-content: flex-end;
+}
+
+.p-breeds-search__name-list .c-text-link__items {
+	--column: 3;
+	display: grid;
+	column-gap: rem(30);
+	row-gap: rem(22);
+	// grid-template-columns: repeat(auto-fill, minmax(min(269px, 100%), 1fr));
+	// grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+	grid-template-columns: repeat(3,  1fr);
+	margin-block: rem(40);
+	@include mq-down() {
+		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+	}
+}
+
+.p-breeds-search__name-list .c-text-link-item {
+	border-bottom: 1px solid $palette-alto;
+}
+
+.p-breeds-search__name-list .c-text-link__link {
+ display: flex;
+	justify-content: space-between;
+	padding-block: rem(20);
+}

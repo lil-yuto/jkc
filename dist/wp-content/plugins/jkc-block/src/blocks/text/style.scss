@@ -1,0 +1,193 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-text {
+  .c-block-text {
+    color: $color-text-base;
+    font-size: rem(18);
+    letter-spacing: math.div(30, 1000) * 1em;
+    line-height: math.div(30, 18);
+    font-weight: $regular;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+  }
+
+  // 位置を指定するCSSを追加
+  .c-block-text.u-text-align-center {
+    text-align: center;
+  }
+  .c-block-text.u-text-align-left {
+    text-align: left;
+  }
+  .c-block-text.u-text-align-right {
+    text-align: right;
+  }
+
+  .c-block-text a {
+    color: $color-text-link;
+    text-decoration: underline;
+    transition: color $duration-default;
+  }
+
+  .c-block-text a:after {
+    background-color: $color-text-link;
+    transition: background-color $duration-default;
+    opacity: 1;
+  }
+
+  // PDFリンク用のアイコン
+  .c-block-text a[href$=".pdf"]::after {
+    content: "";
+    display: inline-block;
+    width: em(17.5, 18);
+    aspect-ratio: 17.5 / 18.34;
+    margin-inline: em(5, 18);
+    background-color: $color-text-link-pdf;
+    mask-image: url("./images/cmn-link-pdf-ico01.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    vertical-align: baseline;
+  }
+
+  // 外部リンク用のアイコン
+  .c-block-text a[target="_blank"]::after {
+    content: "";
+    display: inline-block;
+    width: em(17.5, 18);
+    aspect-ratio: 1;
+    margin-inline: em(5, 18);
+    background-color: $color-text-link-external;
+    mask-image: url("./images/cmn-link-blank-ico01.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    vertical-align: baseline;
+  }
+
+  @media (any-hover: hover) {
+    .c-block-text a:hover {
+      color: $color-text-link-hover;
+      opacity: 1;
+    }
+  }
+}
+
+// ハイライトカラー
+.c-block-text .has-red-color {
+  color: $color-accent-red;
+}
+
+.c-block-text .has-green-color {
+  color: $color-accent-green;
+}
+
+.c-block-text .has-green-background-color {
+  padding: rem(20);
+  background-color: $color-accent-green;
+}
+
+.c-block-text .has-light-green-color {
+  color: $color-accent-green-light;
+}
+
+.c-block-text .has-light-green-background-color {
+  padding: rem(20);
+  background-color: $color-accent-green-light;
+}
+
+.c-block-text .has-light-red-color {
+  color: $color-accent-red-light;
+}
+
+.c-block-text .has-light-red-background-color {
+  padding: rem(20);
+  background-color: $color-accent-red-light;
+}
+
+.c-block-text .has-gray-color {
+  color: $color-accent-gray;
+}
+
+.c-block-text .has-gray-background-color {
+  padding: rem(20);
+  background-color: $color-accent-gray;
+}
+
+.c-block-text .has-light-gray-color {
+  color: $color-accent-gray-light;
+}
+
+.c-block-text .has-light-gray-background-color {
+  padding: rem(20);
+  background-color: $color-accent-gray-light;
+}
+
+.c-block-text .has-light-yellow-color {
+  color: $color-accent-yellow-light;
+}
+
+.c-block-text .has-light-yellow-background-color {
+  padding: rem(20);
+  background-color: $color-accent-yellow-light;
+}
+
+// 背景色
+.wp-block-jkc-block-text.is-style-border .c-block-text {
+  padding: rem(20);
+  border: 1px solid $color-border-gray;
+}
+
+.wp-block-jkc-block-text.is-style-border-red .c-block-text {
+  padding: rem(20);
+  border: 1px solid $color-accent-red;
+}
+
+.wp-block-jkc-block-text.has-green-background-color .c-block-text {
+  padding: rem(20);
+  background-color: $color-accent-green;
+}
+
+.wp-block-jkc-block-text.has-light-green-color .c-block-text {
+  color: $color-accent-green-light;
+}
+
+.wp-block-jkc-block-text.has-light-green-background-color .c-block-text {
+  padding: rem(20);
+  background-color: $color-accent-green-light;
+}
+
+.wp-block-jkc-block-text.has-light-red-color .c-block-text {
+  color: $color-accent-red-light;
+}
+
+.wp-block-jkc-block-text.has-light-red-background-color .c-block-text {
+  padding: rem(20);
+  background-color: $color-accent-red-light;
+}
+
+.wp-block-jkc-block-text.has-gray-color .c-block-text {
+  color: $color-accent-gray;
+}
+
+.wp-block-jkc-block-text.has-gray-background-color .c-block-text {
+  padding: rem(20);
+  background-color: $color-accent-gray;
+}
+
+.wp-block-jkc-block-text.has-light-gray-color .c-block-text {
+  color: $color-accent-gray-light;
+}
+
+.wp-block-jkc-block-text.has-light-gray-background-color .c-block-text {
+  padding: rem(20);
+  background-color: $color-accent-gray-light;
+}
+
+.wp-block-jkc-block-text.has-light-yellow-color .c-block-text {
+  color: $color-accent-yellow-light;
+}
+
+.wp-block-jkc-block-text.has-light-yellow-background-color .c-block-text {
+  padding: rem(20);
+  background-color: $color-accent-yellow-light;
+}

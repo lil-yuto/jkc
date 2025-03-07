@@ -1,0 +1,61 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-org-card {
+	border: 1px solid $palette-alto;
+	padding-block: rem(30) rem(35);
+	padding-inline: rem(30);
+}
+
+.p-org-card__title {
+	font-size: rem(20);
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(32, 20));
+}
+
+.p-org-card__lists {
+	display: grid;
+	column-gap: rem(20);
+	grid-template-columns: max-content 1fr;
+	margin-block: rem(25) 0;
+}
+
+.p-org-card__dt,
+.p-org-card__dd {
+	font-size: rem(18);
+	font-weight: 400;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(30, 18));
+}
+
+.p-org-card__dt {
+	width: max-content;
+}
+
+.p-org-card__dd {
+	width: 1fr;
+}
+
+.p-org-card__dd.c-text {
+	margin-block: 0;
+}
+
+// .p-org-card__dd a {
+// 	text-decoration: underline;
+// 	color: $palette-salem;
+// 	transition: color 0.3s;
+// }
+
+// .p-org-card__dd a:hover {
+// 	color: #f6d25e;
+// 	opacity: 1;
+// }
+
+.p-org-card__branch-title {
+	font-size: rem(20);
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(32, 20));
+	margin-block: rem(35) 0;
+}

@@ -1,0 +1,325 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-button-item {
+  width: 100%;
+  .c-block-button-item {
+    width: min(rem(530), 100%);
+    margin-inline: auto;
+    @include mq-down() {
+      width: min(rem(300), 100%);
+    }
+  }
+
+  .c-block-button-item__link {
+    --color: #{$color-sub-text};
+    --border-color: transparent;
+    --bg-color: #{$color-accent-green};
+    --translate: 0;
+    --height: #{rem(80)};
+    display: inline grid;
+    width: 100%;
+    grid-template-columns: 1fr auto 1fr;
+    column-gap: em(8, 18);
+    align-items: center;
+    font-size: rem(18);
+    font-weight: $bold;
+    letter-spacing: math.div(50, 1000) * 1em;
+    color: var(--color);
+    padding-block: em(10, 18);
+    padding-inline: em(24, 18);
+    border-radius: rem(5);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    transition:
+      background-color $duration-default,
+      color $duration-default,
+      border-color $duration-default;
+    height: var(--height);
+    @include mq-down() {
+      font-size: rem(13);
+    }
+  }
+
+  .c-block-button-item__link::before {
+    content: "";
+    justify-self: start;
+  }
+
+  .c-block-button-item__link::after {
+    --bg-color: currentColor;
+    content: "";
+    justify-self: end;
+    width: em(15, 18);
+    aspect-ratio: 1;
+    background-color: var(--bg-color);
+    mask-image: url("./images/cmn-arrow-forward-ico01.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    rotate: 0deg;
+    translate: var(--translate);
+    transition:
+      translate $duration-default,
+      background-color $duration-default;
+    @include mq-down() {
+      width: em(17, 13);
+    }
+  }
+
+  /* 外部リンク用のアイコン */
+  .c-block-button-item__link[target="_blank"]::after {
+    content: "";
+    width: em(22, 18);
+    aspect-ratio: 1;
+    background-color: $color-text-link-external;
+    mask-image: url("./images/cmn-link-blank-ico01.svg");
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --color: #{$color-accent-green};
+      --border-color: currentcolor;
+      --bg-color: #ffffff;
+      opacity: 1;
+    }
+    .c-block-button-item__link[target="_blank"]:hover::after {
+      --translate: 0;
+    }
+  }
+}
+
+// デフォルト
+.wp-block-jkc-block-button-item.is-style-default {
+  .c-block-button-item__link {
+    --color: #{$color-sub-text};
+    --border-color: transparent;
+    --bg-color: #{$color-accent-green};
+    --translate: 0;
+    --height: #{rem(80)};
+  }
+
+  .c-block-button-item__link::before {
+    content: "";
+    background: none;
+  }
+
+  .c-block-button-item__link::after {
+    --bg-color: currentColor;
+    --translate: 0;
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --color: #{$color-accent-green};
+      --border-color: currentcolor;
+      --bg-color: #ffffff;
+    }
+    .c-block-button-item__link:hover::after {
+      --bg-color: currentColor;
+      --translate: 0.22em 0;
+    }
+    .c-block-button-item__link[target="_blank"]:hover::after {
+      --translate: 0;
+    }
+  }
+}
+
+// 郵送
+.wp-block-jkc-block-button-item.is-style-post {
+  .c-block-button-item__link {
+    --color: #{$color-text-base};
+    --border-color: transparent;
+    --bg-color: #{$color-accent-yellow};
+    --translate: 0;
+    --height: #{rem(100)};
+    padding-block: em(29, 18);
+  }
+
+  .c-block-button-item__link::before {
+    width: em(46.9, 18);
+    aspect-ratio: 46.9 / 40.88;
+    background: url("./images/cmn-post-ico01.svg") no-repeat center / contain;
+  }
+
+  .c-block-button-item__link::after {
+    --bg-color: currentColor;
+    --translate: 0;
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --border-color: #{$color-accent-yellow};
+      --bg-color: #ffffff;
+    }
+    .c-block-button-item__link:hover::after {
+      --bg-color: #{$color-accent-yellow};
+      --translate: 0.22em 0;
+    }
+    .c-block-button-item__link[target="_blank"]:hover::after {
+      --translate: 0;
+    }
+  }
+}
+// ドッグショー
+.wp-block-jkc-block-button-item.is-style-dog-show {
+  .c-block-button-item__link {
+    --color: #{$color-text-base};
+    --border-color: transparent;
+    --bg-color: #{$color-accent-yellow};
+    --translate: 0;
+    --height: #{rem(100)};
+  }
+
+  .c-block-button-item__link::before {
+    width: em(31.44, 18);
+    aspect-ratio: 31.44 / 40.16;
+    background: url("./images/cmn-dog-show-ico01.svg") no-repeat center /
+      contain;
+  }
+
+  .c-block-button-item__link::after {
+    --bg-color: currentColor;
+    --translate: 0;
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --border-color: #{$color-accent-yellow};
+      --bg-color: #ffffff;
+    }
+    .c-block-button-item__link:hover::after {
+      --bg-color: #{$color-accent-yellow};
+      --translate: 0.22em 0;
+    }
+    .c-block-button-item__link[target="_blank"]:hover::after {
+      --translate: 0;
+    }
+  }
+}
+// ウェブ
+.wp-block-jkc-block-button-item.is-style-web {
+  .c-block-button-item__link {
+    --color: #{$color-text-base};
+    --border-color: transparent;
+    --bg-color: #{$color-accent-yellow};
+    --translate: 0;
+    --height: #{rem(100)};
+  }
+
+  .c-block-button-item__link::before {
+    width: em(40.78, 18);
+    aspect-ratio: 40.78 / 28.75;
+    background: url("./images/cmn-web-ico01.svg") no-repeat center / contain;
+  }
+
+  .c-block-button-item__link::after {
+    --bg-color: currentColor;
+    --translate: 0;
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --border-color: #{$color-accent-yellow};
+      --bg-color: #ffffff;
+    }
+    .c-block-button-item__link:hover::after {
+      --bg-color: #{$color-accent-yellow};
+      --translate: 0.22em 0;
+    }
+    .c-block-button-item__link[target="_blank"]:hover::after {
+      --translate: 0;
+    }
+  }
+}
+// PDF
+.wp-block-jkc-block-button-item.is-style-pdf {
+  .c-block-button-item__link {
+    --color: #{$color-text-base};
+    --border-color: transparent;
+    --bg-color: #{$color-accent-yellow};
+    --translate: 0;
+    --height: #{rem(100)};
+  }
+
+  .c-block-button-item__link::before {
+    width: em(40.78, 18);
+    aspect-ratio: 40.78 / 42.73;
+    background: url("./images/cmn-pdf-ico01.svg") no-repeat center / contain;
+  }
+
+  .c-block-button-item__link::after {
+    --bg-color: currentColor;
+    --translate: 0;
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --border-color: #{$color-accent-yellow};
+      --bg-color: #ffffff;
+    }
+    .c-block-button-item__link:hover::after {
+      --bg-color: #{$color-accent-yellow};
+      --translate: 0.22em 0;
+    }
+    .c-block-button-item__link[target="_blank"]:hover::after {
+      --translate: 0;
+    }
+  }
+}
+
+// 戻る
+.wp-block-jkc-block-button-item.is-style-back {
+  .c-block-button-item {
+    width: min(rem(260), 100%);
+    margin-inline: 0 auto;
+    @include mq-down() {
+      width: min(rem(200), 100%);
+    }
+  }
+  .c-block-button-item__link {
+    --color: #{$color-text-base};
+    --border-color: #{$color-accent-green};
+    --bg-color: transparent;
+    --translate: 0;
+    --height: #{rem(60)};
+    padding-inline: em(15, 18);
+    @include mq-down() {
+    }
+  }
+
+  .c-block-button-item__link::before {
+    content: "";
+    justify-self: start;
+    width: em(24, 18);
+    aspect-ratio: 1;
+    background-color: var(--border-color);
+    mask-image: url("./images/cmn-arrow-circle-ico01.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    rotate: 90deg;
+    translate: 0;
+    transition:
+      translate $duration-default,
+      background-color $duration-default;
+  }
+
+  .c-block-button-item__link::after {
+    content: "";
+    background: none;
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --border-color: #{$color-accent-yellow-dark};
+      --translate: -0.22em 0;
+      border-color: var(--border-color);
+      opacity: 1;
+    }
+    .c-block-button-item__link:hover::before {
+      background-color: var(--border-color);
+      translate: var(--translate);
+    }
+  }
+}

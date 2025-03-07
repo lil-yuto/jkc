@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jkc-block/heading",
+	"version": "0.1.0",
+	"title": "見出し",
+	"category": "jkc-block",
+	"icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false,
+    "customClassName": false,
+    "anchor": true
+	},
+	"attributes": {
+		"textAlign": {
+			"type": "string"
+		},
+		"content": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": "h2,h3,h4,h5",
+			"role": "content"
+		},
+		"level": {
+			"type": "number",
+			"default": 2
+		},
+		"placeholder": {
+			"type": "string",
+      "default": "見出し"
+		}
+	},
+	"textdomain": "jkc-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

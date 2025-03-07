@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/youtube",
+  "version": "0.1.0",
+  "title": "YouTube埋め込み",
+  "category": "jkc-block",
+  "icon": {
+    "src": "format-video",
+    "foreground": "#0A6934"
+  },
+  "description": "YouTube動画を埋め込むブロックです。",
+  "attributes": {
+    "youtubeId": {
+      "type": "string"
+    }
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

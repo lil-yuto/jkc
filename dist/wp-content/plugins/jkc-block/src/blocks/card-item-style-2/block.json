@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/card-item-style-2",
+  "version": "0.1.0",
+  "title": "カード（スタイル2）",
+  "category": "jkc-block",
+  "parent": ["jkc-block/card-grid-2"],
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": ".c-block-card-item-style-2__title"
+    },
+    "description": {
+      "type": "string",
+      "source": "html",
+      "selector": ".c-block-card-item-style-2__description"
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageSrc": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "img",
+      "attribute": "src"
+    },
+    "imageAlt": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "img",
+      "attribute": "alt"
+    },
+    "rel": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "rel"
+    },
+    "linkTarget": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "target"
+    },
+    "url": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "href"
+    },
+    "buttonText": {
+      "type": "string",
+      "source": "html",
+      "selector": ".c-block-card-item-style-2__button"
+    }
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

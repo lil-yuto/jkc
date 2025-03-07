@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/tab-item",
+  "version": "0.1.0",
+  "title": "タブ/アイテム",
+  "category": "jkc-block",
+  "parent": ["jkc-block/tab"],
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "タブ/アイテム",
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": false
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": "タブ"
+    },
+    "checked": {
+      "type": "boolean",
+      "default": false
+    },
+    "groupName": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

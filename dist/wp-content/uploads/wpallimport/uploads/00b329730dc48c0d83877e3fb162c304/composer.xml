@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data><autoload><psr4><Wpai>src</Wpai></psr4></autoload><require><leagueflysystem>^1.0</leagueflysystem><phpseclibphpseclib>^3.0</phpseclibphpseclib><phpseclibphpseclib2_compat>^1.0</phpseclibphpseclib2_compat></require></data>

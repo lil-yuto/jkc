@@ -1,0 +1,33 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-youtube {
+  .c-block-youtube {
+    display: grid;
+    max-width: rem(800);
+    margin-inline: auto;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+  }
+  .c-block-youtube__img-wrapper {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .c-block-youtube__img-wrapper img {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform $duration-default ease-out;
+  }
+  .c-block-youtube__img-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("./images/cmn-play-ico01.svg") no-repeat center / 12%;
+    z-index: 1;
+    pointer-events: none;
+  }
+}

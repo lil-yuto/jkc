@@ -1,0 +1,31 @@
+@use "sass:math";
+@use "global" as *;
+
+.c-tab {
+	--block-margin-top: #{rem(80)};
+	--block-margin-bottom: #{rem(80)};
+	padding-block: var(--block-margin-top) var(--block-margin-bottom);
+	display: flex;
+	gap: 0 rem(5);
+	flex-wrap: wrap;
+	// border-image: linear-gradient($color-accent-gray-light 0 0) fill 0 / /0 100lvi;
+	border-image: linear-gradient($color-accent-gray-light 0 0) fill 0 / 0 /0 100lvi;
+	@include mq-down() {
+		overflow: scroll;
+		// flex-wrap: nowrap;
+	}
+}
+
+.c-tab.c-tab--alphabet {
+	gap: 0 calc(math.div(5, 1100) * 100%);
+	@include mq-down() {
+		gap: 0 calc(math.div(5, 360) * 100%);
+	}
+}
+
+.c-tab.c-tab--katakana {
+ gap: 0 calc(math.div(5, 1100) * 100%);
+ @include mq-down() {
+  gap: 0 calc(math.div(5, 360) * 100%);
+ }
+}

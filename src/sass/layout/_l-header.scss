@@ -1,0 +1,64 @@
+@use "global" as *;
+@use "sass:math";
+
+.l-header {
+	position: sticky;
+	top: 0;
+	@include z-index(header);
+	
+	@media print {
+		position: relative;
+	}
+}
+.l-header__container {
+	position: relative;
+	display: grid;
+	grid:
+		"logo menu-top" max-content
+		"logo menu-bottom" 1fr / 1fr minmax(max-content, 1fr);
+	column-gap: rem(10);
+	align-items: center;
+	width: 100%;
+	min-height: rem(134);
+	background-color: #ffffff;
+	@include mq-down() {
+		grid:
+			"logo menu-top" 1fr
+			"menu-bottom menu-bottom" max-content / minmax(max-content, 1fr);
+		min-height: rem(66);
+		align-items: stretch;
+		column-gap: rem(12);
+	}
+}
+.l-header__logo {
+	grid-area: logo;
+	justify-self: start;
+	margin-left: rem(30);
+	@include mq-down() {
+		justify-self: start;
+		align-self: center;
+		margin-left: rem(strip-unit($padding-sp));
+	}
+}
+.l-header__logo-image-wrapper {
+	display: block;
+	max-width: rem(365);
+	@include mq-down() {
+		max-width: rem(181);
+	}
+}
+.l-header__top {
+	grid-area: menu-top;
+	align-self: start;
+	justify-self: end;
+	@include mq-down() {
+		align-self: stretch;
+	}
+}
+
+.l-header__bottom {
+	grid-area: menu-bottom;
+	justify-self: end;
+	align-self: center;
+}
+

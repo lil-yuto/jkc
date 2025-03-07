@@ -1,0 +1,24 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-flow-vertical {
+  .c-block-flow-vertical {
+    --gap: #{rem(20)};
+    display: grid;
+    gap: var(--gap);
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+  }
+  
+  .c-block-flow-vertical > li + li::before {
+    content: "";
+    position: relative;
+    display: block;
+    width: rem(25);
+    aspect-ratio: 25 / 15;
+    clip-path: polygon(50% 100%,100% 0,0 0);
+    background-color: $color-accent-green;
+    margin-bottom: var(--gap);
+    margin-inline: auto;
+  }
+
+}

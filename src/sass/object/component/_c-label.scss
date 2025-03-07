@@ -1,0 +1,61 @@
+@use 'global' as *;
+@use "sass:math";
+
+.c-label {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  font-size: rem(14);
+  font-weight: $medium;
+  color: $color-sub-text;
+  border-width: 1px;
+  border-style: solid;
+  border-color: currentColor;
+  border-radius: rem(5);
+  background-color: $color-accent-green;
+  padding-block: 0.107em;
+  padding-inline: 0.785em;
+  @include mq-down() {
+    font-size: rem(13);
+    border-radius: 100vh;
+    padding-block: 0.321em;
+    padding-inline: em(14, 13);
+  }
+}
+
+.c-label-white {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  font-size: rem(14);
+  font-weight: $medium;
+  color: #1d4526;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d3d3d3;
+  border-radius: rem(5);
+  background-color: #ffffff;
+  padding-block: 0.107em;
+  padding-inline: 0.785em;
+  transition: color $duration-default, background-color $duration-default, border-color $duration-default, ;
+  @include mq-down() {
+    font-size: rem(13);
+    border-radius: 100vh;
+    padding-block: 0.321em;
+    padding-inline: em(14, 13);
+  }
+}
+.c-label-white.is-selected {
+  color: $color-sub-text;
+  background-color: $color-accent-green;
+  border-color: $color-accent-green;
+}
+
+@media (any-hover: hover) {
+  .c-label-white:hover {
+    color: $color-sub-text;
+    background-color: $color-accent-green;
+    border-color: $color-accent-green;
+    opacity: 1;
+  }
+}

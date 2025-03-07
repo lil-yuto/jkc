@@ -1,0 +1,57 @@
+@use 'global' as *;
+@use "sass:math";
+
+.c-button {
+  --color: #FFFFFF;
+  --border-color: transparent;
+  --bg-color: #0A6934;
+  --translate: 0;
+  display: inline grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: em(8);
+  align-items: center;
+  font-size: rem(18);
+  width: min(180px, 100%);
+  color: var(--color);
+  padding-block: em(13, 18);
+  padding-inline: em(21, 18);
+  border-radius: rem(5);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  transition: background-color $duration-default, color $duration-default, border-color $duration-default;
+  @include mq-down() {
+    font-size: rem(13);
+    width: min(133px, 100%);
+  }
+}
+
+.c-button::before {
+  content: "";
+}
+
+.c-button::after {
+  content: "";
+  justify-self: center;
+  width: em(15, 18);
+  aspect-ratio: 1;
+  background-color: var(--color);
+  mask-image: url("../images/common/cmn-arrow-forward-ico01.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  rotate: 0deg;
+  translate: 0;
+  transition: translate $duration-default, background-color $duration-default;
+  @include mq-down() {
+    width: em(17, 13);
+  }
+}
+
+@media (any-hover: hover) {
+  .c-button:hover {
+    --color: #0A6934;
+    --border-color: currentcolor;
+    --bg-color: #FFFFFF;
+    --translate: 0.22em 0;
+  }
+}

@@ -1,0 +1,45 @@
+@use "sass:math";
+@import "../style/common";
+
+.wp-block-jkc-block-reference-info {
+  .c-block-reference-info {
+    padding: rem(20);
+    background-color: $color-accent-green-light;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
+  }
+  .c-block-reference-info__title {
+    color: $color-text-base;
+    font-size: rem(20);
+    letter-spacing: math.div(30, 1000) * 1em;
+    font-weight: $bold;
+    @include mq-down() {
+      font-size: rem(18);
+      letter-spacing: math.div(50, 1000) * 1em;
+    }
+  }
+  .c-block-reference-info__items {
+    display: flex;
+    gap: rem(20) rem(30);
+    list-style: none;
+    margin-top: rem(30);
+    flex-wrap: wrap;
+  }
+}
+
+.wp-block-jkc-block-reference-info.is-style-reference-info-direction-row {
+  .c-block-reference-info__items {
+    flex-direction: row;
+    @include mq-down() {
+      flex-direction: column;
+    }
+  }
+}
+
+.wp-block-jkc-block-reference-info.is-style-reference-info-direction-column {
+  .c-block-reference-info__items {
+    flex-direction: column;
+    @include mq-down() {
+      flex-direction: column;
+    }
+  }
+}

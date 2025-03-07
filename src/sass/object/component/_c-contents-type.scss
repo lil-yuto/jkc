@@ -1,0 +1,57 @@
+@use "sass:math";
+@use "global" as *;
+
+.c-contents-type__title {
+	width: max-content;
+	font-size: rem(20);
+	font-weight: $bold;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(40, 20));
+	color: $color-base;
+	background-color: $palette-salem;
+	border-top-left-radius: rem(10);
+	border-top-right-radius: rem(10);
+	padding-block: rem(2);
+	padding-inline: rem(20);
+}
+
+.c-contents-type__wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	background-color: #f3f3f3;
+	column-gap: rem(37);
+	row-gap: rem(20);
+	padding-block: rem(30);
+	padding-inline: rem(30);
+	@include mq-down() {
+		flex-direction: column;
+		row-gap: rem(10);
+	}
+}
+
+.c-contents-type__type {
+	display: flex;
+	align-items: center;
+	column-gap: em(10, 18);
+}
+
+.c-contents-type__img {
+	display: block;
+	width: rem(32);
+	height: auto;
+}
+
+.c-contents-type__img img {
+	display: block;
+	aspect-ratio: calc(math.div(1, 1));
+	object-fit: contain;
+	object-position: center;
+}
+
+.c-contents-type__name {
+	font-family: $font-family-japanese;
+	font-size: rem(18);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(30, 18));
+}

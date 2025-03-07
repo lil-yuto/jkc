@@ -1,0 +1,8 @@
+@use "sass:math";
+@use "global" as *;
+
+.l-sub-fv {
+	@include mq-down() {
+		margin-top: rem(15);
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jkc-block/list-ordered",
+	"version": "0.1.0",
+	"title": "リスト（順序あり）",
+	"category": "jkc-block",
+	"icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false,
+    "customClassName": true,
+    "color": { "background": true, "text": false }
+	},
+	"textdomain": "jkc-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

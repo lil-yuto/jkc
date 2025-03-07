@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/flow-vertical-item",
+  "version": "0.1.0",
+  "title": "流れ（縦）/アイテム",
+  "category": "jkc-block",
+  "parent": ["jkc-block/flow-vertical"],
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "流れ（縦）/アイテム",
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": false
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": ".c-block-flow-vertical-item__description"
+    },
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": ".c-block-flow-vertical-item__title"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "テキスト"
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageSrc": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "img",
+      "attribute": "src"
+    },
+    "imageAlt": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "img",
+      "attribute": "alt"
+    }
+  },
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

@@ -1,0 +1,7 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-single-breeds-notice__title {
+	font-weight: $bold;
+	margin-bottom: rem(20);
+}

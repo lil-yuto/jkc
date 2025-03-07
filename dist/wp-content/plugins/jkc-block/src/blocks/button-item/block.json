@@ -1,0 +1,80 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jkc-block/button-item",
+  "version": "0.1.0",
+  "title": "ボタン/アイテム",
+  "category": "jkc-block",
+  "parent": ["jkc-block/button"],
+  "icon": {
+    "src": "smiley",
+    "foreground": "#0A6934"
+  },
+  "description": "ボタン/アイテム",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "content": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": "a",
+      "role": "content"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "テキストを追加..."
+    },
+    "rel": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "rel"
+    },
+    "linkTarget": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "target"
+    },
+    "url": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "href"
+    }
+  },
+  "styles": [
+    {
+      "name": "default",
+      "label": "デフォルト",
+      "isDefault": true
+    },
+    {
+      "name": "pdf",
+      "label": "PDF"
+    },
+    {
+      "name": "web",
+      "label": "ウェブ"
+    },
+    {
+      "name": "post",
+      "label": "郵送"
+    },
+    {
+      "name": "dog-show",
+      "label": "ドッグショー"
+    },
+    {
+      "name": "back",
+      "label": "戻る"
+    }
+  ],
+  "textdomain": "jkc-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

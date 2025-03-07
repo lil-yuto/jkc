@@ -1,0 +1,24 @@
+@use "global" as *;
+@use "sass:math";
+
+.c-post-heading {
+	position: relative;
+	display: inline-block;
+	font-weight: $bold;
+}
+
+.c-post-heading--lv1 {
+	font-size: rem(42);
+}
+
+.c-post-heading--lv2 {
+	font-size: rem(36);
+}
+
+.c-post-heading--lv3 {
+	font-size: rem(28);
+}
+
+.c-post-heading--lv4 {
+	font-size: rem(20);
+}

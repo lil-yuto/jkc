@@ -1,0 +1,9 @@
+@use 'global' as *;
+@use "sass:math";
+
+.l-section {
+  padding-block: rem(50) rem(65);
+  @include mq-down() {
+    padding-block: rem(42) 0;
+  }
+}

@@ -1,0 +1,157 @@
+@use "sass:math";
+@use "global" as *;
+// @import "../style/common";
+
+.c-card-item-style-horizontal {
+	@include mq-down() {
+	}
+}
+
+.c-card-item-style-horizontal__link {
+	transition: none;
+	@include mq-down() {
+	}
+}
+@media (any-hover: hover) {
+	.c-card-item-style-horizontal__link:hover {
+		opacity: 1;
+	}
+}
+
+.c-card-item-style-horizontal__contents-wrapper {
+	display: flex;
+	align-items: flex-start;
+	gap: rem(20);
+	@include mq-down() {
+		flex-direction: column;
+	}
+}
+
+.c-card-item-style-horizontal__img-wrapper {
+	width: rem(255);
+	height: auto;
+	overflow: hidden;
+	@include mq-down() {
+		width: 100%;
+	}
+}
+.c-card-item-style-horizontal__img-wrapper img {
+	display: block;
+	width: 100%;
+	object-fit: cover;
+	aspect-ratio: calc(math.div(255, 195));
+	transition: scale $duration-default ease-out;
+	@include mq-down() {
+	}
+}
+
+.c-card-item-style-horizontal__img-wrapper img + img {
+	margin-top: rem(20);
+}
+@media (any-hover: hover) {
+	.c-card-item-style-horizontal:hover .c-card-item-style-horizontal__img-wrapper img {
+		scale: 1.1;
+	}
+}
+.c-card-item-style-horizontal__content {
+	flex: 1;
+	@include mq-down() {
+	}
+}
+
+.c-card-item-style-horizontal__description {
+	font-size: rem(18);
+	font-weight: $regular;
+	line-height: calc(math.div(30, 18));
+	letter-spacing: math.div(30, 1000) * 1em;
+	@include mq-down() {
+		font-size: rem(16);
+		letter-spacing: math.div(50, 1000) * 1em;
+	}
+}
+
+.c-card-item-style-horizontal__description span {
+	display: block;
+	@include mq-down() {
+	}
+}
+
+.c-card-item-style-horizontal__description span.max-2row {
+	overflow: hidden;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.c-card-item-style-horizontal__button-wrapper {
+	width: rem(130);
+	margin-inline: 0 auto;
+	margin-top: rem(22);
+	@include mq-down() {
+	}
+}
+
+.c-card-item-style-horizontal__button {
+	--color: #ffffff;
+	--border-color: transparent;
+	--bg-color: #0a6934;
+	--translate: 0;
+	display: inline grid;
+	width: 100%;
+	grid-template-columns: 1fr auto 1fr;
+	column-gap: em(8);
+	align-items: center;
+	font-size: rem(15);
+	letter-spacing: math.div(50, 1000) * 1em;
+	color: var(--color);
+	padding-block: em(3, 15);
+	padding-inline: em(12, 15);
+	border-radius: rem(5);
+	border: 1px solid var(--border-color);
+	background-color: var(--bg-color);
+	transition: background-color $duration-default, color $duration-default, border-color $duration-default;
+	@include mq-down() {
+		font-size: rem(13);
+		padding-block: em(9, 13);
+	}
+}
+
+.c-card-item-style-horizontal__button::before {
+	content: "";
+	@include mq-down() {
+	}
+}
+
+.c-card-item-style-horizontal__button::after {
+	content: "";
+	justify-self: end;
+	width: em(6.76, 13);
+	aspect-ratio: 6.76 / 11.83;
+	background-color: var(--color);
+	mask-image: url("../images/cmn-arrow-forward-ico01.svg");
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+	rotate: 0deg;
+	translate: 0;
+	transition: translate $duration-default, background-color $duration-default;
+	@include mq-down() {
+	}
+}
+
+@media (any-hover: hover) {
+	.c-card-item-style-horizontal__link:hover .c-card-item-style-horizontal__button {
+		--color: #0a6934;
+		--border-color: currentcolor;
+		--bg-color: #ffffff;
+		--translate:  0.22em 0;
+		color: var(--color);
+		border-color: var(--border-color);
+		background-color: var(--bg-color);
+	}
+	.c-card-item-style-horizontal__link:hover .c-card-item-style-horizontal__button::after {
+		background-color: var(--color);
+		translate: var(--translate);
+	}
+}
