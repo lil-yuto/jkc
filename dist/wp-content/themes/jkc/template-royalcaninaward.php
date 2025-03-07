@@ -16,10 +16,9 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
 <main>
   <div class="p-sub-fv l-sub-fv">
     <div class="p-sub-fv__container l-container">
-      <hgroup class="p-sub-fv__title c-page-title">
+      <div class="p-sub-fv__title c-page-title">
         <h1 class="c-page-title__main"><?php echo esc_html( get_the_title() ); ?></h1>
-        <p class="c-page-title__sub">About JKC</p>
-      </hgroup>
+      </div>
     </div>
   </div>
 
@@ -37,7 +36,7 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
       // 親ページがない場合は、トップページまたは指定したURLへ（必要に応じて調整）
       $parent_link = home_url('/');
   }
-  
+
   // 同じ親を持つ兄弟ページ（グループページ）の一覧を取得
   $siblings = get_pages( array(
       'parent'      => $parent_id,
@@ -54,7 +53,7 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
     </ul>
 
     <ul class="p-royalcanin-group__items">
-      <?php foreach ( $siblings as $sibling ) : 
+      <?php foreach ( $siblings as $sibling ) :
               // 兄弟ページのスラッグからグループ番号（例: group1 → 1）を抽出
               $sibling_slug = $sibling->post_name;
               $sibling_num  = str_replace( 'group', '', $sibling_slug );
