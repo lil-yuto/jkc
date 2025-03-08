@@ -30,7 +30,7 @@
    'posts_per_page' => 10,
    'paged' => $paged,
   );
-  $the_query = new Wp_Query($args);
+  $the_query = new WP_Query($args);
   ?>
 
 
