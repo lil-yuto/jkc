@@ -74,9 +74,9 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
     <?php endif; ?>
 
     <?php
-    // ブリードタグ（breed_tag）のタームを取得
+    // ブリードタグ（royalcanin_award_breeds）のタームを取得
     $breed_terms = get_terms( array(
-      'taxonomy' => 'breed_tag',
+      'taxonomy' => 'royalcanin_award_breeds',
       // 必要に応じて 'hide_empty' => false を追加
     ) );
     ?>
@@ -93,7 +93,7 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
             'terms'    => $term,
           ),
           array(
-            'taxonomy' => 'breed_tag',
+            'taxonomy' => 'royalcanin_award_breeds',
             'field'    => 'slug',
             'terms'    => $breed_term->slug,
           )
