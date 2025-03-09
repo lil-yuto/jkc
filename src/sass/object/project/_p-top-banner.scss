@@ -26,12 +26,7 @@
 .p-top-banner__list > * {
   flex-basis: calc((100% - var(--column-gap) * (var(--column) - 1)) / var(--column));
 }
-.p-top-banner__list > *:nth-child(n + 5) {
-  --column: 3;
-  @include mq-down() {
-    --column: 2;
-  }
-}
+
 .p-top-banner__item {
 
 }

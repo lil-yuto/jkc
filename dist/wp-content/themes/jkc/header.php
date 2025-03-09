@@ -32,7 +32,7 @@
                     <li class="l-nav__item"><a href="<?php echo esc_url(home_url('/news/')); ?>" class="l-nav__link">お知らせ</a></li>
                     <li class="l-nav__item l-nav__item--info"><a href="<?php echo esc_url(home_url('/generalinfo/')); ?>" class="l-nav__link">総合案内</a></li>
                     <li class="l-nav__item"><a href="<?php echo esc_url(home_url('/membership/info/')); ?>" class="l-nav__link">会員向け情報</a></li>
-                    <li class="l-nav__item u-uppercase"><a href="http://" class="l-nav__link">English</a></li>
+                    <!-- <li class="l-nav__item u-uppercase"><a href="http://" class="l-nav__link">English</a></li> -->
                 </ul>
 
                 <ul class="l-nav__panels">

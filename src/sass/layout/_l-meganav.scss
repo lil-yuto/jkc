@@ -134,7 +134,7 @@
 
 @media (any-hover: hover) {
 	.l-meganav__item a:hover {
-		--color: #0a6934;
+		--color: #{$color-text-link-hover};
 		--translate: 0.22em 0;
 		opacity: 1;
 	}

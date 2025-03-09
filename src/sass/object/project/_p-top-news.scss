@@ -36,8 +36,9 @@
 }
 .p-top-news__select-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  margin-top: rem(26);
 }
 .p-top-news__selectbox {
   @include mq-down() {
@@ -58,7 +59,7 @@
   }
 }
 .p-top-news__categories {
-  margin-top: rem(27);
+  margin-top: rem(8);
 }
 .p-top-news__category-list {
   display: flex;
@@ -72,7 +73,7 @@
 .p-top-news__category-link {
 }
 .p-top-news__posts {
-  margin-top: rem(27);
+  margin-top: rem(32);
 }
 
 .p-posts {
@@ -94,8 +95,8 @@
 .p-posts__list li {
   display: contents;
 }
-.p-posts__list li + li .p-posts__item {
-  border-top: 1px solid #d3d3d3;
+.p-posts__list li .p-posts__item {
+  border-bottom: 1px solid #d3d3d3;
 }
 .p-posts__item {
   display: grid;
@@ -103,8 +104,9 @@
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
   column-gap: rem(18);
-  padding-block: rem(21);
+  padding-block: rem(19.5);
   border-bottom: 1px solid transparent;
+  padding-left: rem(8);
   @include mq-down() {
     grid:
       "date category"
@@ -121,6 +123,8 @@
   grid-area: date;
   font-size: rem(16);
   font-weight: $bold;
+  font-family: $font-family-english;
+  letter-spacing: 0.05em;
   @include mq-down() {
     font-size: rem(15);
     justify-self: start;
@@ -154,7 +158,12 @@
   grid-area: title;
   font-size: rem(18);
   width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
   @include mq-down() {
+    -webkit-line-clamp: 3;
     font-size: rem(16);
   }
 }

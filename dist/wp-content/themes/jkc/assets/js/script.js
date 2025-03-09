@@ -153,3 +153,49 @@ $(function () {
 		}
 	});
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".news-filter");
+    const newsItems = document.querySelectorAll(".news-item");
+    const viewAllLinks = document.querySelectorAll("#view-all-link");
+
+    function filterNews(term) {
+      let visibleCount = 0;
+
+      newsItems.forEach((item, index) => {
+        let categories = item.dataset.category.split(" ");
+        if (term === "all" || categories.includes(term)) {
+          if (visibleCount < 5) {
+            item.style.display = "contents"; // 5件まで表示
+            visibleCount++;
+          } else {
+            item.style.display = "none"; // 6件目以降は非表示
+          }
+        } else {
+          item.style.display = "none"; // 選択されていないカテゴリは非表示
+        }
+      });
+
+      // 「一覧を見る」のリンクを更新
+      let newHref = term === "all" ? "/news/" : `/news/news_category/${term}/`;
+      viewAllLinks.forEach(link => {
+        link.setAttribute("href", newHref);
+      });
+    }
+
+    // ボタンのクリック処理
+    buttons.forEach(button => {
+      button.addEventListener("click", function () {
+        buttons.forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+
+        let term = this.getAttribute("data-term");
+        filterNews(term);
+      });
+    });
+
+    // 初回表示時のCSS適用（5件だけ `display: contents;` に）
+    newsItems.forEach((item, index) => {
+      item.style.display = index < 5 ? "contents" : "none";
+    });
+  });
