@@ -1,0 +1,115 @@
+@use "global" as *;
+@use "sass:math";
+
+.p-news {
+  position: relative;
+  overflow: hidden;
+}
+.p-news__container {
+}
+.p-news__title-area {
+  display: flex;
+  justify-content: space-between;
+}
+.p-news__title {
+  margin-bottom: rem(42);
+}
+.p-news__content {
+}
+.p-news__select-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: rem(26);
+}
+.p-news__selectbox {
+  @include mq-down() {
+    flex: 1;
+  }
+}
+.p-news__more {
+}
+.p-news__title-area .p-news__more {
+  @include mq-down() {
+    margin-top: rem(8);
+  }
+}
+.p-news__more-link {
+  font-size: rem(18);
+  @include mq-down() {
+    font-size: rem(13);
+  }
+}
+.p-news__categories {
+  margin-top: rem(8);
+}
+.p-news__category-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: rem(10);
+  row-gap: rem(10);
+  @include mq-down() {
+    row-gap: rem(20);
+  }
+}
+.p-news__category-link {
+}
+.p-news__posts {
+  margin-top: rem(32);
+}
+
+.p-news__selectbox {
+  position: relative;
+  flex: 0 1 rem(366);
+  // レスポンシブで横幅に拡縮するか
+  // @include mq-down() {
+  //   flex: 1;
+  // }
+}
+
+.p-news__selectbox::before,
+.p-news__selectbox::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  top: 0;
+}
+
+.p-news__selectbox::before {
+  display: inline-block;
+  right: 0;
+  width: rem(50);
+  aspect-ratio: 1;
+  border-radius: 0 rem(5) rem(5) 0;
+  background-color: $color-accent-green;
+}
+
+.p-news__selectbox::after {
+  display: inline-block;
+  right: 0;
+  width: rem(50);
+  aspect-ratio: 1;
+  background-color: #ffffff;
+  mask-image: url("../images/common/cmn-arrow-forward-ico01.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: rem(14);
+  rotate: 90deg;
+}
+
+.p-news__selectbox select {
+  appearance: none;
+  font-size: rem(18);
+  font-weight: $bold;
+  width: 100%;
+  padding-block: rem(11.5);
+  padding-left: rem(18);
+  border: none;
+  border-radius: rem(5);
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+
+.p-news__selectbox select:focus {
+  outline: 2px solid $color-accent-green;
+}
