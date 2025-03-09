@@ -61,7 +61,7 @@
         <article class="c-card-item-style-3 c-card-item-style-3--subgrid">
 
 
-         <div class="c-card-item-style-3__img-wrapper c-card-item-style-3__img-wrapper--tall">
+         <div class="c-card-item-style-3__img-wrapper c-card-item-style-3__img-wrapper--tall aspect-auto">
           <?php if (get_field('acf_article_cover')): ?>
            <?php echo wp_get_attachment_image(get_field('acf_article_cover'), 'full'); ?>
           <?php else: ?>

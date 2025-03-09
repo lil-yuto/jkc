@@ -110,7 +110,7 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <div class="c-card-item-style-3">
                   <article class="c-card-item-style-3">
-                    <figure class="c-card-item-style-3__img-wrapper">
+          <figure class="c-card-item-style-3__img-wrapper aspect-auto">
                       <?php if ( get_field('acf_royalcanin_award')['acf_royalcanin_award_img_url'] ) : ?>
                         <img decoding="async" src="<?php echo esc_url( get_field('acf_royalcanin_award')['acf_royalcanin_award_img_url'] ); ?>" alt="" />
                       <?php else : ?>

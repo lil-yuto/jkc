@@ -24,7 +24,6 @@
 	display: block;
 	width: 100%;
 	height: auto;
-	aspect-ratio: calc(math.div(340, 486.9));
 	object-fit: contain;
 	object-position: center;
 	@include mq-down() {

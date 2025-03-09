@@ -90,7 +90,7 @@
 
       <div class="c-card-item-style-3">
 
-       <div class="c-card-item-style-3__img-wrapper">
+       <div class="c-card-item-style-3__img-wrapper aspect-auto">
 
 
         <?php if (get_sub_field('acf_wd_imgs_img')): ?>

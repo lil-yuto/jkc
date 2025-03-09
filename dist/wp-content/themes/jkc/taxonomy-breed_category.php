@@ -58,7 +58,7 @@
 
        <div class="c-card-item-style-horizontal__contents-wrapper">
 
-        <div class="c-card-item-style-horizontal__img-wrapper">
+        <div class="c-card-item-style-horizontal__img-wrapper aspect-auto">
          <?php if (have_rows('acf_wd_imgs')): the_row(); ?>
 
           <?php if (get_sub_field('acf_wd_imgs_img')): ?>

@@ -44,14 +44,12 @@
 	@include mq-down() {
 	}
 }
+.c-card-item-style-horizontal__img-wrapper.aspect-auto img {
+	aspect-ratio: auto;
+}
 
 .c-card-item-style-horizontal__img-wrapper img + img {
 	margin-top: rem(20);
-}
-@media (any-hover: hover) {
-	.c-card-item-style-horizontal:hover .c-card-item-style-horizontal__img-wrapper img {
-		scale: 1.1;
-	}
 }
 .c-card-item-style-horizontal__content {
 	flex: 1;
@@ -145,7 +143,7 @@
 		--color: #0a6934;
 		--border-color: currentcolor;
 		--bg-color: #ffffff;
-		--translate:  0.22em 0;
+		--translate: 0.22em 0;
 		color: var(--color);
 		border-color: var(--border-color);
 		background-color: var(--bg-color);
