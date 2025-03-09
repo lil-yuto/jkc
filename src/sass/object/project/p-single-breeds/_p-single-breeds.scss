@@ -50,8 +50,15 @@
 	color: $palette-darkGray;
 }
 
-
-.p-single-breeds__button-items{
- align-items: stretch;
+.p-single-breeds__description {
+	font-size: rem(18);
+	font-weight: $regular;
+	line-height: calc(math.div(30, 18));
+	letter-spacing: 0.03em;
+	color: $palette-darkGray;
+	margin-block: em(9, 18);
 }
 
+.p-single-breeds__button-items {
+	align-items: stretch;
+}
