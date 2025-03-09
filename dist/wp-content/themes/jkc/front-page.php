@@ -274,7 +274,7 @@
             <h3 class="p-content__title">会報誌『ＪＫＣガゼット』<br>アンケート・プレゼント</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/aboutus/movie/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/movie/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--channel"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-channel-ico01.svg" alt="ＪＫＣチャンネル" /></div>
             <h3 class="p-content__title">ＪＫＣチャンネル<br class="u-hidden-sp">～動画配信～</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
@@ -289,12 +289,12 @@
             <h3 class="p-content__title">災害救助犬について</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/events/photo_contest/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/photo_contest/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--photo-contest"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-photo-contest-ico01.svg" alt="写真コンテスト" /></div>
             <h3 class="p-content__title">写真コンテスト</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/events/picture_contest/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/picture_contest/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--art-contest"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-art-contest-ico01.svg" alt="犬の絵コンクール" /></div>
             <h3 class="p-content__title">犬の絵コンクール</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
