@@ -52,15 +52,17 @@
   <?php if ($the_query->have_posts()): ?>
    <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
 
-    <?php if (get_field('acf_qu2')['acf_qu2_org']): ?>
-     <h3 class="c-heading c-heading--lv3"><?php echo get_field('acf_qu2')['acf_qu2_org']; ?></h3>
+    <?php
+    $acf_qu2 = get_field('acf_qu2');
+    if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_org'])): ?>
+     <h3 class="c-heading c-heading--lv3"><?php echo $acf_qu2['acf_qu2_org']; ?></h3>
     <?php else: ?>
      <h3 class="c-heading c-heading--lv3"><?php the_title(); ?></h3>
     <?php endif; ?>
 
-    <?php if (get_field('acf_qu2')['acf_qu2_office']): ?>
+    <?php if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_office'])): ?>
      <h5 class="c-heading c-heading--lv5">連絡事務所</h5>
-     <p class="c-text"><?php echo get_field('acf_qu2')['acf_qu2_office']; ?></p>
+     <p class="c-text"><?php echo $acf_qu2['acf_qu2_office']; ?></p>
     <?php elseif (get_field('acf_qu_office')) : ?>
      <h5 class="c-heading c-heading--lv5">連絡事務所</h5>
      <p class="c-text"><?php echo get_field('acf_qu_office'); ?></p>
