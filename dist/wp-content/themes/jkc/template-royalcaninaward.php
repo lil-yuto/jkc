@@ -112,9 +112,9 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
                   <article class="c-card-item-style-3">
           <figure class="c-card-item-style-3__img-wrapper aspect-auto">
                       <?php if ( get_field('acf_royalcanin_award')['acf_royalcanin_award_img_url'] ) : ?>
-                        <img decoding="async" src="<?php echo esc_url( get_field('acf_royalcanin_award')['acf_royalcanin_award_img_url'] ); ?>" alt="" />
+                        <img decoding="async" src="<?php echo esc_url( get_field('acf_royalcanin_award')['acf_royalcanin_award_img_url'] ); ?>" alt="" width="280" height="200" />
                       <?php else : ?>
-                        <img decoding="async" src="<?php echo get_template_directory_uri(); ?>/assets/images/common/cmn-no_image.jpg" alt="No Image" />
+                        <img decoding="async" src="<?php echo site_url('/') ?>wp-content/uploads/rc_no-image.jpg" alt="No Image" width="280" height="200" />
                       <?php endif; ?>
                     </figure>
                     <div class="c-card-item-style-3__content">
