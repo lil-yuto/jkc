@@ -34,8 +34,20 @@
 	transition: translate $duration-default, background-color $duration-default;
 }
 
+// 現在のページだけ色を変える
+.p-single-breeds-button__link.c-button-item__link.is-current {
+  --translate:  0.22em 0;
+  background-color: $palette-salem;
+  color: $color-base;
+  opacity: 1;
+}
+.p-single-breeds-button__link.c-button-item__link.is-current::after {
+  background-color: #{$color-base};
+  translate: var(--translate);
+}
+
 @media (any-hover: hover) {
-	.p-single-breeds-button__link.c-button-item__link:hover {
+  .p-single-breeds-button__link.c-button-item__link:hover {
 		// --border-color: #{$color-accent-yellow-dark};
 		--translate:  0.22em 0;
 		// border-color: var(--border-color);
@@ -66,6 +78,15 @@
 	color: $palette-darkGray;
 	margin-block: rem(10) 0;
 }
+
+// 現在のページだけ色を変える
+.p-single-breeds-button__link.c-button-item__link.is-current .p-single-breeds-button__title {
+  color: $color-base;
+}
+.p-single-breeds-button__link.c-button-item__link.is-current .p-single-breeds-button__description {
+  color: $color-base;
+}
+
 @media (any-hover: hover) {
 	.p-single-breeds-button__link.c-button-item__link:hover .p-single-breeds-button__title {
 		color: $color-base;
