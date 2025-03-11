@@ -39,3 +39,8 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+// グリッドの場合、リストのマージンをリセット
+.is-layout-grid .wp-block-jkc-block-list-unordered .c-block-list-unordered {
+  margin-block: 0;
+}
