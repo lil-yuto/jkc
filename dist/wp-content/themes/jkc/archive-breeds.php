@@ -105,8 +105,20 @@
 
   <?php wp_reset_postdata(); ?>
 
+  <div class="p-breeds__about">
+    <?php
+    // 犬種についてページを固定ページから取得して、表示する
+    $slug = 'breeds-about';
+    $content_post = get_post(get_page_by_path($slug, OBJECT, 'page')->ID);
+    if ($content_post) {
+      setup_postdata($GLOBALS['post'] =& $content_post);
 
-  <!-- <//?php the_content(); ?> -->
+      the_content();
+
+      wp_reset_postdata();
+    }
+    ?>
+  </div>
 
  </div>
 
