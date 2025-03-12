@@ -76,9 +76,31 @@
               $the_query = new WP_Query( $args );
               if ( $the_query->have_posts() ) :
               while ( $the_query->have_posts() ) : $the_query->the_post();
+                // リンク先とターゲット属性を決定
+                $link_url = '';
+                $target = '';
+
+                // 優先度順にリンク先を判定
+                $pdf_file = get_field('acf_news_pdf');
+                if (!empty($pdf_file) && is_array($pdf_file)) {
+                  // ファイル配列からURLを取得
+                  $link_url = $pdf_file['url'];
+                  // ターゲット設定を確認
+                  if (get_field('acf_news_target')) {
+                    $target = ' target="_blank" rel="noopener noreferrer"';
+                  }
+                } elseif ($external_url = get_field('acf_news_url')) {
+                  $link_url = $external_url;
+                  // ターゲット設定を確認
+                  if (get_field('acf_news_target')) {
+                    $target = ' target="_blank" rel="noopener noreferrer"';
+                  }
+                } else {
+                  $link_url = get_the_permalink();
+                }
             ?>
             <li>
-              <a href="<?php the_permalink(); ?>" class="p-pickup__item p-post">
+              <a href="<?php echo esc_url($link_url); ?>" class="p-pickup__item p-post"<?php echo $target; ?>>
                 <time datetime="<?php the_time('Y-m-d'); ?>" class="p-post__date">
                   <?php echo get_the_date('Y.n.j'); ?>
                 </time>
@@ -149,9 +171,32 @@
                     $term_slugs[] = $term->slug;
                   }
                 }
+
+                // リンク先とターゲット属性を決定
+                $link_url = '';
+                $target = '';
+
+                // 優先度順にリンク先を判定
+                $pdf_file = get_field('acf_news_pdf');
+                if (!empty($pdf_file) && is_array($pdf_file)) {
+                  // ファイル配列からURLを取得
+                  $link_url = $pdf_file['url'];
+                  // ターゲット設定を確認
+                  if (get_field('acf_news_target')) {
+                    $target = ' target="_blank" rel="noopener noreferrer"';
+                  }
+                } elseif ($external_url = get_field('acf_news_url')) {
+                  $link_url = $external_url;
+                  // ターゲット設定を確認
+                  if (get_field('acf_news_target')) {
+                    $target = ' target="_blank" rel="noopener noreferrer"';
+                  }
+                } else {
+                  $link_url = get_the_permalink();
+                }
               ?>
               <li class="news-item" data-category="<?php echo esc_attr(implode(' ', $term_slugs)); ?>">
-                <a href="<?php the_permalink(); ?>" class="p-posts__item">
+                <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item"<?php echo $target; ?>>
                   <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
                     <?php echo get_the_date('Y.n.j'); ?>
                   </time>
