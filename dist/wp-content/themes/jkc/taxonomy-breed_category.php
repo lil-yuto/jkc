@@ -73,12 +73,12 @@
 
                 </div>
                 <div class="c-card-item-style-horizontal__content">
-                  <p class="c-card-item-style-horizontal__description">
-                    <span>スタンダードNo.<?php echo get_field('acf_wd_fci'); ?></span>
-                    <span>原産地：<?php echo get_field('acf_wd_place'); ?></span>
-                    <span class="max-2row">用途&emsp;：<?php echo get_field('acf_wd_use'); ?></span>
-                    <span class="max-2row">沿革&emsp;：<?php echo get_field('acf_wd_history'); ?></span>
-                  </p>
+                  <div class="c-card-item-style-horizontal__description">
+                    <p>スタンダードNo.<?php echo get_field('acf_wd_fci'); ?></p>
+                    <p><span class="u-bold">原産地</span>：<?php echo get_field('acf_wd_place'); ?></p>
+                    <p class="max-2row"><span class="u-bold">用途</span>&emsp;：<?php echo get_field('acf_wd_use'); ?></p>
+                    <p class="max-2row"><span class="u-bold">沿革</span>&emsp;：<?php echo get_field('acf_wd_history'); ?></p>
+                  </div>
 
                   <div class="c-card-item-style-horizontal__button-wrapper">
                     <button class="c-card-item-style-horizontal__button">詳しく見る</button>

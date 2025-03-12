@@ -68,13 +68,7 @@
 	}
 }
 
-.c-card-item-style-horizontal__description span {
-	display: block;
-	@include mq-down() {
-	}
-}
-
-.c-card-item-style-horizontal__description span.max-2row {
+.c-card-item-style-horizontal__description p.max-2row {
 	overflow: hidden;
 	display: -webkit-box;
 	text-overflow: ellipsis;
