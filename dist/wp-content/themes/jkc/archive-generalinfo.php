@@ -6,10 +6,9 @@
  <div class="p-sub-fv l-sub-fv">
 
   <div class="p-sub-fv__container l-container">
-   <hgroup class="p-sub-fv__title c-page-title">
+   <div class="p-sub-fv__title c-page-title">
     <h1 class="c-page-title__main">総合案内</h1>
-    <p class="c-page-title__sub">JKC Activities</p>
-   </hgroup>
+   </div>
   </div>
 
  </div>
@@ -70,7 +69,6 @@
   <div class="p-generalinfo__type c-contents-type">
    <p class="c-contents-type__title">コンテンツの分類</p>
    <div class="c-contents-type__wrapper">
-  
     <?php foreach ($contents_all_lists as $content_key => $content_value): ?>
      <?php
      $ico_url = "/assets/images/common/cmn-contents-type-" . $content_key . ".png";

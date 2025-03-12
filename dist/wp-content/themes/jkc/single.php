@@ -4,10 +4,9 @@
  <div class="p-sub-fv l-sub-fv">
 
   <div class="p-sub-fv__container l-container">
-   <hgroup class="p-sub-fv__title c-page-title">
+   <div class="p-sub-fv__title c-page-title">
     <h1 class="c-page-title__main"><?php the_title(); ?></h1>
-    <p class="c-page-title__sub">About JKC</p>
-   </hgroup>
+   </div>
   </div>
 
  </div>

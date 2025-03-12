@@ -51,7 +51,7 @@ const cssSass = () => {
     }))
     .pipe(postcss([autoprefixer()])) // autoprefixerの設定に変更
     .pipe(sourcemaps.write('./')) // ソースマップの出力先をcssファイルから見たパスに指定
-    .pipe(dest(distPath.css)) // 
+    .pipe(dest(distPath.css)) //
     .pipe(notify({ // エラー発生時のアラート出力
       message: 'Sassをコンパイルしました！',
       onLast: true

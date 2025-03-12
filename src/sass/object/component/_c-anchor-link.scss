@@ -9,8 +9,7 @@
 	.c-anchor-button__items {
 		--column: 3;
 		display: grid;
-		column-gap: rem(8);
-		row-gap: rem(22);
+    gap: rem(8);
 		// grid-template-columns: repeat(auto-fill, minmax(min(269px, 100%), 1fr));
 		grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 		margin-block: var(--block-margin-top) var(--block-margin-bottom);

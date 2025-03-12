@@ -98,7 +98,6 @@
   width: em(16.58, 20);
   height: rem(29);
   height: em(29, 20);
-  
   background-color: var(--arrow-color);
   mask-image: url("../images/common/cmn-arrow-forward-ico01.svg");
   mask-repeat: no-repeat;
@@ -154,6 +153,7 @@
 .p-pickup__title {
   font-size: rem(26);
   font-weight: $bold;
+  font-family: $font-family-notoSerif;
   @include mq-down() {
     font-size: rem(19);
   }
@@ -169,7 +169,7 @@
   grid-template-rows: auto auto 1fr;
   column-gap: rem(30);
   @include mq-down() {
-    grid-template-columns: auto 1fr; 
+    grid-template-columns: auto 1fr;
     column-gap: rem(10);
     row-gap: rem(18);
   }
@@ -180,13 +180,18 @@
 
 .p-post {
   display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
   justify-items: start;
   align-items: start;
+  row-gap: rem(8);
   @include mq-down() {
+    grid-template-rows: auto;
+    grid-row: auto;
     grid-template-columns: subgrid;
-    grid-template-areas: 
+    grid-template-areas:
       "date category"
-      "date title"; 
+      "date title";
     grid-column: 1 / -1;
   }
 }
@@ -198,18 +203,18 @@
   }
 }
 .p-post__category {
-  margin-top: rem(14);
   @include mq-down() {
     grid-area: category;
-    margin-top: 0;
   }
 }
 .p-post__title {
   font-size: rem(15);
-  margin-top: rem(8);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
   @include mq-down() {
     grid-area: title;
-    margin-top: rem(5);
   }
 }
 

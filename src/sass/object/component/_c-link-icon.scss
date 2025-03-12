@@ -2,7 +2,7 @@
 @use "sass:math";
 
 .c-link-icon {
-  --color:  #0A6934;
+  --color: #{$color-text-link};
   --translate: 0;
   display: flex;
   align-items: center;
@@ -29,7 +29,8 @@
 
 @media (any-hover: hover) {
   .c-link-icon:hover {
-    --color: #EDAD23;
-    --translate: 0.22em 0
+    --color: #{$color-text-link-hover};
+    --translate: 0.22em 0;
+    opacity: 1;
   }
 }

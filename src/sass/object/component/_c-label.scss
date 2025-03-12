@@ -59,3 +59,10 @@
     opacity: 1;
   }
 }
+
+.c-label-white.active {
+  color: $color-sub-text;
+  background-color: $color-accent-green;
+  border-color: $color-accent-green;
+  opacity: 1;
+}

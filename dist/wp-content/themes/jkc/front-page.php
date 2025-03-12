@@ -4,52 +4,57 @@
     <div class="p-top-main-visual__container">
       <ul class="p-top-main-visual__side p-side-menu">
         <li class="p-side-menu__item">
-          <a href="http://" class="p-side-menu__link p-side-menu__link--beginner"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-beginner-ico01.svg" alt="" />初めての方へ</a>
+          <a href="<?php echo esc_url(home_url('/generalinfo/#beginners')); ?>" class="p-side-menu__link p-side-menu__link--beginner"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-beginner-ico01.svg" alt="" />初めての方へ</a>
         </li>
         <li class="p-side-menu__item">
-          <a href="http://" class="p-side-menu__link p-side-menu__link--event"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-schedule-ico01.svg" alt="" />ドッグショー<br />競技会スケジュール</a>
+          <a href="<?php echo esc_url(home_url('/events/')); ?>" class="p-side-menu__link p-side-menu__link--event"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-schedule-ico01.svg" alt="" />ドッグショー<br />競技会スケジュール</a>
         </li>
         <li class="p-side-menu__item">
-          <a href="http://" class="p-side-menu__link p-side-menu__link--document"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-document-ico01.svg" alt="" />血統証明書・<br />各種申請</a>
+          <a href="<?php echo esc_url(home_url('/registrations/')); ?>" class="p-side-menu__link p-side-menu__link--document"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-document-ico01.svg" alt="" />血統証明書・<br />各種申請</a>
         </li>
         <li class="p-side-menu__item">
-          <a href="http://" class="p-side-menu__link p-side-menu__link--dog"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-type-ico01.svg" alt="" />犬種紹介</a>
+          <a href="<?php echo esc_url(home_url('/breeds/')); ?>" class="p-side-menu__link p-side-menu__link--dog"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-type-ico01.svg" alt="" />犬種紹介</a>
         </li>
       </ul>
       <div class="p-top-main-visual__main">
         <div class="p-top-main-visual__slider splide js-slider" role="group" aria-label="Splideの基本的なHTML">
           <div class="splide__track">
             <ul class="splide__list">
-              <li class="splide__slide">
-                <picture>
-                  <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01.png">
-                  <img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01-sp.png" alt="" />
-                </picture>
-              </li>
-              <li class="splide__slide">
-                <picture>
-                  <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01.png">
-                  <img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01-sp.png" alt="" />
-                </picture>
-              </li>
-              <li class="splide__slide">
-                <picture>
-                  <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01.png">
-                  <img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01-sp.png" alt="" />
-                </picture>
-              </li>
-              <li class="splide__slide">
-                <picture>
-                  <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01.png">
-                  <img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01-sp.png" alt="" />
-                </picture>
-              </li>
-              <li class="splide__slide">
-                <picture>
-                  <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01.png">
-                  <img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-mv-img01-sp.png" alt="" />
-                </picture>
-              </li>
+              <?php
+              $args = array(
+                'post_type'      => 'top_mainvisual',
+                'posts_per_page' => -1,
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+              );
+              $top_mainvisual_query = new WP_Query($args);
+              if ($top_mainvisual_query->have_posts()) :
+                while ($top_mainvisual_query->have_posts()) : $top_mainvisual_query->the_post();
+                  $pc_img_id = get_field('acf_topslide_img');
+                  $sp_img_id = get_field('acf_topslide_spimg');
+                  $url = get_field('acf_topslide_url');
+                  $target = get_field('acf_topslide_target');
+                  $pc_img_url = $pc_img_id ? wp_get_attachment_image_url($pc_img_id, 'full') : '';
+                  $sp_img_url = $sp_img_id ? wp_get_attachment_image_url($sp_img_id, 'full') : '';
+                  $target_value = $target ? '_blank' : '_self';
+                  if ($pc_img_url && $sp_img_url) : ?>
+                    <li class="splide__slide">
+                        <?php if ($url) : ?>
+                          <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>">
+                        <?php else : ?>
+                          <a>
+                        <?php endif; ?>
+                          <picture>
+                            <source media="(min-width: 768px)" srcset="<?php echo esc_url($pc_img_url); ?>">
+                            <img src="<?php echo esc_url($sp_img_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                          </picture>
+                        </a>
+                      </li>
+                    <?php endif;
+                endwhile;
+                wp_reset_postdata();
+              endif;
+              ?>
             </ul>
           </div>
           <div class="splide__arrows">
@@ -60,30 +65,37 @@
         <div class="p-top-main-visual__pickup p-pickup">
           <div class="p-pickup__head">
             <p class="p-pickup__title u-uppercase">Pick up</p>
-            <a href="http://" class="p-pickup__link c-link-icon">一覧を見る</a>
+            <a href="<?php echo esc_url(home_url('/news/')); ?>" class="p-pickup__link c-link-icon">一覧を見る</a>
           </div>
           <ul class="p-pickup__list">
+            <?php
+              $args = [
+                'post_type' => 'news',
+                'posts_per_page' => 3,
+              ];
+              $the_query = new WP_Query( $args );
+              if ( $the_query->have_posts() ) :
+              while ( $the_query->have_posts() ) : $the_query->the_post();
+            ?>
             <li>
-              <a href="http://" class="p-pickup__item p-post">
-                <time datetime="2024-06-05" class="p-post__date">2024.6.5</time>
-                <p class="p-post__category c-label">その他</p>
-                <p class="p-post__title">2024第48回 夏休み犬の絵コンクール　作品募集!!</p>
+              <a href="<?php the_permalink(); ?>" class="p-pickup__item p-post">
+                <time datetime="<?php the_time('Y-m-d'); ?>" class="p-post__date">
+                  <?php echo get_the_date('Y.n.j'); ?>
+                </time>
+                <p class="p-post__category c-label">
+                  <?php
+                    $taxonomy_term = get_the_terms($post->ID,'news_category');
+                    echo $taxonomy_term[0]->name;
+                  ?>
+                </p>
+                <p class="p-post__title">
+                  <?php the_title(); ?>
+                </p>
               </a>
             </li>
-            <li>
-              <a href="http://" class="p-pickup__item p-post">
-                <time datetime="2024-06-04" class="p-post__date">2024.6.4</time>
-                <p class="p-post__category c-label">犬種スタンダード</p>
-                <p class="p-post__title">プードルの犬種標準改正について（2024年8月1日施行）</p>
-              </a>
-            </li>
-            <li>
-              <a href="http://" class="p-pickup__item p-post">
-                <time datetime="2024-05-07" class="p-post__date">2024.5.7</time>
-                <p class="p-post__category c-label">各種競技会</p>
-                <p class="p-post__title">「JKC創立75周年記念 第29回2024FCI-IGP競技大会」開催</p>
-              </a>
-            </li>
+            <?php endwhile; else: ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
           </ul>
         </div>
       </div>
@@ -98,77 +110,68 @@
           <p class="c-headeing-lv2__sub">お知らせ</p>
         </hgroup>
         <div class="p-top-news__more u-hidden-pc">
-          <a href="http://" class="p-top-news__more-link c-link-icon">一覧を見る</a>
+          <a href="/news" class="p-top-news__more-link c-link-icon" id="view-all-link">一覧を見る</a>
         </div>
       </div>
       <div class="p-top-news__content">
-        <div class="p-top-news__select-wrapper">
-          <label for="news-category" class="p-top-news__selectbox">
-            <select name="news-category" id="news-category">
-              <option value="全て">全て</option>
-              <option value="ドッグショー">ドッグショー</option>
-              <option value="重要なお知らせ">重要なお知らせ</option>
-            </select>
-          </label>
-          <div class="p-top-news__more u-hidden-sp"><a href="http://" class="p-top-news__more-link c-link-icon">一覧を見る</a></div>
-        </div>
         <div class="p-top-news__categories">
           <ul class="p-top-news__category-list">
-            <li><a href="http://" class="p-top-news__category-link c-label-white">全て</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">重要なお知らせ</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">注意喚起</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">JKC公認資格</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white is-selected">ドッグショー</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">各種競技会</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">血統証明書</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">犬種スタンダード</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">マイクロチップ</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">IGP</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">訓練競技会</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">フライボール競技会</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">ドッグダンス</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">オビディエンス競技会</a></li>
-            <li><a href="http://" class="p-top-news__category-link c-label-white">その他</a></li>
+          <li><button class="p-top-news__category-link c-label-white news-filter active" data-term="all">全て</button></li>
+            <?php
+            $terms = get_terms([
+              'taxonomy' => 'news_category',
+              'hide_empty' => true,
+            ]);
+            foreach ($terms as $term) {
+              echo '<li>';
+              echo '<button class="p-top-news__category-link c-label-white news-filter" data-term="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</button>';
+              echo '</li>';
+            }
+            ?>
           </ul>
         </div>
         <div class="p-top-news__posts p-posts">
-          <ul class="p-posts__list">
-            <li>
-              <a href="http://" class="p-posts__item">
-                <time datetime="2024-06-06" class="p-posts__date">2024.6.6</time>
-                <p class="p-posts__category">ドッグショー</p>
-                <p class="p-posts__title">【注意】ドイツ／イタリア原産11犬種に関する断耳／断尾された犬のドッグ・ショー出陳について</p>
-              </a>
-            </li>
-            <li>
-              <a href="http://" class="p-posts__item">
-                <time datetime="2024-06-06" class="p-posts__date">2024.6.6</time>
-                <p class="p-posts__category">その他</p>
-                <p class="p-posts__title">【重要】アペンディクス登録について</p>
-              </a>
-            </li>
-            <li>
-              <a href="http://" class="p-posts__item">
-                <time datetime="2024-06-06" class="p-posts__date">2024.6.6</time>
-                <p class="p-posts__category">ドッグショー</p>
-                <p class="p-posts__title">展覧会システムの改正について　解説(1)　(2022年4月～)</p>
-              </a>
-            </li>
-            <li>
-              <a href="http://" class="p-posts__item">
-                <time datetime="2024-06-06" class="p-posts__date">2024.6.6</time>
-                <p class="p-posts__category">ドッグショー</p>
-                <p class="p-posts__title">展覧会システムの改正について　解説(2)　(2022年4月～)</p>
-              </a>
-            </li>
-            <li>
-              <a href="http://" class="p-posts__item">
-                <time datetime="2024-06-06" class="p-posts__date">2024.6.6</time>
-                <p class="p-posts__category">ドッグショー</p>
-                <p class="p-posts__title">展覧会システムの改正について　解説(3)　(2022年4月～)</p>
-              </a>
-            </li>
+          <ul class="p-posts__list" id="news-list">
+            <?php
+              $args_news = [
+                'post_type'      => 'news',
+                'posts_per_page' => -1,
+                'orderby'        => 'date',
+                'order'          => 'DESC'
+              ];
+              $query_news = new WP_Query($args_news);
+              if ($query_news->have_posts()) :
+                while ($query_news->have_posts()) : $query_news->the_post();
+                $taxonomy_terms = get_the_terms($post->ID, 'news_category');
+                $term_slugs = [];
+                if ($taxonomy_terms) {
+                  foreach ($taxonomy_terms as $term) {
+                    $term_slugs[] = $term->slug;
+                  }
+                }
+              ?>
+              <li class="news-item" data-category="<?php echo esc_attr(implode(' ', $term_slugs)); ?>">
+                <a href="<?php the_permalink(); ?>" class="p-posts__item">
+                  <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
+                    <?php echo get_the_date('Y.n.j'); ?>
+                  </time>
+                  <p class="p-posts__category">
+                    <?php echo esc_html($taxonomy_terms[0]->name); ?>
+                  </p>
+                  <p class="p-posts__title">
+                    <?php the_title(); ?>
+                  </p>
+                </a>
+              </li>
+            <?php endwhile; else: ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
           </ul>
+        </div>
+        <div class="p-top-news__select-wrapper">
+          <div class="p-top-news__more u-hidden-sp">
+            <a href="/news" class="p-top-news__more-link c-link-icon" id="view-all-link">一覧を見る</a>
+          </div>
         </div>
       </div>
     </div>
@@ -246,57 +249,57 @@
               <p class="c-headeing-lv2__sub">おすすめコンテンツ</p>
             </hgroup>
           </div>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/qualifications/dogcareadvisor/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--kanrishi"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-kanrishi-ico01.svg" alt="JKC愛犬飼育管理士" /></div>
             <h3 class="p-content__title">ＪＫＣ愛犬飼育管理士</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/events/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--schedule"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-schedule-ico01.svg" alt="イベントスケジュール" /></div>
             <h3 class="p-content__title">イベントスケジュール</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/pedigrees/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--certificate"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-certificate-ico01.svg" alt="血統証明書について" /></div>
             <h3 class="p-content__title">血統証明書について</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/breeds/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--doc-type"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-type-ico01.svg" alt="世界の犬" /></div>
             <h3 class="p-content__title">世界の犬</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/gazette/present/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--gazette"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-gazette-ico01.svg" alt="ＪＫＣガゼット" /></div>
             <h3 class="p-content__title">会報誌『ＪＫＣガゼット』<br>アンケート・プレゼント</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/movie/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--channel"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-channel-ico01.svg" alt="ＪＫＣチャンネル" /></div>
             <h3 class="p-content__title">ＪＫＣチャンネル<br class="u-hidden-sp">～動画配信～</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/generalinfo/#beginners')); ?>" class="p-content">
             <div class="p-content__image p-content__image--icon-first-dog"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-first-dog-ico01.svg" alt="初めて犬を飼うには" /></div>
             <h3 class="p-content__title">初めて犬を飼うには</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/rescuedog/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--rescue-dog"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-rescue-dog-ico01.svg" alt="災害救助犬について" /></div>
             <h3 class="p-content__title">災害救助犬について</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/photo_contest/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--photo-contest"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-photo-contest-ico01.svg" alt="写真コンテスト" /></div>
             <h3 class="p-content__title">写真コンテスト</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/picture_contest/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--art-contest"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-art-contest-ico01.svg" alt="犬の絵コンクール" /></div>
             <h3 class="p-content__title">犬の絵コンクール</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
           </a>
-          <a href="http://" class="p-content">
+          <a href="<?php echo esc_url(home_url('/haiku_contest/haiku_contest/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--haiku"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-haiku-ico01.svg" alt="ふれあいの俳句" /></div>
             <h3 class="p-content__title">ふれあいの俳句</h3>
             <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
@@ -309,27 +312,43 @@
   <div class="p-top-banner l-banner">
     <div class="p-top-banner l-container">
       <ul class="p-top-banner__list">
-        <li>
-          <a href="http://" target="_blank" rel="noopener noreferrer" class="p-top-banner__item"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-bnr01.png" alt="" /></a>
-        </li>
-        <li>
-          <a href="http://" target="_blank" rel="noopener noreferrer" class="p-top-banner__item"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-bnr02.png" alt="" /></a>
-        </li>
-        <li>
-          <a href="http://" target="_blank" rel="noopener noreferrer" class="p-top-banner__item"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-bnr03.png" alt="" /></a>
-        </li>
-        <li>
-          <a href="http://" target="_blank" rel="noopener noreferrer" class="p-top-banner__item"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-bnr04.png" alt="" /></a>
-        </li>
-        <li>
-          <a href="http://" target="_blank" rel="noopener noreferrer" class="p-top-banner__item"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-bnr05.png" alt="" /></a>
-        </li>
-        <li>
-          <a href="http://" target="_blank" rel="noopener noreferrer" class="p-top-banner__item"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-bnr06.png" alt="" /></a>
-        </li>
-        <li>
-          <a href="http://" target="_blank" rel="noopener noreferrer" class="p-top-banner__item"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-bnr07.png" alt="" /></a>
-        </li>
+        <?php
+        $args = array(
+            'post_type'      => 'footer_banner',
+            'posts_per_page' => -1,
+            'orderby'        => 'menu_order',
+            'order'          => 'ASC',
+        );
+        $footer_banner_query = new WP_Query($args);
+        if ($footer_banner_query->have_posts()) :
+            while ($footer_banner_query->have_posts()) : $footer_banner_query->the_post();
+                $img_s_id = get_field('acf_ftbanner_img_s');
+                $img_l_id = get_field('acf_ftbanner_img_l');
+                $url = get_field('acf_ftbanner_url');
+                $target = get_field('acf_ftbanner_target');
+                $img_s_url = $img_s_id ? wp_get_attachment_image_url($img_s_id, 'full') : '';
+                $img_l_url = $img_l_id ? wp_get_attachment_image_url($img_l_id, 'full') : '';
+                $target_value = $target ? '_blank' : '_self';
+                if ($img_s_url || $img_l_url) : ?>
+                    <li class="splide__slide">
+                        <?php if ($url) : ?>
+                          <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>" rel="noopener noreferrer" class="p-top-banner__item">
+                        <?php else : ?>
+                          <a>
+                        <?php endif; ?>
+                          <?php if ($img_s_url) : ?>
+                            <img src="<?php echo esc_url($img_s_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                          <?php endif; ?>
+                          <?php if ($img_l_url) : ?>
+                            <img src="<?php echo esc_url($img_l_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                          <?php endif; ?>
+                        </a>
+                    </li>
+                <?php endif;
+            endwhile;
+            wp_reset_postdata();
+        endif;
+        ?>
       </ul>
     </div>
   </div>

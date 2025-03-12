@@ -39,14 +39,24 @@
 	aspect-ratio: 800 / 367;
 	transition: scale $duration-default ease-out;
 }
+.c-card-item-style-3__img-wrapper.aspect-auto img {
+	aspect-ratio: auto;
+}
+
 .c-card-grid-3--define .c-card-item-style-3__img-wrapper img {
 	aspect-ratio: calc(math.div(34, 24));
+}
+.c-card-grid-3--define .c-card-item-style-3__img-wrapper.aspect-auto img {
+	aspect-ratio: auto;
 }
 
 .c-card-item-style-3__img-wrapper--tall img {
 	object-fit: cover;
 	object-position: center;
 	aspect-ratio: 160 /226;
+}
+.c-card-item-style-3__img-wrapper--tall.aspect-auto img {
+	aspect-ratio: auto;
 }
 @media (any-hover: hover) {
 	.c-card-item-style-3 a:hover .c-card-item-style-3__img-wrapper img {
@@ -82,8 +92,6 @@
 	object-position: center;
 }
 
-
-
 .c-card-item-style-3__title {
 	font-size: rem(20);
 	font-weight: $bold;
@@ -92,7 +100,7 @@
 		font-size: rem(18);
 	}
 }
-.c-card-item-style-3--subgrid  .c-card-item-style-3__title {
+.c-card-item-style-3--subgrid .c-card-item-style-3__title {
 	line-height: calc(math.div(23, 20));
 	text-align: center;
 	margin-block: rem(20) 0;

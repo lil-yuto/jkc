@@ -4,10 +4,9 @@
  <div class="p-sub-fv l-sub-fv">
 
   <div class="p-sub-fv__container l-container">
-   <hgroup class="p-sub-fv__title c-page-title">
+   <div class="p-sub-fv__title c-page-title">
     <h1 class="c-page-title__main">ジャックブログ</h1>
-    <p class="c-page-title__sub">Jack Blog</p>
-   </hgroup>
+   </div>
   </div>
 
  </div>
@@ -20,8 +19,6 @@
 
 
  <div class="p-jblog l-container l-container--sub">
-
-  <h2 class="c-heading c-heading--lv2">ジャックブログ</h2>
 
   <?php
   $paged = get_query_var('paged') ? get_query_var('paged') : 1;

@@ -13,10 +13,9 @@ Description: このテンプレートは、固定ページの子ページをリ�
    <div class="p-sub-fv l-sub-fv">
 
     <div class="p-sub-fv__container l-container">
-     <hgroup class="p-sub-fv__title c-page-title">
-      <h2 class="c-page-title__main"><?php the_title(); ?></h2>
-      <p class="c-page-title__sub">JKC Activities</p>
-     </hgroup>
+     <div class="p-sub-fv__title c-page-title">
+      <h1 class="c-page-title__main"><?php the_title(); ?></h1>
+     </div>
     </div>
 
    </div>

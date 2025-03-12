@@ -45,7 +45,7 @@
 }
 
 .p-royalcanin-group-item__link {
-	--color: #0a6934;
+	--color: #{$color-text-link};
 	--translate: 0;
 	display: inline-flex;
 	align-items: center;
@@ -84,7 +84,8 @@
 
 @media (any-hover: hover) {
 	.p-royalcanin-group-item__link:hover {
-		--color: #edad23;
+		--color: #{$color-text-link-hover};
 		--translate: 0.22em 0;
+    opacity: 1;
 	}
 }

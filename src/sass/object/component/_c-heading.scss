@@ -32,6 +32,7 @@
 	line-height: 1;
 	letter-spacing: math.div(50, 1000) * 1em;
 	color: $color-accent-yellow;
+  font-family: $font-family-notoSerif;
 	@include mq-down() {
 		font-size: rem(32);
 	}

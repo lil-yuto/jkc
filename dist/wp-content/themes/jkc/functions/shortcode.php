@@ -92,7 +92,7 @@ add_shortcode('training-institute', function () {
      $html_code .= '<dd class="p-org-card__dd">' . esc_html(get_field('acf_training_institute')['acf_training_institute_phone']) . '</dd>';
      $html_code .= '<dt class="p-org-card__dt">URL</dt>';
      $html_code .= '<dd class="p-org-card__dd c-text">';
-     $html_code .= '<a href="' . esc_url(get_field('acf_training_institute')['acf_training_institute_url']) . '">' . esc_html(get_field('acf_training_institute')['acf_training_institute_url']) . '</a>';
+     $html_code .= '<a href="' . esc_url(get_field('acf_training_institute')['acf_training_institute_url']) . '" target="_blank" rel="noopener noreferrer">' . esc_html(get_field('acf_training_institute')['acf_training_institute_url']) . '</a>';
      $html_code .= '</dd>';
      $html_code .= '</dl>';
      $html_code .= '</div>';
@@ -116,8 +116,8 @@ add_shortcode('training-institute', function () {
 
        if (get_sub_field('acf_training_institute_branch_url')):
         $html_code .= '<dt class="p-org-card__dt">URL</dt>';
-        $html_code .= '<dd class="p-org-card__dd">';
-        $html_code .= '<a href="' . esc_url(get_sub_field('acf_training_institute_branch_url')) . 'target="_blank" rel="noopener noreferrer">' . esc_url(get_sub_field('acf_training_institute_branch_url')) . '</a>';
+        $html_code .= '<dd class="p-org-card__dd c-text">';
+        $html_code .= '<a href="' . esc_url(get_sub_field('acf_training_institute_branch_url')) . '" target="_blank" rel="noopener noreferrer">' . esc_html(get_sub_field('acf_training_institute_branch_url')) . '</a>';
         $html_code .= '</dd>';
        endif;
 

@@ -306,3 +306,39 @@ const observer = new IntersectionObserver((entries) => {
 });
   footprints.forEach((footprint) => observer.observe(footprint));
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const footprints = document.querySelectorAll(".cls-16");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }, 500); // 0.5秒遅延
+    }
+  });
+}, {
+  threshold: 0.5 // 100% 見えたら発火
+});
+  footprints.forEach((footprint) => observer.observe(footprint));
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const footprints = document.querySelectorAll(".cls-15");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }, 500); // 0.5秒遅延
+    }
+  });
+}, {
+  threshold: 0.5 // 100% 見えたら発火
+});
+  footprints.forEach((footprint) => observer.observe(footprint));
+});

@@ -79,14 +79,16 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: rem(15);
+	font-size: rem(18);
 	font-weight: $bold;
 	letter-spacing: 0.05em;
+	line-height: calc(math.div(28, 18));
 	color: var(--color-current);
 	background-color: var(--bacground-color-current);
 	border: none;
 	border-radius: rem(5);
 	position: relative;
+	height: rem(44); // ページ番号と同じ高さを確保
 }
 
 .c-wp_pagenavi .wp-pagenavi .first {
