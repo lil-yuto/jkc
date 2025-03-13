@@ -5,7 +5,6 @@
 
     <div class="p-sub-fv l-sub-fv">
 
-<<<<<<< HEAD
   <div class="p-sub-fv__container l-container">
    <div class="p-sub-fv__title c-page-title">
     <h1 class="c-page-title__main">総合案内</h1>
@@ -150,16 +149,9 @@
 
 
      </div>
-=======
-        <div class="p-sub-fv__container l-container">
-            <hgroup class="p-sub-fv__title c-page-title">
-                <h1 class="c-page-title__main">総合案内</h1>
-                <p class="c-page-title__sub">JKC Activities</p>
-            </hgroup>
-        </div>
-
->>>>>>> origin/dev_yuto
     </div>
+
+   </article>
 
 
     <div class="p-sub-fv__breadcrumbs c-breadcrumbs l-breadcrumbs">
