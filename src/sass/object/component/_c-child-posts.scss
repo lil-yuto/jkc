@@ -1,0 +1,73 @@
+@use "global" as *;
+@use "sass:math";
+
+.c-child-posts-list {
+  display: grid;
+  gap: rem(40);
+  grid-template-columns: repeat(2, 1fr);
+  margin-block: var(--block-margin-top) var(--block-margin-bottom);
+  @include mq-down() {
+    grid-template-columns: 1fr;
+  }
+}
+
+.c-child-posts-list__item {
+  --color: #{$color-sub-text};
+  --border-color: transparent;
+  --bg-color: #{$color-accent-green};
+  --translate: 0;
+  --height: #{rem(100)};
+  display: inline grid;
+  width: 100%;
+  width: min(rem(530), 100%);
+  margin-inline: auto;
+
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: em(8, 18);
+  align-items: center;
+  font-size: rem(18);
+  font-weight: $bold;
+  letter-spacing: math.div(50, 1000) * 1em;
+  color: var(--color);
+  padding-block: em(10, 18);
+  padding-inline: em(24, 18);
+  border-radius: rem(5);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  transition: background-color $duration-default, color $duration-default, border-color $duration-default;
+  height: var(--height);
+}
+
+.c-child-posts-list__item::before {
+  content: "";
+  justify-self: start;
+}
+
+.c-child-posts-list__item::after {
+  --bg-color: currentColor;
+  content: "";
+  justify-self: end;
+  width: em(15, 18);
+  aspect-ratio: 1;
+  background-color: var(--bg-color);
+  mask-image: url("../images/common/cmn-arrow-forward-ico01.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  rotate: 0deg;
+  translate: var(--translate);
+  transition: translate $duration-default, background-color $duration-default;
+  @include mq-down() {
+    width: em(17, 13);
+  }
+}
+
+@media (any-hover: hover) {
+  .c-child-posts-list__item:hover {
+    --color: #0a6934;
+    --border-color: currentcolor;
+    --bg-color: #ffffff;
+    --translate: 0.22em 0;
+    opacity: 1;
+  }
+}

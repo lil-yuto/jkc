@@ -19,7 +19,7 @@ const distPath = {
 // ローカルサーバー立ち上げ
 const browserSync = require("browser-sync");
 const browserSyncOption = {
-  proxy: 'http://localhost:10011/', // LocalのSite hostを入れる
+  proxy: 'http://localhost:8000/', // LocalのSite hostを入れる
 }
 const browserSyncFunc = () => {
   browserSync.init(browserSyncOption);
