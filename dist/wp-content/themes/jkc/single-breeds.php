@@ -6,9 +6,10 @@
  <div class="p-sub-fv l-sub-fv">
 
   <div class="p-sub-fv__container l-container">
-   <div class="p-sub-fv__title c-page-title">
+   <hgroup class="p-sub-fv__title c-page-title">
     <h1 class="c-page-title__main"><?php the_title(); ?></h1>
-   </div>
+    <p class="c-page-title__sub">JKC Activities</p>
+   </hgroup>
   </div>
 
  </div>
@@ -90,7 +91,7 @@
 
       <div class="c-card-item-style-3">
 
-       <div class="c-card-item-style-3__img-wrapper aspect-auto">
+       <div class="c-card-item-style-3__img-wrapper">
 
 
         <?php if (get_sub_field('acf_wd_imgs_img')): ?>
@@ -146,21 +147,11 @@
 
   <?php if (have_rows('acf_wd_dogsize')): ?>
    <h3 class="c-heading c-heading--lv3">サイズ</h3>
-
-   <?php if (get_field('acf_wd_dogsize-text')): ?>
-    <p class="c-text"><?php the_field('acf_wd_dogsize-text'); ?></p>
-   <?php endif; ?>
-
-
    <?php while (have_rows('acf_wd_dogsize')): the_row(); ?>
 
     <div class="p-single-breeds__size">
      <?php if (get_sub_field('acf_wd_dogsize_name')): ?>
       <h5 class="c-heading c-heading--lv5"><?php the_sub_field('acf_wd_dogsize_name'); ?></h5>
-     <?php endif; ?>
-
-     <?php if (get_sub_field('acf_wd_dogsize_text_1')): ?>
-      <p class="p-single-breeds__description c-text"><?php the_sub_field('acf_wd_dogsize_text_1'); ?></p>
      <?php endif; ?>
 
 
@@ -188,21 +179,8 @@
          <?php endwhile; ?>
         </dl>
        <?php endif; ?>
-       <?php if (get_sub_field('acf_wd_dogsize_text_2')): ?>
-        <p class="p-single-breeds__description">
-         <?php the_sub_field('acf_wd_dogsize_text_2'); ?>
-        </p>
-       <?php endif; ?>
       </div>
      </div>
-
-
-     <?php if (get_sub_field('acf_wd_dogsize_text_3')): ?>
-      <p class="p-single-breeds__description c-text">
-       <?php the_sub_field('acf_wd_dogsize_text_3'); ?>
-      </p>
-     <?php endif; ?>
-
     </div>
    <?php endwhile; ?>
   <?php endif; ?>

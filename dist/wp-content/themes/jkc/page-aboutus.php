@@ -6,9 +6,10 @@
     <div class="p-sub-fv l-sub-fv">
 
         <div class="p-sub-fv__container l-container">
-            <div class="p-sub-fv__title c-page-title">
+            <hgroup class="p-sub-fv__title c-page-title">
                 <h1 class="c-page-title__main"><?php the_title(); ?></h1>
-            </div>
+                <p class="c-page-title__sub">JKC Activities</p>
+            </hgroup>
         </div>
 
     </div>
@@ -24,6 +25,7 @@
 
         <p class="p-aboutus__lead">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。<br>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
 
+        <?php get_search_form(); ?>
 
         <div class="p-aboutus__lists c-card-grid-3">
             <div class="c-card-grid c-card-grid--3">

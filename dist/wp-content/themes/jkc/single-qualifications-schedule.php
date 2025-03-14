@@ -6,9 +6,10 @@
  <div class="p-sub-fv l-sub-fv">
 
   <div class="p-sub-fv__container l-container">
-   <div class="p-sub-fv__title c-page-title">
+   <hgroup class="p-sub-fv__title c-page-title">
     <h1 class="c-page-title__main"><?php the_title(); ?></h1>
-   </div>
+    <p class="c-page-title__sub">JKC Activities</p>
+   </hgroup>
   </div>
 
  </div>
@@ -52,17 +53,15 @@
   <?php if ($the_query->have_posts()): ?>
    <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
 
-    <?php
-    $acf_qu2 = get_field('acf_qu2');
-    if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_org'])): ?>
-     <h3 class="c-heading c-heading--lv3"><?php echo $acf_qu2['acf_qu2_org']; ?></h3>
+    <?php if (get_field('acf_qu2')['acf_qu2_org']): ?>
+     <h3 class="c-heading c-heading--lv3"><?php echo get_field('acf_qu2')['acf_qu2_org']; ?></h3>
     <?php else: ?>
      <h3 class="c-heading c-heading--lv3"><?php the_title(); ?></h3>
     <?php endif; ?>
 
-    <?php if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_office'])): ?>
+    <?php if (get_field('acf_qu2')['acf_qu2_office']): ?>
      <h5 class="c-heading c-heading--lv5">連絡事務所</h5>
-     <p class="c-text"><?php echo $acf_qu2['acf_qu2_office']; ?></p>
+     <p class="c-text"><?php echo get_field('acf_qu2')['acf_qu2_office']; ?></p>
     <?php elseif (get_field('acf_qu_office')) : ?>
      <h5 class="c-heading c-heading--lv5">連絡事務所</h5>
      <p class="c-text"><?php echo get_field('acf_qu_office'); ?></p>

@@ -4,9 +4,9 @@
   <div class="p-sub-fv l-sub-fv">
 
     <div class="p-sub-fv__container l-container">
-      <div class="p-sub-fv__title c-page-title">
+      <hgroup class="p-sub-fv__title c-page-title">
         <h1 class="c-page-title__main">ジャパンケネルクラブチャンネル</h1>
-      </div>
+      </hgroup>
     </div>
 
   </div>

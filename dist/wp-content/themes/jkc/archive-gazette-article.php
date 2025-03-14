@@ -4,9 +4,10 @@
  <div class="p-sub-fv l-sub-fv">
 
   <div class="p-sub-fv__container l-container">
-   <div class="p-sub-fv__title c-page-title">
+   <hgroup class="p-sub-fv__title c-page-title">
     <h1 class="c-page-title__main">JKCガゼットのご案内</h1>
-   </div>
+    <p class="c-page-title__sub">About JKC</p>
+   </hgroup>
   </div>
 
  </div>
@@ -61,7 +62,7 @@
         <article class="c-card-item-style-3 c-card-item-style-3--subgrid">
 
 
-         <div class="c-card-item-style-3__img-wrapper c-card-item-style-3__img-wrapper--tall aspect-auto">
+         <div class="c-card-item-style-3__img-wrapper c-card-item-style-3__img-wrapper--tall">
           <?php if (get_field('acf_article_cover')): ?>
            <?php echo wp_get_attachment_image(get_field('acf_article_cover'), 'full'); ?>
           <?php else: ?>

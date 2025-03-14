@@ -166,12 +166,11 @@ function allowed_block_types_all($allowed_block_types)
     "jkc-block/card-grid-2",
     "jkc-block/card-grid-3",
     "jkc-block/card-grid-4",
-    "jkc-block/card-contest-1",
-    "jkc-block/card-contest-3",
     "jkc-block/card-item-style-1",
     "jkc-block/card-item-style-2",
     "jkc-block/card-item-style-3",
     "jkc-block/card-item-style-4",
+    "jkc-block/contact",
     "jkc-block/flow-horizontal",
     "jkc-block/flow-horizontal-title",
     "jkc-block/flow-horizontal-title-text",
@@ -192,8 +191,6 @@ function allowed_block_types_all($allowed_block_types)
     "jkc-block/definition-list",
     "jkc-block/definition-item",
     "jkc-block/youtube",
-    "jkc-block/contest",
-    "jkc-block/contest-item",
   ]);
   return $allowed_block_types;
 }

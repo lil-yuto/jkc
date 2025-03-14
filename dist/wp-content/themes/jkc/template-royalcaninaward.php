@@ -16,9 +16,10 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
 <main>
   <div class="p-sub-fv l-sub-fv">
     <div class="p-sub-fv__container l-container">
-      <div class="p-sub-fv__title c-page-title">
+      <hgroup class="p-sub-fv__title c-page-title">
         <h1 class="c-page-title__main"><?php echo esc_html( get_the_title() ); ?></h1>
-      </div>
+        <p class="c-page-title__sub">About JKC</p>
+      </hgroup>
     </div>
   </div>
 
@@ -36,6 +37,7 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
       // 親ページがない場合は、トップページまたは指定したURLへ（必要に応じて調整）
       $parent_link = home_url('/');
   }
+  
   // 同じ親を持つ兄弟ページ（グループページ）の一覧を取得
   $siblings = get_pages( array(
       'parent'      => $parent_id,
@@ -52,7 +54,7 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
     </ul>
 
     <ul class="p-royalcanin-group__items">
-      <?php foreach ( $siblings as $sibling ) :
+      <?php foreach ( $siblings as $sibling ) : 
               // 兄弟ページのスラッグからグループ番号（例: group1 → 1）を抽出
               $sibling_slug = $sibling->post_name;
               $sibling_num  = str_replace( 'group', '', $sibling_slug );
@@ -73,9 +75,9 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
     <?php endif; ?>
 
     <?php
-    // ブリードタグ（royalcanin_award_breeds）のタームを取得
+    // ブリードタグ（breed_tag）のタームを取得
     $breed_terms = get_terms( array(
-      'taxonomy' => 'royalcanin_award_breeds',
+      'taxonomy' => 'breed_tag',
       // 必要に応じて 'hide_empty' => false を追加
     ) );
     ?>
@@ -92,7 +94,7 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
             'terms'    => $term,
           ),
           array(
-            'taxonomy' => 'royalcanin_award_breeds',
+            'taxonomy' => 'breed_tag',
             'field'    => 'slug',
             'terms'    => $breed_term->slug,
           )
@@ -109,11 +111,11 @@ $term_id = $term_obj ? $term_obj->term_id : 0;
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <div class="c-card-item-style-3">
                   <article class="c-card-item-style-3">
-          <figure class="c-card-item-style-3__img-wrapper aspect-auto">
+                    <figure class="c-card-item-style-3__img-wrapper">
                       <?php if ( get_field('acf_royalcanin_award')['acf_royalcanin_award_img_url'] ) : ?>
-                        <img decoding="async" src="<?php echo esc_url( get_field('acf_royalcanin_award')['acf_royalcanin_award_img_url'] ); ?>" alt="" width="280" height="200" />
+                        <img decoding="async" src="<?php echo esc_url( get_field('acf_royalcanin_award')['acf_royalcanin_award_img_url'] ); ?>" alt="" />
                       <?php else : ?>
-                        <img decoding="async" src="<?php echo site_url('/') ?>wp-content/uploads/rc_no-image.jpg" alt="No Image" width="280" height="200" />
+                        <img decoding="async" src="<?php echo get_template_directory_uri(); ?>/assets/images/common/cmn-no_image.jpg" alt="No Image" />
                       <?php endif; ?>
                     </figure>
                     <div class="c-card-item-style-3__content">
