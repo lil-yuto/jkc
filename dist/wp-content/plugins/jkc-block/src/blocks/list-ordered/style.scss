@@ -89,7 +89,7 @@
   }
 
   // 外部リンク用のアイコン
-  a[target="_blank"]::after {
+  a[href^="http"]:not([href*="#{$domain}"])::after {
     content: "";
     display: inline-block;
     width: em(17.5, 18);

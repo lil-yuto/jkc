@@ -4,6 +4,7 @@
 .wp-block-jkc-block-text-link {
   .c-block-text-link__items {
     display: flex;
+    flex-wrap: wrap;
     gap: rem(20) rem(30);
     list-style: none;
     margin-block: var(--block-margin-top) var(--block-margin-bottom);

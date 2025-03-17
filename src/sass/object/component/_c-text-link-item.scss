@@ -61,7 +61,7 @@
 	}
 
 	// 外部リンク用のアイコン
-	.c-text-link-item__link[target="_blank"]::after {
+	.c-text-link-item__link[href^="http"]:not([href*="#{$domain}"])::after {
 		content: "";
 		display: inline-block;
 		width: em(22, 18);
@@ -80,7 +80,7 @@
 			opacity: 1;
 		}
 		.c-text-link-item[href$=".pdf"]:hover::after,
-		.c-text-link-item[target="_blank"]:hover::after {
+		.c-text-link-item[href^="http"]:not([href*="#{$domain}"]):hover::after {
 			--translate: 0;
 		}
 	}
