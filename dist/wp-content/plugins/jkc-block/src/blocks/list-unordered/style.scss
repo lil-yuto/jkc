@@ -59,7 +59,7 @@
   }
 
   // 外部リンク用のアイコン
-  a[target="_blank"]::after {
+  a[href^="http"]:not([href*="#{$domain}"])::after {
     content: "";
     display: inline-block;
     width: em(17.5, 18);
@@ -120,7 +120,7 @@
     padding: rem(20);
     background-color: $color-accent-gray;
   }
-  
+
   .has-light-gray-color {
     color: $color-accent-gray-light;
   }
@@ -132,7 +132,7 @@
   .has-light-yellow-color {
     color: $color-accent-yellow-light;
   }
-  
+
   .has-light-yellow-background-color {
     padding: rem(20);
     background-color: $color-accent-yellow-light;

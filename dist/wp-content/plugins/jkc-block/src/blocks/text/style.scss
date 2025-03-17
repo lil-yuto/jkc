@@ -50,7 +50,7 @@
   }
 
   // 外部リンク用のアイコン
-  .c-block-text a[target="_blank"]::after {
+  .c-block-text a[href^="http"]:not([href*="#{$domain}"])::after {
     content: "";
     display: inline-block;
     width: em(17.5, 18);
