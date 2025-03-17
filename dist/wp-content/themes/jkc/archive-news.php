@@ -54,32 +54,9 @@
                   // カテゴリーを取得
                   $terms = get_the_terms(get_the_ID(), 'news_category');
                   $category_name = $terms ? $terms[0]->name : '';
-
-                  // リンク先とターゲット属性を決定
-                  $link_url = '';
-                  $target = '';
-
-                  // 優先度順にリンク先を判定
-                  $pdf_file = get_field('acf_news_pdf');
-                  if (!empty($pdf_file) && is_array($pdf_file)) {
-                    // ファイル配列からURLを取得
-                    $link_url = $pdf_file['url'];
-                    // ターゲット設定を確認
-                    if (get_field('acf_news_target')) {
-                      $target = ' target="_blank" rel="noopener noreferrer"';
-                    }
-                  } elseif ($external_url = get_field('acf_news_url')) {
-                    $link_url = $external_url;
-                    // ターゲット設定を確認
-                    if (get_field('acf_news_target')) {
-                      $target = ' target="_blank" rel="noopener noreferrer"';
-                    }
-                  } else {
-                    $link_url = get_the_permalink();
-                  }
                 ?>
                   <li>
-                    <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item"<?php echo $target; ?>>
+                    <a href="<?php the_permalink(); ?>" class="p-posts__item">
                       <time datetime="<?php echo get_the_date('Y-m-d'); ?>" class="p-posts__date"><?php echo get_the_date('Y.n.j'); ?></time>
                       <p class="p-posts__category"><?php echo $category_name; ?></p>
                       <p class="p-posts__title"><?php the_title(); ?></p>
@@ -100,6 +77,7 @@
     <?php endif; ?>
 
   </div>
+
 </main>
 
 <?php get_footer() ?>

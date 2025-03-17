@@ -39,18 +39,18 @@
                   $target_value = $target ? '_blank' : '_self';
                   if ($pc_img_url && $sp_img_url) : ?>
                     <li class="splide__slide">
-                      <?php if ($url) : ?>
-                        <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>">
+                        <?php if ($url) : ?>
+                          <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>">
                         <?php else : ?>
                           <a>
-                          <?php endif; ?>
+                        <?php endif; ?>
                           <picture>
                             <source media="(min-width: 768px)" srcset="<?php echo esc_url($pc_img_url); ?>">
                             <img src="<?php echo esc_url($sp_img_url); ?>" alt="<?php the_title_attribute(); ?>" />
                           </picture>
-                          </a>
-                    </li>
-              <?php endif;
+                        </a>
+                      </li>
+                    <?php endif;
                 endwhile;
                 wp_reset_postdata();
               endif;
@@ -69,64 +69,33 @@
           </div>
           <ul class="p-pickup__list">
             <?php
-            $args = [
-              'post_type' => 'news',
-              'posts_per_page' => 3,
-              'meta_query' => [
-                [
-                  'key' => 'acf_news_pickup',
-                  'value' => '1',
-                  'compare' => '='
-                ]
-              ]
-            ];
-            $the_query = new WP_Query($args);
-            if ($the_query->have_posts()) :
-              while ($the_query->have_posts()) : $the_query->the_post();
-                // リンク先とターゲット属性を決定
-                $link_url = '';
-                $target = '';
-
-                // 優先度順にリンク先を判定
-                $pdf_file = get_field('acf_news_pdf');
-                if (!empty($pdf_file) && is_array($pdf_file)) {
-                  // ファイル配列からURLを取得
-                  $link_url = $pdf_file['url'];
-                  // ターゲット設定を確認
-                  if (get_field('acf_news_target')) {
-                    $target = ' target="_blank" rel="noopener noreferrer"';
-                  }
-                } elseif ($external_url = get_field('acf_news_url')) {
-                  $link_url = $external_url;
-                  // ターゲット設定を確認
-                  if (get_field('acf_news_target')) {
-                    $target = ' target="_blank" rel="noopener noreferrer"';
-                  }
-                } else {
-                  $link_url = get_the_permalink();
-                }
+              $args = [
+                'post_type' => 'news',
+                'posts_per_page' => 3,
+              ];
+              $the_query = new WP_Query( $args );
+              if ( $the_query->have_posts() ) :
+              while ( $the_query->have_posts() ) : $the_query->the_post();
             ?>
-                <li>
-                  <a href="<?php echo esc_url($link_url); ?>" class="p-pickup__item p-post" <?php echo $target; ?>>
-                    <time datetime="<?php the_time('Y-m-d'); ?>" class="p-post__date">
-                      <?php echo get_the_date('Y.n.j'); ?>
-                    </time>
-                    <p class="p-post__category c-label">
-                      <?php
-                      $taxonomy_term = get_the_terms($post->ID, 'news_category');
-                      echo $taxonomy_term[0]->name;
-                      ?>
-                    </p>
-                    <p class="p-post__title">
-                      <?php the_title(); ?>
-                    </p>
-                  </a>
-                </li>
-            <?php
-              endwhile;
-            endif;
-            wp_reset_postdata();
-            ?>
+            <li>
+              <a href="<?php the_permalink(); ?>" class="p-pickup__item p-post">
+                <time datetime="<?php the_time('Y-m-d'); ?>" class="p-post__date">
+                  <?php echo get_the_date('Y.n.j'); ?>
+                </time>
+                <p class="p-post__category c-label">
+                  <?php
+                    $taxonomy_term = get_the_terms($post->ID,'news_category');
+                    echo $taxonomy_term[0]->name;
+                  ?>
+                </p>
+                <p class="p-post__title">
+                  <?php the_title(); ?>
+                </p>
+              </a>
+            </li>
+            <?php endwhile; else: ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
           </ul>
         </div>
       </div>
@@ -147,7 +116,7 @@
       <div class="p-top-news__content">
         <div class="p-top-news__categories">
           <ul class="p-top-news__category-list">
-            <li><button class="p-top-news__category-link c-label-white news-filter active" data-term="all">全て</button></li>
+          <li><button class="p-top-news__category-link c-label-white news-filter active" data-term="all">全て</button></li>
             <?php
             $terms = get_terms([
               'taxonomy' => 'news_category',
@@ -164,15 +133,15 @@
         <div class="p-top-news__posts p-posts">
           <ul class="p-posts__list" id="news-list">
             <?php
-            $args_news = [
-              'post_type'      => 'news',
-              'posts_per_page' => -1,
-              'orderby'        => 'date',
-              'order'          => 'DESC'
-            ];
-            $query_news = new WP_Query($args_news);
-            if ($query_news->have_posts()) :
-              while ($query_news->have_posts()) : $query_news->the_post();
+              $args_news = [
+                'post_type'      => 'news',
+                'posts_per_page' => -1,
+                'orderby'        => 'date',
+                'order'          => 'DESC'
+              ];
+              $query_news = new WP_Query($args_news);
+              if ($query_news->have_posts()) :
+                while ($query_news->have_posts()) : $query_news->the_post();
                 $taxonomy_terms = get_the_terms($post->ID, 'news_category');
                 $term_slugs = [];
                 if ($taxonomy_terms) {
@@ -180,44 +149,21 @@
                     $term_slugs[] = $term->slug;
                   }
                 }
-
-                // リンク先とターゲット属性を決定
-                $link_url = '';
-                $target = '';
-
-                // 優先度順にリンク先を判定
-                $pdf_file = get_field('acf_news_pdf');
-                if (!empty($pdf_file) && is_array($pdf_file)) {
-                  // ファイル配列からURLを取得
-                  $link_url = $pdf_file['url'];
-                  // ターゲット設定を確認
-                  if (get_field('acf_news_target')) {
-                    $target = ' target="_blank" rel="noopener noreferrer"';
-                  }
-                } elseif ($external_url = get_field('acf_news_url')) {
-                  $link_url = $external_url;
-                  // ターゲット設定を確認
-                  if (get_field('acf_news_target')) {
-                    $target = ' target="_blank" rel="noopener noreferrer"';
-                  }
-                } else {
-                  $link_url = get_the_permalink();
-                }
-            ?>
-                <li class="news-item" data-category="<?php echo esc_attr(implode(' ', $term_slugs)); ?>">
-                  <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item" <?php echo $target; ?>>
-                    <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
-                      <?php echo get_the_date('Y.n.j'); ?>
-                    </time>
-                    <p class="p-posts__category">
-                      <?php echo esc_html($taxonomy_terms[0]->name); ?>
-                    </p>
-                    <p class="p-posts__title">
-                      <?php the_title(); ?>
-                    </p>
-                  </a>
-                </li>
-              <?php endwhile; ?>
+              ?>
+              <li class="news-item" data-category="<?php echo esc_attr(implode(' ', $term_slugs)); ?>">
+                <a href="<?php the_permalink(); ?>" class="p-posts__item">
+                  <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
+                    <?php echo get_the_date('Y.n.j'); ?>
+                  </time>
+                  <p class="p-posts__category">
+                    <?php echo esc_html($taxonomy_terms[0]->name); ?>
+                  </p>
+                  <p class="p-posts__title">
+                    <?php the_title(); ?>
+                  </p>
+                </a>
+              </li>
+            <?php endwhile; else: ?>
             <?php endif; ?>
             <?php wp_reset_postdata(); ?>
           </ul>
@@ -368,39 +314,39 @@
       <ul class="p-top-banner__list">
         <?php
         $args = array(
-          'post_type'      => 'footer_banner',
-          'posts_per_page' => -1,
-          'orderby'        => 'menu_order',
-          'order'          => 'ASC',
+            'post_type'      => 'footer_banner',
+            'posts_per_page' => -1,
+            'orderby'        => 'menu_order',
+            'order'          => 'ASC',
         );
         $footer_banner_query = new WP_Query($args);
         if ($footer_banner_query->have_posts()) :
-          while ($footer_banner_query->have_posts()) : $footer_banner_query->the_post();
-            $img_s_id = get_field('acf_ftbanner_img_s');
-            $img_l_id = get_field('acf_ftbanner_img_l');
-            $url = get_field('acf_ftbanner_url');
-            $target = get_field('acf_ftbanner_target');
-            $img_s_url = $img_s_id ? wp_get_attachment_image_url($img_s_id, 'full') : '';
-            $img_l_url = $img_l_id ? wp_get_attachment_image_url($img_l_id, 'full') : '';
-            $target_value = $target ? '_blank' : '_self';
-            if ($img_s_url || $img_l_url) : ?>
-              <li class="splide__slide">
-                <?php if ($url) : ?>
-                  <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>" rel="noopener noreferrer" class="p-top-banner__item">
-                  <?php else : ?>
-                    <a>
-                    <?php endif; ?>
-                    <?php if ($img_s_url) : ?>
-                      <img src="<?php echo esc_url($img_s_url); ?>" alt="<?php the_title_attribute(); ?>" />
-                    <?php endif; ?>
-                    <?php if ($img_l_url) : ?>
-                      <img src="<?php echo esc_url($img_l_url); ?>" alt="<?php the_title_attribute(); ?>" />
-                    <?php endif; ?>
-                    </a>
-              </li>
-        <?php endif;
-          endwhile;
-          wp_reset_postdata();
+            while ($footer_banner_query->have_posts()) : $footer_banner_query->the_post();
+                $img_s_id = get_field('acf_ftbanner_img_s');
+                $img_l_id = get_field('acf_ftbanner_img_l');
+                $url = get_field('acf_ftbanner_url');
+                $target = get_field('acf_ftbanner_target');
+                $img_s_url = $img_s_id ? wp_get_attachment_image_url($img_s_id, 'full') : '';
+                $img_l_url = $img_l_id ? wp_get_attachment_image_url($img_l_id, 'full') : '';
+                $target_value = $target ? '_blank' : '_self';
+                if ($img_s_url || $img_l_url) : ?>
+                    <li class="splide__slide">
+                        <?php if ($url) : ?>
+                          <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>" rel="noopener noreferrer" class="p-top-banner__item">
+                        <?php else : ?>
+                          <a>
+                        <?php endif; ?>
+                          <?php if ($img_s_url) : ?>
+                            <img src="<?php echo esc_url($img_s_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                          <?php endif; ?>
+                          <?php if ($img_l_url) : ?>
+                            <img src="<?php echo esc_url($img_l_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                          <?php endif; ?>
+                        </a>
+                    </li>
+                <?php endif;
+            endwhile;
+            wp_reset_postdata();
         endif;
         ?>
       </ul>
@@ -411,5 +357,4 @@
     <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-to-top-ico01.png" alt="TOPへ戻る" />
   </a>
 </main>
-
 <?php get_footer() ?>

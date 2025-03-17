@@ -4,10 +4,9 @@
  <div class="p-sub-fv l-sub-fv">
 
   <div class="p-sub-fv__container l-container">
-   <hgroup class="p-sub-fv__title c-page-title">
+   <div class="p-sub-fv__title c-page-title">
     <h1 class="c-page-title__main">犬種紹介</h1>
-    <p class="c-page-title__sub">About JKC</p>
-   </hgroup>
+   </div>
   </div>
 
  </div>
@@ -95,7 +94,8 @@
     </div>
    </div>
 
-   <?php if ($_GET['sort'] === 'alphabet'): ?>
+  <?php if (isset($_GET['sort']) && $_GET['sort'] === 'alphabet'): ?>
+
     <?php get_template_part('parts-search-from-alphabet'); ?>
    <?php else: ?>
     <?php get_template_part('parts-search-from-katakana'); ?>
@@ -105,10 +105,22 @@
 
   <?php wp_reset_postdata(); ?>
 
+  <div class="p-breeds__about">
+    <?php
+    // 犬種についてページを固定ページから取得して、表示する
+    $slug = 'breeds-about';
+    $content_post = get_post(get_page_by_path($slug, OBJECT, 'page')->ID);
+    if ($content_post) {
+      setup_postdata($GLOBALS['post'] =& $content_post);
 
-  <!-- <//?php the_content(); ?> -->
+      the_content();
 
- </div>
+      wp_reset_postdata();
+    }
+    ?>
+  </div>
+
+  </div>
 
 </main>
 

@@ -2,7 +2,7 @@
 
 /**
  * CSSとJavaScriptの読み込み
- * 
+ *
  */
 function my_script_init()
 {
@@ -19,15 +19,13 @@ function my_script_init()
   // Google Fonts
   wp_enqueue_style('NotoSansJP', '//fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
   wp_enqueue_style('NotoSerifJP', '//fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
-  // Splide CSS
+  // Splide
   wp_enqueue_style('splide', '//cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css');
+  wp_enqueue_script('splide', '//cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', "", "1.0.1", true);
   // Original
   wp_enqueue_style('my', get_template_directory_uri() . '/assets/css/styles.css', array(), filemtime(get_theme_file_path('/assets/css/styles.css')), false);
   wp_enqueue_script('my', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), filemtime(get_theme_file_path('/assets/js/script.js')), true);
 
-  
-  // Splide JS
-  wp_enqueue_script('splide', '//cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', "", "1.0.1", true);
 }
 
 add_action('wp_enqueue_scripts', 'my_script_init');
