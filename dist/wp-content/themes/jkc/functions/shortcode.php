@@ -417,3 +417,55 @@ add_shortcode('child_posts_list', function () {
 
   return $html_code;
 });
+
+/**
+ * カスタム投稿タイプの一覧を表示するショートコード
+ *
+ * このショートコードは、指定されたカスタム投稿タイプの一覧を表示します。
+ * 使用例: [custom_post_list post_type="picture_contest"]
+ */
+add_shortcode('custom_post_list', function ($atts) {
+  // デフォルト値の設定
+  $atts = shortcode_atts(array(
+    'post_type' => '',
+    'posts_per_page' => -1,
+    'orderby' => 'date',
+    'order' => 'DESC',
+  ), $atts, 'custom_post_list');
+
+  $html_code = '';
+
+  // 投稿タイプが指定されていない場合はメッセージを表示
+  if (empty($atts['post_type'])) {
+    $html_code .= '<p class="c-text">投稿タイプを指定してください。例: [custom_post_list post_type="picture_contest"]</p>';
+    return $html_code;
+  }
+
+  $args = array(
+    'post_type' => $atts['post_type'],
+    'posts_per_page' => intval($atts['posts_per_page']),
+    'orderby' => $atts['orderby'],
+    'order' => $atts['order'],
+  );
+
+  $the_query = new WP_Query($args);
+
+  if ($the_query->have_posts()):
+    $html_code .= '<div class="c-text-link">';
+    $html_code .= '<ul class="c-text-link__items">';
+
+    while ($the_query->have_posts()): $the_query->the_post();
+      $html_code .= '<li class="c-text-link__item">';
+      $html_code .= '<a href="' . get_permalink() . '" class="c-text-link__link">' . get_the_title() . '</a>';
+      $html_code .= '</li>';
+    endwhile;
+
+    $html_code .= '</ul>';
+    $html_code .= '</div>';
+  else:
+    $html_code .= '<p class="c-text">コンテンツはまだありません。</p>';
+  endif;
+
+  wp_reset_postdata();
+  return $html_code;
+});
