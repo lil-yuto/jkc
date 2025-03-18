@@ -1,3 +1,8 @@
+<!-- TOPへ戻るボタン -->
+<a href="#" class="c-to-top-button js-c-to-top-button">
+  <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-to-top-ico01.png" alt="TOPへ戻る" />
+</a>
+
 <footer class="l-footer">
   <div class="l-footer__container l-container">
     <div class="l-footer__logos">
