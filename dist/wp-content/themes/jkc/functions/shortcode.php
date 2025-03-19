@@ -469,3 +469,77 @@ add_shortcode('custom_post_list', function ($atts) {
   wp_reset_postdata();
   return $html_code;
 });
+
+/**
+ * ガゼット記事カテゴリーごとの表示用ショートコード
+ */
+add_shortcode('gazette_article_list', function ($atts) {
+    ob_start();
+
+    $taxonomy_name = 'gazette-article_category';
+    $term_lists = get_terms(array(
+        'taxonomy' => $taxonomy_name,
+    ));
+
+    foreach ($term_lists as $term_item):
+    ?>
+    <div class="p-gazette-article__term">
+        <h3 class="p-gazette-article__heading--lv3 c-heading c-heading--lv3"><?php echo esc_html($term_item->name); ?></h3>
+
+        <div class="p-gazette-article__lists c-card-grid-3">
+        <div class="c-card-grid c-card-grid--3">
+
+            <?php
+            $post_type = get_post_type();
+            $args = array(
+            'post_type' => $post_type,
+            'posts_per_page' => -1,
+            'tax_query' => array(
+                array(
+                'taxonomy' => $taxonomy_name,
+                'field' => 'slug',
+                'terms' => $term_item->slug,
+                )
+            )
+            );
+            $the_query = new WP_Query($args);
+            ?>
+
+            <?php if ($the_query->have_posts()): ?>
+            <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
+                <article class="c-card-item-style-3 c-card-item-style-3--subgrid">
+                <div class="c-card-item-style-3__img-wrapper c-card-item-style-3__img-wrapper--tall aspect-auto">
+                    <?php if (get_field('acf_article_cover')): ?>
+                    <?php echo wp_get_attachment_image(get_field('acf_article_cover'), 'full'); ?>
+                    <?php else: ?>
+                    <img decoding="async" src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-no_image.jpg" alt="" />
+                    <?php endif; ?>
+                </div>
+
+                <h4 class="c-card-item-style-3__title u-text-align-center"><?php the_title(); ?></h4>
+                <?php if (get_field('acf_article_published')): ?>
+                    <p class="c-card-item-style-3__subtitle"><?php the_field('acf_article_published'); ?></p>
+                <?php endif; ?>
+
+                <?php if (get_field('acf_article_text')): ?>
+                    <p class="c-card-item-style-3__description"><?php the_field('acf_article_text'); ?></p>
+                <?php endif; ?>
+                <?php if (get_field('acf_article_pdf')): ?>
+                    <div class="c-card-item-style-3__button-wrapper">
+                    <a href="<?php echo esc_url(get_field('acf_article_pdf')); ?>" class="c-card-item-style-3__button" target="_blank">詳しく見る</a>
+                    </div>
+                <?php endif; ?>
+                </article>
+            <?php endwhile; ?>
+            <?php endif; ?>
+
+        </div>
+        </div>
+    </div>
+    <?php
+    endforeach;
+
+    wp_reset_postdata();
+
+    return ob_get_clean();
+});
