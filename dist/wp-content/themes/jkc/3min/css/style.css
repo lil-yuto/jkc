@@ -305,7 +305,7 @@ meter {
         margin: 0 auto;
         z-index: 1;
         aspect-ratio: 746 / 1212;
-        background: none;
+        overflow: hidden;
     }
 }
 
@@ -326,8 +326,11 @@ meter {
         background-size: 100% auto;
         z-index: 2;
         left: 50%;
-        transform: translateX(-50%);
+        width: 205%;
+        overflow-x: hidden;
+        transform: translateX(-46.4%);
         height: 100%;
+        margin-top: -5rem;
     }
 }
 
@@ -687,6 +690,7 @@ meter {
 @media screen and (max-width: 767px) {
     .p-sec01 {
         margin-top: -20rem;
+        background: #fff;
     }
 }
 
@@ -699,7 +703,7 @@ meter {
 
 @media screen and (max-width: 500px) {
     .p-sec01 {
-        margin-top: -10rem;
+        margin-top: -15rem;
         background: #fff;
     }
 }

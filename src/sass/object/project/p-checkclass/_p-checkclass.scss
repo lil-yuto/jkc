@@ -1,0 +1,7 @@
+@use 'sass:math';
+@use 'global' as *;
+
+tr.current td {
+
+  background-color: #edf5ef !important;
+}
