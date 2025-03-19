@@ -44,10 +44,10 @@ Description: このテンプレートは、固定ページの子ページをリ�
           <?php
           // ACFの隠しページオプションから非表示にする投稿IDを取得
           $hidden_ids = [];
-          if (have_rows('hidden_repeat', 'option')) {
-            while (have_rows('hidden_repeat', 'option')) {
+          if (have_rows('hide_repeat', 'option')) {
+            while (have_rows('hide_repeat', 'option')) {
               the_row();
-              $hidden_post = get_sub_field('hidden_object');
+              $hidden_post = get_sub_field('hidden_repeat_page');
               if ($hidden_post) {
                 $hidden_ids[] = $hidden_post->ID;
               }
