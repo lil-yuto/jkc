@@ -1,0 +1,63 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-event-result__lists {
+	margin-block: rem(30);
+	@include mq-down() {
+		margin-block: rem(15);
+	}
+}
+
+.p-event-result__setview_wrap {
+	display: flex;
+	flex-direction: row-reverse;
+	column-gap: rem(20);
+	margin-block: rem(127) 0;
+	@include mq-down() {
+		justify-content: center;
+		column-gap: rem(35);
+		margin-block: rem(48) 0;
+	}
+}
+
+.p-event__full_open {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: rem(176);
+	font-size: rem(16);
+	font-weight: $bold;
+	letter-spacing: 0.05em;
+	color: $color-base;
+	background-color: $palette-salem;
+	border-radius: rem(5);
+	padding-block: rem(7);
+	@include mq-down() {
+		font-size: rem(13);
+	}
+}
+
+.p-event-result__compare_enable {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: rem(176);
+	font-size: rem(16);
+	font-weight: $bold;
+	letter-spacing: 0.05em;
+	color: $palette-darkGray;
+	background-color: #f3f3f3;
+	border-radius: rem(5);
+	border: 1px solid $palette-gray;
+	padding-block: rem(7);
+	@include mq-down() {
+		font-size: rem(13);
+	}
+}
+
+.p-event-result_modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+z-index: 35;
+}

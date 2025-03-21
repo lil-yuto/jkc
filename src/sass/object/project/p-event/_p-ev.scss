@@ -1,0 +1,406 @@
+@use "sass:math";
+@use "global" as *;
+
+// .p-ev {
+// 	display: grid;
+// 	grid-template-columns: max-content 1fr auto auto;
+// }
+
+.p-ev__item {
+	border: 1px solid $palette-alto;
+}
+
+.p-ev__item + .p-ev__item {
+	margin-block: rem(20) 0;
+}
+
+.p-ev__menu {
+	display: grid;
+	// grid-template-columns: subgrid;
+	// grid-template-rows: subgrid;
+	// grid-column: 1 / -1;
+	grid-template-columns: minmax(rem(182), max-content) 1fr minmax(rem(180), max-content) auto;
+	column-gap: rem(18);
+	color: $palette-darkGray;
+	padding: rem(20);
+	@include mq-down() {
+		display: block;
+		position: relative;
+	}
+}
+
+.p-ev_infoarea1 {
+	padding-block: rem(10);
+	padding-inline: rem(10) 0;
+	@include mq-down() {
+		padding-inline: 0;
+	}
+}
+
+.p-ev_title p {
+	font-size: rem(14);
+	font-weight: $medium;
+	letter-spacing: 0.05em;
+	line-height: calc(math.div(26, 14));
+	width: max-content;
+	background-color: $palette-lightGreen;
+	padding-inline: rem(10);
+	@include mq-down() {
+		font-size: rem(13);
+	}
+}
+
+.p-ev_date {
+	font-size: rem(18);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(30, 18));
+	margin-block-start: rem(15);
+	@include mq-down() {
+		font-size: rem(16);
+		margin-block-start: rem(10);
+	}
+}
+
+.p-ev__BTB {
+	margin-block: rem(15) 0;
+}
+
+.p-ev__BTB div {
+	font-size: rem(18);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: 1;
+	color: $color-base;
+	width: rem(40);
+	height: rem(40);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: rem(4);
+	background-color: $palette-gold;
+}
+
+.p-ev_infoarea2 {
+	padding-block: rem(10) rem(5);
+	@include mq-down() {
+		padding-block: rem(20) rem(10);
+	}
+}
+
+.p-ev__term p {
+	width: max-content;
+	font-size: rem(14);
+	font-weight: $medium;
+	letter-spacing: 0.05em;
+	line-height: calc(math.div(26, 14));
+	color: $color-base;
+	border-radius: rem(5);
+	padding: rem(0) rem(11);
+	@include mq-down() {
+		font-size: rem(13);
+	}
+}
+
+.p-ev__name {
+	margin-block: rem(14) 0;
+	@include mq-down() {
+		margin-block: rem(10) 0;
+	}
+}
+
+.p-ev__title {
+	font-size: rem(18);
+	font-weight: $bold;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(32, 18));
+	@include mq-down() {
+		font-size: rem(16);
+		line-height: calc(math.div(24, 16));
+	}
+}
+
+.p-ev__venue {
+	font-size: rem(16);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(32, 16));
+	@include mq-down() {
+		font-size: rem(14);
+		margin-block: rem(5);
+	}
+}
+
+.p-ev__site-link {
+	display: inline-flex;
+	align-items: center;
+	column-gap: 0.44em;
+	font-size: rem(18);
+	font-weight: $bold;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(32, 18));
+	color: #c83030;
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.p-ev__site-link[target="_blank"]::after {
+	content: "";
+	display: inline-block;
+	width: 1.333em;
+	aspect-ratio: 1;
+	background-color: #898989;
+	mask-image: url(../images/common/cmn-link-blank-ico01.svg);
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+	translate: var(--translate);
+	transition: background-color $duration-default, translate $duration-default;
+}
+
+.p-ev_infoarea3 {
+	padding-block: rem(10);
+	@include mq-down() {
+		padding-block: rem(10) rem(5);
+	}
+}
+
+.p-ev_office-title p {
+	width: max-content;
+	font-size: rem(14);
+	font-weight: $medium;
+	letter-spacing: 0.05em;
+	background-color: $palette-lightGreen;
+	padding-block: rem(3);
+	padding-inline: rem(10);
+	@include mq-down() {
+		font-size: rem(13);
+	}
+}
+
+.p-ev__office-name {
+	margin-block: rem(15) 0;
+}
+
+.p-ev__office-name p {
+	font-size: rem(18);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(27, 18));
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.p-ev__tel-fax,
+.p-ev__tel,
+.p-ev__tel {
+	font-size: rem(16);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(24, 16));
+	margin-block: rem(5) 0;
+}
+
+.p-ev__tel-fax span {
+	display: block;
+}
+
+.p-ev_infoarea4 {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-block-end: rem(10);
+	@include mq-down() {
+		padding-block: rem(25) rem(3);
+	}
+}
+
+.p-ev__comp-check {
+	@include mq-down() {
+		position: absolute;
+		top: rem(30);
+		bottom: auto;
+		left: auto;
+		right: rem(30);
+		transform: translate(0, 0);
+	}
+}
+
+.p-ev__comp-input {
+	position: relative;
+	display: block;
+	width: rem(30);
+	height: rem(30);
+	border: 2px solid $palette-salem;
+	border-radius: rem(4);
+	cursor: pointer;
+	margin-left: auto;
+}
+
+.p-ev__comp-input:checked::before {
+	position: absolute;
+	top: calc(math.div(5, 30) * 100%);
+	bottom: auto;
+	left: calc(math.div(20, 30) * 100%);
+	right: auto;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	content: "";
+	display: block;
+	width: rem(30);
+	height: rem(15);
+	border-left: 3px solid $palette-salem;
+	border-bottom: 3px solid $palette-salem;
+}
+
+.p-ev__accordion-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $palette-salem;
+	border-radius: rem(5);
+	cursor: pointer;
+	padding-block: rem(13);
+	padding-inline: rem(25);
+	margin-inline-end: rem(10);
+	@include mq-down() {
+		width: rem(152);
+		margin-inline: auto;
+	}
+}
+
+.p-ev__menu_btn {
+	font-size: rem(18);
+	font-weight: $bold;
+	letter-spacing: 0.05em;
+	color: $color-base;
+	padding-inline-end: rem(15);
+	position: relative;
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.p-ev__menu_btn::before {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: 0;
+	transform: translate(0, -50%);
+	display: block;
+	content: "";
+	width: rem(13);
+	height: rem(2);
+	background-color: $color-base;
+	// background-color: red;
+}
+
+.p-ev__menu_btn::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: rem(5.5);
+	transform: translate(0, -50%);
+	display: block;
+	content: "";
+	height: rem(13);
+	width: rem(2);
+	background-color: $color-base;
+	// background-color: red;
+	transition: transform 0.3s ease-out;
+}
+
+.p-ev__item.accordionOpen .p-ev__menu_btn::after {
+	transform: translate(0, -50%) rotate(90deg);
+}
+
+.p-ev__item.is_hide,
+.p-ev__item.is_hide.accordionOpen {
+	display: none;
+}
+
+.p-ev__subMenu {
+	overflow: hidden;
+	height: 0;
+}
+
+.p-ev__moredetail {
+	padding-block: 0 rem(105);
+	padding-inline: rem(40);
+	@include mq-down() {
+		padding-inline: rem(20);
+	}
+}
+
+.p-ev_info1 {
+	font-size: rem(18);
+	letter-spacing: 0.03em;
+	line-height: 2;
+	margin-block: 0 rem(20);
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.p-ev__judge {
+	font-size: rem(18);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(36, 18));
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.p-ev__judge .p-ev__judge-heading {
+	font-size: rem(20);
+	font-weight: $bold;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(34, 20));
+	color: #0f6933;
+	@include mq-down() {
+		font-size: rem(18);
+	}
+}
+
+.p-ev__judge h4 {
+	font-size: rem(18);
+	font-weight: $bold;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(21, 18));
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.p-ev__judge h4 ~ h4 {
+	margin-block-start: rem(35);
+}
+
+.p-ev__judge-name {
+	margin-block: rem(8);
+}
+
+.p-ev_info2 {
+	font-size: rem(18);
+	letter-spacing: 0.03em;
+	line-height: 2;
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}
+
+.p-ev__modified_date {
+	font-size: rem(18);
+	font-weight: $regular;
+	letter-spacing: 0.03em;
+	line-height: calc(math.div(27, 18));
+	text-align: right;
+	margin-block: rem(15) 0;
+	@include mq-down() {
+		font-size: rem(16);
+	}
+}

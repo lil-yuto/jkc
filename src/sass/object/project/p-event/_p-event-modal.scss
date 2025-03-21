@@ -1,0 +1,95 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-event-modal {
+	width: 100%;
+	height: 100vh;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity $duration-default;
+}
+
+.p-event-result__compare.modalOpen .p-event-modal {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.p-event-modal__wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba($color-main, 0.5);
+	width: 100%;
+	height: 100%;
+	padding: rem(15);
+}
+
+.p-event-modal__message {
+	width: rem(455);
+	background-color: $color-base;
+	padding: rem(10);
+	@include mq-down() {
+		width: 100%;
+		max-width: rem(345);
+	}
+}
+
+.p-event-modal__closeBtn {
+	width: rem(48);
+	height: rem(48);
+	border-radius: rem(5);
+	background-color: $palette-creamCan;
+	cursor: pointer;
+	margin-inline: auto 0;
+	position: relative;
+}
+
+.p-event-modal__closeBtn::before {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, 0) rotate(45deg);
+	display: block;
+	content: "";
+	width: rem(30);
+	height: 2px;
+	background-color: $palette-salem;
+}
+
+.p-event-modal__closeBtn::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, 0) rotate(-45deg);
+	display: block;
+	content: "";
+	width: rem(30);
+	height: 2px;
+	background-color: $palette-salem;
+}
+
+.p-event-modal__sentence {
+	padding-inline: rem(40);
+	padding-block: 0 rem(26.5);
+	@include mq-down() {
+		padding-inline: rem(20);
+	}
+}
+
+.p-event-modal__title {
+	font-size: rem(18);
+	font-weight: $bold;
+	margin-block: rem(16) 0;
+}
+
+.p-event-modal__txt {
+	font-size: rem(18);
+	font-weight: $medium;
+	line-height: calc(math.div(26, 18));
+	color: #333333;
+	margin-block: rem(25) 0;
+}
