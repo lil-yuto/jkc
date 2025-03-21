@@ -490,9 +490,8 @@ add_shortcode('gazette_article_list', function ($atts) {
         <div class="c-card-grid c-card-grid--3">
 
             <?php
-            $post_type = get_post_type();
             $args = array(
-            'post_type' => $post_type,
+            'post_type' => 'gazette-article',
             'posts_per_page' => -1,
             'tax_query' => array(
                 array(
