@@ -4,7 +4,7 @@
 function custom_handle_404()
 {
   // 検索ページ、作成者ページ、添付ファイルページを無効化
-  if (is_search() || is_author() || is_attachment()) {
+  if (/* is_search() ||  */is_author() || is_attachment()) {
     global $wp_query;
     $wp_query->set_404();
     status_header(404);
