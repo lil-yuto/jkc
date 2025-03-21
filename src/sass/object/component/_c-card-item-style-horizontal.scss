@@ -68,12 +68,12 @@
 	}
 }
 
-.c-card-item-style-horizontal__description p.max-2row {
+.c-card-item-style-horizontal__description p.max-1row {
 	overflow: hidden;
 	display: -webkit-box;
 	text-overflow: ellipsis;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
+	-webkit-line-clamp: 1;
 }
 
 .c-card-item-style-horizontal__button-wrapper {
