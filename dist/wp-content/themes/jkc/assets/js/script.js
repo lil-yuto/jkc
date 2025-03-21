@@ -85,15 +85,14 @@ document.addEventListener("DOMContentLoaded", function () {
 				document.querySelector("header").classList.remove("burgerOpen");
 				document.querySelector(".l-menu-button__text").innerText = "MENU";
 				document.querySelector("body").style.cssText = `width: 100%;
-    overflow: visible;
-    height: auto;`;
+    overflow: visible;`;
 			} else {
 				let bodyWidth = document.body.clientWidth;
 				document.querySelector("header").classList.add("burgerOpen");
 				document.querySelector(".l-menu-button__text").innerText = "CLOSE";
-				document.querySelector("body").style.cssText = `width: ${bodyWidth};
-    overflow: hidden;
-    height: 100.001vh;`;
+				document.querySelector("body").style.cssText = `width: ${bodyWidth}px;
+				overflow: hidden;`;
+
 			}
 		});
 	});
