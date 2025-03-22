@@ -9,7 +9,15 @@ export default function save({ attributes }) {
 				<input type="radio" name={ groupName } {...(checked && { checked: true })}/>
 				<RichText.Content tagName="span" value={label} />
 			</label>
-			<div {...useInnerBlocksProps.save({ className: "c-block-tab-item__content" })} />
+			<div className="c-block-tab-item__content-wrapper">
+				<div {...useInnerBlocksProps.save({ className: "c-block-tab-item__content" })} />
+				<button
+					className="c-block-tab-item__toggle-btn"
+					aria-expanded="true"
+				>
+					<span>閉じる</span>
+				</button>
+			</div>
 		</div>
 	);
 }

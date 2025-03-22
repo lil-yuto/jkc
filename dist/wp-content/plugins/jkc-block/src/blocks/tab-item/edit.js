@@ -41,7 +41,15 @@ export default function Edit({ attributes, setAttributes }) {
           placeholder="タブ名を入力"
         />
       </label>
-      <div {...innerBlocksProps} />
+      <div className="c-block-tab-item__content-wrapper">
+        <div {...innerBlocksProps} />
+        <button
+          className="c-block-tab-item__toggle-btn"
+          aria-expanded="true"
+        >
+          <span>閉じる</span>
+        </button>
+      </div>
     </div>
   );
 }

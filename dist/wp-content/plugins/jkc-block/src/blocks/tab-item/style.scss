@@ -15,7 +15,7 @@
 
   display: grid;
   place-items: center;
-  
+
   font-size: rem(18);
   font-weight: $bold;
   letter-spacing: math.div(50, 1000) * 1em;
@@ -40,12 +40,73 @@
   display: none;
 }
 
-.c-block-tab-item > .c-block-tab-item__content {
+.c-block-tab-item__content-wrapper {
   display: none;
   width: 100%;
   padding-inline: rem(40);
-  // padding-block: rem(52) rem(95);
   background-color: #FFFFFF;
+  position: relative;
+}
+
+.c-block-tab-item .c-block-tab-item__content {
+  width: 100%;
+}
+
+// 開閉ボタンのスタイル
+.c-block-tab-item__toggle-btn {
+  margin: rem(20) auto;
+  padding: rem(8) rem(24);
+  background-color: $color-accent-green;
+  color: #FFFFFF;
+  border: none;
+  border-radius: rem(4);
+  font-size: rem(14);
+  font-weight: $bold;
+  cursor: pointer;
+  display: block; // ブロック要素にして中央配置
+  transition: background-color 0.3s;
+
+  // ボタンが効きやすいように大きくする
+  min-width: rem(120);
+  min-height: rem(40);
+
+  span {
+    position: relative;
+    padding-right: rem(16);
+
+    &::before, &::after {
+      content: '';
+      display: inline-block;
+      width: rem(10);
+      height: rem(2);
+      background-color: currentColor;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transition: transform 0.3s;
+    }
+
+    &::before {
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    &::after {
+      transform: translateY(-50%);
+    }
+  }
+
+  &[aria-expanded="false"] span::before {
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  &[aria-expanded="true"] span::before {
+    transform: translateY(-50%) rotate(0);
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: darken($color-accent-green, 10%);
+  }
 }
 
 .c-block-tab-item label:has(:checked) {
@@ -53,7 +114,6 @@
   --margin-bottom: 0;
 }
 
-.c-block-tab-item label:has(:checked) + .c-block-tab-item__content {
+.c-block-tab-item label:has(:checked) + .c-block-tab-item__content-wrapper {
   display: block;
 }
-
