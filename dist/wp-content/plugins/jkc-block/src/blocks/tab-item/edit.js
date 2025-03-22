@@ -6,7 +6,7 @@ import "./editor.scss";
 const TEMPLATE = [["jkc-block/text"]];
 
 export default function Edit({ attributes, setAttributes }) {
-  const { label, checked, groupName } = attributes;
+  const { label, checked, groupName, enableContentToggle } = attributes;
 
   const blockProps = useBlockProps({
     className: "c-block-tab-item",
@@ -43,12 +43,14 @@ export default function Edit({ attributes, setAttributes }) {
       </label>
       <div className="c-block-tab-item__content-wrapper">
         <div {...innerBlocksProps} />
-        <button
-          className="c-block-tab-item__toggle-btn"
-          aria-expanded="true"
-        >
-          <span>閉じる</span>
-        </button>
+        {enableContentToggle && (
+          <button
+            className="c-block-tab-item__toggle-btn"
+            aria-expanded="true"
+          >
+            <span>閉じる</span>
+          </button>
+        )}
       </div>
     </div>
   );

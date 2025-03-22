@@ -28,6 +28,10 @@
     "groupName": {
       "type": "string",
       "default": ""
+    },
+    "enableContentToggle": {
+      "type": "boolean",
+      "default": false
     }
   },
   "textdomain": "jkc-block",

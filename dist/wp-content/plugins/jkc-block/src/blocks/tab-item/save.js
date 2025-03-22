@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { RichText, useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
 
 export default function save({ attributes }) {
-	const { label, checked, groupName } = attributes;
+	const { label, checked, groupName, enableContentToggle } = attributes;
 	return (
 		<div {...useBlockProps.save({ className: "c-block-tab-item" })}>
 			<label>
@@ -11,12 +11,14 @@ export default function save({ attributes }) {
 			</label>
 			<div className="c-block-tab-item__content-wrapper">
 				<div {...useInnerBlocksProps.save({ className: "c-block-tab-item__content" })} />
-				<button
-					className="c-block-tab-item__toggle-btn"
-					aria-expanded="true"
-				>
-					<span>閉じる</span>
-				</button>
+				{enableContentToggle && (
+					<button
+						className="c-block-tab-item__toggle-btn"
+						aria-expanded="true"
+					>
+						<span>閉じる</span>
+					</button>
+				)}
 			</div>
 		</div>
 	);

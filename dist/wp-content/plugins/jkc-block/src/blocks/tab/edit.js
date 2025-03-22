@@ -7,6 +7,7 @@ import {
 import {
 	PanelBody,
 	RadioControl,
+	ToggleControl,
 } from "@wordpress/components";
 import { useEffect, useRef } from "@wordpress/element";
 import { useDispatch, useSelect } from "@wordpress/data";
@@ -14,7 +15,7 @@ import { store as blockEditorStore } from "@wordpress/block-editor";
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
-	const { defaultActiveTab } = attributes;
+	const { defaultActiveTab, enableToggle } = attributes;
 	const groupName = `tab-${ clientId }`;
 	const prevBlocksRef = useRef([]);
 
@@ -23,7 +24,7 @@ export default function Edit( props ) {
 	});
 
 	const { updateBlockAttributes } = useDispatch(blockEditorStore);
-	
+
 	const innerBlocks = useSelect(
 		(select) => select(blockEditorStore).getBlocks(clientId),
 		[clientId]
@@ -52,27 +53,40 @@ export default function Edit( props ) {
 		});
 	};
 
+	// 開閉機能の切り替え時の処理
+	const handleToggleChange = (value) => {
+		setAttributes({ enableToggle: value });
+		// すべてのタブアイテムに設定を反映
+		tabItems.forEach(block => {
+			updateBlockAttributes(block.clientId, {
+				enableContentToggle: value
+			});
+		});
+	};
+
 	// タブの状態を同期する
 	const syncTabStates = () => {
 		if (tabItems.length === 0) return;
 
 		// チェックされているタブを探す
 		const checkedTab = tabItems.find(block => block.attributes.checked);
-		
+
 		if (!checkedTab) {
 			// チェックされているタブがない場合、最初のタブをチェック
 			const newIndex = 0;
 			setAttributes({ defaultActiveTab: newIndex });
 			updateBlockAttributes(tabItems[0].clientId, {
 				checked: true,
-				groupName
+				groupName,
+				enableContentToggle: enableToggle
 			});
 
 			// 他のタブのチェックを外す
 			tabItems.slice(1).forEach(block => {
 				updateBlockAttributes(block.clientId, {
 					checked: false,
-					groupName
+					groupName,
+					enableContentToggle: enableToggle
 				});
 			});
 		} else {
@@ -99,9 +113,12 @@ export default function Edit( props ) {
 	useEffect(() => {
 		if (tabItems.length === 0) return;
 
-		// すべてのタブにgroupNameを設定
+		// すべてのタブにgroupNameと開閉設定を設定
 		tabItems.forEach(block => {
-			updateBlockAttributes(block.clientId, { groupName });
+			updateBlockAttributes(block.clientId, {
+				groupName,
+				enableContentToggle: enableToggle
+			});
 		});
 
 		syncTabStates();
@@ -110,8 +127,8 @@ export default function Edit( props ) {
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		allowedBlocks: ["jkc-block/tab-item"],
 		template: [
-			["jkc-block/tab-item", { checked: true, label: "タブ1", groupName }],
-			["jkc-block/tab-item", { checked: false, label: "タブ2", groupName }]
+			["jkc-block/tab-item", { checked: true, label: "タブ1", groupName, enableContentToggle: enableToggle }],
+			["jkc-block/tab-item", { checked: false, label: "タブ2", groupName, enableContentToggle: enableToggle }]
 		],
 		templateLock: false
 	});
@@ -121,13 +138,21 @@ export default function Edit( props ) {
 			<InspectorControls>
 				<PanelBody title={__("タブの設定", "jkc-block")}>
 					{tabOptions.length > 0 ? (
-						<RadioControl
-							label={__("デフォルトのタブ", "jkc-block")}
-							selected={defaultActiveTab.toString()}
-							options={tabOptions}
-							onChange={handleDefaultTabChange}
-							help={__("保存時のデフォルトで表示されるタブを設定します", "jkc-block")}
-						/>
+						<>
+							<RadioControl
+								label={__("デフォルトのタブ", "jkc-block")}
+								selected={defaultActiveTab.toString()}
+								options={tabOptions}
+								onChange={handleDefaultTabChange}
+								help={__("保存時のデフォルトで表示されるタブを設定します", "jkc-block")}
+							/>
+							<ToggleControl
+								label={__("開閉機能", "jkc-block")}
+								checked={enableToggle}
+								onChange={handleToggleChange}
+								help={__("コンテンツの開閉機能を有効にします", "jkc-block")}
+							/>
+						</>
 					) : (
 						<p>{__("タブが追加されていません", "jkc-block")}</p>
 					)}
