@@ -7,7 +7,7 @@
   "category": "jkc-block",
   "parent": ["jkc-block/card-grid-2"],
   "icon": {
-    "src": "smiley",
+    "src": "block-default",
     "foreground": "#0A6934"
   },
   "description": "",

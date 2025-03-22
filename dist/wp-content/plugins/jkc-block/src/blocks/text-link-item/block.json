@@ -7,7 +7,7 @@
   "category": "jkc-block",
   "parent": ["jkc-block/text-link"],
   "icon": {
-    "src": "smiley",
+    "src": "block-default",
     "foreground": "#0A6934"
   },
   "description": "リンク/アイテム",

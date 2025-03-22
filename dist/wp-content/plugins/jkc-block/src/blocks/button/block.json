@@ -6,7 +6,7 @@
   "title": "ボタン",
   "category": "jkc-block",
   "icon": {
-    "src": "smiley",
+    "src": "button",
     "foreground": "#0A6934"
   },
   "description": "Example block scaffolded with Create Block tool.",
@@ -20,7 +20,7 @@
       "title": "ボタン/2列",
       "description": "2列のグリッドレイアウトでボタンを表示します。",
       "icon": {
-        "src": "smiley",
+        "src": "button",
         "foreground": "#0A6934"
       },
       "scope": ["block"],

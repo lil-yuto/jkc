@@ -6,7 +6,7 @@
 	"title": "流れ（横）",
 	"category": "jkc-block",
 	"icon": {
-    "src": "smiley",
+    "src": "arrow-right-alt",
     "foreground": "#0A6934"
   },
 	"description": "Example block scaffolded with Create Block tool.",

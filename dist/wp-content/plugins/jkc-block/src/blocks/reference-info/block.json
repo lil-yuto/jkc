@@ -6,7 +6,7 @@
 	"title": "関連情報",
 	"category": "jkc-block",
 	"icon": {
-    "src": "smiley",
+    "src": "block-default",
     "foreground": "#0A6934"
   },
 	"description": "Example block scaffolded with Create Block tool.",

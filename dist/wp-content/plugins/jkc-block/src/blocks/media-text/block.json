@@ -6,7 +6,7 @@
   "title": "画像/テキスト",
   "category": "jkc-block",
   "icon": {
-    "src": "smiley",
+    "src": "block-default",
     "foreground": "#0A6934"
   },
   "description": "画像/テキスト",

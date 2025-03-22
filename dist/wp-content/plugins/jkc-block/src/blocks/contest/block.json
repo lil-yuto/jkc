@@ -6,7 +6,7 @@
 	"title": "コンテスト",
 	"category": "jkc-block",
   "icon": {
-    "src": "smiley",
+    "src": "awards",
     "foreground": "#0A6934"
   },
 	"description": "コンテストの作品を表示します。",

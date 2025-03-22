@@ -7,7 +7,7 @@
   "category": "jkc-block",
   "parent": ["jkc-block/anchor-link"],
   "icon": {
-    "src": "smiley",
+    "src": "block-default",
     "foreground": "#0A6934"
   },
   "description": "アンカーリンクボタン（大）/アイテム",
