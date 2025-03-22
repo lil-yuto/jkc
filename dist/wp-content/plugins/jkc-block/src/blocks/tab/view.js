@@ -22,4 +22,26 @@
  
 /* eslint-disable no-console */
 
-/* eslint-enable no-console */
+document.addEventListener('DOMContentLoaded', function() {
+    const tabBlocks = document.querySelectorAll('.c-block-tab');
+    
+    tabBlocks.forEach(tabBlock => {
+        const radioButtons = tabBlock.querySelectorAll('input[type="radio"]');
+        const contents = tabBlock.querySelectorAll('.c-block-tab-item__content');
+        
+        // 初期表示時
+        updateTabContents();
+        
+        // ラジオボタンの変更イベントを監視
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', updateTabContents);
+        });
+        
+        // タブコンテンツの表示/非表示を切り替える
+        function updateTabContents() {
+            radioButtons.forEach((radio, index) => {
+                contents[index].style.display = radio.checked ? 'block' : 'none';
+            });
+        }
+    });
+});

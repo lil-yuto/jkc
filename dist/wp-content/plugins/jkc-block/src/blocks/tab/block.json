@@ -6,7 +6,7 @@
   "title": "タブ",
   "category": "jkc-block",
   "icon": {
-    "src": "smiley",
+    "src": "index-card",
     "foreground": "#0A6934"
   },
   "description": "タブ",
@@ -15,9 +15,17 @@
     "html": false,
     "customClassName": false
   },
+  "attributes": {
+    "defaultActiveTab": {
+      "type": "number",
+      "default": 0
+    },
+    "defaultActiveTabId": {
+      "type": "string"
+    }
+  },
   "textdomain": "jkc-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "style": "file:./style-index.css"
 }
