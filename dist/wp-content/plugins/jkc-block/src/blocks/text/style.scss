@@ -9,6 +9,9 @@
     line-height: math.div(30, 18);
     font-weight: $regular;
     margin-block: var(--block-margin-top) var(--block-margin-bottom);
+    @include mq-down() {
+      font-size: rem(16);
+    }
   }
 
   // 位置を指定するCSSを追加

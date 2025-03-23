@@ -4,7 +4,7 @@
 .wp-block-jkc-block-anchor-link-item {
   .c-block-button-item {
   }
-  
+
   .c-block-button-item__link {
     --color: #{$color-text-base};
     --border-color: #{$color-accent-green};
@@ -29,14 +29,14 @@
       border-color $duration-default;
     min-height: rem(100);
     @include mq-down() {
-      font-size: rem(13);
+      font-size: rem(16);
     }
   }
-  
+
   .c-block-button-item__link::before {
     content: "";
   }
-  
+
   .c-block-button-item__link::after {
     content: "";
     justify-self: end;
@@ -53,7 +53,7 @@
       translate $duration-default,
       background-color $duration-default;
   }
-  
+
   @media (any-hover: hover) {
     .c-block-button-item__link:hover {
       --border-color: #{$color-accent-yellow-dark};
@@ -67,4 +67,3 @@
     }
   }
 }
-

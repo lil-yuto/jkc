@@ -25,9 +25,9 @@
     // aspect-ratio: 800 / 367;
     transition: scale $duration-default ease-out;
   }
-  
+
   @media (any-hover: hover) {
-    .c-block-card-item-style-4:has(> .c-block-card-item-style-4__link[href]):hover 
+    .c-block-card-item-style-4:has(> .c-block-card-item-style-4__link[href]):hover
       .c-block-card-item-style-4__img-wrapper img {
       scale: 1.1;
     }
@@ -81,7 +81,7 @@
       color $duration-default,
       border-color $duration-default;
     @include mq-down() {
-      font-size: rem(13);
+      font-size: rem(16);
       padding-block: em(9, 13);
     }
   }

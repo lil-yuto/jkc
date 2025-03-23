@@ -82,7 +82,7 @@
       color $duration-default,
       border-color $duration-default;
     @include mq-down() {
-      font-size: rem(13);
+      font-size: rem(16);
     }
   }
 

@@ -16,7 +16,7 @@
     --border-color: transparent;
     --bg-color: #{$color-accent-green};
     --translate: 0;
-    --height: #{rem(80)};
+    --height: #{rem(100)};
     display: inline grid;
     width: 100%;
     grid-template-columns: 1fr auto 1fr;
@@ -37,7 +37,7 @@
       border-color $duration-default;
     height: var(--height);
     @include mq-down() {
-      font-size: rem(13);
+      font-size: rem(16);
     }
   }
 
