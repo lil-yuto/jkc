@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { RichText, useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
 
 export default function save({ attributes }) {
-	const { label, checked, groupName, enableContentToggle } = attributes;
+	const { label, checked, groupName, enableContentToggle, isActiveTab } = attributes;
 	return (
 		<div {...useBlockProps.save({ className: "c-block-tab-item" })}>
 			<label>

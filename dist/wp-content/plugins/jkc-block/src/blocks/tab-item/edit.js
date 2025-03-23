@@ -1,20 +1,15 @@
 import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
 import { RichText } from "@wordpress/block-editor";
-import { useCallback } from "@wordpress/element";
 import "./editor.scss";
 
 const TEMPLATE = [["jkc-block/text"]];
 
-export default function Edit({ attributes, setAttributes }) {
-  const { label, checked, groupName, enableContentToggle } = attributes;
+export default function Edit({ attributes, setAttributes, isSelected }) {
+  const { label, groupName, enableContentToggle, isActiveTab } = attributes;
 
   const blockProps = useBlockProps({
     className: "c-block-tab-item",
   });
-
-  const handleInputChange = useCallback((event) => {
-    setAttributes({ checked: event.target.checked });
-  }, [setAttributes]);
 
   const innerBlocksProps = useInnerBlocksProps(
     {
@@ -31,8 +26,8 @@ export default function Edit({ attributes, setAttributes }) {
         <input
           type="radio"
           name={groupName}
-          checked={checked}
-          onChange={handleInputChange}
+          checked={isActiveTab}
+          readOnly
         />
         <RichText
           tagName="span"

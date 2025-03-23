@@ -25,6 +25,10 @@
       "type": "boolean",
       "default": false
     },
+    "isActiveTab": {
+      "type": "boolean",
+      "default": false
+    },
     "groupName": {
       "type": "string",
       "default": ""
