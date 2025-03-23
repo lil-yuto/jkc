@@ -23,6 +23,12 @@ export default function Edit( props ) {
 	const tabItemIdsRef = useRef([]);
 	// 選択中のタブのIDを保持
 	const [selectedTabId, setSelectedTabId] = useState(null);
+	// タブの順序変更を検出するためのフラグ
+	const isReorderingRef = useRef(false);
+	// 前回のdefaultActiveTabを保存
+	const prevDefaultTabRef = useRef(defaultActiveTab);
+	// デフォルトタブのIDを保持
+	const defaultTabIdRef = useRef(null);
 
 	const blockProps = useBlockProps({
 		className: "c-block-tab",
@@ -43,38 +49,120 @@ export default function Edit( props ) {
 	useEffect(() => {
 		if (tabItems.length === 0) return;
 
-		// タブアイテムのIDを保存
+		// タブアイテムのIDを取得
 		const currentTabIds = tabItems.map(block => block.clientId);
 
-		if (tabItemIdsRef.current.length > 0) {
-			// IDが存在する場合、順序変更を検知
-			if (selectedTabId) {
-				// 選択中のタブのインデックスを新しい順序で特定
-				const newIndex = currentTabIds.findIndex(id => id === selectedTabId);
-				if (newIndex !== -1 && newIndex !== defaultActiveTab) {
-					// インデックスが変わっていれば更新
-					setAttributes({ defaultActiveTab: newIndex });
+		// 初期ロード時の処理
+		if (tabItemIdsRef.current.length === 0) {
+			// 選択中のタブIDを初期設定
+			if (defaultActiveTab < tabItems.length) {
+				setSelectedTabId(currentTabIds[defaultActiveTab]);
+				// デフォルトタブのIDを保存
+				defaultTabIdRef.current = currentTabIds[defaultActiveTab];
+			}
+			tabItemIdsRef.current = currentTabIds;
+			return;
+		}
+
+		// タブの数が変わった場合は順序変更とは別の処理
+		if (tabItemIdsRef.current.length !== currentTabIds.length) {
+			// デフォルトタブが削除されたかチェック
+			const defaultTabId = defaultTabIdRef.current;
+			const defaultTabExists = currentTabIds.includes(defaultTabId);
+
+			if (!defaultTabExists && tabItems.length > 0) {
+				// デフォルトタブが削除された場合、最初のタブをデフォルトに設定
+				setAttributes({ defaultActiveTab: 0 });
+				prevDefaultTabRef.current = 0;
+				defaultTabIdRef.current = currentTabIds[0];
+
+				// UI表示も更新
+				setActiveTabIndex(0);
+				setSelectedTabId(currentTabIds[0]);
+				updateTabStates(0);
+			} else if (defaultActiveTab >= tabItems.length) {
+				// デフォルトタブのインデックスが範囲外になった場合は調整
+				const newIndex = Math.min(defaultActiveTab, tabItems.length - 1);
+				setAttributes({ defaultActiveTab: newIndex });
+				prevDefaultTabRef.current = newIndex;
+				defaultTabIdRef.current = currentTabIds[newIndex];
+
+				// activeTabIndexも調整
+				if (activeTabIndex >= tabItems.length) {
 					setActiveTabIndex(newIndex);
 					updateTabStates(newIndex);
-				} else if (newIndex === -1) {
-					// 選択されていたタブが削除された場合は最初のタブを選択
+				}
+			}
+
+			// 選択中のタブが存在するか確認（アクティブタブの表示用）
+			if (selectedTabId) {
+				const tabIndex = currentTabIds.indexOf(selectedTabId);
+				if (tabIndex === -1 && tabItems.length > 0) {
+					// 選択中のタブが削除された場合は最初のタブを選択（表示のみ）
 					setSelectedTabId(currentTabIds[0]);
-					setAttributes({ defaultActiveTab: 0 });
 					setActiveTabIndex(0);
 					updateTabStates(0);
 				}
-			} else if (defaultActiveTab < tabItems.length) {
-				// 初期状態の場合、選択中タブIDを設定
-				setSelectedTabId(currentTabIds[defaultActiveTab]);
 			}
-		} else if (defaultActiveTab < tabItems.length) {
-			// 初期ロード時、選択中タブIDを設定
-			setSelectedTabId(currentTabIds[defaultActiveTab]);
+
+			tabItemIdsRef.current = currentTabIds;
+			return;
+		}
+
+		// タブの順序変更を検出
+		const orderChanged = !currentTabIds.every((id, index) =>
+			id === tabItemIdsRef.current[index]
+		);
+
+		if (orderChanged) {
+			isReorderingRef.current = true;
+
+			// 現在のデフォルトタブのIDを取得
+			const defaultTabId = defaultTabIdRef.current;
+
+			// 新しい順序でそのIDの位置を特定
+			const newDefaultIndex = currentTabIds.indexOf(defaultTabId);
+
+			// デフォルトタブの位置が変わった場合は更新
+			if (newDefaultIndex !== -1 && newDefaultIndex !== prevDefaultTabRef.current) {
+				setAttributes({ defaultActiveTab: newDefaultIndex });
+				prevDefaultTabRef.current = newDefaultIndex;
+			}
+
+			// 選択中のタブの位置も更新
+			if (selectedTabId) {
+				const newActiveIndex = currentTabIds.indexOf(selectedTabId);
+				if (newActiveIndex !== -1 && newActiveIndex !== activeTabIndex) {
+					setActiveTabIndex(newActiveIndex);
+					updateTabStates(newActiveIndex);
+				}
+			}
+		} else {
+			isReorderingRef.current = false;
 		}
 
 		// タブアイテムIDの現在状態を保存
 		tabItemIdsRef.current = currentTabIds;
 	}, [tabItems]);
+
+	// defaultActiveTabが変更されたときの処理（インスペクターから手動で変更された場合）
+	useEffect(() => {
+		if (defaultActiveTab !== prevDefaultTabRef.current && !isReorderingRef.current) {
+			// インスペクターからの変更の場合
+			prevDefaultTabRef.current = defaultActiveTab;
+
+			// 選択中のタブIDとデフォルトタブIDも更新
+			if (defaultActiveTab < tabItems.length) {
+				const tabId = tabItems[defaultActiveTab].clientId;
+				setSelectedTabId(tabId);
+				defaultTabIdRef.current = tabId;
+
+				// エディタ上の表示も更新
+				setActiveTabIndex(defaultActiveTab);
+				updateTabStates(defaultActiveTab);
+			}
+		}
+	}, [defaultActiveTab]);
 
 	// タブ名の選択肢を作成
 	const tabOptions = tabItems.map((block, index) => ({
@@ -86,13 +174,17 @@ export default function Edit( props ) {
 	const handleDefaultTabChange = (newTabIndex) => {
 		const indexNum = parseInt(newTabIndex);
 		setAttributes({ defaultActiveTab: indexNum });
-		setActiveTabIndex(indexNum);
+		prevDefaultTabRef.current = indexNum;
 
 		// 選択したタブのIDを保存
 		if (indexNum < tabItems.length) {
-			setSelectedTabId(tabItems[indexNum].clientId);
+			const tabId = tabItems[indexNum].clientId;
+			setSelectedTabId(tabId);
+			defaultTabIdRef.current = tabId;
 		}
 
+		// エディタ上の表示も更新
+		setActiveTabIndex(indexNum);
 		updateTabStates(indexNum);
 	};
 
@@ -109,14 +201,15 @@ export default function Edit( props ) {
 		const tabIndex = Array.from(tabItemDiv.parentNode.children).indexOf(tabItemDiv);
 		if (tabIndex === -1) return;
 
-		// アクティブタブの状態を更新
+		// アクティブタブの状態を更新（表示のみ）
 		setActiveTabIndex(tabIndex);
 
-		// 選択したタブのIDを保存
+		// 選択したタブのIDを保存（順序変更検知用）
 		if (tabIndex < tabItems.length) {
 			setSelectedTabId(tabItems[tabIndex].clientId);
 		}
 
+		// タブの表示状態のみを更新（デフォルトタブは変更しない）
 		updateTabStates(tabIndex);
 	}
 
@@ -154,12 +247,17 @@ export default function Edit( props ) {
 
 		// 初期ロード時にデフォルトタブを設定
 		const initialTabIndex = Math.min(defaultActiveTab, tabItems.length - 1);
+		setActiveTabIndex(initialTabIndex);
 		updateTabStates(initialTabIndex);
 
 		// 選択中のタブIDを初期設定
-		if (!selectedTabId && initialTabIndex < tabItems.length) {
-			setSelectedTabId(tabItems[initialTabIndex].clientId);
+		if (initialTabIndex < tabItems.length) {
+			const tabId = tabItems[initialTabIndex].clientId;
+			setSelectedTabId(tabId);
+			defaultTabIdRef.current = tabId;
 		}
+
+		prevDefaultTabRef.current = initialTabIndex;
 	}, []);
 
 	// 保存前にデフォルトタブのchecked属性を設定
