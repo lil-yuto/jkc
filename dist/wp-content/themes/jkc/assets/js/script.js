@@ -274,11 +274,13 @@ $(function () {
 				});
 				continue;
 			} else {
+        const offset = $(".l-header").height();
 				$("html, body").animate(
 					{
-						scrollTop: 190,
+            scrollTop: $("#event_schedule").offset().top - offset,
 					},
-					300
+          500,
+          "swing"
 				);
 				if (!exebool) {
 					// リスト内の各アイテムをチェック
@@ -368,4 +370,3 @@ document.addEventListener("DOMContentLoaded", function () {
       item.style.display = index < 5 ? "contents" : "none";
     });
   });
-
