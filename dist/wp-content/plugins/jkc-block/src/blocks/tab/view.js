@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 $contentWrapper.show();
                 $content.show();
                 $toggleButton.attr('aria-expanded', 'true');
-                $toggleButton.find('span').text('閉じる');
+                $toggleButton.text('閉じる');
             } else {
                 $contentWrapper.hide();
             }
@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (isExpanded) {
                         // 閉じる状態に変更
                         $toggleButton.attr('aria-expanded', 'false');
-                        $toggleButton.find('span').text('開く');
+                        $toggleButton.text('開く');
                     } else {
                         // 開く状態に変更
                         $toggleButton.attr('aria-expanded', 'true');
-                        $toggleButton.find('span').text('閉じる');
+                        $toggleButton.text('閉じる');
                     }
                 });
             });

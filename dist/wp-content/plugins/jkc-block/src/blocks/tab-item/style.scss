@@ -52,61 +52,74 @@
   width: 100%;
 }
 
-// 開閉ボタンのスタイル
+.c-block-tab-item__toggle-btn-wrapper {
+  display: block;
+  text-align: center;
+  margin-block: rem(30);
+}
+
 .c-block-tab-item__toggle-btn {
-  margin: rem(20) auto;
-  padding: rem(8) rem(24);
-  background-color: $color-accent-green;
-  color: #FFFFFF;
-  border: none;
-  border-radius: rem(4);
-  font-size: rem(14);
-  font-weight: $bold;
-  cursor: pointer;
-  display: block; // ブロック要素にして中央配置
-  transition: background-color 0.3s;
-
-  // ボタンが効きやすいように大きくする
-  min-width: rem(120);
-  min-height: rem(40);
-
-  span {
-    position: relative;
-    padding-right: rem(16);
-
-    &::before, &::after {
-      content: '';
-      display: inline-block;
-      width: rem(10);
-      height: rem(2);
-      background-color: currentColor;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transition: transform 0.3s;
-    }
-
-    &::before {
-      transform: translateY(-50%) rotate(90deg);
-    }
-
-    &::after {
-      transform: translateY(-50%);
-    }
+  --color: #FFFFFF;
+  --border-color: transparent;
+  --bg-color: #0A6934;
+  --translate: 0;
+  display: inline grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: em(8);
+  align-items: center;
+  font-size: rem(18);
+  width: min(180px, 100%);
+  color: var(--color);
+  padding-block: em(13, 18);
+  padding-inline: em(21, 18);
+  border-radius: rem(5);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  transition: background-color $duration-default, color $duration-default, border-color $duration-default;
+  @include mq-down() {
+    font-size: rem(16);
+    width: min(133px, 100%);
   }
+}
 
-  &[aria-expanded="false"] span::before {
-    transform: translateY(-50%) rotate(90deg);
-  }
+.c-block-tab-item__toggle-btn::before {
+  content: "";
+}
 
-  &[aria-expanded="true"] span::before {
-    transform: translateY(-50%) rotate(0);
-    opacity: 0;
+.c-block-tab-item__toggle-btn::after {
+  content: "";
+  justify-self: center;
+  width: em(15, 18);
+  aspect-ratio: 1;
+  background-color: var(--color);
+  mask-image: url("./images/cmn-arrow-forward-ico01.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  rotate: -90deg;
+  translate: var(--translate);
+  transition: translate $duration-default, background-color $duration-default;
+  @include mq-down() {
+    width: em(17, 13);
   }
+}
 
-  &:hover {
-    background-color: darken($color-accent-green, 10%);
+@media (any-hover: hover) {
+  .c-block-tab-item__toggle-btn:hover {
+    --color: #0A6934;
+    --border-color: currentcolor;
+    --bg-color: #FFFFFF;
   }
+  .c-block-tab-item__toggle-btn[aria-expanded="true"]:hover {
+    --translate: 0 #{em(-4)};
+  }
+  .c-block-tab-item__toggle-btn[aria-expanded="false"]:hover {
+    --translate: 0 #{em(4)};
+  }
+}
+
+.c-block-tab-item__toggle-btn[aria-expanded="false"]::after {
+  rotate: 90deg;
 }
 
 .c-block-tab-item label:has(:checked) {
