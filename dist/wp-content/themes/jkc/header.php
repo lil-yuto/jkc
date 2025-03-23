@@ -11,9 +11,15 @@
 <body>
   <header class="l-header">
     <div class="l-header__container">
+      <?php if (is_front_page()): ?>
       <h1 class="l-header__logo">
         <a href="<?php echo esc_url(home_url('/')); ?>" class="l-header__logo-image-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-logo--ico01.png" alt="一般社団法人ジャパンケネルクラブ" /></a>
       </h1>
+      <?php else: ?>
+      <div class="l-header__logo">
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="l-header__logo-image-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-logo--ico01.png" alt="一般社団法人ジャパンケネルクラブ" /></a>
+      </div>
+      <?php endif; ?>
 
       <div class="l-header__top l-nav">
         <div class="l-nav__icon">
@@ -402,7 +408,7 @@
             </form>
             <!-- <a href="http://" class="l-gnav-sp__link-panel l-gnav-sp__link-panel--seearch"><img src="<//?php echo get_template_directory_uri() ?>/assets/images/common/cmn-search-ico01.svg" alt="" />検索</a> -->
           </li>
-          <li class="l-gnav-sp__item-japanese u-uppercase"><a href="http://" class="l-gnav-sp__link">日本語</a></li>
+          <!-- <li class="l-gnav-sp__item-japanese u-uppercase"><a href="http://" class="l-gnav-sp__link">日本語</a></li> -->
           <!-- <li class="l-gnav-sp__item-english u-uppercase"><a href="http://" class="l-gnav-sp__link">English</a></li> -->
         </ul>
       </nav>
