@@ -44,9 +44,7 @@
    );
    ?>
 
-
-   <div class="c-button-link">
-    <ul class="p-breeds__button-items c-button-link__items">
+    <ul class="p-single-breeds__button-items">
      <?php
      $taxonomy_slug = 'breed_category';
      $term_lists = get_terms(array(
@@ -57,22 +55,17 @@
      foreach ($term_lists as $term_item):
      ?>
 
-      <li class="c-button-link-item">
-
-       <div class="p-singloe-breeds__button p-breeds-button c-button-item">
-        <a class="p-breeds-button__link c-button-item__link" href="<?php echo esc_url(get_term_link($term_item->slug, $taxonomy_slug)); ?>">
-         <div class="c-button-item__wrapper">
-          <h5 class="p-breeds-button__title"><?php echo esc_html($term_item->name); ?></h5>
-          <p class="p-breeds-button__description"><?php echo esc_html($button_description[$term_item->slug]); ?></p>
+      <li class="p-singloe-breeds__button p-single-breeds-button">
+       <a class="p-single-breeds-button__link p-single-breeds-button__link--<?php echo esc_attr($term_item->slug); ?>" href="<?php echo esc_url(get_term_link($term_item->slug, $taxonomy_slug)); ?>">
+         <div class="p-single-breeds-button__contents">
+           <h5 class="p-single-breeds-button__title"><?php echo esc_html($term_item->name); ?></h5>
+           <p class="p-single-breeds-button__description"><?php echo esc_html($button_description[$term_item->slug]); ?></p>
          </div>
-        </a>
-
-       </div>
+       </a>
       </li>
 
      <?php endforeach; ?>
     </ul>
-   </div>
   </article>
 
 
