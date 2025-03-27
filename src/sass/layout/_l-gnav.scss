@@ -17,7 +17,7 @@
 		// background-color: red;
 		// background-color: yellow;
 		width: 100%;
-		max-height: calc(100vh - rem(65));
+		max-height: calc(100dvh - rem(65));
 		padding-block: rem(25);
 		overflow-y: scroll;
 		pointer-events: none;
