@@ -122,7 +122,7 @@
       ?>
 
       <div class="c-button-link">
-        <ul class="p-single-breeds__button-items c-button-link__items">
+        <ul class="p-single-breeds__button-items">
           <?php
           $taxonomy_slug = 'breed_category';
           $term_lists = get_terms(array(
@@ -133,34 +133,28 @@
           foreach ($term_lists as $term_item):
           ?>
 
-            <li class="c-button-link-item">
+            <li class="p-singloe-breeds__button p-single-breeds-button">
+              <?php
+              $current_term = get_queried_object();
+              $is_current_term = ($current_term->term_id === $term_item->term_id);
+              $current_class = $is_current_term ? ' is-current' : '';
 
-              <div class="p-singloe-breeds__button p-single-breeds-button c-button-item">
-                <?php
-                // 現在のタームと一致するかチェック
-                $current_term = get_queried_object();
-                $is_current_term = ($current_term->term_id === $term_item->term_id);
-                $current_class = $is_current_term ? ' is-current' : '';
-
-                // 現在のタームの場合はdivを使用し、そうでない場合はaタグを使用
-                if ($is_current_term) :
-                ?>
-                <div class="p-single-breeds-button__link c-button-item__link<?php echo $current_class; ?>">
-                  <div class="c-button-item__wrapper">
+              if ($is_current_term):
+              ?>
+                <div class="p-single-breeds-button__link p-single-breeds-button__link--<?php echo esc_attr($term_item->slug); ?><?php echo $current_class; ?>">
+                  <div class="p-single-breeds-button__contents">
                     <h5 class="p-single-breeds-button__title"><?php echo esc_html($term_item->name); ?></h5>
                     <p class="p-single-breeds-button__description"><?php echo esc_html($button_description[$term_item->slug]); ?></p>
                   </div>
                 </div>
-                <?php else : ?>
-                <a class="p-single-breeds-button__link c-button-item__link<?php echo $current_class; ?>" href="<?php echo esc_url(get_term_link($term_item->slug, $taxonomy_slug)); ?>">
-                  <div class="c-button-item__wrapper">
+              <?php else: ?>
+                <a class="p-single-breeds-button__link p-single-breeds-button__link--<?php echo esc_attr($term_item->slug); ?><?php echo $current_class; ?>" href="<?php echo esc_url(get_term_link($term_item->slug, $taxonomy_slug)); ?>">
+                  <div class="p-single-breeds-button__contents">
                     <h5 class="p-single-breeds-button__title"><?php echo esc_html($term_item->name); ?></h5>
                     <p class="p-single-breeds-button__description"><?php echo esc_html($button_description[$term_item->slug]); ?></p>
                   </div>
                 </a>
-                <?php endif; ?>
-
-              </div>
+              <?php endif; ?>
             </li>
 
           <?php endforeach; ?>
