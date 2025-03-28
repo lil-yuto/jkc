@@ -644,7 +644,7 @@ add_shortcode('qualification1_schedule', function ($atts) {
  * 資格情報のスケジュールを表示するショートコード（qualification2形式）
  *
  * このショートコードは、指定されたカテゴリに基づいて関連する資格情報を表示します。
- * 使用例: [qualification2_schedule category="rescuedog-schedule"]
+ * 使用例: [qualification2_schedule category="rescuedog"]
  */
 add_shortcode('qualification2_schedule', function ($atts) {
   // デフォルト値の設定
@@ -657,7 +657,7 @@ add_shortcode('qualification2_schedule', function ($atts) {
   // カテゴリが指定されていない場合はメッセージを表示
   $category = $atts['category'];
   if (empty($category)) {
-    echo '<p class="c-text">カテゴリが指定されていません。例: [qualification2_schedule category="rescuedog-schedule"]</p>';
+    echo '<p class="c-text">カテゴリが指定されていません。例: [qualification2_schedule category="rescuedog"]</p>';
     return ob_get_clean();
   }
 
