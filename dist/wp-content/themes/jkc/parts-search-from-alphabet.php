@@ -1,4 +1,4 @@
-    <?php
+<?php
     $post_type_slug = get_post_type();
     $args = array(
      'post_type' => $post_type_slug,
@@ -35,16 +35,18 @@
        <p class="c-tab-item__scroll-notice u-hidden-pc">横にスクロールしてください</p>
        <div class="c-tab-item__label-wrapper">
         <?php for ($kkk = "A"; $kkk != "AA"; $kkk++) : ?>
+         <?php if (!empty($breeds_alphabet_lists[$kkk])) : ?>
          <label>
           <input type="radio" class="js-tabChange" name="tab-40618761-56c3-4385-b826-a0983ae0d352" data-firstletter="<?php echo esc_html($kkk); ?>" />
           <span><?php echo $kkk; ?></span>
          </label>
+         <?php endif; ?>
         <?php endfor; ?>
        </div>
       </div>
 
       <?php for ($kkk = "A"; $kkk != "AA"; $kkk++) : ?>
-
+       <?php if (!empty($breeds_alphabet_lists[$kkk])) : ?>
        <div class="c-tab-item__content js-tabContent <?php echo esc_html($kkk); ?>">
         <h4 class="c-heading c-heading--lv4"><?php echo $kkk; ?></h4>
 
@@ -63,6 +65,7 @@
         </div>
 
        </div>
+       <?php endif; ?>
       <?php endfor; ?>
 
      </div>
