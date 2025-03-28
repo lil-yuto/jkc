@@ -12,13 +12,13 @@
   <header class="l-header">
     <div class="l-header__container">
       <?php if (is_front_page()): ?>
-      <h1 class="l-header__logo">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="l-header__logo-image-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-logo--ico01.png" alt="一般社団法人ジャパンケネルクラブ" /></a>
-      </h1>
+        <h1 class="l-header__logo">
+          <a href="<?php echo esc_url(home_url('/')); ?>" class="l-header__logo-image-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-logo--ico01.png" alt="一般社団法人ジャパンケネルクラブ" /></a>
+        </h1>
       <?php else: ?>
-      <div class="l-header__logo">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="l-header__logo-image-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-logo--ico01.png" alt="一般社団法人ジャパンケネルクラブ" /></a>
-      </div>
+        <div class="l-header__logo">
+          <a href="<?php echo esc_url(home_url('/')); ?>" class="l-header__logo-image-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-logo--ico01.png" alt="一般社団法人ジャパンケネルクラブ" /></a>
+        </div>
       <?php endif; ?>
 
       <div class="l-header__top l-nav">
@@ -38,7 +38,7 @@
             <a href="javascript:void(0)" class="l-nav__link-panel l-nav__link-panel--seearch"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-search-ico01.svg" alt="" />検索</a>
           </li>
           <li class="l-nav__item-panel">
-            <a href="<?php echo esc_url(home_url('/forms/form_download/')); ?>" class="l-nav__link-panel l-nav__link-panel--download"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-download-ico01.svg" alt="" />ダウンロード</a>
+            <a href="<?php echo esc_url(home_url('/registrations/')); ?>" class="l-nav__link-panel l-nav__link-panel--download"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-download-ico01.svg" alt="" />ダウンロード</a>
           </li>
           <li class="l-nav__item-panel">
             <a href="<?php echo esc_url(home_url('/faq/')); ?>" class="l-nav__link-panel l-nav__link-panel--qa"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-qa-ico01.svg" alt="" />FAQ</a>
@@ -59,15 +59,17 @@
           <!-- <li class="l-gnav__item"><a href="<?php echo esc_url(home_url('/aboutus/')); ?>" class="l-gnav__link">JKCの活動内容</a></li> -->
 
           <li class="l-gnav__item js-megaParent">
-            <span class="l-gnav__link">JKCの活動内容</span>
+            <a href="<?php echo esc_url(home_url('/aboutus/')); ?>">
+              <span class="l-gnav__link">JKCの活動内容</span>
+            </a>
 
             <div class="l-gnav__meganav l-meganav">
               <div class="l-meganav__bg">
                 <div class="l-meganav__container">
 
-                  <h2 class="l-meganav__title">
+                  <h5 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/aboutus/')); ?>">JKCの活動内容</a>
-                  </h2>
+                  </h5>
                   <ul class="l-meganav__list">
 
                     <li class="l-meganav__item">
@@ -103,11 +105,11 @@
                     </li>
 
                     <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/3min/')); ?>">3分でわかるジャパンケネルクラブ</a>
+                      <a href="<?php echo esc_url(home_url('/aboutus/3min/')); ?>" target="_blank" rel="noopener">3分でわかるジャパンケネルクラブ</a>
                     </li>
 
                     <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/movie/')); ?>">ジャパンケネルクラブチャンネルYouTube</a>
+                      <a href="<?php echo esc_url(home_url('/movie/')); ?>">ジャパンケネルクラブチャンネルYouTube</a>
                     </li>
 
                     <li class="l-meganav__item">
@@ -136,7 +138,9 @@
             </div>
           </li>
           <li class="l-gnav__item js-megaParent">
-            <span class="l-gnav__link">血統証明書について</span>
+            <a href="<?php echo esc_url(home_url('/pedigrees/')); ?>">
+              <span class="l-gnav__link">血統証明書について</span>
+            </a>
 
             <div class="l-gnav__meganav l-meganav">
               <div class="l-meganav__bg">
@@ -148,23 +152,37 @@
                   <ul class="l-meganav__list">
 
                     <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees/breedingguidelines/')); ?>">JKCの繁殖指針</a>
+                      <a href="<?php echo esc_url(home_url('/pedigrees/') . '#01'); ?>">血統証明書とは</a>
                     </li>
-
+                    <li class="l-meganav__item">
+                      <a href="<?php echo esc_url(home_url('/pedigrees')) . '#02'; ?>">血統証明書の見かた</a>
+                    </li>
+                    <li class="l-meganav__item">
+                      <a href="<?php echo esc_url(home_url('/forms/')); ?>">血統証明書・所有者名義変更について</a>
+                    </li>
+                    <li class="l-meganav__item">
+                      <a href="<?php echo esc_url(home_url('/pedigrees')) . '#04'; ?>">チャンピオンタイトルについて</a>
+                    </li>
+                    <li class="l-meganav__item">
+                      <a href="<?php echo esc_url(home_url('/pedigrees/breedingguidelines/')); ?>">正しいブリーディングと守るべき心得</a>
+                    </li>
                     <li class="l-meganav__item">
                       <a href="<?php echo esc_url(home_url('/pedigrees/crossbreeding/')); ?>">繁殖についての基礎知識</a>
                     </li>
-
                     <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees/law/')); ?>">「動物の愛護及び管理に関する法律」について</a>
+                      <a href="<?php echo esc_url(home_url('/forms/puppy_name/')); ?>">子犬を繁殖した方へ 〜 子犬の正式な名前のつけ方</a>
                     </li>
-
                     <li class="l-meganav__item">
                       <a href="<?php echo esc_url(home_url('/pedigrees/geneticdisease/')); ?>">遺伝子疾患について考えよう</a>
                     </li>
-
                     <li class="l-meganav__item">
                       <a href="<?php echo esc_url(home_url('/pedigrees/teacup-poodles_mame-shibas/')); ?>">ティーカッププードル、豆柴について</a>
+                    </li>
+                    <li class="l-meganav__item">
+                      <a href="<?php echo esc_url(home_url('/pedigrees/law/')); ?>">「動物の愛護及び管理に関する法律」について</a>
+                    </li>
+                    <li class="l-meganav__item">
+                      <a href="<?php echo esc_url(home_url('/faq/faq_category/certificate/')); ?>">血統証明書についてのよくあるご質問</a>
                     </li>
 
                   </ul>
@@ -173,7 +191,9 @@
             </div>
           </li>
           <li class="l-gnav__item js-megaParent">
-            <span class="l-gnav__link">イベント</span>
+            <a href="<?php echo esc_url(home_url('/events/')); ?>">
+              <span class="l-gnav__link">イベント</span>
+            </a>
 
             <div class="l-gnav__meganav l-meganav">
               <div class="l-meganav__bg">
@@ -241,7 +261,7 @@
                     </li>
 
                     <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/results/')); ?>">過去の大会結果</a>
+                      <a href="<?php echo esc_url(home_url('/results/')); ?>">過去の大会結果</a>
                     </li>
 
                     <li class="l-meganav__item">
@@ -253,7 +273,7 @@
                     </li>
 
                     <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/haiku_contest/haiku_contest/')); ?>">愛犬とのふれあいの俳句</a>
+                      <a href="<?php echo esc_url(home_url('/events/haiku_contest/')); ?>">愛犬とのふれあいの俳句</a>
                     </li>
 
                   </ul>
@@ -264,7 +284,10 @@
 
           <li class="l-gnav__item js-megaParent">
             <!-- <a href="http://" class="l-gnav__link">犬の知識</a> -->
-            <span class="l-gnav__link">犬の知識</span>
+            <a href="<?php echo esc_url(home_url('/doginfo/')); ?>">
+              <span class="l-gnav__link">犬の知識</span>
+
+            </a>
 
             <div class="l-gnav__meganav l-meganav">
               <div class="l-meganav__bg">
@@ -274,6 +297,10 @@
                     <a href="<?php echo esc_url(home_url('/doginfo/')); ?>">犬の知識</a>
                   </h2>
                   <ul class="l-meganav__list">
+
+                    <li class="l-meganav__item">
+                      <a href="<?php echo esc_url(home_url('/breeds/')); ?>">犬種紹介</a>
+                    </li>
 
                     <li class="l-meganav__item">
                       <a href="<?php echo esc_url(home_url('/doginfo/preparation/')); ?>">心構え、犬の選び方、環境の準備など</a>
@@ -312,7 +339,9 @@
             </div>
           </li>
           <li class="l-gnav__item js-megaParent">
-            <span class="l-gnav__link">JKC公認資格</span>
+            <a href="<?php echo esc_url(home_url('/qualifications/')); ?>">
+              <span class="l-gnav__link">JKC公認資格</span>
+            </a>
 
             <div class="l-gnav__meganav l-meganav">
               <div class="l-meganav__bg">
@@ -365,7 +394,9 @@
             </div>
           </li>
           <li class="l-gnav__item js-megaParent">
-            <span class="l-gnav__link">刊行物</span>
+            <a href="<?php echo esc_url(home_url('/merchandise/')); ?>">
+              <span class="l-gnav__link">刊行物</span>
+            </a>
 
             <div class="l-gnav__meganav l-meganav">
               <div class="l-meganav__bg">

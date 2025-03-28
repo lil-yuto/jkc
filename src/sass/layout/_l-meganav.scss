@@ -35,11 +35,8 @@
 	font-family: $font-family-japanese;
 	font-size: rem(24);
 	font-weight: $bold;
-	padding-inline: rem(20) 0;
-	background-image: linear-gradient(180deg, #0a6934 0 50%, #ffe59b 50%);
-	background-size: rem(6) rem(26.94);
-	background-position: left center;
-	background-repeat: no-repeat;
+  letter-spacing: 0.05em;
+  color: #0A6934;
 	@include mq-down() {
 		font-size: rem(18);
 		padding-inline: 0;
@@ -47,6 +44,32 @@
 		border-bottom: $palette-mediumGray 2px solid;
 		// border-bottom: blue 2px solid;
 	}
+
+  a {
+    position: relative;
+    display: block;
+    width: fit-content;
+    padding-right: 3.5%;
+
+    &::after {
+      content: "";
+      background-color: #0A6934;
+      mask-image: url('../images/common/cmn-arrow-forward-circle-ico02.svg');
+      mask-repeat: no-repeat;
+      mask-size: cover;
+      mask-position: center;
+      transition: background-color $duration-default, translate $duration-default;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: inline-block;
+      pointer-events: auto;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+  }
+
 }
 
 .l-meganav__title ~ .l-meganav__title {
@@ -62,13 +85,15 @@
 		font-size: rem(18);
 		line-height: calc(math.div(26, 18));
 		padding-block: rem(20);
+    padding-right: 2rem;
 	}
 }
 
 .l-meganav__list {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-	gap: rem(27);
+	row-gap: rem(6);
+  column-gap: rem(22);
 	margin-block: rem(22) 0;
 	@include mq-down() {
 		grid-template-columns: 100%;
