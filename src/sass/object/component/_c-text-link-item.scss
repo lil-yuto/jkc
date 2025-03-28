@@ -79,8 +79,8 @@
 			--translate: 0.22em 0;
 			opacity: 1;
 		}
-		.c-text-link-item[href$=".pdf"]:hover::after,
-		.c-text-link-item[href^="http"]:not([href*="#{$domain}"]):hover::after {
+		.c-text-link-item__link[href$=".pdf"]:hover::after,
+		.c-text-link-item__link[href^="http"]:not([href*="#{$domain}"]):hover::after {
 			--translate: 0;
 		}
 	}

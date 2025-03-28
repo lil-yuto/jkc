@@ -61,7 +61,7 @@
           <ul class="c-text-link__items">
             <?php while ($notice_query->have_posts()): $notice_query->the_post(); ?>
               <li class="c-text-link__item">
-                <a href='<?php the_permalink(); ?>' class="c-text-link__link"><?php the_title(); ?></a>
+                <a href='<?php the_permalink(); ?>' class="c-text-link-item__link"><?php the_title(); ?></a>
               </li>
             <?php endwhile; ?>
           </ul>
