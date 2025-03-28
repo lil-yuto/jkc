@@ -639,3 +639,122 @@ add_shortcode('qualification1_schedule', function ($atts) {
 
   return ob_get_clean();
 });
+
+/**
+ * 資格情報のスケジュールを表示するショートコード（qualification2形式）
+ *
+ * このショートコードは、指定されたカテゴリに基づいて関連する資格情報を表示します。
+ * 使用例: [qualification2_schedule category="rescuedog-schedule"]
+ */
+add_shortcode('qualification2_schedule', function ($atts) {
+  // デフォルト値の設定
+  $atts = shortcode_atts(array(
+    'category' => '',
+  ), $atts, 'qualification2_schedule');
+
+  ob_start();
+
+  // カテゴリが指定されていない場合はメッセージを表示
+  $category = $atts['category'];
+  if (empty($category)) {
+    echo '<p class="c-text">カテゴリが指定されていません。例: [qualification2_schedule category="rescuedog-schedule"]</p>';
+    return ob_get_clean();
+  }
+
+  $search_term = 'qualification_' . $category;
+
+  $args = array(
+    'post_type' => array('qualification1', 'qualification2'),
+    'posts_per_page' => -1,
+    'tax_query' => array(
+      'relation' => 'OR',
+      array(
+        'taxonomy' => 'qualification1_category',
+        'field' => 'slug',
+        'terms' => $search_term,
+      ),
+      array(
+        'taxonomy' => 'qualification2_category',
+        'field' => 'slug',
+        'terms' => $search_term,
+      ),
+    ),
+  );
+  $the_query = new WP_Query($args);
+
+  if ($the_query->have_posts()):
+    while ($the_query->have_posts()): $the_query->the_post();
+
+      if (get_field('acf_qu2')['acf_qu2_org']): ?>
+        <h3 class="c-heading c-heading--lv3"><?php echo get_field('acf_qu2')['acf_qu2_org']; ?></h3>
+      <?php else: ?>
+        <h3 class="c-heading c-heading--lv3"><?php the_title(); ?></h3>
+      <?php endif;
+
+      if (get_field('acf_qu2')['acf_qu2_office']): ?>
+        <h5 class="c-heading c-heading--lv5">連絡事務所</h5>
+        <p class="c-text"><?php echo get_field('acf_qu2')['acf_qu2_office']; ?></p>
+      <?php elseif (get_field('acf_qu_office')) : ?>
+        <h5 class="c-heading c-heading--lv5">連絡事務所</h5>
+        <p class="c-text"><?php echo get_field('acf_qu_office'); ?></p>
+      <?php endif; ?>
+
+      <figure class="c-table">
+        <table>
+          <tbody>
+
+            <?php if (get_field('acf_qu2')['acf_qu2_day']): ?>
+              <tr>
+                <td style="background-color:#EDF5EF"><strong>日時</strong></td>
+                <td><?php echo get_field('acf_qu2')['acf_qu2_day']; ?></td>
+              </tr>
+            <?php endif; ?>
+
+            <?php if (get_field('acf_qu2')['acf_qu2_place']): ?>
+              <tr>
+                <td style="background-color:#EDF5EF"><strong>会場</strong></td>
+                <td><?php echo get_field('acf_qu2')['acf_qu2_place']; ?></td>
+              </tr>
+            <?php endif; ?>
+
+            <?php if (get_field('acf_qu2')['acf_qu2_type']): ?>
+              <tr>
+                <td style="background-color:#EDF5EF"><strong>試験の種類</strong></td>
+                <td><?php echo get_field('acf_qu2')['acf_qu2_type']; ?></td>
+              </tr>
+            <?php endif; ?>
+
+            <?php if (get_field('acf_qu2')['acf_qu2_lecturer']): ?>
+              <tr>
+                <td style="background-color:#EDF5EF"><strong>研修会講師</strong></td>
+                <td><?php echo get_field('acf_qu2')['acf_qu2_lecturer']; ?></td>
+              </tr>
+            <?php endif; ?>
+
+            <?php if (get_field('acf_qu2')['acf_qu2_theme']): ?>
+              <tr>
+                <td style="background-color:#EDF5EF"><strong>研修テーマ</strong></td>
+                <td><?php echo get_field('acf_qu2')['acf_qu2_theme']; ?></td>
+              </tr>
+            <?php endif; ?>
+
+            <?php if (get_field('acf_qu2')['acf_qu2_tuition']): ?>
+              <tr>
+                <td style="background-color:#EDF5EF"><strong>受講料</strong></td>
+                <td><?php echo get_field('acf_qu2')['acf_qu2_tuition']; ?></td>
+              </tr>
+            <?php endif; ?>
+
+          </tbody>
+        </table>
+      </figure>
+
+    <?php endwhile;
+  else:
+    echo '<p class="c-text">該当する資格情報はありません。</p>';
+  endif;
+
+  wp_reset_postdata();
+
+  return ob_get_clean();
+});
