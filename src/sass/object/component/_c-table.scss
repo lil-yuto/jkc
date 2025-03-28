@@ -13,6 +13,36 @@
 			text-decoration: underline;
 			transition: color $duration-default;
 		}
+    // PDFリンク用のアイコン
+    a[href$=".pdf"]::after {
+      content: "";
+      display: inline-block;
+      width: em(17.5, 18);
+      aspect-ratio: 17.5 / 18.34;
+      margin-inline: em(5, 18);
+      background-color: $color-text-link-pdf;
+      mask-image: url("../images/common/cmn-link-pdf-ico01.svg");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      vertical-align: baseline;
+    }
+
+    // 外部リンク用のアイコン
+    a[href^="http"]:not([href*="#{$domain}"])::after {
+      content: "";
+      display: inline-block;
+      width: em(17.5, 18);
+      aspect-ratio: 17.5 / 18.34;
+      margin-inline: em(5, 18);
+      background-color: $color-text-link-external;
+      mask-image: url("../images/common/cmn-link-blank-ico01.svg");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      vertical-align: baseline;
+    }
+
 		@media (any-hover: hover) {
 			a:hover {
 				color: #{$color-text-link-hover};
