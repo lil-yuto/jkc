@@ -92,7 +92,7 @@
 .l-meganav__list {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-	row-gap: rem(6);
+	row-gap: 0.71rem;
   column-gap: rem(22);
 	margin-block: rem(22) 0;
 	@include mq-down() {
