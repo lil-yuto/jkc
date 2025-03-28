@@ -70,6 +70,46 @@
     {
       "name": "back",
       "label": "戻る"
+    },
+    {
+      "name": "royal-01g",
+      "label": "ロイヤル01G"
+    },
+    {
+      "name": "royal-02g",
+      "label": "ロイヤル02G"
+    },
+    {
+      "name": "royal-03g",
+      "label": "ロイヤル03G"
+    },
+    {
+      "name": "royal-04g",
+      "label": "ロイヤル04G"
+    },
+    {
+      "name": "royal-05g",
+      "label": "ロイヤル05G"
+    },
+    {
+      "name": "royal-06g",
+      "label": "ロイヤル06G"
+    },
+    {
+      "name": "royal-07g",
+      "label": "ロイヤル07G"
+    },
+    {
+      "name": "royal-08g",
+      "label": "ロイヤル08G"
+    },
+    {
+      "name": "royal-09g",
+      "label": "ロイヤル09G"
+    },
+    {
+      "name": "royal-10g",
+      "label": "ロイヤル10G"
     }
   ],
   "textdomain": "jkc-block",

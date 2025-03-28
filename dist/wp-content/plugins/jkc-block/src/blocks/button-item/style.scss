@@ -82,6 +82,10 @@
       --bg-color: #ffffff;
       opacity: 1;
     }
+    .c-block-button-item__link:hover::after {
+      --bg-color: currentColor;
+      --translate: 0.22em 0;
+    }
     .c-block-button-item__link[href^="http"]:not([href*="#{$domain}"]):hover::after {
       --translate: 0;
     }
@@ -320,5 +324,127 @@
       background-color: var(--border-color);
       translate: var(--translate);
     }
+  }
+}
+
+// ロイヤルカナンアワード
+.wp-block-jkc-block-button-item.is-style-royal-01g,
+.wp-block-jkc-block-button-item.is-style-royal-02g,
+.wp-block-jkc-block-button-item.is-style-royal-03g,
+.wp-block-jkc-block-button-item.is-style-royal-04g,
+.wp-block-jkc-block-button-item.is-style-royal-05g,
+.wp-block-jkc-block-button-item.is-style-royal-06g,
+.wp-block-jkc-block-button-item.is-style-royal-07g,
+.wp-block-jkc-block-button-item.is-style-royal-08g,
+.wp-block-jkc-block-button-item.is-style-royal-09g,
+.wp-block-jkc-block-button-item.is-style-royal-10g {
+  .c-block-button-item__link {
+    --color: #{$color-accent-green};
+    --border-color: currentcolor;
+    --bg-color: transparent;
+    --translate: 0;
+    --height: #{rem(130)};
+    grid-template-columns: rem(90) auto 1fr;
+    text-align: left;
+    padding-block: 0;
+    padding-inline: 0 em(24, 18);
+    border-radius: rem(6);
+    min-height: var(--height);
+    overflow: hidden;
+  }
+
+  .c-block-button-item__link::before {
+    align-self: stretch;
+    width: rem(90);
+    aspect-ratio: 90 / 128;
+  }
+
+  .c-block-button-item__link::after {
+    background-color: var(--border-color);
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --color: #FFFFFF;
+      --border-color: #{$color-accent-green};
+      --bg-color: var(--border-color);
+      --translate: 0 0.22em;
+      opacity: 1;
+    }
+    .c-block-button-item__link:hover::after {
+      background-color: currentColor;
+      translate: var(--translate);
+    }
+  }
+}
+
+
+// ロイヤル01G
+.wp-block-jkc-block-button-item.is-style-royal-01g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-01g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル02G
+.wp-block-jkc-block-button-item.is-style-royal-02g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-02g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル03G
+.wp-block-jkc-block-button-item.is-style-royal-03g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-03g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル04G
+.wp-block-jkc-block-button-item.is-style-royal-04g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-04g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル05G
+.wp-block-jkc-block-button-item.is-style-royal-05g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-05g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル06G
+.wp-block-jkc-block-button-item.is-style-royal-06g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-06g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル07G
+.wp-block-jkc-block-button-item.is-style-royal-07g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-07g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル08G
+.wp-block-jkc-block-button-item.is-style-royal-08g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-08g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル09G
+.wp-block-jkc-block-button-item.is-style-royal-09g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-09g.png") no-repeat center / cover;
+  }
+}
+
+// ロイヤル10G
+.wp-block-jkc-block-button-item.is-style-royal-10g {
+  .c-block-button-item__link::before {
+    background: url("./images/cmn-breeds-10g.png") no-repeat center / cover;
   }
 }
