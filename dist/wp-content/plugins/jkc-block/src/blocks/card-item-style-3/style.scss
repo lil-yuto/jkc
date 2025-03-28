@@ -54,7 +54,7 @@
     }
   }
   .c-block-card-item-style-3__button-wrapper {
-    width: rem(130);
+    width: 100%;
     margin-inline: 0 auto;
     margin-top: rem(30);
   }
@@ -71,7 +71,7 @@
     font-size: rem(15);
     letter-spacing: math.div(50, 1000) * 1em;
     color: var(--color);
-    padding-block: em(3, 15);
+    padding-block: em(10, 15);
     padding-inline: em(12, 15);
     border-radius: rem(5);
     border: 1px solid var(--border-color);
