@@ -67,6 +67,7 @@
 		height: 2px;
 		border-radius: 50vw;
 		background-color: $palette-darkGray;
+    z-index: 100;
 	}
 }
 
@@ -84,6 +85,7 @@
 		height: rem(19);
 		border-radius: 50vw;
 		background-color: $palette-darkGray;
+    z-index: 100;
 		transition: transform 0.3s ease-out;
 	}
 }
@@ -142,6 +144,18 @@
 	opacity: 1;
 	@include mq-down() {
 	}
+}
+
+.l-gnav__item.is-current {
+
+
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    display: none;
+  }
 }
 
 .l-gnav__meganav {
