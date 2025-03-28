@@ -72,16 +72,16 @@
     <article class="p-breeds__search p-breeds-search">
 
       <div class="p-breeds-search__heading-wrapper">
-        <h4 class="c-heading c-heading--lv4">名前で探す</h4>
+        <h4 id="search-heading" class="c-heading c-heading--lv4">名前で探す</h4>
 
         <div class="p-breeds-search__howto c-text-link">
           <ul class="c-text-link__items">
 
             <li class="c-text-link__item">
-              <a href="<?php echo esc_html(add_query_arg('sort', 'katakana', get_post_type_archive_link(get_post_type()))); ?>" class="c-text-link__link">五十音順</a>
+              <a href="<?php echo esc_html(add_query_arg('sort', 'katakana', get_post_type_archive_link(get_post_type()))); ?>#search-heading" class="c-text-link__link">五十音順</a>
             </li>
             <li class="c-text-link__item">
-              <a href="<?php echo esc_html(add_query_arg('sort', 'alphabet', get_post_type_archive_link(get_post_type()))); ?>" class="c-text-link__link">アルファベット順</a>
+              <a href="<?php echo esc_html(add_query_arg('sort', 'alphabet', get_post_type_archive_link(get_post_type()))); ?>#search-heading" class="c-text-link__link">アルファベット順</a>
             </li>
           </ul>
         </div>
