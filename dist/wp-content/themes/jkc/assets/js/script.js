@@ -46,11 +46,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const megaParents = document.querySelectorAll(".js-megaParent");
 
   megaParents.forEach((megaParent) => {
+    let openTimeOut;
+
     megaParent.addEventListener("mouseover", function () {
       let windowWidth = window.innerWidth;
       if (windowWidth > 767) {
         let megaMenu = megaParent.querySelector(".l-meganav");
+        clearTimeout(openTimeOut);
+
+        openTimeOut = setTimeout(() => {
         gsap.to(megaMenu, { height: "auto" });
+      }, 400);
       }
     });
 
@@ -58,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let windowWidth = window.innerWidth;
       if (windowWidth > 767) {
         let megaMenu = megaParent.querySelector(".l-meganav");
+        clearTimeout(openTimeOut);
         gsap.to(megaMenu, { height: 0 });
       }
     });
