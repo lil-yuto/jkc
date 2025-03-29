@@ -71,9 +71,9 @@
 	.c-text a:hover {
 		color: $color-text-link-hover;
 		opacity: 1;
-    translate: 0;
 	}
-  .c-text a:hover::after {
+  .c-text a[href$=".pdf"]::after,
+  .c-text a[href^="http"]:not([href*="#{$domain}"])::after {
     translate: 0;
   }
 }
