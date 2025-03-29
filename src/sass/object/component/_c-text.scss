@@ -71,7 +71,11 @@
 	.c-text a:hover {
 		color: $color-text-link-hover;
 		opacity: 1;
+    translate: 0;
 	}
+  .c-text a:hover::after {
+    translate: 0;
+  }
 }
 
 // ハイライトカラー
