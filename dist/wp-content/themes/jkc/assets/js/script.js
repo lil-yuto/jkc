@@ -24,25 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Smooth scrolling of internal links
-  $('a[href^="#"]').on("click", function () {
-    const href = $(this).attr("href");
-    const target = $(href == "#" || href == "" ? "html" : href);
-    const offset = $(".l-header").height();
-    // log出して確認
-    const position = target.offset().top - offset;
-
-    $("body,html").animate(
-      {
-        scrollTop: position,
-      },
-      500,
-      "swing"
-    );
-
-    return false;
-  });
-
   const megaParents = document.querySelectorAll(".js-megaParent");
 
   megaParents.forEach((megaParent) => {

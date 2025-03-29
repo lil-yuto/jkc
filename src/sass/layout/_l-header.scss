@@ -5,7 +5,7 @@
 	position: sticky;
 	top: 0;
 	@include z-index(header);
-	
+
 	@media print {
 		position: relative;
 	}
@@ -19,13 +19,13 @@
 	column-gap: rem(10);
 	align-items: center;
 	width: 100%;
-	min-height: rem(134);
+	height: rem(134);
 	background-color: #ffffff;
 	@include mq-down() {
 		grid:
 			"logo menu-top" 1fr
 			"menu-bottom menu-bottom" max-content / minmax(max-content, 1fr);
-		min-height: rem(66);
+		height: rem(66);
 		align-items: stretch;
 		column-gap: rem(12);
 	}
@@ -61,4 +61,3 @@
 	justify-self: end;
 	align-self: center;
 }
-
