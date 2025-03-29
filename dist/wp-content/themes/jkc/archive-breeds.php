@@ -69,10 +69,10 @@
     </article>
 
 
-    <article class="p-breeds__search p-breeds-search">
+    <article id="search-heading" class="p-breeds__search p-breeds-search">
 
       <div class="p-breeds-search__heading-wrapper">
-        <h4 id="search-heading" class="c-heading c-heading--lv4">名前で探す</h4>
+        <h4 class="c-heading c-heading--lv4">名前で探す</h4>
 
         <div class="p-breeds-search__howto c-text-link">
           <ul class="c-text-link__items">
