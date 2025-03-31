@@ -10,9 +10,6 @@ html {
   scroll-behavior: smooth;
 	scroll-snap-type: y proximity;
 	scroll-padding-top: rem(134);
-  @include mq-down() {
-    scroll-padding-top: rem(66);
-  }
 
   // 375px~767px
   font-size: 16px;
@@ -30,6 +27,10 @@ html {
   // inner~max-screen
   @media (min-width: $layout-width-inner) {
     font-size: 16px;
+  }
+
+  @include mq-down() {
+    scroll-padding-top: rem(66);
   }
 }
 
