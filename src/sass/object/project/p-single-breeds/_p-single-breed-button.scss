@@ -38,6 +38,7 @@
 .p-single-breeds-button__link::before {
   content: "";
   justify-self: start;
+  align-self: stretch;
   width: rem(90);
   aspect-ratio: 90 / 128;
   background: url("../images/common/cmn-breeds-01g.png") no-repeat center / cover;
