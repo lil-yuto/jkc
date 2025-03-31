@@ -147,7 +147,7 @@
       <div class="p-top-news__content">
         <div class="p-top-news__categories">
           <ul class="p-top-news__category-list">
-          <li><button class="p-top-news__category-link c-label-white news-filter active" data-term="all">全て</button></li>
+            <li><button class="p-top-news__category-link c-label-white js-top-news__category-link active" data-target="all">全て</button></li>
             <?php
             $terms = get_terms([
               'taxonomy' => 'news_category',
@@ -155,56 +155,50 @@
             ]);
             foreach ($terms as $term) {
               echo '<li>';
-              echo '<button class="p-top-news__category-link c-label-white news-filter" data-term="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</button>';
+              echo '<button class="p-top-news__category-link c-label-white js-top-news__category-link" data-target="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</button>';
               echo '</li>';
             }
             ?>
           </ul>
         </div>
         <div class="p-top-news__posts p-posts">
-          <ul class="p-posts__list" id="news-list">
+          <!-- すべてのニュース -->
+          <ul class="p-posts__list js-posts__list p-top-news__posts-list active" data-target="all">
             <?php
               $args_news = [
                 'post_type'      => 'news',
-                'posts_per_page' => -1,
+                'posts_per_page' => 5, // 最大5件に制限
                 'orderby'        => 'date',
                 'order'          => 'DESC'
               ];
               $query_news = new WP_Query($args_news);
               if ($query_news->have_posts()) :
                 while ($query_news->have_posts()) : $query_news->the_post();
-                $taxonomy_terms = get_the_terms($post->ID, 'news_category');
-                $term_slugs = [];
-                if ($taxonomy_terms) {
-                  foreach ($taxonomy_terms as $term) {
-                    $term_slugs[] = $term->slug;
-                  }
-                }
+                  // リンク先とターゲット属性を決定
+                  $link_url = '';
+                  $target = '';
 
-                // リンク先とターゲット属性を決定
-                $link_url = '';
-                $target = '';
-
-                // 優先度順にリンク先を判定
-                $pdf_file = get_field('acf_news_pdf');
-                if (!empty($pdf_file) && is_array($pdf_file)) {
-                  // ファイル配列からURLを取得
-                  $link_url = $pdf_file['url'];
-                  // ターゲット設定を確認
-                  if (get_field('acf_news_target')) {
-                    $target = ' target="_blank" rel="noopener noreferrer"';
+                  // 優先度順にリンク先を判定
+                  $pdf_file = get_field('acf_news_pdf');
+                  if (!empty($pdf_file) && is_array($pdf_file)) {
+                    // ファイル配列からURLを取得
+                    $link_url = $pdf_file['url'];
+                    // ターゲット設定を確認
+                    if (get_field('acf_news_target')) {
+                      $target = ' target="_blank" rel="noopener noreferrer"';
+                    }
+                  } elseif ($external_url = get_field('acf_news_url')) {
+                    $link_url = $external_url;
+                    // ターゲット設定を確認
+                    if (get_field('acf_news_target')) {
+                      $target = ' target="_blank" rel="noopener noreferrer"';
+                    }
+                  } else {
+                    $link_url = get_the_permalink();
                   }
-                } elseif ($external_url = get_field('acf_news_url')) {
-                  $link_url = $external_url;
-                  // ターゲット設定を確認
-                  if (get_field('acf_news_target')) {
-                    $target = ' target="_blank" rel="noopener noreferrer"';
-                  }
-                } else {
-                  $link_url = get_the_permalink();
-                }
+                  $taxonomy_terms = get_the_terms($post->ID, 'news_category');
               ?>
-              <li class="news-item" data-category="<?php echo esc_attr(implode(' ', $term_slugs)); ?>">
+              <li>
                 <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item"<?php echo $target; ?>>
                   <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
                     <?php echo get_the_date('Y.n.j'); ?>
@@ -217,14 +211,76 @@
                   </p>
                 </a>
               </li>
-            <?php endwhile; ?>
+              <?php endwhile; ?>
             <?php endif; ?>
             <?php wp_reset_postdata(); ?>
           </ul>
+
+          <!-- カテゴリごとのニュース -->
+          <?php foreach ($terms as $term) : ?>
+            <ul class="p-posts__list js-posts__list p-top-news__posts-list" data-target="<?php echo esc_attr($term->slug); ?>">
+              <?php
+                $args_category = [
+                  'post_type'      => 'news',
+                  'posts_per_page' => 5, // 最大5件に制限
+                  'orderby'        => 'date',
+                  'order'          => 'DESC',
+                  'tax_query'      => [
+                    [
+                      'taxonomy' => 'news_category',
+                      'field'    => 'slug',
+                      'terms'    => $term->slug,
+                    ],
+                  ],
+                ];
+                $query_category = new WP_Query($args_category);
+                if ($query_category->have_posts()) :
+                  while ($query_category->have_posts()) : $query_category->the_post();
+                    // リンク先とターゲット属性を決定
+                    $link_url = '';
+                    $target = '';
+
+                    // 優先度順にリンク先を判定
+                    $pdf_file = get_field('acf_news_pdf');
+                    if (!empty($pdf_file) && is_array($pdf_file)) {
+                      // ファイル配列からURLを取得
+                      $link_url = $pdf_file['url'];
+                      // ターゲット設定を確認
+                      if (get_field('acf_news_target')) {
+                        $target = ' target="_blank" rel="noopener noreferrer"';
+                      }
+                    } elseif ($external_url = get_field('acf_news_url')) {
+                      $link_url = $external_url;
+                      // ターゲット設定を確認
+                      if (get_field('acf_news_target')) {
+                        $target = ' target="_blank" rel="noopener noreferrer"';
+                      }
+                    } else {
+                      $link_url = get_the_permalink();
+                    }
+              ?>
+              <li>
+                <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item"<?php echo $target; ?>>
+                  <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
+                    <?php echo get_the_date('Y.n.j'); ?>
+                  </time>
+                  <p class="p-posts__category">
+                    <?php echo esc_html($term->name); ?>
+                  </p>
+                  <p class="p-posts__title">
+                    <?php the_title(); ?>
+                  </p>
+                </a>
+              </li>
+              <?php endwhile; ?>
+              <?php endif; ?>
+              <?php wp_reset_postdata(); ?>
+            </ul>
+          <?php endforeach; ?>
         </div>
         <div class="p-top-news__select-wrapper">
           <div class="p-top-news__more u-hidden-sp">
-            <a href="/news" class="p-top-news__more-link c-link-icon" id="view-all-link">一覧を見る</a>
+            <a href="/news/" class="p-top-news__more-link c-link-icon js-top-news__more-link">一覧を見る</a>
           </div>
         </div>
       </div>

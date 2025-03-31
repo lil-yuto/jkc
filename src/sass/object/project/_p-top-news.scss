@@ -76,6 +76,14 @@
   margin-top: rem(32);
 }
 
+.p-top-news__posts-list.p-posts__list {
+  display: none;
+}
+
+.p-top-news__posts-list.p-posts__list.active {
+  display: grid;
+}
+
 .p-posts {
   @include mq-down() {
     border-image: linear-gradient($color-accent-green-light 0 0) fill 0 / /0 100lvi;
