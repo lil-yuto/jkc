@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  this.document.querySelectorAll(".p-event-modal__message").forEach(function (target) {
+  document.querySelectorAll(".p-event-modal__message").forEach(function (target) {
     target.addEventListener("click", function (event) {
       event.stopPropagation();
     });

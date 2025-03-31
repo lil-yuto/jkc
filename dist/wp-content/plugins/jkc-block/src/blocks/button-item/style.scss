@@ -338,6 +338,12 @@
 .wp-block-jkc-block-button-item.is-style-royal-08g,
 .wp-block-jkc-block-button-item.is-style-royal-09g,
 .wp-block-jkc-block-button-item.is-style-royal-10g {
+  .c-block-button-item {
+    @include mq-down() {
+      width: min(rem(530), 100%);
+    }
+  }
+
   .c-block-button-item__link {
     --color: #{$color-accent-green};
     --border-color: currentcolor;
