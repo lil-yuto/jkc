@@ -36,6 +36,11 @@
                   $target = get_field('acf_topslide_target');
                   $pc_img_url = $pc_img_id ? wp_get_attachment_image_url($pc_img_id, 'full') : '';
                   $sp_img_url = $sp_img_id ? wp_get_attachment_image_url($sp_img_id, 'full') : '';
+                  // 画像サイズの取得
+                  $pc_img_width = $pc_img_id ? wp_get_attachment_image_src($pc_img_id, 'full')[1] : '';
+                  $pc_img_height = $pc_img_id ? wp_get_attachment_image_src($pc_img_id, 'full')[2] : '';
+                  $sp_img_width = $sp_img_id ? wp_get_attachment_image_src($sp_img_id, 'full')[1] : '';
+                  $sp_img_height = $sp_img_id ? wp_get_attachment_image_src($sp_img_id, 'full')[2] : '';
                   $target_value = $target ? '_blank' : '_self';
                   if ($pc_img_url && $sp_img_url) : ?>
                     <li class="splide__slide">
@@ -45,8 +50,8 @@
                           <a>
                         <?php endif; ?>
                           <picture>
-                            <source media="(min-width: 768px)" srcset="<?php echo esc_url($pc_img_url); ?>">
-                            <img src="<?php echo esc_url($sp_img_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                            <source media="(min-width: 768px)" srcset="<?php echo esc_url($pc_img_url); ?>" width="<?php echo esc_attr($pc_img_width); ?>" height="<?php echo esc_attr($pc_img_height); ?>">
+                            <img src="<?php echo esc_url($sp_img_url); ?>" alt="<?php the_title_attribute(); ?>" width="<?php echo esc_attr($sp_img_width); ?>" height="<?php echo esc_attr($sp_img_height); ?>" />
                           </picture>
                         </a>
                       </li>
