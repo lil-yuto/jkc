@@ -92,7 +92,7 @@
 .l-meganav__list {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-	row-gap: 0.35rem;
+	row-gap: 0rem;
   column-gap: rem(22);
 	margin-block: rem(22) 0;
 	@include mq-down() {
@@ -128,13 +128,13 @@
 	width: 100%;
 	height: 100%;
 	min-height: rem(68);
-	padding: 0 0 rem(15) 0;
+	padding: 0 0 0 0;
 	// background-color: green;
 	border-bottom: $palette-mediumGray 1px solid;
 	transition: color $duration-default;
 	position: relative;
 	@include mq-down() {
-		padding: 0 rem(0) 0 rem(20);
+		padding: 0 rem(0) 0 rem(0);
 		border-bottom: $palette-mediumGray 2px solid;
 		// border-bottom: blue 2px solid;
 	}
