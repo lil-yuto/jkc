@@ -387,6 +387,10 @@ endif;
 
             </div>
           </form>
+        <?php else: ?>
+          <div class="p-event-result__no-results">
+            <p>検索された条件でのイベントはありません</p>
+          </div>
         <?php endif; ?>
 
 
