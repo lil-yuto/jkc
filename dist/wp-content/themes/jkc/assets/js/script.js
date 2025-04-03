@@ -261,14 +261,6 @@ $(function () {
         });
         continue;
       } else {
-        const offset = $(".l-header").height();
-        $("html, body").animate(
-          {
-            scrollTop: $("#event_schedule").offset().top - offset,
-          },
-          500,
-          "swing"
-        );
         if (!exebool) {
           // リスト内の各アイテムをチェック
           for (var j = 0; j < $(listItem).length; j++) {
@@ -288,7 +280,17 @@ $(function () {
           $(".p-ev__item.accordionOpen").find(".p-ev__subMenu").css({ height: "auto" });
           exebool = true;
         } else {
-          location.reload();
+          // リセット処理：すべての非表示を解除
+          $(listItem).removeClass(is_hide);
+          $(listWrap).removeClass(is_hide);
+
+          // アコーディオンの状態をリセット
+          $(".p-ev__item").removeClass("accordionOpen");
+          $(".p-ev__item").find(".p-ev__subMenu").css({ height: 0 });
+
+          // チェックボックスの状態をリセット
+          $(".p-ev input[type='checkbox']").prop("checked", false);
+
           exebool = false;
         }
       }
