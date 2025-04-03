@@ -23,6 +23,10 @@
     {
       "name": "text-link-direction-column",
       "label": "縦並び"
+    },
+    {
+      "name": "text-link-direction-column-center",
+      "label": "縦並び＆中央揃え"
     }
   ],
 	"textdomain": "jkc-block",

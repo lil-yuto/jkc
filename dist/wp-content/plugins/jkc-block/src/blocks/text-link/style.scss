@@ -19,13 +19,28 @@
     flex-direction: row;
     @include mq-down() {
       flex-direction: column;
-    }  }
+    }
+  }
 }
 
 .wp-block-jkc-block-text-link.is-style-text-link-direction-column {
   .c-block-text-link__items {
     flex-direction: column;
+    align-items: flex-start;
     @include mq-down() {
       flex-direction: column;
-    }  }
+      align-items: flex-start;
+    }
+  }
+}
+
+.wp-block-jkc-block-text-link.is-style-text-link-direction-column-center {
+  .c-block-text-link__items {
+    flex-direction: column;
+    align-items: center;
+    @include mq-down() {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }
