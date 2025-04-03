@@ -28,9 +28,9 @@ export default function save({ attributes }) {
           <div className="c-block-tab-item__toggle-btn-wrapper">
             <button
               className="c-block-tab-item__toggle-btn"
-              aria-expanded="true"
+              aria-expanded="false"
             >
-              <span>閉じる</span>
+              開く
             </button>
           </div>
         )}

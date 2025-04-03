@@ -53,6 +53,7 @@
 
 .c-block-tab-item .c-block-tab-item__content {
   width: 100%;
+  display: none;
 }
 
 .c-block-tab-item__toggle-btn-wrapper {
@@ -99,7 +100,7 @@
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-  rotate: -90deg;
+  rotate: 90deg;
   translate: var(--translate);
   transition: translate $duration-default, background-color $duration-default;
   @include mq-down() {
@@ -119,6 +120,10 @@
   .c-block-tab-item__toggle-btn[aria-expanded="false"]:hover {
     --translate: 0 #{em(4)};
   }
+}
+
+.c-block-tab-item__toggle-btn[aria-expanded="true"]::after {
+  rotate: -90deg;
 }
 
 .c-block-tab-item__toggle-btn[aria-expanded="false"]::after {

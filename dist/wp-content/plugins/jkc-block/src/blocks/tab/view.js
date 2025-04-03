@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     tabBlocks.forEach(tabBlock => {
         const radioButtons = tabBlock.querySelectorAll('input[type="radio"]');
         const tabItems = tabBlock.querySelectorAll('.c-block-tab-item');
+        // タブブロックごとの共通開閉状態を管理する変数
+        let isContentExpanded = false; // 初期状態では閉じる
 
         // 初期表示時
         $(tabItems).each(function() {
@@ -36,12 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const $content = $tabItem.find('.c-block-tab-item__content');
             const $toggleButton = $tabItem.find('.c-block-tab-item__toggle-btn');
 
-            // チェックされているタブのみ表示
+            // ボタンテキストを「開く」に
+            $toggleButton.text('開く');
+            $toggleButton.attr('aria-expanded', 'false');
+
+            // チェックされているタブのコンテンツラッパーのみ表示
             if ($radio.prop('checked')) {
                 $contentWrapper.show();
-                $content.show();
-                $toggleButton.attr('aria-expanded', 'true');
-                $toggleButton.text('閉じる');
+                $content.hide(); // 初期状態では閉じる
             } else {
                 $contentWrapper.hide();
             }
@@ -50,21 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
             $toggleButton.on('click', function(e) {
                 e.preventDefault();
 
-                // slideToggleで開閉
-                $content.slideToggle(300, function() {
-                    // アニメーション完了後に状態を更新
-                    const isExpanded = $toggleButton.attr('aria-expanded') === 'true';
+                // タブブロック全体の開閉状態を切り替え
+                isContentExpanded = !isContentExpanded;
 
-                    if (isExpanded) {
-                        // 閉じる状態に変更
-                        $toggleButton.attr('aria-expanded', 'false');
-                        $toggleButton.text('開く');
-                    } else {
-                        // 開く状態に変更
-                        $toggleButton.attr('aria-expanded', 'true');
-                        $toggleButton.text('閉じる');
-                    }
-                });
+                // すべてのタブの開閉状態を同期
+                updateAllTabsState(tabBlock, isContentExpanded);
             });
         });
 
@@ -79,11 +73,49 @@ document.addEventListener('DOMContentLoaded', function() {
                     // タブの表示/非表示のみを切り替え（開閉状態は変更しない）
                     if ($radio.prop('checked')) {
                         $contentWrapper.show();
+
+                        // 選択されたタブの開閉状態を現在のタブブロックの状態に合わせる
+                        const $content = $tabItem.find('.c-block-tab-item__content');
+                        const $toggleButton = $tabItem.find('.c-block-tab-item__toggle-btn');
+
+                        if (isContentExpanded) {
+                            $content.show();
+                            $toggleButton.attr('aria-expanded', 'true');
+                            $toggleButton.text('閉じる');
+                        } else {
+                            $content.hide();
+                            $toggleButton.attr('aria-expanded', 'false');
+                            $toggleButton.text('開く');
+                        }
                     } else {
                         $contentWrapper.hide();
                     }
                 });
             });
         });
+
+        // タブブロック内のすべてのタブの開閉状態を更新する関数
+        function updateAllTabsState(tabBlock, isExpanded) {
+            const $allItems = $(tabBlock).find('.c-block-tab-item');
+            $allItems.each(function() {
+                const $tabItem = $(this);
+                const $radio = $tabItem.find('input[type="radio"]');
+                const $content = $tabItem.find('.c-block-tab-item__content');
+                const $toggleButton = $tabItem.find('.c-block-tab-item__toggle-btn');
+
+                // チェックされているタブのみ処理
+                if ($radio.prop('checked')) {
+                    if (isExpanded) {
+                        $content.slideDown(300);
+                        $toggleButton.attr('aria-expanded', 'true');
+                        $toggleButton.text('閉じる');
+                    } else {
+                        $content.slideUp(300);
+                        $toggleButton.attr('aria-expanded', 'false');
+                        $toggleButton.text('開く');
+                    }
+                }
+            });
+        }
     });
 });

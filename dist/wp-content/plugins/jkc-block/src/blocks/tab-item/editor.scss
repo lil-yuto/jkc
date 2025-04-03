@@ -1,0 +1,4 @@
+/* 編集画面ではタブコンテンツを常に表示する */
+.c-block-tab-item .c-block-tab-item__content {
+  display: block;
+}
