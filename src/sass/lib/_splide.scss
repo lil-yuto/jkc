@@ -1,0 +1,18 @@
+
+@use 'global' as *;
+@use "sass:math";
+
+// Grid内のスライドの高さを固定するために、親要素にaspect-ratioを指定する
+// 比率を指定しないと、レイアウトシフトが発生する対策
+.splide__track {
+  aspect-ratio: 1008 / 405;
+  @include mq-down() {
+    aspect-ratio: 345 / 265;
+  }
+}
+
+.splide__slide a:not([href]),
+.splide__slide a[href=""] {
+  opacity: 1;
+  pointer-events: none;
+}
