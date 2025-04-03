@@ -88,7 +88,7 @@ endif;
 
       <div class="p-event-search__result p-event-result">
 
-        <div class="p-event-result__setview_wrap">
+        <div id="event-result" class="p-event-result__setview_wrap">
           <button type="button" class="p-event-result__compare_enable">
             並べて見る
           </button>
