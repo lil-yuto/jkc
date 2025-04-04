@@ -263,6 +263,7 @@
     }
     $args = array(
       'post_type' => $post_type_lists,
+      'post__not_in' => array($post->ID), // 現在のページを除外
       'tax_query' => array(
         array(
           'taxonomy' => $taxonomy_slug,
