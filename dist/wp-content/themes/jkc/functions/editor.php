@@ -145,6 +145,7 @@ define('ALLOW_CORE_BLOCKS', [
 
 define('ALLOW_VENDER_BLOCKS', [
   'flexible-table-block/table',
+  'insert-pages/block'
 ]);
 
 // 許可するブロックを指定
