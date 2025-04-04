@@ -27,7 +27,9 @@
     justify-content: center;
   }
   .c-block-button__items > * {
-    flex-basis: calc((100% - var(--column-gap) * (var(--column) - 1)) / var(--column));
+    flex-basis: calc(
+      (100% - var(--column-gap) * (var(--column) - 1)) / var(--column)
+    );
   }
 }
 
@@ -35,17 +37,13 @@
 .wp-block-jkc-block-button.is-style-related-info {
   .c-block-button__items {
     --column: 4;
-    --column-gap: #{rem(20)};
-    --row-gap: #{rem(20)};
+    display: grid;
+    gap: rem(10);
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
     flex-wrap: wrap;
-    gap: var(--row-gap) var(--column-gap);
-    justify-content: flex-start;
+    margin-block: var(--block-margin-top) var(--block-margin-bottom);
     @include mq-down() {
-      justify-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
     }
   }
-  .c-block-button__items > * {
-    flex-basis: calc((100% - var(--column-gap) * (var(--column) - 1)) / var(--column));
-  }
-
 }

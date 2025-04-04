@@ -457,6 +457,9 @@
 
 // 関連情報
 .wp-block-jkc-block-button-item.is-style-related-info {
+  .c-block-button-item {
+    width: 100%;
+  }
   .c-block-button-item__link {
     --color: #{$color-accent-green};
     --border-color: currentcolor;
@@ -464,6 +467,7 @@
     --translate: 0;
     --height: #{rem(80)};
     padding-inline: em(15, 18);
+    text-align: center;
   }
 
   .c-block-button-item__link::after {
@@ -478,6 +482,46 @@
     }
     .c-block-button-item__link:hover::after {
       background-color: currentColor;
+    }
+  }
+
+}
+
+// 関連情報(現在地)
+.wp-block-jkc-block-button-item.is-style-related-info-current {
+  .c-block-button-item {
+    width: 100%;
+  }
+  .c-block-button-item__link {
+    --color: #{$color-text-base};
+    --bg-color: #F3F3F3;
+    --border-color: var(--bg-color);
+    --translate: 0;
+    --height: #{rem(80)};
+    padding-inline: em(15, 18);
+    text-align: center;
+  }
+
+  .c-block-button-item__link::before {
+    content: "";
+  }
+  .c-block-button-item__link::after {
+    --bg-color: transparent;
+    --translate: 0;
+    mask-image: none;
+    width: 0;
+    @include mq-down() {
+      width: 0;
+    }
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      // --border-color: #{$color-accent-green};
+      // --bg-color: var(--border-color);
+    }
+    .c-block-button-item__link:hover::after {
+      // background-color: currentColor;
     }
   }
 

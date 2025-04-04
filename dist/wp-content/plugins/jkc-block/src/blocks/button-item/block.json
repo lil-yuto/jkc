@@ -56,6 +56,10 @@
       "label": "関連情報"
     },
     {
+      "name": "related-info-current",
+      "label": "関連情報(現在地)"
+    },
+    {
       "name": "pdf",
       "label": "PDF"
     },
