@@ -5,7 +5,7 @@
   .c-block-button {
     margin-block: var(--block-margin-top) var(--block-margin-bottom);
   }
-  
+
   .c-block-button__items {
     display: flex;
     gap: rem(20) rem(40);
@@ -13,6 +13,39 @@
     @include mq-down() {
       flex-direction: column;
     }
+  }
 }
+
+// デフォルト
+.wp-block-jkc-block-button.is-style-default {
+  .c-block-button__items {
+    --column: 1;
+    --column-gap: #{rem(40)};
+    --row-gap: #{rem(20)};
+    flex-wrap: nowrap;
+    gap: var(--row-gap) var(--column-gap);
+    justify-content: center;
+  }
+  .c-block-button__items > * {
+    flex-basis: calc((100% - var(--column-gap) * (var(--column) - 1)) / var(--column));
+  }
+}
+
+// 関連情報
+.wp-block-jkc-block-button.is-style-related-info {
+  .c-block-button__items {
+    --column: 4;
+    --column-gap: #{rem(20)};
+    --row-gap: #{rem(20)};
+    flex-wrap: wrap;
+    gap: var(--row-gap) var(--column-gap);
+    justify-content: flex-start;
+    @include mq-down() {
+      justify-content: center;
+    }
+  }
+  .c-block-button__items > * {
+    flex-basis: calc((100% - var(--column-gap) * (var(--column) - 1)) / var(--column));
+  }
 
 }

@@ -454,3 +454,31 @@
     background: url("./images/cmn-breeds-10g.png") no-repeat center / cover;
   }
 }
+
+// 関連情報
+.wp-block-jkc-block-button-item.is-style-related-info {
+  .c-block-button-item__link {
+    --color: #{$color-accent-green};
+    --border-color: currentcolor;
+    --bg-color: transparent;
+    --translate: 0;
+    --height: #{rem(80)};
+    padding-inline: em(15, 18);
+  }
+
+  .c-block-button-item__link::after {
+    background-color: var(--border-color);
+  }
+
+  @media (any-hover: hover) {
+    .c-block-button-item__link:hover {
+      --color: #FFFFFF;
+      --border-color: #{$color-accent-green};
+      --bg-color: var(--border-color);
+    }
+    .c-block-button-item__link:hover::after {
+      background-color: currentColor;
+    }
+  }
+
+}
