@@ -474,38 +474,17 @@
     background-color: var(--border-color);
   }
 
-  @media (any-hover: hover) {
-    .c-block-button-item__link:hover {
-      --color: #FFFFFF;
-      --border-color: #{$color-accent-green};
-      --bg-color: var(--border-color);
-    }
-    .c-block-button-item__link:hover::after {
-      background-color: currentColor;
-    }
-  }
-
-}
-
-// 関連情報(現在地)
-.wp-block-jkc-block-button-item.is-style-related-info-current {
-  .c-block-button-item {
-    width: 100%;
-  }
-  .c-block-button-item__link {
+  // 現在のURLと一致する場合のスタイル（is-currentクラスが追加された場合）
+  .c-block-button-item__link.is-current {
     --color: #{$color-text-base};
     --bg-color: #F3F3F3;
     --border-color: var(--bg-color);
     --translate: 0;
-    --height: #{rem(80)};
-    padding-inline: em(15, 18);
-    text-align: center;
+    cursor: default;
+    text-decoration: none;
   }
 
-  .c-block-button-item__link::before {
-    content: "";
-  }
-  .c-block-button-item__link::after {
+  .c-block-button-item__link.is-current::after {
     --bg-color: transparent;
     --translate: 0;
     mask-image: none;
@@ -517,12 +496,22 @@
 
   @media (any-hover: hover) {
     .c-block-button-item__link:hover {
-      // --border-color: #{$color-accent-green};
-      // --bg-color: var(--border-color);
+      --color: #FFFFFF;
+      --border-color: #{$color-accent-green};
+      --bg-color: var(--border-color);
     }
     .c-block-button-item__link:hover::after {
-      // background-color: currentColor;
+      background-color: currentColor;
+    }
+
+    // is-currentクラスが付いている場合はホバー時も特に変化なし
+    .c-block-button-item__link.is-current:hover {
+      --color: #{$color-text-base};
+      --bg-color: #F3F3F3;
+      --border-color: var(--bg-color);
+    }
+    .c-block-button-item__link.is-current:hover::after {
+      background-color: transparent;
     }
   }
-
 }
