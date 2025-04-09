@@ -44,18 +44,18 @@
                   $target_value = $target ? '_blank' : '_self';
                   if ($pc_img_url && $sp_img_url) : ?>
                     <li class="splide__slide">
-                        <?php if ($url) : ?>
-                          <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>">
+                      <?php if ($url) : ?>
+                        <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>">
                         <?php else : ?>
                           <a>
-                        <?php endif; ?>
+                          <?php endif; ?>
                           <picture>
                             <source media="(min-width: 768px)" srcset="<?php echo esc_url($pc_img_url); ?>" width="<?php echo esc_attr($pc_img_width); ?>" height="<?php echo esc_attr($pc_img_height); ?>">
                             <img src="<?php echo esc_url($sp_img_url); ?>" alt="<?php the_title_attribute(); ?>" width="<?php echo esc_attr($sp_img_width); ?>" height="<?php echo esc_attr($sp_img_height); ?>" />
                           </picture>
-                        </a>
-                      </li>
-                    <?php endif;
+                          </a>
+                    </li>
+              <?php endif;
                 endwhile;
                 wp_reset_postdata();
               endif;
@@ -74,63 +74,63 @@
           </div>
           <ul class="p-pickup__list">
             <?php
-              $args = [
-                'post_type' => 'news',
-                'posts_per_page' => 3,
-                'meta_query' => [
-                  [
-                    'key' => 'acf_news_pickup',
-                    'value' => '1',
-                    'compare' => '='
-                  ]
+            $args = [
+              'post_type' => 'news',
+              'posts_per_page' => 3,
+              'meta_query' => [
+                [
+                  'key' => 'acf_news_pickup',
+                  'value' => '1',
+                  'compare' => '='
                 ]
-              ];
-              $the_query = new WP_Query( $args );
-              if ( $the_query->have_posts() ) :
-                while ( $the_query->have_posts() ) : $the_query->the_post();
-                  // リンク先とターゲット属性を決定
-                  $link_url = '';
-                  $target = '';
+              ]
+            ];
+            $the_query = new WP_Query($args);
+            if ($the_query->have_posts()) :
+              while ($the_query->have_posts()) : $the_query->the_post();
+                // リンク先とターゲット属性を決定
+                $link_url = '';
+                $target = '';
 
-                  // 優先度順にリンク先を判定
-                  $pdf_file = get_field('acf_news_pdf');
-                  if (!empty($pdf_file) && is_array($pdf_file)) {
-                    // ファイル配列からURLを取得
-                    $link_url = $pdf_file['url'];
-                    // ターゲット設定を確認
-                    if (get_field('acf_news_target')) {
-                      $target = ' target="_blank" rel="noopener noreferrer"';
-                    }
-                  } elseif ($external_url = get_field('acf_news_url')) {
-                    $link_url = $external_url;
-                    // ターゲット設定を確認
-                    if (get_field('acf_news_target')) {
-                      $target = ' target="_blank" rel="noopener noreferrer"';
-                    }
-                  } else {
-                    $link_url = get_the_permalink();
+                // 優先度順にリンク先を判定
+                $pdf_file = get_field('acf_news_pdf');
+                if (!empty($pdf_file) && is_array($pdf_file)) {
+                  // ファイル配列からURLを取得
+                  $link_url = $pdf_file['url'];
+                  // ターゲット設定を確認
+                  if (get_field('acf_news_target')) {
+                    $target = ' target="_blank" rel="noopener noreferrer"';
                   }
+                } elseif ($external_url = get_field('acf_news_url')) {
+                  $link_url = $external_url;
+                  // ターゲット設定を確認
+                  if (get_field('acf_news_target')) {
+                    $target = ' target="_blank" rel="noopener noreferrer"';
+                  }
+                } else {
+                  $link_url = get_the_permalink();
+                }
             ?>
-            <li>
-              <a href="<?php echo esc_url($link_url); ?>" class="p-pickup__item p-post"<?php echo $target; ?>>
-                <time datetime="<?php the_time('Y-m-d'); ?>" class="p-post__date">
-                  <?php echo get_the_date('Y.n.j'); ?>
-                </time>
-                <p class="p-post__category c-label">
-                  <?php
-                    $taxonomy_term = get_the_terms($post->ID,'news_category');
-                    echo $taxonomy_term[0]->name;
-                  ?>
-                </p>
-                <p class="p-post__title">
-                  <?php the_title(); ?>
-                </p>
-              </a>
-            </li>
+                <li>
+                  <a href="<?php echo esc_url($link_url); ?>" class="p-pickup__item p-post" <?php echo $target; ?>>
+                    <time datetime="<?php the_time('Y-m-d'); ?>" class="p-post__date">
+                      <?php echo get_the_date('Y.n.j'); ?>
+                    </time>
+                    <p class="p-post__category c-label">
+                      <?php
+                      $taxonomy_term = get_the_terms($post->ID, 'news_category');
+                      echo $taxonomy_term[0]->name;
+                      ?>
+                    </p>
+                    <p class="p-post__title">
+                      <?php the_title(); ?>
+                    </p>
+                  </a>
+                </li>
             <?php
-                endwhile;
-              endif;
-              wp_reset_postdata();
+              endwhile;
+            endif;
+            wp_reset_postdata();
             ?>
           </ul>
         </div>
@@ -170,15 +170,77 @@
           <!-- すべてのニュース -->
           <ul class="p-posts__list js-posts__list p-top-news__posts-list active" data-target="all">
             <?php
-              $args_news = [
+            $args_news = [
+              'post_type'      => 'news',
+              'posts_per_page' => 5, // 最大5件に制限
+              'orderby'        => 'date',
+              'order'          => 'DESC'
+            ];
+            $query_news = new WP_Query($args_news);
+            if ($query_news->have_posts()) :
+              while ($query_news->have_posts()) : $query_news->the_post();
+                // リンク先とターゲット属性を決定
+                $link_url = '';
+                $target = '';
+
+                // 優先度順にリンク先を判定
+                $pdf_file = get_field('acf_news_pdf');
+                if (!empty($pdf_file) && is_array($pdf_file)) {
+                  // ファイル配列からURLを取得
+                  $link_url = $pdf_file['url'];
+                  // ターゲット設定を確認
+                  if (get_field('acf_news_target')) {
+                    $target = ' target="_blank" rel="noopener noreferrer"';
+                  }
+                } elseif ($external_url = get_field('acf_news_url')) {
+                  $link_url = $external_url;
+                  // ターゲット設定を確認
+                  if (get_field('acf_news_target')) {
+                    $target = ' target="_blank" rel="noopener noreferrer"';
+                  }
+                } else {
+                  $link_url = get_the_permalink();
+                }
+                $taxonomy_terms = get_the_terms($post->ID, 'news_category');
+            ?>
+                <li>
+                  <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item" <?php echo $target; ?>>
+                    <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
+                      <?php echo get_the_date('Y.n.j'); ?>
+                    </time>
+                    <p class="p-posts__category">
+                      <?php echo esc_html($taxonomy_terms[0]->name); ?>
+                    </p>
+                    <p class="p-posts__title">
+                      <?php the_title(); ?>
+                    </p>
+                  </a>
+                </li>
+              <?php endwhile; ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>
+          </ul>
+
+          <!-- カテゴリごとのニュース -->
+          <?php foreach ($terms as $term) : ?>
+            <ul class="p-posts__list js-posts__list p-top-news__posts-list" data-target="<?php echo esc_attr($term->slug); ?>">
+              <?php
+              $args_category = [
                 'post_type'      => 'news',
                 'posts_per_page' => 5, // 最大5件に制限
                 'orderby'        => 'date',
-                'order'          => 'DESC'
+                'order'          => 'DESC',
+                'tax_query'      => [
+                  [
+                    'taxonomy' => 'news_category',
+                    'field'    => 'slug',
+                    'terms'    => $term->slug,
+                  ],
+                ],
               ];
-              $query_news = new WP_Query($args_news);
-              if ($query_news->have_posts()) :
-                while ($query_news->have_posts()) : $query_news->the_post();
+              $query_category = new WP_Query($args_category);
+              if ($query_category->have_posts()) :
+                while ($query_category->have_posts()) : $query_category->the_post();
                   // リンク先とターゲット属性を決定
                   $link_url = '';
                   $target = '';
@@ -201,83 +263,21 @@
                   } else {
                     $link_url = get_the_permalink();
                   }
-                  $taxonomy_terms = get_the_terms($post->ID, 'news_category');
               ?>
-              <li>
-                <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item"<?php echo $target; ?>>
-                  <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
-                    <?php echo get_the_date('Y.n.j'); ?>
-                  </time>
-                  <p class="p-posts__category">
-                    <?php echo esc_html($taxonomy_terms[0]->name); ?>
-                  </p>
-                  <p class="p-posts__title">
-                    <?php the_title(); ?>
-                  </p>
-                </a>
-              </li>
-              <?php endwhile; ?>
-            <?php endif; ?>
-            <?php wp_reset_postdata(); ?>
-          </ul>
-
-          <!-- カテゴリごとのニュース -->
-          <?php foreach ($terms as $term) : ?>
-            <ul class="p-posts__list js-posts__list p-top-news__posts-list" data-target="<?php echo esc_attr($term->slug); ?>">
-              <?php
-                $args_category = [
-                  'post_type'      => 'news',
-                  'posts_per_page' => 5, // 最大5件に制限
-                  'orderby'        => 'date',
-                  'order'          => 'DESC',
-                  'tax_query'      => [
-                    [
-                      'taxonomy' => 'news_category',
-                      'field'    => 'slug',
-                      'terms'    => $term->slug,
-                    ],
-                  ],
-                ];
-                $query_category = new WP_Query($args_category);
-                if ($query_category->have_posts()) :
-                  while ($query_category->have_posts()) : $query_category->the_post();
-                    // リンク先とターゲット属性を決定
-                    $link_url = '';
-                    $target = '';
-
-                    // 優先度順にリンク先を判定
-                    $pdf_file = get_field('acf_news_pdf');
-                    if (!empty($pdf_file) && is_array($pdf_file)) {
-                      // ファイル配列からURLを取得
-                      $link_url = $pdf_file['url'];
-                      // ターゲット設定を確認
-                      if (get_field('acf_news_target')) {
-                        $target = ' target="_blank" rel="noopener noreferrer"';
-                      }
-                    } elseif ($external_url = get_field('acf_news_url')) {
-                      $link_url = $external_url;
-                      // ターゲット設定を確認
-                      if (get_field('acf_news_target')) {
-                        $target = ' target="_blank" rel="noopener noreferrer"';
-                      }
-                    } else {
-                      $link_url = get_the_permalink();
-                    }
-              ?>
-              <li>
-                <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item"<?php echo $target; ?>>
-                  <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
-                    <?php echo get_the_date('Y.n.j'); ?>
-                  </time>
-                  <p class="p-posts__category">
-                    <?php echo esc_html($term->name); ?>
-                  </p>
-                  <p class="p-posts__title">
-                    <?php the_title(); ?>
-                  </p>
-                </a>
-              </li>
-              <?php endwhile; ?>
+                  <li>
+                    <a href="<?php echo esc_url($link_url); ?>" class="p-posts__item" <?php echo $target; ?>>
+                      <time datetime="<?php the_time('Y-m-d'); ?>" class="p-posts__date">
+                        <?php echo get_the_date('Y.n.j'); ?>
+                      </time>
+                      <p class="p-posts__category">
+                        <?php echo esc_html($term->name); ?>
+                      </p>
+                      <p class="p-posts__title">
+                        <?php the_title(); ?>
+                      </p>
+                    </a>
+                  </li>
+                <?php endwhile; ?>
               <?php endif; ?>
               <?php wp_reset_postdata(); ?>
             </ul>
@@ -365,59 +365,79 @@
             </hgroup>
           </div>
           <a href="<?php echo esc_url(home_url('/qualifications/dogcareadvisor/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--kanrishi"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-kanrishi-ico01.svg" alt="JKC愛犬飼育管理士" /></div>
+            <div class="p-content__image p-content__image--kanrishi">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-kanrishi-ico01.svg" alt="JKC愛犬飼育管理士" />
+            </div>
             <h3 class="p-content__title">ＪＫＣ愛犬飼育管理士</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <p class="p-content__description">動物愛護法で定められた「動物取扱業」の登録に役立つ資格です。</p>
           </a>
           <a href="<?php echo esc_url(home_url('/events/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--schedule"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-schedule-ico01.svg" alt="イベントスケジュール" /></div>
+            <div class="p-content__image p-content__image--schedule">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-schedule-ico01.svg" alt="イベントスケジュール" />
+            </div>
             <h3 class="p-content__title">イベントスケジュール</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <p class="p-content__description">全国のイベントスケジュールはこちらで確認できます。</p>
           </a>
           <a href="<?php echo esc_url(home_url('/pedigrees/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--certificate"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-certificate-ico01.svg" alt="血統証明書について" /></div>
+            <div class="p-content__image p-content__image--certificate">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-certificate-ico01.svg" alt="血統証明書について" />
+            </div>
             <h3 class="p-content__title">血統証明書について</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <p class="p-content__description">お手元の血統証明書と説明を見比べながらご覧ください。</p>
           </a>
           <a href="<?php echo esc_url(home_url('/breeds/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--doc-type"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-type-ico01.svg" alt="世界の犬" /></div>
-            <h3 class="p-content__title">世界の犬</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <h3 class="p-content__title">犬種紹介</h3>
+            <p class="p-content__description">純粋犬種は世界中で700～800と言われますが、JKCに登録されている犬種をご紹介します。</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/gazette/present/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--gazette"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-gazette-ico01.svg" alt="ＪＫＣガゼット" /></div>
-            <h3 class="p-content__title">会報誌『ＪＫＣガゼット』<br>アンケート・プレゼント</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+          <a href="<?php echo esc_url(home_url('/aboutus/gazette/present/')); ?>" class="p-content">
+            <div class="p-content__image p-content__image--gazette">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-gazette-ico01.svg" alt="ＪＫＣガゼット" />
+            </div>
+            <h3 class="p-content__title">会報誌『JKCガゼット』</h3>
+            <p class="p-content__description">会員になると配布される会報誌。特集ページには嬉しい企画がいっぱい。</p>
           </a>
           <a href="<?php echo esc_url(home_url('/movie/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--channel"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-channel-ico01.svg" alt="ＪＫＣチャンネル" /></div>
-            <h3 class="p-content__title">ＪＫＣチャンネル<br class="u-hidden-sp">～動画配信～</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <div class="p-content__image p-content__image--channel">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-channel-ico01.svg" alt="ＪＫＣチャンネル" />
+            </div>
+            <h3 class="p-content__title">公認トリマー資格</h3>
+            <p class="p-content__description">犬好きな人に人気の犬の美容師「トリマー」資格をとるには？</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/generalinfo/#beginners')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--icon-first-dog"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-first-dog-ico01.svg" alt="初めて犬を飼うには" /></div>
-            <h3 class="p-content__title">初めて犬を飼うには</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+          <a href="<?php echo esc_url(home_url('/events/juniorhandler/about/')); ?>" class="p-content">
+            <div class="p-content__image p-content__image--icon-first-dog">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-first-dog-ico01.svg" alt="初めて犬を飼うには" />
+            </div>
+            <h3 class="p-content__title">ジュニアハンドラー</h3>
+            <p class="p-content__description">犬好きキッズ憧れの「ジュニアハンドラー」に参加したい方は無料で登録できます。</p>
           </a>
           <a href="<?php echo esc_url(home_url('/rescuedog/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--rescue-dog"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-rescue-dog-ico01.svg" alt="災害救助犬について" /></div>
+            <div class="p-content__image p-content__image--rescue-dog">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-rescue-dog-ico01.svg" alt="災害救助犬について" />
+            </div>
             <h3 class="p-content__title">災害救助犬について</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <p class="p-content__description">ジャパンケネルクラブの災害救助犬の育成について</p>
           </a>
           <a href="<?php echo esc_url(home_url('/photo_contest/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--photo-contest"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-photo-contest-ico01.svg" alt="写真コンテスト" /></div>
+            <div class="p-content__image p-content__image--photo-contest">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-photo-contest-ico01.svg" alt="写真コンテスト" />
+            </div>
             <h3 class="p-content__title">写真コンテスト</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <p class="p-content__description">全国から応募がある「愛犬とのふれあい写真コンテスト」の開催情報</p>
           </a>
           <a href="<?php echo esc_url(home_url('/picture_contest/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--art-contest"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-art-contest-ico01.svg" alt="犬の絵コンクール" /></div>
+            <div class="p-content__image p-content__image--art-contest">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-art-contest-ico01.svg" alt="犬の絵コンクール" />
+            </div>
             <h3 class="p-content__title">犬の絵コンクール</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <p class="p-content__description">全国の小学校や絵画教室にホットな「夏休み犬の絵コンクール」の開催情報</p>
           </a>
           <a href="<?php echo esc_url(home_url('/haiku_contest/haiku_contest/')); ?>" class="p-content">
-            <div class="p-content__image p-content__image--haiku"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-haiku-ico01.svg" alt="ふれあいの俳句" /></div>
+            <div class="p-content__image p-content__image--haiku">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-haiku-ico01.svg" alt="ふれあいの俳句" />
+            </div>
             <h3 class="p-content__title">ふれあいの俳句</h3>
-            <p class="p-content__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <p class="p-content__description">日本で唯一の犬の俳壇。あなたも愛犬との日々で１句ひねってみては？</p>
           </a>
         </div>
       </div>
@@ -429,39 +449,39 @@
       <ul class="p-top-banner__list">
         <?php
         $args = array(
-            'post_type'      => 'footer_banner',
-            'posts_per_page' => -1,
-            'orderby'        => 'menu_order',
-            'order'          => 'ASC',
+          'post_type'      => 'footer_banner',
+          'posts_per_page' => -1,
+          'orderby'        => 'menu_order',
+          'order'          => 'ASC',
         );
         $footer_banner_query = new WP_Query($args);
         if ($footer_banner_query->have_posts()) :
-            while ($footer_banner_query->have_posts()) : $footer_banner_query->the_post();
-                $img_s_id = get_field('acf_ftbanner_img_s');
-                $img_l_id = get_field('acf_ftbanner_img_l');
-                $url = get_field('acf_ftbanner_url');
-                $target = get_field('acf_ftbanner_target');
-                $img_s_url = $img_s_id ? wp_get_attachment_image_url($img_s_id, 'full') : '';
-                $img_l_url = $img_l_id ? wp_get_attachment_image_url($img_l_id, 'full') : '';
-                $target_value = $target ? '_blank' : '_self';
-                if ($img_s_url || $img_l_url) : ?>
-                    <li class="splide__slide">
-                        <?php if ($url) : ?>
-                          <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>" rel="noopener noreferrer" class="p-top-banner__item">
-                        <?php else : ?>
-                          <a>
-                        <?php endif; ?>
-                          <?php if ($img_s_url) : ?>
-                            <img src="<?php echo esc_url($img_s_url); ?>" alt="<?php the_title_attribute(); ?>" />
-                          <?php endif; ?>
-                          <?php if ($img_l_url) : ?>
-                            <img src="<?php echo esc_url($img_l_url); ?>" alt="<?php the_title_attribute(); ?>" />
-                          <?php endif; ?>
-                        </a>
-                    </li>
-                <?php endif;
-            endwhile;
-            wp_reset_postdata();
+          while ($footer_banner_query->have_posts()) : $footer_banner_query->the_post();
+            $img_s_id = get_field('acf_ftbanner_img_s');
+            $img_l_id = get_field('acf_ftbanner_img_l');
+            $url = get_field('acf_ftbanner_url');
+            $target = get_field('acf_ftbanner_target');
+            $img_s_url = $img_s_id ? wp_get_attachment_image_url($img_s_id, 'full') : '';
+            $img_l_url = $img_l_id ? wp_get_attachment_image_url($img_l_id, 'full') : '';
+            $target_value = $target ? '_blank' : '_self';
+            if ($img_s_url || $img_l_url) : ?>
+              <li class="splide__slide">
+                <?php if ($url) : ?>
+                  <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target_value); ?>" rel="noopener noreferrer" class="p-top-banner__item">
+                  <?php else : ?>
+                    <a>
+                    <?php endif; ?>
+                    <?php if ($img_s_url) : ?>
+                      <img src="<?php echo esc_url($img_s_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                    <?php endif; ?>
+                    <?php if ($img_l_url) : ?>
+                      <img src="<?php echo esc_url($img_l_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                    <?php endif; ?>
+                    </a>
+              </li>
+        <?php endif;
+          endwhile;
+          wp_reset_postdata();
         endif;
         ?>
       </ul>
