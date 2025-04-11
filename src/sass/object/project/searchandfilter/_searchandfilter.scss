@@ -230,23 +230,6 @@
 				margin-block: rem(5) 0;
 			}
 		}
-		.sf-field-taxonomy-event_category ul.children {
-			flex: 1;
-			display: flex;
-			align-items: center;
-			flex-wrap: wrap;
-			column-gap: rem(22);
-			margin-block: 0;
-			@include mq-down() {
-				flex: 0 1 auto;
-				column-gap: rem(28);
-				row-gap: rem(10);
-				width: 100%;
-				margin-inline: 0;
-				margin-block: rem(7) 0;
-        align-items: flex-start;
-			}
-		}
 
 		li.sf-level-0 {
 			display: flex;
@@ -258,7 +241,6 @@
 				padding-block: 0;
 			}
 		}
-		.sf-field-taxonomy-event_category li.sf-level-0:has(> ul.children),
 		.sf-field-taxonomy-event_area li.sf-level-0 {
 			@include mq-down() {
 				flex-wrap: wrap;
