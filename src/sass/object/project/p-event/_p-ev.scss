@@ -23,6 +23,7 @@
 	column-gap: rem(18);
 	color: $palette-darkGray;
 	padding: rem(20);
+  background-color: $color-accent-green-light;
 	@include mq-down() {
 		display: block;
 		position: relative;
@@ -31,11 +32,12 @@
 
 .p-ev__menu.event_hq,
 .p-ev__subMenu.event_hq {
-  background-color: rgba(255,255,219,1);
+  background-color: $color-accent-yellow-light;
 }
 .p-ev__menu.event_btb,
 .p-ev__subMenu.event_btb {
     background-color: rgba(255,239,213,1);
+    background-color: $color-accent-red-light;
 }
 
 .p-ev_infoarea1 {
@@ -335,6 +337,7 @@
 .p-ev__subMenu {
 	overflow: hidden;
 	height: 0;
+  background-color: $color-accent-green-light;
 }
 
 .p-ev__moredetail {
