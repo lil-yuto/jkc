@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     new Splide(sliderElement, {
       type: 'loop',         // ループモード
       autoplay: true,       // 自動再生を有効にする
-      interval: 3000,       // 3000ms（3秒）ごとにスライド
+      interval: 5000,       // スライド間隔
       speed: 1000,          // スライドの移動速度
       pauseOnHover: true,   // ホバーで一時停止
       pauseOnFocus: true,   // フォーカスで一時停止
