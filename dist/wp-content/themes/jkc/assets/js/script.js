@@ -22,33 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }).mount();
   }
 
-  // イベントページのリダイレクト処理
-  // 遷移元が/events/?クエリがある場合に#event-resultアンカーを追加
-  // 現在のURLがイベントページ(/events/)かどうかをチェック
-  if (window.location.pathname.endsWith('/events/')) {
-    // リファラー（遷移元URL）を取得
-    const referrer = document.referrer;
-
-    // リファラーがある場合、かつ同じドメイン内の場合のみ処理
-    if (referrer && new URL(referrer).hostname === window.location.hostname) {
-      const referrerUrl = new URL(referrer);
-
-      // 遷移元が/events/でクエリパラメータを含む場合
-      if (referrerUrl.pathname.endsWith('/events/') && referrerUrl.search.length > 0) {
-        // 現在のURLを取得
-        let currentUrl = window.location.href;
-
-        // URLにハッシュが含まれていないかを確認
-        if (!currentUrl.includes('#')) {
-          // #event-resultをURLに追加
-          const newUrl = currentUrl + '#event-result';
-          // URLを変更（履歴に残さずリダイレクト）
-          window.location.replace(newUrl);
-        }
-      }
-    }
-  }
-
   $(window).on("scroll", function () {
     if ($(this).scrollTop() > 200) {
       $(".c-to-top-button").addClass("is-visible");
