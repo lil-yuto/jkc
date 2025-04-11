@@ -179,13 +179,6 @@ endif;
                         $terms = get_the_terms($post->ID, 'event_category');
                         if ($terms) :
                           foreach ($terms as $term) :
-                            // 子タームなら親タームを取得して上書きする
-                            if ($term->parent) {
-                              $parent_term = get_term($term->parent, 'event_category');
-                              if ($parent_term && !is_wp_error($parent_term)) {
-                                $term = $parent_term;
-                              }
-                            }
                             // 説明にBG色情報があれば上書き
                             if (!empty($term->description)) {
                               $term_desc = $term->description;
