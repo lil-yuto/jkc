@@ -23,38 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // イベントページのリダイレクト処理
+  // 遷移元が/events/?クエリがある場合に#event-resultアンカーを追加
   // 現在のURLがイベントページ(/events/)かどうかをチェック
   if (window.location.pathname.endsWith('/events/')) {
-    // 現在のURLを取得
-    let currentUrl = window.location.href;
-    // 現在のURLにハッシュが含まれていないかを確認
-    if (!currentUrl.includes('#')) {
-      // 現在のURLのクエリパラメータをチェック
-      const hasQueryParams = window.location.search.length > 0;
+    // リファラー（遷移元URL）を取得
+    const referrer = document.referrer;
 
-      // クエリパラメータがある場合のみ処理
-      if (hasQueryParams) {
-        // リファラー（遷移元URL）を取得
-        const referrer = document.referrer;
+    // リファラーがある場合、かつ同じドメイン内の場合のみ処理
+    if (referrer && new URL(referrer).hostname === window.location.hostname) {
+      const referrerUrl = new URL(referrer);
 
-        // 遷移元のURLが存在し、同じドメイン内の場合
-        if (referrer && new URL(referrer).hostname === window.location.hostname) {
-          const referrerUrl = new URL(referrer);
-          const referrerHasQuery = referrerUrl.search.length > 0;
+      // 遷移元が/events/でクエリパラメータを含む場合
+      if (referrerUrl.pathname.endsWith('/events/') && referrerUrl.search.length > 0) {
+        // 現在のURLを取得
+        let currentUrl = window.location.href;
 
-          // 遷移元が/events/で終わり、かつクエリパラメータがない場合は、アンカーを追加しない
-          if (referrerUrl.pathname.endsWith('/events/') && !referrerHasQuery) {
-            // アンカーを追加しない
-          } else {
-            // それ以外の場合でクエリパラメータがあれば、アンカーを追加
-            // #event-resultをURLに追加
-            const newUrl = currentUrl + '#event-result';
-            // URLを変更（履歴に残さずリダイレクト）
-            window.location.replace(newUrl);
-          }
-        } else {
-          // 遷移元がない、または別ドメインの場合でクエリパラメータがあれば、アンカーを追加
+        // URLにハッシュが含まれていないかを確認
+        if (!currentUrl.includes('#')) {
+          // #event-resultをURLに追加
           const newUrl = currentUrl + '#event-result';
+          // URLを変更（履歴に残さずリダイレクト）
           window.location.replace(newUrl);
         }
       }
