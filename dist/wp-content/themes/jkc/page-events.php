@@ -150,7 +150,7 @@ endif;
                         <?php $headbg_img_l = 'header_bg_hq_l.png'; ?>
                       <?php endif; ?>
 
-                      <div class="p-ev__menu">
+                      <div class="p-ev__menu <?php echo $ev_btb.' '.$ev_hq; ?>">
 
                         <div class="p-ev_infoarea1">
                           <div class="p-ev_titlebg" style="background-color: rgba(242,95,92,1);"></div>
@@ -293,7 +293,7 @@ endif;
                       </div>
 
                       <?php $supbool = false; /* 吹きだし内情報があるかの論理値 */ ?>
-                      <div class="p-ev__subMenu">
+                      <div class="p-ev__subMenu <?php echo $ev_btb.' '.$ev_hq; ?>">
 
 
 

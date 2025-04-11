@@ -29,6 +29,15 @@
 	}
 }
 
+.p-ev__menu.event_hq,
+.p-ev__subMenu.event_hq {
+  background-color: rgba(255,255,219,1);
+}
+.p-ev__menu.event_btb,
+.p-ev__subMenu.event_btb {
+    background-color: rgba(255,239,213,1);
+}
+
 .p-ev_infoarea1 {
 	padding-block: rem(10);
 	padding-inline: rem(10) 0;
@@ -237,6 +246,7 @@
 	border-radius: rem(4);
 	cursor: pointer;
 	margin-left: auto;
+  background-color: #ffffff;
 }
 
 .p-ev__comp-input:checked::before {
