@@ -119,7 +119,11 @@
                     <p class="p-post__category c-label">
                       <?php
                       $taxonomy_term = get_the_terms($post->ID, 'news_category');
-                      echo $taxonomy_term[0]->name;
+                      if ($taxonomy_term && !is_wp_error($taxonomy_term)) {
+                        echo esc_html($taxonomy_term[0]->name);
+                      } else {
+                        echo '未分類';
+                      }
                       ?>
                     </p>
                     <p class="p-post__title">
@@ -209,11 +213,15 @@
                       <?php echo get_the_date('Y.n.j'); ?>
                     </time>
                     <p class="p-posts__category">
-                      <?php echo esc_html($taxonomy_terms[0]->name); ?>
+                      <?php
+                      if ($taxonomy_terms && !is_wp_error($taxonomy_terms)) {
+                        echo esc_html($taxonomy_terms[0]->name);
+                      } else {
+                        echo '未分類';
+                      }
+                      ?>
                     </p>
-                    <p class="p-posts__title">
-                      <?php the_title(); ?>
-                    </p>
+                    <p class="p-posts__title"><?php the_title(); ?></p>
                   </a>
                 </li>
               <?php endwhile; ?>

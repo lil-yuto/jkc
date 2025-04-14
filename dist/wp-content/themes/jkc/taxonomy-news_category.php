@@ -51,7 +51,12 @@
                 <?php while (have_posts()) : the_post();
                   // カテゴリーを取得
                   $terms = get_the_terms(get_the_ID(), 'news_category');
-                  $category_name = $terms ? $terms[0]->name : '';
+                  $category_name = '';
+
+                  // get_the_terms()の結果チェックを追加
+                  if ($terms && !is_wp_error($terms)) {
+                    $category_name = $terms[0]->name;
+                  }
 
                   // リンク先とターゲット属性を決定
                   $link_url = '';

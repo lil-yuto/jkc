@@ -29,9 +29,15 @@
     <?php
     $breed_term_list = get_the_terms($post->ID, 'breed_tag');
     $breed_term_slug = array();
-    foreach ($breed_term_list as $breed_term_item) {
-      $breed_term_slug[] = $breed_term_item->slug;
+
+    // get_the_terms()がfalseを返す場合があるため、falseでない場合のみforeachを実行
+    if ($breed_term_list && !is_wp_error($breed_term_list)) {
+      foreach ($breed_term_list as $breed_term_item) {
+        $breed_term_slug[] = $breed_term_item->slug;
+      }
     }
+
+    // 以降の処理は通常通り実行（空配列の場合は該当する投稿が見つからない）
     $post_type = 'news';
     $args = array(
       'post_type' => $post_type,
@@ -258,9 +264,14 @@
     $post_type_lists = get_taxonomy($taxonomy_slug)->object_type;
     $term_lists = get_the_terms($post->ID, $taxonomy_slug);
     $term_slug_lists = array();
-    foreach ($term_lists as $term_item) {
-      $term_slug_lists[] = $term_item->slug;
+
+    // get_the_terms()の結果チェックを追加
+    if ($term_lists && !is_wp_error($term_lists)) {
+      foreach ($term_lists as $term_item) {
+        $term_slug_lists[] = $term_item->slug;
+      }
     }
+
     $args = array(
       'post_type' => $post_type_lists,
       'post__not_in' => array($post->ID), // 現在のページを除外

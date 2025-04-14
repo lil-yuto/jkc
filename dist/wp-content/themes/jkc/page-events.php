@@ -174,10 +174,11 @@ endif;
                           <?php endif; ?>
                         </div>
 
-                        <?php /* イベントカテゴリーの“説明”からBG色情報を取得 */
+                        <?php /* イベントカテゴリーの"説明"からBG色情報を取得 */
                         $term_desc = 'rgba(10,105,52,1)';
+                        $term_name = '';
                         $terms = get_the_terms($post->ID, 'event_category');
-                        if ($terms) :
+                        if ($terms && !is_wp_error($terms)) :
                           foreach ($terms as $term) :
                             // 説明にBG色情報があれば上書き
                             if (!empty($term->description)) {
