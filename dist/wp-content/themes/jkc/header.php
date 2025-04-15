@@ -70,69 +70,16 @@
                   <h5 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/aboutus/')); ?>">JKCの活動内容</a>
                   </h5>
-                  <ul class="l-meganav__list">
 
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/activities/')); ?>">事業内容</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/organization/')); ?>">組織概要</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/articles/')); ?>">定款</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/history/')); ?>">沿革</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/history_jkc/')); ?>">JKCの歴史</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/disclosure/')); ?>">ディスクロージャー（情報公開）</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/proposal/')); ?>">有識者会議の提言について</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/guidance/')); ?>">入会のご案内</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/3min/')); ?>" target="_blank" rel="noopener">3分でわかるジャパンケネルクラブ</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/movie/')); ?>">ジャパンケネルクラブチャンネルYouTube</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/gazette/')); ?>">JKCガゼットのご案内</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/registr-statistics/')); ?>">犬種別犬籍登録頭数</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/aboutus/longevity/')); ?>">長寿犬表彰について</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/rescuedog/')); ?>">災害救助犬の育成</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/jblog/')); ?>">ジャックブログ</a>
-                    </li>
-
-                  </ul>
+                  <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'aboutus',
+                      'container' => false,
+                      'items_wrap' => '<ul class="l-meganav__list">%3$s</ul>',
+                    )
+                  );
+                  ?>
                 </div>
               </div>
             </div>
@@ -149,43 +96,16 @@
                   <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/pedigrees/')); ?>">血統証明書について</a>
                   </h2>
-                  <ul class="l-meganav__list">
 
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees/') . '#01'); ?>">血統証明書とは</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees')) . '#02'; ?>">血統証明書の見かた</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/forms/')); ?>">血統証明書・所有者名義変更について</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees')) . '#04'; ?>">チャンピオンタイトルについて</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees/breedingguidelines/')); ?>">正しいブリーディングと守るべき心得</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees/crossbreeding/')); ?>">繁殖についての基礎知識</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/forms/puppy_name/')); ?>">子犬を繁殖した方へ 〜 子犬の正式な名前のつけ方</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees/geneticdisease/')); ?>">遺伝子疾患について考えよう</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees/teacup-poodles_mame-shibas/')); ?>">ティーカッププードル、豆柴について</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/pedigrees/law/')); ?>">「動物の愛護及び管理に関する法律」について</a>
-                    </li>
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/faq/faq_category/certificate/')); ?>">血統証明書についてのよくあるご質問</a>
-                    </li>
-
-                  </ul>
+                  <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'pedigrees',
+                      'container' => false,
+                      'items_wrap' => '<ul class="l-meganav__list">%3$s</ul>',
+                    )
+                  );
+                  ?>
                 </div>
               </div>
             </div>
@@ -202,81 +122,16 @@
                   <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/events/')); ?>">イベント</a>
                   </h2>
-                  <ul class="l-meganav__list">
 
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/')); ?>">ドッグショー 競技会スケジュール</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/dogshow/')); ?>">ドッグショー／各種競技会</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/royalcanin_award/')); ?>">ロイヤルカナンアワードについて</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/jkc_bleeding_award/')); ?>">JKCブリーディングアワード</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/trainings/')); ?>">訓練競技会</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/agility/')); ?>">アジリティー競技会</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/flyball/')); ?>">フライボール競技会について</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/obedience/')); ?>">オビディエンス競技会</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/igp/')); ?>">IGP</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/bh/')); ?>">BH</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/dogdance/')); ?>">ドッグダンス</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/trimming/')); ?>">トリミング競技会</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/handling/')); ?>">ハンドリング競技会</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/juniorhandler/')); ?>">ジュニアハンドラー</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/results/')); ?>">過去の大会結果</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/picture_contest/')); ?>">犬の絵コンクールについて</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/photo_contest/')); ?>">愛犬とのふれあい写真コンテスト について</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/events/haiku_contest/')); ?>">愛犬とのふれあいの俳句</a>
-                    </li>
-
-                  </ul>
+                  <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'event',
+                      'container' => false,
+                      'items_wrap' => '<ul class="l-meganav__list">%3$s</ul>',
+                    )
+                  );
+                  ?>
                 </div>
               </div>
             </div>
@@ -296,44 +151,30 @@
                   <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/doginfo/')); ?>">犬の知識</a>
                   </h2>
-                  <ul class="l-meganav__list">
 
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/breeds/')); ?>">犬種紹介</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/doginfo/preparation/')); ?>">心構え、犬の選び方、環境の準備など</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/doginfo/explanation/')); ?>">保健所への登録、予防接種など法的に必要な手続きの解説</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/doginfo/care/')); ?>">平均的な寿命、費用、年齢別に必要なケアなどの解説</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/doginfo/info/')); ?>">動物愛護管理法の重要な部分のみ解説、環境省へのリンクなど</a>
-                    </li>
-
-                  </ul>
+                  <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'doginfo',
+                      'container' => false,
+                      'items_wrap' => '<ul class="l-meganav__list">%3$s</ul>',
+                    )
+                  );
+                  ?>
 
                   <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/doginfo/kids/')); ?>">こども向けコンテンツ</a>
                   </h2>
-                  <ul class="l-meganav__list">
 
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/doginfo/kids/other/')); ?>">夏休みの自由研究テーマ</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('#')); ?>">ジュニアハンドラーになりたい!!</a>
-                    </li>
-
-                  </ul>
+                  <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'kids',
+                      'container' => false,
+                      'items_wrap' => '<ul class="l-meganav__list">%3$s</ul>',
+                    )
+                  );
+                  ?>
                 </div>
               </div>
             </div>
@@ -350,45 +191,16 @@
                   <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/qualifications/')); ?>">JKC公認資格</a>
                   </h2>
-                  <ul class="l-meganav__list">
 
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/automatic-debit/')); ?>">「資格更新料の自動引落」のご利用について</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/dogcareadvisor/')); ?>">愛犬飼育管理士</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/trimmer/')); ?>">トリマー</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/handler/')); ?>">ハンドラー</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/dog_trainer/')); ?>">訓練士</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/steward/')); ?>">スチュワード</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/judges/')); ?>">審査員</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/animal-hygienist/')); ?>">アニマル衛生士</a>
-                    </li>
-
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/qualifications/voluntary-training/')); ?>">自主研修会／日程</a>
-                    </li>
-
-                  </ul>
+                  <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'qualifications',
+                      'container' => false,
+                      'items_wrap' => '<ul class="l-meganav__list">%3$s</ul>',
+                    )
+                  );
+                  ?>
                 </div>
               </div>
             </div>
@@ -405,13 +217,16 @@
                   <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/merchandise/')); ?>">刊行物</a>
                   </h2>
-                  <ul class="l-meganav__list">
 
-                    <li class="l-meganav__item">
-                      <a href="<?php echo esc_url(home_url('/merchandise/publications/')); ?>">犬の健康管理手帳について</a>
-                    </li>
-
-                  </ul>
+                  <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'merchandise',
+                      'container' => false,
+                      'items_wrap' => '<ul class="l-meganav__list">%3$s</ul>',
+                    )
+                  );
+                  ?>
                 </div>
               </div>
             </div>
