@@ -48,12 +48,13 @@
 }
 
 .p-ev_title p {
+  color: #ffffff;
 	font-size: rem(14);
 	font-weight: $medium;
 	letter-spacing: 0.05em;
 	line-height: calc(math.div(26, 14));
 	width: max-content;
-	background-color: $palette-lightGreen;
+	background-color: $color-accent-green;
 	padding-inline: rem(10);
 	@include mq-down() {
 		font-size: rem(13);
@@ -177,11 +178,12 @@
 }
 
 .p-ev_office-title p {
+  color: #ffffff;
 	width: max-content;
 	font-size: rem(14);
 	font-weight: $medium;
 	letter-spacing: 0.05em;
-	background-color: $palette-lightGreen;
+	background-color: $color-accent-green;
 	padding-block: rem(3);
 	padding-inline: rem(10);
 	@include mq-down() {
