@@ -69,3 +69,12 @@
 		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
 	}
 }
+
+// スタンダードNoと原産国のマージン調整
+.p-single-breeds .c-text[data-element="standard-no"] {
+  margin-bottom: rem(5); // スタンダードNoの下部マージン
+}
+
+.p-single-breeds .c-heading.c-heading--lv3[data-element="origin-country"] {
+  margin-top: 0; // 原産国の上部マージン
+}

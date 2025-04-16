@@ -76,16 +76,9 @@
     <?php endif; ?>
     <?php wp_reset_postdata(); ?>
 
-
-    <?php if (get_field('acf_wd_fci')): ?>
-      <h5 class="c-heading c-heading--lv5 u-text-align-center">FCIスタンダードNo.<?php the_field('acf_wd_fci'); ?></h5>
-    <?php endif; ?>
-
     <p class="c-text u-text-align-right">
       最終更新日&emsp;<?php echo get_the_modified_time('Y年m月d日'); ?>
     </p>
-
-
 
     <div class="c-card-grid-3">
 
@@ -119,9 +112,12 @@
       </div>
     </div>
 
+    <?php if (get_field('acf_wd_fci')): ?>
+      <h5 class="c-text" data-element="standard-no">FCIスタンダードNo.<?php the_field('acf_wd_fci'); ?></h5>
+    <?php endif; ?>
 
     <?php if (get_field('acf_wd_place')): ?>
-      <h3 class="c-heading c-heading--lv3">原産地</h3>
+      <h3 class="c-heading c-heading--lv3" data-element="origin-country">原産国</h3>
       <p class="c-text"><?php echo get_field('acf_wd_place'); ?></p>
     <?php endif; ?>
 
