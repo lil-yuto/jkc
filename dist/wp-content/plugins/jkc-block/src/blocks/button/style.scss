@@ -40,7 +40,7 @@
     display: grid;
     gap: rem(10);
     grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
-    flex-wrap: wrap;
+    grid-auto-rows: minmax(rem(80), auto); /* 最小の高さを80pxに */
     margin-block: var(--block-margin-top) var(--block-margin-bottom);
     @include mq-down() {
       grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));

@@ -3,9 +3,14 @@
 
 .wp-block-jkc-block-button-item {
   width: 100%;
+  display: grid;
+  grid-row: span 1; /* 行全体に広がるように */
+
   .c-block-button-item {
     width: min(rem(530), 100%);
     margin-inline: auto;
+    display: grid;
+    height: 100%; /* コンテナ全体に広がるように */
     @include mq-down() {
       width: min(rem(300), 100%);
     }
@@ -466,6 +471,8 @@
     --bg-color: transparent;
     --translate: 0;
     --height: #{rem(80)};
+    height: auto; /* 高さを自動調整に変更 */
+    min-height: var(--height);
     padding-inline: em(15, 18);
     text-align: center;
   }
