@@ -112,6 +112,18 @@
       }
       ?>
     </div>
+    <h3 class="c-heading c-heading--lv3">犬の知識の関連情報</h3>
+    <?php
+      $slug = 'ref-doginfo';
+      $content_post = get_post(get_page_by_path($slug, OBJECT, 'reference-page')->ID);
+      if ($content_post) {
+        setup_postdata($GLOBALS['post'] = &$content_post);
+
+        the_content();
+
+        wp_reset_postdata();
+      }
+    ?>
 
   </div>
 
