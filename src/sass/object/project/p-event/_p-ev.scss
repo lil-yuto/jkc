@@ -44,6 +44,7 @@
 	padding-inline: rem(10) 0;
 	@include mq-down() {
 		padding-inline: 0;
+    padding-block: 0;
 	}
 }
 
@@ -69,7 +70,7 @@
 	margin-block-start: rem(15);
 	@include mq-down() {
 		font-size: rem(16);
-		margin-block-start: rem(10);
+		margin-block-start: rem(5);
 	}
 }
 
@@ -95,7 +96,7 @@
 .p-ev_infoarea2 {
 	padding-block: rem(10) rem(5);
 	@include mq-down() {
-		padding-block: rem(20) rem(10);
+		padding-block: rem(15) rem(10);
 	}
 }
 
@@ -116,7 +117,7 @@
 .p-ev__name {
 	margin-block: rem(14) 0;
 	@include mq-down() {
-		margin-block: rem(10) 0;
+		margin-block: rem(5) 0;
 	}
 }
 
@@ -137,8 +138,7 @@
 	letter-spacing: 0.03em;
 	line-height: calc(math.div(32, 16));
 	@include mq-down() {
-		font-size: rem(14);
-		margin-block: rem(5);
+		margin-block: rem(5) 0;
 	}
 }
 
@@ -173,7 +173,7 @@
 .p-ev_infoarea3 {
 	padding-block: rem(10);
 	@include mq-down() {
-		padding-block: rem(10) rem(5);
+		padding-block: rem(5) rem(5);
 	}
 }
 
@@ -193,6 +193,9 @@
 
 .p-ev__office-name {
 	margin-block: rem(15) 0;
+  @include mq-down() {
+    margin-block: rem(5) 0;
+  }
 }
 
 .p-ev__office-name p {
@@ -225,17 +228,18 @@
 	justify-content: space-between;
 	padding-block-end: rem(10);
 	@include mq-down() {
-		padding-block: rem(25) rem(3);
+    align-items: center;
+		padding-block: rem(10) rem(3);
 	}
 }
 
 .p-ev__comp-check {
 	@include mq-down() {
 		position: absolute;
-		top: rem(30);
+		top: rem(20);
 		bottom: auto;
 		left: auto;
-		right: rem(30);
+		right: rem(20);
 		transform: translate(0, 0);
 	}
 }
@@ -276,10 +280,10 @@
 	cursor: pointer;
 	padding-block: rem(13);
 	padding-inline: rem(25);
-	margin-inline-end: rem(10);
-	@include mq-down() {
-		width: rem(152);
-		margin-inline: auto;
+  @include mq-down() {
+    padding: rem(6);
+		width: rem(123);
+		// margin-inline: auto;
 	}
 }
 
@@ -288,46 +292,10 @@
 	font-weight: $bold;
 	letter-spacing: 0.05em;
 	color: $color-base;
-	padding-inline-end: rem(15);
 	position: relative;
 	@include mq-down() {
-		font-size: rem(16);
+		font-size: rem(12);
 	}
-}
-
-.p-ev__menu_btn::before {
-	position: absolute;
-	top: 50%;
-	bottom: auto;
-	left: auto;
-	right: 0;
-	transform: translate(0, -50%);
-	display: block;
-	content: "";
-	width: rem(13);
-	height: rem(2);
-	background-color: $color-base;
-	// background-color: red;
-}
-
-.p-ev__menu_btn::after {
-	position: absolute;
-	top: 50%;
-	bottom: auto;
-	left: auto;
-	right: rem(5.5);
-	transform: translate(0, -50%);
-	display: block;
-	content: "";
-	height: rem(13);
-	width: rem(2);
-	background-color: $color-base;
-	// background-color: red;
-	transition: transform 0.3s ease-out;
-}
-
-.p-ev__item.accordionOpen .p-ev__menu_btn::after {
-	transform: translate(0, -50%) rotate(90deg);
 }
 
 .p-ev__item.is_hide,

@@ -285,7 +285,7 @@ endif;
                           </div>
 
                           <div class="p-ev__accordion-btn js-evDetailBtn">
-                            <div class="p-ev__menu_btn">詳細を見る</div>
+                            <div class="p-ev__menu_btn">審査員を見る</div>
                           </div>
                         </div>
 
