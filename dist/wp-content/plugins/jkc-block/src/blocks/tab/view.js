@@ -37,6 +37,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const $contentWrapper = $tabItem.find('.c-block-tab-item__content-wrapper');
             const $content = $tabItem.find('.c-block-tab-item__content');
             const $toggleButton = $tabItem.find('.c-block-tab-item__toggle-btn');
+            const isToggleDisabled = $tabItem.hasClass('is-toggle-disabled');
+
+            // タブ開閉機能がOFFの場合はコンテンツを表示
+            if (isToggleDisabled) {
+                if ($radio.prop('checked')) {
+                    $contentWrapper.show();
+                    $content.show(); // タブ開閉OFF時は内容を表示
+                }
+                return; // 以降の処理をスキップ
+            }
 
             // ボタンテキストを「開く」に
             $toggleButton.text('開く');
@@ -69,10 +79,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     const $tabItem = $(this);
                     const $radio = $tabItem.find('input[type="radio"]');
                     const $contentWrapper = $tabItem.find('.c-block-tab-item__content-wrapper');
+                    const isToggleDisabled = $tabItem.hasClass('is-toggle-disabled');
 
                     // タブの表示/非表示のみを切り替え（開閉状態は変更しない）
                     if ($radio.prop('checked')) {
                         $contentWrapper.show();
+
+                        // タブ開閉機能がOFFの場合はコンテンツを表示
+                        if (isToggleDisabled) {
+                            const $content = $tabItem.find('.c-block-tab-item__content');
+                            $content.show();
+                            return;
+                        }
 
                         // 選択されたタブの開閉状態を現在のタブブロックの状態に合わせる
                         const $content = $tabItem.find('.c-block-tab-item__content');
@@ -100,6 +118,13 @@ document.addEventListener('DOMContentLoaded', function() {
             $allItems.each(function() {
                 const $tabItem = $(this);
                 const $radio = $tabItem.find('input[type="radio"]');
+                const isToggleDisabled = $tabItem.hasClass('is-toggle-disabled');
+
+                // タブ開閉機能がOFFの場合は処理をスキップ
+                if (isToggleDisabled) {
+                    return;
+                }
+
                 const $content = $tabItem.find('.c-block-tab-item__content');
                 const $toggleButton = $tabItem.find('.c-block-tab-item__toggle-btn');
 

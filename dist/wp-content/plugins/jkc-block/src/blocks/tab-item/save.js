@@ -9,7 +9,11 @@ export default function save({ attributes }) {
   const { label, checked, groupName, enableContentToggle, isActiveTab } =
     attributes;
   return (
-    <div {...useBlockProps.save({ className: "c-block-tab-item" })}>
+    <div {...useBlockProps.save({ 
+      className: clsx("c-block-tab-item", {
+        "is-toggle-disabled": !enableContentToggle
+      }) 
+    })}>
       <label>
         <input
           type="radio"
