@@ -80,3 +80,13 @@ small {
 strong {
   font-weight: $bold;
 }
+
+// details・summaryタグについてくる黒矢印を消す
+summary {
+  display: block;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display:none;
+}
