@@ -54,7 +54,7 @@
 	letter-spacing: 0.05em;
 	line-height: calc(math.div(26, 14));
 	width: max-content;
-	background-color: $color-accent-green;
+	background-color: $color-accent-red;
 	padding-inline: rem(10);
 	@include mq-down() {
 		font-size: rem(13);
@@ -183,7 +183,7 @@
 	font-size: rem(14);
 	font-weight: $medium;
 	letter-spacing: 0.05em;
-	background-color: $color-accent-green;
+	background-color: $color-accent-green-dark;
 	padding-block: rem(3);
 	padding-inline: rem(10);
 	@include mq-down() {

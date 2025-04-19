@@ -1,0 +1,60 @@
+@use "global" as *;
+@use "sass:math";
+
+.p-event-top {
+}
+.p-event-top__lead {
+  font-size: rem(18);
+  font-family: $font-family-japanese;
+  font-weight: $regular;
+  line-height: calc(math.div(30, 18));
+  text-align: center;
+  letter-spacing: 0.03em;
+  @include mq-down() {
+    font-size: rem(16);
+  }
+}
+
+.p-event-top__lists {
+  margin-block: rem(80) 0;
+  @include mq-down() {
+    margin-block: rem(40) 0;
+  }
+}
+
+.p-event-top__lists .c-card-item-style-3__link {
+  background-color: $color-accent-green-light;
+  padding: rem(20);
+  border: 1px solid $color-border-gray;
+}
+
+.p-event-top__lists .c-card-item-style-3__content {
+  margin-block: 0;
+}
+
+.p-event-top__lists .c-card-item-style-3.c-card-item-style-3--subgrid {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  row-gap: 0;
+}
+
+.p-event-top__lists .c-card-item-style-3__link {
+  transition: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.p-event-top__lists .c-card-item-style-3--subgrid .c-card-item-style-3__link {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  height: 100%;
+}
+
+.p-event-top__lists .c-card-item-style-3--subgrid .c-card-item-style-3__title {
+  line-height: unset;
+  text-align: unset;
+  margin-block: 0;
+}
