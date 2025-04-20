@@ -9,6 +9,7 @@ if (preg_match('/events\/event_schedule\/$/', $url)) :
   $range = date("Ymd", strtotime("+7 month"));
   $re_url = preg_replace('/(events\/event_schedule)/', '$1?_sfm_acf_ev_date=' . $today . '+' . $range, $url);
   $re_url = str_replace('#038;', '', $re_url);
+  $re_url = rtrim($re_url, '/');
   wp_safe_redirect($re_url, 301);
   exit;
 endif;
@@ -17,14 +18,18 @@ endif;
 if (preg_match('/acf_ev_date\=[\d]{8}\+$/', $url) || preg_match('/acf_ev_date\=[\d]{8}\+[^\d]/', $url)) :
   $re_url = preg_replace('/(acf_ev_date\=([\d]{8})\+)/', '$1$2', $url);
   $re_url = str_replace('#038;', '', $re_url);
+  $re_url = rtrim($re_url, '/');
   wp_safe_redirect($re_url, 301);
+  exit;
 endif;
 
 // URL末尾が“acf_ev_date=+8桁数字”か、URL途中が“acf_ev_date=+8桁数字&”の場合は同一の数字を付加してリダイレクト
 if (preg_match('/acf_ev_date\=\+[\d]{8}$/', $url) || preg_match('/acf_ev_date\=\+[\d]{8}[^\d]/', $url)) :
   $re_url = preg_replace('/(acf_ev_date\=)\+([\d]{8})/', '$1$2+$2', $url);
   $re_url = str_replace('#038;', '', $re_url);
+  $re_url = rtrim($re_url, '/');
   wp_safe_redirect($re_url, 301);
+  exit;
 endif;
 ?>
 
@@ -99,7 +104,7 @@ endif;
         $the_query = new WP_Query(array(
           'post_type' => 'event_schedule',
           'orderby' => 'menu_order',
-          'order' => 'DESC',
+          'order' => 'ASC',
           'search_filter_id' => "41794",
           'paged' => $paged,
           'posts_per_page' => 21,
