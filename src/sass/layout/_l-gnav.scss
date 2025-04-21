@@ -50,8 +50,6 @@
 	@include mq-down() {
 		width: 100%;
 		position: relative;
-    padding-inline: 0.9375rem;
-    padding-block: rem(18);
     border-bottom: 2px solid;
     border-image: linear-gradient(90deg, transparent 0 rem(15), $palette-salem rem(15) calc(100% - rem(15)), transparent calc(100% - rem(15)) 100%) 1 / 0 0 2px;
 		// background-color: yellow;
@@ -61,6 +59,20 @@
     @include mq-down() {
       display: inline-block;
       width: 85%;
+      padding-inline: 0.9375rem;
+      padding-block: rem(18);
+    }
+  }
+
+  .u-paddingNone {
+    @include mq-down() {
+      padding-left: 0;
+    }
+  }
+
+  &.megaOpen {
+    @include mq-down() {
+      border-bottom: none;
     }
   }
 }

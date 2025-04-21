@@ -68,7 +68,7 @@
                 <div class="l-meganav__container">
 
                   <h5 class="l-meganav__title">
-                    <a href="<?php echo esc_url(home_url('/aboutus/')); ?>">JKCの活動内容</a>
+                    <a class="u-paddingNone" href="<?php echo esc_url(home_url('/aboutus/')); ?>">JKCの活動内容</a>
                   </h5>
 
                   <?php
@@ -94,7 +94,7 @@
                 <div class="l-meganav__container">
 
                   <h2 class="l-meganav__title">
-                    <a href="<?php echo esc_url(home_url('/pedigrees/')); ?>">血統証明書について</a>
+                    <a class="u-paddingNone" href="<?php echo esc_url(home_url('/pedigrees/')); ?>">血統証明書について</a>
                   </h2>
 
                   <?php
@@ -120,7 +120,7 @@
                 <div class="l-meganav__container">
 
                   <h2 class="l-meganav__title">
-                    <a href="<?php echo esc_url(home_url('/events/')); ?>">イベント</a>
+                    <a class="u-paddingNone" href="<?php echo esc_url(home_url('/events/')); ?>">イベント</a>
                   </h2>
 
                   <?php
@@ -189,7 +189,7 @@
                 <div class="l-meganav__container">
 
                   <h2 class="l-meganav__title">
-                    <a href="<?php echo esc_url(home_url('/qualifications/')); ?>">JKC公認資格</a>
+                    <a class="u-paddingNone" href="<?php echo esc_url(home_url('/qualifications/')); ?>">JKC公認資格</a>
                   </h2>
 
                   <?php
