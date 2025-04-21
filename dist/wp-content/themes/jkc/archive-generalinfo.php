@@ -34,7 +34,7 @@
           <?php
           $terms = get_terms(array(
             'taxonomy' => 'generalinfo_category',
-            'hide_empty' => false,
+            'hide_empty' => true,
           ));
           ?>
 

@@ -44,7 +44,6 @@
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/pedigrees/')); ?>">血統証明書のみかた</a></li>
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/forms/')); ?>">血統証明書・所有者名義変更</a></li>
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/pedigrees/breedingguidelines/')); ?>">正しいブリーディングと守るべき心得</a></li>
-            <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/forms/to_reduce/')); ?>">股関節形成不全症と肘関節異形成症について</a></li>
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/forms/puppy_name/')); ?>">子犬を繁殖した方へ 〜 子犬の名前</a></li>
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/pedigrees/geneticdisease/')); ?>">遺伝子疾患について考えよう</a></li>
           </ul>
