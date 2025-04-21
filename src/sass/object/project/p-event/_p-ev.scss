@@ -64,9 +64,9 @@
 
 .p-ev_date {
 	font-size: rem(18);
-	font-weight: $regular;
+	font-weight: $bold;
 	letter-spacing: 0.03em;
-	line-height: calc(math.div(30, 18));
+	line-height: 1.5;
 	margin-block-start: rem(15);
 	@include mq-down() {
 		font-size: rem(16);
@@ -96,7 +96,7 @@
 .p-ev_infoarea2 {
 	padding-block: rem(10) rem(5);
 	@include mq-down() {
-		padding-block: rem(15) rem(10);
+		padding-block: rem(15) 0;
 	}
 }
 
@@ -138,21 +138,71 @@
 	letter-spacing: 0.03em;
 	line-height: calc(math.div(32, 16));
 	@include mq-down() {
-		margin-block: rem(5) 0;
+    font-size: rem(14);
+		margin-block: 0;
+    line-height: 1.5;
 	}
 }
 
+.p-ev__venue span.colorR {
+  color: unset !important;
+}
+
+.p-ev__site-link,
+.p-ev__venue a {
+  color: #{$color-text-link};
+  transition: color $duration-default;
+}
+// PDFリンク用のアイコン
+.p-ev__site-link[href$=".pdf"]::after,
+.p-ev__venue a[href$=".pdf"]::after {
+  content: "";
+  display: inline-block;
+  width: em(17.5, 18);
+  aspect-ratio: 17.5 / 18.34;
+  margin-inline: em(5, 18);
+  background-color: $color-text-link-pdf;
+  mask-image: url("../images/common/cmn-link-pdf-ico01.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  vertical-align: baseline;
+}
+
+// 外部リンク用のアイコン
+.p-ev__site-link[href^="http"]:not([href*="#{$domain}"])::after,
+.p-ev__venue a[href^="http"]:not([href*="#{$domain}"])::after {
+  content: "";
+  display: inline-block;
+  width: em(17.5, 18);
+  aspect-ratio: 17.5 / 18.34;
+  margin-inline: em(5, 18);
+  background-color: $color-text-link-external;
+  mask-image: url("../images/common/cmn-link-blank-ico01.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  vertical-align: baseline;
+}
+
+@media (any-hover: hover) {
+  .p-ev__site-link:hover,
+  .p-ev__venue a:hover {
+    color: #{$color-text-link-hover};
+    opacity: 1;
+  }
+}
+
 .p-ev__site-link {
-	display: inline-flex;
-	align-items: center;
-	column-gap: 0.44em;
+	display: block;
 	font-size: rem(18);
 	font-weight: $bold;
 	letter-spacing: 0.03em;
 	line-height: calc(math.div(32, 18));
 	color: #c83030;
 	@include mq-down() {
-		font-size: rem(16);
+		font-size: rem(14);
+    line-height: 1.5;
 	}
 }
 
@@ -173,7 +223,7 @@
 .p-ev_infoarea3 {
 	padding-block: rem(10);
 	@include mq-down() {
-		padding-block: rem(5) rem(5);
+		padding-block: rem(15) rem(10);
 	}
 }
 
@@ -200,7 +250,7 @@
 
 .p-ev__office-name p {
 	font-size: rem(18);
-	font-weight: $regular;
+	font-weight: $bold;
 	letter-spacing: 0.03em;
 	line-height: calc(math.div(27, 18));
 	@include mq-down() {
@@ -212,10 +262,13 @@
 .p-ev__tel,
 .p-ev__tel {
 	font-size: rem(16);
-	font-weight: $regular;
+	font-weight: $bold;
 	letter-spacing: 0.03em;
 	line-height: calc(math.div(24, 16));
 	margin-block: rem(5) 0;
+  @include mq-down() {
+    margin-block: 0;
+  }
 }
 
 .p-ev__tel-fax span {
@@ -313,7 +366,8 @@
 	padding-block: 0 rem(105);
 	padding-inline: rem(40);
 	@include mq-down() {
-		padding-inline: rem(20);
+    padding-inline: rem(20);
+    padding-block: 0 rem(50);
 	}
 }
 
