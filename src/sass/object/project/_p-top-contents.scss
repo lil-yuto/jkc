@@ -44,12 +44,12 @@
     grid-template-rows: auto;
     border-image: linear-gradient($color-accent-green-light 0 0) fill 0 / /0 100lvi;
     padding-inline: 0;
-    
+
   }
 }
 .p-content {
   display: grid;
-  grid: 
+  grid:
     "image" 1fr
     "title" rem(60)
     "description" 1fr;
@@ -67,7 +67,7 @@
   min-height: rem(346);
   // place-items: center;
   @include mq-down() {
-    grid: 
+    grid:
     "image title" max-content
     "description description" 1fr / max-content 1fr;
     gap: rem(10) rem(20);
@@ -95,7 +95,7 @@
     justify-self: left;
     text-align: left;
   }
-  
+
 }
 .p-content__link {
   font-size: rem(20);
@@ -156,13 +156,13 @@
 .p-content__image--channel {
   width: rem(68);
     @include mq-down() {
-    width: rem(41.14);
+    width: rem(33);
   }
 }
 .p-content__image--icon-first-dog {
-  width: rem(59.58);
+  width: rem(95);
     @include mq-down() {
-    width: rem(28.97);
+    width: rem(50);
   }
 }
 .p-content__image--rescue-dog {

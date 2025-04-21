@@ -7,7 +7,7 @@
           <a href="<?php echo esc_url(home_url('/generalinfo/#beginners')); ?>" class="p-side-menu__link p-side-menu__link--beginner"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-beginner-ico01.svg" alt="" />初めての方へ</a>
         </li>
         <li class="p-side-menu__item">
-          <a href="<?php echo esc_url(home_url('/events/')); ?>" class="p-side-menu__link p-side-menu__link--event"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-schedule-ico01.svg" alt="" />ドッグショー<br />競技会スケジュール</a>
+          <a href="<?php echo esc_url(home_url('/events/event_schedule/')); ?>" class="p-side-menu__link p-side-menu__link--event"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-schedule-ico01.svg" alt="" />ドッグショー<br />競技会スケジュール</a>
         </li>
         <li class="p-side-menu__item">
           <a href="<?php echo esc_url(home_url('/registrations/')); ?>" class="p-side-menu__link p-side-menu__link--document"><img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-document-ico01.svg" alt="" />血統証明書・<br />各種申請</a>
@@ -300,7 +300,7 @@
     </div>
   </section>
   <!-- ABOUT -->
-  <section class="p-top-about l-section">
+  <section class="p-top-about l-section" style="padding-bottom: 0;">
     <div class="p-top-about__container l-container">
       <div class="p-top-about__title">
         <hgroup class="c-headeing-lv2">
@@ -349,14 +349,14 @@
             </a>
           </div>
         </div>
-        <div class="p-top-about__button-wrapper">
+        <!-- <div class="p-top-about__button-wrapper">
           <button type="button" class="p-top-about__toggle-button c-button js-toggle-button">もっと見る</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
   <!-- CONTENTS -->
-  <section class="p-top-contents l-section">
+  <section class="p-top-contents l-section" style="padding-top: 0;">
     <div class="p-top-contents__container l-container">
       <div class="p-top-contents__title">
         <hgroup class="c-headeing-lv2 c-headeing-lv2--row">
@@ -379,7 +379,7 @@
             <h3 class="p-content__title">ＪＫＣ愛犬飼育管理士</h3>
             <p class="p-content__description">動物愛護法で定められた「動物取扱業」の登録に役立つ資格です。</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/events/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/events/event_schedule/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--schedule">
               <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-schedule-ico01.svg" alt="イベントスケジュール" />
             </div>
@@ -398,23 +398,23 @@
             <h3 class="p-content__title">犬種紹介</h3>
             <p class="p-content__description">純粋犬種は世界中で700～800と言われますが、JKCに登録されている犬種をご紹介します。</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/aboutus/gazette/present/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/aboutus/gazette/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--gazette">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-gazette-ico01.svg" alt="ＪＫＣガゼット" />
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-book.svg" alt="ＪＫＣガゼット" />
             </div>
             <h3 class="p-content__title">会報誌『JKCガゼット』</h3>
             <p class="p-content__description">会員になると配布される会報誌。特集ページには嬉しい企画がいっぱい。</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/movie/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/3min/')); ?>" class="p-content" target="_blank" rel="noopener">
             <div class="p-content__image p-content__image--channel">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-channel-ico01.svg" alt="ＪＫＣチャンネル" />
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-time.svg" alt="ＪＫＣチャンネル" />
             </div>
-            <h3 class="p-content__title">公認トリマー資格</h3>
-            <p class="p-content__description">犬好きな人に人気の犬の美容師「トリマー」資格をとるには？</p>
+            <h3 class="p-content__title">3分でわかるJKC</h3>
+            <p class="p-content__description">ジャパンケネルクラブの活動内容や特徴を、わかりやすくご紹介します。</p>
           </a>
           <a href="<?php echo esc_url(home_url('/events/juniorhandler/about/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--icon-first-dog">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-first-dog-ico01.svg" alt="初めて犬を飼うには" />
+              <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog.svg" alt="初めて犬を飼うには" />
             </div>
             <h3 class="p-content__title">ジュニアハンドラー</h3>
             <p class="p-content__description">犬好きキッズ憧れの「ジュニアハンドラー」に参加したい方は無料で登録できます。</p>
@@ -426,21 +426,21 @@
             <h3 class="p-content__title">災害救助犬について</h3>
             <p class="p-content__description">ジャパンケネルクラブの災害救助犬の育成について</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/photo_contest/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/events/photo_contest/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--photo-contest">
               <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-photo-contest-ico01.svg" alt="写真コンテスト" />
             </div>
             <h3 class="p-content__title">写真コンテスト</h3>
             <p class="p-content__description">全国から応募がある「愛犬とのふれあい写真コンテスト」の開催情報</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/picture_contest/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/events/picture_contest/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--art-contest">
               <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-dog-art-contest-ico01.svg" alt="犬の絵コンクール" />
             </div>
             <h3 class="p-content__title">犬の絵コンクール</h3>
             <p class="p-content__description">全国の小学校や絵画教室にホットな「夏休み犬の絵コンクール」の開催情報</p>
           </a>
-          <a href="<?php echo esc_url(home_url('/haiku_contest/haiku_contest/')); ?>" class="p-content">
+          <a href="<?php echo esc_url(home_url('/events/haiku_contest/')); ?>" class="p-content">
             <div class="p-content__image p-content__image--haiku">
               <img src="<?php echo get_template_directory_uri() ?>/assets/images/common/cmn-haiku-ico01.svg" alt="ふれあいの俳句" />
             </div>
