@@ -148,9 +148,9 @@
               <div class="l-meganav__bg">
                 <div class="l-meganav__container">
 
-                  <h2 class="l-meganav__title">
+                  <!-- <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/doginfo/')); ?>">犬の知識</a>
-                  </h2>
+                  </h2> -->
 
                   <?php
                   wp_nav_menu(
@@ -162,9 +162,9 @@
                   );
                   ?>
 
-                  <h2 class="l-meganav__title">
+                  <!-- <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/doginfo/kids/')); ?>">こども向けコンテンツ</a>
-                  </h2>
+                  </h2> -->
 
                   <?php
                   wp_nav_menu(
@@ -214,9 +214,9 @@
               <div class="l-meganav__bg">
                 <div class="l-meganav__container">
 
-                  <h2 class="l-meganav__title">
+                  <!-- <h2 class="l-meganav__title">
                     <a href="<?php echo esc_url(home_url('/merchandise/')); ?>">刊行物</a>
-                  </h2>
+                  </h2> -->
 
                   <?php
                   wp_nav_menu(
