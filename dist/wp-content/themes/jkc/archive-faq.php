@@ -143,8 +143,8 @@
 
 
       <div class="c-contact">
-        <p class="c-contact__organization">一般社団法人ジャパンケネルクラブ　総務組織課<br>「愛犬飼育管理士講習会」 係</p>
-        <p class="c-contact__number">03-3251-1654</p>
+        <p class="c-contact__organization">一般社団法人ジャパンケネルクラブ（JKC）本部（代表）</p>
+        <p class="c-contact__number">03-3251-1651</p>
       </div>
 
 
