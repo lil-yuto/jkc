@@ -2028,6 +2028,15 @@ meter {
     .p-job__img__item.u-width150.u-mt10 {
         margin-top: 1rem;
     }
+
+    .p-job__img__list.u-gap0.u-mt-100 {
+      z-index: 1;
+      position: relative;
+    }
+
+    .p-job__img__list.u-mt-35 {
+      z-index: 0;
+    }
 }
 
 .p-job__img__item.u-width150.u-ml-18 {
