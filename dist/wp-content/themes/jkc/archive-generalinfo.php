@@ -5,11 +5,11 @@
 
   <div class="p-sub-fv l-sub-fv">
 
-        <div class="p-sub-fv__container l-container">
-            <div class="p-sub-fv__title c-page-title">
-                <h1 class="c-page-title__main">総合案内</h1>
-            </div>
-        </div>
+    <div class="p-sub-fv__container l-container">
+      <div class="p-sub-fv__title c-page-title">
+        <h1 class="c-page-title__main">総合案内</h1>
+      </div>
+    </div>
 
   </div>
 
@@ -34,7 +34,7 @@
           <?php
           $terms = get_terms(array(
             'taxonomy' => 'generalinfo_category',
-            'hide_empty' => false,
+            'hide_empty' => true,
           ));
           ?>
 
