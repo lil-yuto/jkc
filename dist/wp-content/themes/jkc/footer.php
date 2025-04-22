@@ -28,7 +28,7 @@
           <ul class="l-footer__menu-list">
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/aboutus/guidance/')); ?>">入会のご案内</a></li>
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/registrations/')); ?>">登録料金一覧表</a></li>
-            <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/membership/info/period/')); ?>">会費有効期限とご継続</a></li>
+            <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/admission/info/period/')); ?>">会費有効期限とご継続</a></li>
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/membership/change/')); ?>">会員情報（住所・姓名など）のご変更</a></li>
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/membership/transferred/')); ?>">所属クラブの移籍</a></li>
             <li class="l-footer__menu-item"><a href="<?php echo esc_url(home_url('/forms/dna_registration/')); ?>">DNA登録</a></li>

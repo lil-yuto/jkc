@@ -239,7 +239,7 @@
           <li class="l-gnav-sp__item"><a href="<?php echo esc_url(home_url('/admission/')); ?>" class="l-gnav-sp__link"><span>会員向け情報</span></a></li>
 
           <li class="l-gnav-sp__item-panel">
-            <a href="http://" class="l-gnav-sp__link-panel l-gnav-sp__link-panel--download">ダウンロード</a>
+            <a href="<?php echo esc_url(home_url('/registrations/')); ?>" class="l-gnav-sp__link-panel l-gnav-sp__link-panel--download">ダウンロード</a>
           </li>
           <li class="l-gnav-sp__item-panel">
             <a href="<?php echo esc_url(home_url('/faq/')); ?>" class="l-gnav-sp__link-panel l-gnav-sp__link-panel--qa">FAQ</a>
