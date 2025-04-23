@@ -51,7 +51,7 @@
                           <?php endif; ?>
                           <picture>
                             <source media="(min-width: 768px)" srcset="<?php echo esc_url($pc_img_url); ?>" width="<?php echo esc_attr($pc_img_width); ?>" height="<?php echo esc_attr($pc_img_height); ?>">
-                            <img src="<?php echo esc_url($sp_img_url); ?>" alt="<?php the_title_attribute(); ?>" width="<?php echo esc_attr($sp_img_width); ?>" height="<?php echo esc_attr($sp_img_height); ?>" />
+                            <img fetchpriority="high" src="<?php echo esc_url($sp_img_url); ?>" alt="<?php the_title_attribute(); ?>" width="<?php echo esc_attr($sp_img_width); ?>" height="<?php echo esc_attr($sp_img_height); ?>" />
                           </picture>
                           </a>
                     </li>
@@ -315,39 +315,39 @@
           </div>
           <div class="p-top-about-summury__img-wrapper">
             <picture>
-              <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-img01.png">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-img01-sp.png" alt="" />
+              <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-img01.webp">
+              <img loading="lazy" src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-img01-sp.webp" alt="" width="360" height="324" />
             </picture>
           </div>
         </div>
         <div class="p-top-about__list-wrapper">
-          <div class="p-top-about__list">
+          <!-- <div class="p-top-about__list">
             <a href="http://" class="p-top-about__item p-top-about-item">
-              <div class="p-top-about-item__img-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img01.png" alt="" /></div>
+              <div class="p-top-about-item__img-wrapper"><img loading="lazy" src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img01.png" alt="" width="338" height="156" /></div>
               <h3 class="p-top-about-item__title">純粋犬種の犬籍登録</h3>
               <p class="p-top-about-item__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
             </a>
             <a href="http://" class="p-top-about__item p-top-about-item">
-              <div class="p-top-about-item__img-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img02.png" alt="" /></div>
+              <div class="p-top-about-item__img-wrapper"><img loading="lazy" src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img02.png" alt="" width="338" height="156" /></div>
               <h3 class="p-top-about-item__title">展覧会・競技会の開催</h3>
               <p class="p-top-about-item__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
             </a>
             <a href="http://" class="p-top-about__item p-top-about-item">
-              <div class="p-top-about-item__img-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img03.png" alt="" /></div>
+              <div class="p-top-about-item__img-wrapper"><img loading="lazy" src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img03.png" alt="" width="338" height="156" /></div>
               <h3 class="p-top-about-item__title">災害救助犬育成事業</h3>
               <p class="p-top-about-item__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
             </a>
             <a href="http://" class="p-top-about__item p-top-about-item">
-              <div class="p-top-about-item__img-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img04.png" alt="" /></div>
+              <div class="p-top-about-item__img-wrapper"><img loading="lazy" src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img04.png" alt="" width="338" height="156" /></div>
               <h3 class="p-top-about-item__title">犬を通した社会への貢献</h3>
               <p class="p-top-about-item__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
             </a>
             <a href="http://" class="p-top-about__item p-top-about-item">
-              <div class="p-top-about-item__img-wrapper"><img src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img05.png" alt="" /></div>
+              <div class="p-top-about-item__img-wrapper"><img loading="lazy" src="<?php echo get_template_directory_uri() ?>/assets/images/page/top/top-about-post-img05.png" alt="" width="338" height="156" /></div>
               <h3 class="p-top-about-item__title">資格取得や飼育指導</h3>
               <p class="p-top-about-item__description">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
             </a>
-          </div>
+          </div> -->
         </div>
         <!-- <div class="p-top-about__button-wrapper">
           <button type="button" class="p-top-about__toggle-button c-button js-toggle-button">もっと見る</button>
@@ -480,7 +480,7 @@
                     <a>
                     <?php endif; ?>
                     <?php if ($img_s_url) : ?>
-                      <img src="<?php echo esc_url($img_s_url); ?>" alt="<?php the_title_attribute(); ?>" />
+                      <img loading="lazy" src="<?php echo esc_url($img_s_url); ?>" alt="<?php the_title_attribute(); ?>" width="270" height="140"/>
                     <?php endif; ?>
                     <?php if ($img_l_url) : ?>
                       <img src="<?php echo esc_url($img_l_url); ?>" alt="<?php the_title_attribute(); ?>" />
