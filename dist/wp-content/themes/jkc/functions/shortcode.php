@@ -685,15 +685,16 @@ add_shortcode('qualification2_schedule', function ($atts) {
   if ($the_query->have_posts()):
     while ($the_query->have_posts()): $the_query->the_post();
 
-      if (get_field('acf_qu2')['acf_qu2_org']): ?>
-        <h3 class="c-heading c-heading--lv3"><?php echo get_field('acf_qu2')['acf_qu2_org']; ?></h3>
+      $acf_qu2 = get_field('acf_qu2');
+      if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_org'])): ?>
+        <h3 class="c-heading c-heading--lv3"><?php echo $acf_qu2['acf_qu2_org']; ?></h3>
       <?php else: ?>
         <h3 class="c-heading c-heading--lv3"><?php the_title(); ?></h3>
       <?php endif;
 
-      if (get_field('acf_qu2')['acf_qu2_office']): ?>
+      if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_office'])): ?>
         <h5 class="c-heading c-heading--lv5">連絡事務所</h5>
-        <p class="c-text"><?php echo get_field('acf_qu2')['acf_qu2_office']; ?></p>
+        <p class="c-text"><?php echo $acf_qu2['acf_qu2_office']; ?></p>
       <?php elseif (get_field('acf_qu_office')) : ?>
         <h5 class="c-heading c-heading--lv5">連絡事務所</h5>
         <p class="c-text"><?php echo get_field('acf_qu_office'); ?></p>
@@ -703,45 +704,45 @@ add_shortcode('qualification2_schedule', function ($atts) {
         <table>
           <tbody>
 
-            <?php if (get_field('acf_qu2')['acf_qu2_day']): ?>
+            <?php if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_day'])): ?>
               <tr>
                 <td style="background-color:#EDF5EF"><strong>日時</strong></td>
-                <td><?php echo get_field('acf_qu2')['acf_qu2_day']; ?></td>
+                <td><?php echo $acf_qu2['acf_qu2_day']; ?></td>
               </tr>
             <?php endif; ?>
 
-            <?php if (get_field('acf_qu2')['acf_qu2_place']): ?>
+            <?php if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_place'])): ?>
               <tr>
                 <td style="background-color:#EDF5EF"><strong>会場</strong></td>
-                <td><?php echo get_field('acf_qu2')['acf_qu2_place']; ?></td>
+                <td><?php echo $acf_qu2['acf_qu2_place']; ?></td>
               </tr>
             <?php endif; ?>
 
-            <?php if (get_field('acf_qu2')['acf_qu2_type']): ?>
+            <?php if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_type'])): ?>
               <tr>
                 <td style="background-color:#EDF5EF"><strong>試験の種類</strong></td>
-                <td><?php echo get_field('acf_qu2')['acf_qu2_type']; ?></td>
+                <td><?php echo $acf_qu2['acf_qu2_type']; ?></td>
               </tr>
             <?php endif; ?>
 
-            <?php if (get_field('acf_qu2')['acf_qu2_lecturer']): ?>
+            <?php if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_lecturer'])): ?>
               <tr>
                 <td style="background-color:#EDF5EF"><strong>研修会講師</strong></td>
-                <td><?php echo get_field('acf_qu2')['acf_qu2_lecturer']; ?></td>
+                <td><?php echo $acf_qu2['acf_qu2_lecturer']; ?></td>
               </tr>
             <?php endif; ?>
 
-            <?php if (get_field('acf_qu2')['acf_qu2_theme']): ?>
+            <?php if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_theme'])): ?>
               <tr>
                 <td style="background-color:#EDF5EF"><strong>研修テーマ</strong></td>
-                <td><?php echo get_field('acf_qu2')['acf_qu2_theme']; ?></td>
+                <td><?php echo $acf_qu2['acf_qu2_theme']; ?></td>
               </tr>
             <?php endif; ?>
 
-            <?php if (get_field('acf_qu2')['acf_qu2_tuition']): ?>
+            <?php if (is_array($acf_qu2) && !empty($acf_qu2['acf_qu2_tuition'])): ?>
               <tr>
                 <td style="background-color:#EDF5EF"><strong>受講料</strong></td>
-                <td><?php echo get_field('acf_qu2')['acf_qu2_tuition']; ?></td>
+                <td><?php echo $acf_qu2['acf_qu2_tuition']; ?></td>
               </tr>
             <?php endif; ?>
 
