@@ -90,7 +90,7 @@ export default function ({ attributes, setAttributes }) {
               className="c-block-flow-vertical-item__description"
               onChange={onChangeContent}
               value={content}
-              allowedFormats={["core/italic", "core/bold", "core/text-color"]}
+              allowedFormats={["core/italic", "core/bold", "core/text-color", "core/underline"]}
               placeholder={placeholder}
             />
           </div>

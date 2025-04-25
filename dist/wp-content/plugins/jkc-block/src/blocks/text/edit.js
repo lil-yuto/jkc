@@ -45,6 +45,7 @@ export default function Edit({ attributes, setAttributes }) {
             "core/link",
             "core/text-color",
             "core/image",
+            "core/underline",
           ]} // フォーマットの許可設定
           placeholder={placeholder} // プレースホルダーテキスト
         />

@@ -121,6 +121,7 @@ export default function ({ className, attributes, setAttributes, isSelected }) {
                   "core/italic",
                   "core/bold",
                   "core/text-color",
+                  "core/underline",
                 ]}
                 onChange={(value) => {
                   setAttributes({ description: value });

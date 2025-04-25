@@ -27,7 +27,7 @@ const TEMPLATE = [["jkc-block/button"]];
 // 新しいタブでリンクを開くときに設定するrel属性の定数
 const NEW_TAB_REL = 'noopener noreferrer';
 
-// --- メインコンポーネント --- 
+// --- メインコンポーネント ---
 export default function ({ className, attributes, setAttributes, isSelected }) {
   // 属性の取り出し：ブロックの設定値をそれぞれ変数に代入
   const {
@@ -136,6 +136,7 @@ export default function ({ className, attributes, setAttributes, isSelected }) {
                   "core/italic",
                   "core/bold",
                   "core/text-color",
+                  "core/underline",
                 ]}
                 onChange={(value) => {
                   setAttributes({ description: value });
@@ -199,8 +200,8 @@ export default function ({ className, attributes, setAttributes, isSelected }) {
         >
           <LinkControl
             className="wp-block-navigation-link__inline-link-input"
-            value={{ 
-              url, 
+            value={{
+              url,
               opensInNewTab: linkTarget === '_blank'  // タブ設定が'_blank'かどうかで判定
             }}
             onChange={({

@@ -39,7 +39,7 @@ export default function ({ attributes, setAttributes }) {
           className="c-block-flow-horizontal-title-text__description"
           onChange={onChangeDescription}
           value={description}
-          allowedFormats={["core/italic", "core/bold", "core/text-color"]}
+          allowedFormats={["core/italic", "core/bold", "core/text-color", "core/underline"]}
           placeholder="説明を入力"
         />
       </div>
