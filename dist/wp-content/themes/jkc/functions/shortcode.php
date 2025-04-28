@@ -569,6 +569,8 @@ add_shortcode('qualification1_schedule', function ($atts) {
   $args = array(
     'post_type' => array('qualification1', 'qualification2'),
     'posts_per_page' => -1,
+    'orderby' => 'menu_order',
+    'order' => 'ASC',
     'tax_query' => array(
       'relation' => 'OR',
       array(
@@ -666,6 +668,8 @@ add_shortcode('qualification2_schedule', function ($atts) {
   $args = array(
     'post_type' => array('qualification1', 'qualification2'),
     'posts_per_page' => -1,
+    'orderby' => 'menu_order',
+    'order' => 'ASC',
     'tax_query' => array(
       'relation' => 'OR',
       array(
