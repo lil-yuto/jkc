@@ -40,7 +40,7 @@ function manage_posts_event($columns)
       'taxonomy-event_area' => '都道府県',
       'acf_ev_place' => '会場',
       'acf_ev_office' => '事務所',
-      //			'menu_order' => '順序', // コメントアウト：必要時に有効化
+      'menu_order' => '順序',
     );
   }
   return $columns;
@@ -140,7 +140,7 @@ add_filter('request', 'column_orderby_custom');
 function posts_register_sortable($sortable_column)
 {
   $sortable_column['acf_ev_date'] = 'acf_ev_date';
-  //	$sortable_column['menu_order'] = 'menu_order'; // メニューオーダーでのソート機能を追加
+  $sortable_column['menu_order'] = 'menu_order';
   return $sortable_column;
 }
 add_filter('manage_edit-event_schedule_sortable_columns', 'posts_register_sortable');
