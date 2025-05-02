@@ -114,7 +114,7 @@ function set_post_types_admin_order($wp_query)
     }
   }
 }
-add_filter('pre_get_posts', 'set_post_types_admin_order'); // 開催日順のデフォルトソート - 有効化
+// add_filter('pre_get_posts', 'set_post_types_admin_order'); // 開催日順のデフォルトソート - 有効化
 
 // イベントスケジュール「開催日」フィールドでソート機能を適用
 function column_orderby_custom($vars)
