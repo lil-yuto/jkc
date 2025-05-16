@@ -1,0 +1,115 @@
+@media screen and (min-width: 768px) {
+  .u-hidden-pc {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .u-hidden-sp {
+    display: none;
+  }
+}
+
+.u-uppercase {
+  text-transform: uppercase;
+}
+
+:root {
+  --block-margin-top: 1.875rem;
+  --block-margin-bottom: 1.875rem;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+.wp-block-jkc-block-text-link-item {
+  list-style: none;
+}
+.wp-block-jkc-block-text-link-item .c-block-text-link-item {
+  --color: #C83030;
+  --translate: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.125rem;
+  line-height: 1.3333333333;
+  letter-spacing: 0.05em;
+  color: var(--color);
+  -webkit-column-gap: 0.4444444444em;
+     -moz-column-gap: 0.4444444444em;
+          column-gap: 0.4444444444em;
+  font-weight: 700;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  list-style-type: none;
+}
+@media screen and (max-width: 767px) {
+  .wp-block-jkc-block-text-link-item .c-block-text-link-item {
+    font-size: 1rem;
+  }
+}
+.wp-block-jkc-block-text-link-item .c-block-text-link-item::after {
+  content: "";
+  display: inline-block;
+  width: 1.333em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  aspect-ratio: 1;
+  background-color: var(--color);
+  -webkit-mask-image: url("./images/cmn-arrow-forward-circle-ico01.svg");
+          mask-image: url("./images/cmn-arrow-forward-circle-ico01.svg");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  translate: var(--translate);
+  -webkit-transition: background-color 0.3s, translate 0.3s;
+  transition: background-color 0.3s, translate 0.3s;
+}
+.wp-block-jkc-block-text-link-item .c-block-text-link-item[href$=".pdf"]::after {
+  content: "";
+  display: inline-block;
+  width: 1.4444444444em;
+  aspect-ratio: 26/27.24;
+  background-color: #C83030;
+  -webkit-mask-image: url("./images/cmn-link-pdf-ico01.svg");
+          mask-image: url("./images/cmn-link-pdf-ico01.svg");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+.wp-block-jkc-block-text-link-item .c-block-text-link-item[href^=http]:not([href*="www.jkc.or.jp"])::after {
+  content: "";
+  display: inline-block;
+  width: 1.2222222222em;
+  aspect-ratio: 1;
+  background-color: #898989;
+  -webkit-mask-image: url("./images/cmn-link-blank-ico01.svg");
+          mask-image: url("./images/cmn-link-blank-ico01.svg");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+@media (any-hover: hover) {
+  .wp-block-jkc-block-text-link-item .c-block-text-link-item:hover {
+    --color: #0A6934;
+    --translate: 0.22em 0;
+    opacity: 1;
+  }
+  .wp-block-jkc-block-text-link-item .c-block-text-link-item[href$=".pdf"]:hover::after,
+  .wp-block-jkc-block-text-link-item .c-block-text-link-item[href^=http]:not([href*="www.jkc.or.jp"]):hover::after {
+    --translate: 0;
+  }
+}
