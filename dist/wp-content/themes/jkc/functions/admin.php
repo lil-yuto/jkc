@@ -26,7 +26,7 @@ function display_news_pickup_column($column, $post_id)
 }
 add_action('manage_news_posts_custom_column', 'display_news_pickup_column', 10, 2);
 
-// 投稿一覧カラムを定義（イベントスケジュール）
+// // 投稿一覧カラムを定義（イベントスケジュール）
 function manage_posts_event($columns)
 {
   $get_posttype = esc_html(get_post_type_object(get_post_type())->name);
@@ -40,14 +40,15 @@ function manage_posts_event($columns)
       'taxonomy-event_area' => '都道府県',
       'acf_ev_place' => '会場',
       'acf_ev_office' => '事務所',
-      'menu_order' => '順序',
+      // 'menu_order' => 'メニューオーダー',
+      'event_number' => 'オーダー',
     );
   }
   return $columns;
 }
 add_filter('manage_edit-event_schedule_columns', 'manage_posts_event');
 
-// 投稿一覧カラムを表示（イベントスケジュール）
+// // 投稿一覧カラムを表示（イベントスケジュール）
 function manage_add_event($column_name, $post_id)
 {
   $get_posttype = esc_html(get_post_type_object(get_post_type())->name);
@@ -68,10 +69,10 @@ function manage_add_event($column_name, $post_id)
           $stitle = $Ymd . '(' . $week[$w] . ')';
         }
         break;
-      case 'menu_order': // メニューオーダー
-        $post_data = get_post($post_id);
-        $stitle = $post_data->menu_order;
-        break;
+      // case 'menu_order': // メニューオーダー
+      //   $post_data = get_post($post_id);
+      //   $stitle = $post_data->menu_order;
+      //   break;
       case 'postid':
         $stitle = $post_id;
         break; // 投稿ID
@@ -87,6 +88,9 @@ function manage_add_event($column_name, $post_id)
       case 'acf_ev_office':
         $stitle = get_post_meta($post_id, 'acf_ev_office', true);
         break; // 事務所
+      case 'event_number':
+        $stitle = get_post_meta($post_id, 'event_number', true);
+        break;
     }
     if (isset($stitle) && $stitle) {
       echo attribute_escape($stitle);
@@ -97,24 +101,48 @@ function manage_add_event($column_name, $post_id)
 }
 add_action('manage_posts_custom_column', 'manage_add_event', 10, 2);
 
-// イベントスケジュール「開催日」フィールドで新しい日付順に強制的に表示を適用
-function set_post_types_admin_order($wp_query)
+// // イベントスケジュール「開催日」フィールドで新しい日付順に強制的に表示を適用
+function custom_admin_order($query)
 {
-  if (is_admin()) {
-    // 管理画面のみに適用
-    if (!isset($wp_query->query['post_type']) || $wp_query->query['post_type'] != 'event_schedule') {
-      return;
-    }
+  if (
+    is_admin() &&
+    $query->is_main_query() &&
+    $query->get('post_type') === 'event_schedule' &&
+    !isset($_GET['orderby'])
+  ) {
+    $meta_query = array(
+      'relation' => 'AND',
+      'acf_ev_date_clause' => array(
+        'key' => 'acf_ev_date',
+        'compare' => 'EXISTS',
+        'type' => 'DATE',
+      ),
+      array(
+        'relation' => 'OR',
+        'event_number_exists' => array(
+          'key' => 'event_number',
+          'compare' => 'EXISTS',
+          'type' => 'NUMERIC',
+        ),
+        'event_number_not_exists' => array(
+          'key' => 'event_number',
+          'compare' => 'NOT EXISTS',
+        ),
+      ),
+    );
 
-    // カスタム並び順が指定されていない場合のみデフォルトソートを適用
-    if (!isset($_GET['orderby'])) {
-      $wp_query->set('meta_key', 'acf_ev_date');
-      $wp_query->set('orderby', 'meta_value');
-      $wp_query->set('order', 'DESC');
-    }
+    $query->set('meta_query', $meta_query);
+
+    $query->set('orderby', array(
+      'acf_ev_date_clause' => 'DESC',
+      'event_number_exists' => 'ASC',  // 空白は後ろに来る
+    ));
   }
 }
-// add_filter('pre_get_posts', 'set_post_types_admin_order'); // 開催日順のデフォルトソート - 有効化
+add_action('pre_get_posts', 'custom_admin_order');
+
+
+
 
 // イベントスケジュール「開催日」フィールドでソート機能を適用
 function column_orderby_custom($vars)
@@ -137,13 +165,13 @@ function column_orderby_custom($vars)
 add_filter('request', 'column_orderby_custom');
 
 // ソート可能なカラムを登録（管理画面のカラムヘッダーをクリック可能にする）
-function posts_register_sortable($sortable_column)
-{
-  $sortable_column['acf_ev_date'] = 'acf_ev_date';
-  $sortable_column['menu_order'] = 'menu_order';
-  return $sortable_column;
-}
-add_filter('manage_edit-event_schedule_sortable_columns', 'posts_register_sortable');
+// function posts_register_sortable($sortable_column)
+// {
+//   $sortable_column['acf_ev_date'] = 'acf_ev_date';
+//   $sortable_column['menu_order'] = 'menu_order';
+//   return $sortable_column;
+// }
+// add_filter('manage_edit-event_schedule_sortable_columns', 'posts_register_sortable');
 
 register_nav_menus([
   'aboutus' => 'JKCの活動内容',
@@ -154,3 +182,9 @@ register_nav_menus([
   'qualifications' => 'JKC公認資格',
   'merchandise' => '刊行物',
 ]);
+
+function add_page_attributes_to_event_schedule()
+{
+  add_post_type_support('event_schedule', 'page-attributes');
+}
+add_action('init', 'add_page_attributes_to_event_schedule');
