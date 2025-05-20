@@ -101,14 +101,62 @@ endif;
 
         <?php
         $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+        $posts_per_page = 21; // 1ページあたりの表示件数
+
+        // ページネーションを無効にして全てのイベントを一度に取得
         $the_query = new WP_Query(array(
           'post_type' => 'event_schedule',
-          'orderby' => 'menu_order',
-          'order' => 'ASC',
+          'orderby' => 'meta_value',
+          'meta_key' => 'acf_ev_date',
+          'order' => 'DESC', // 日付の降順に変更（新しい日付を先に）
           'search_filter_id' => "41794",
-          'paged' => $paged,
-          'posts_per_page' => 21,
+          'posts_per_page' => -1, // 全件取得
         ));
+
+        if ($the_query->have_posts()) {
+          // 取得した投稿配列をevent_numberでソート
+          $posts = $the_query->posts;
+
+          usort($posts, function ($a, $b) {
+            // 1) 日付比較
+            $da = get_field('acf_ev_date', $a->ID);
+            $db = get_field('acf_ev_date', $b->ID);
+
+            if ($da !== $db) {
+              return strcmp($da, $db);
+            }
+
+            // 2) 同日なら event_number で比較
+            $na = get_field('event_number', $a->ID);
+            $nb = get_field('event_number', $b->ID);
+
+            $emptyA = ($na === '' || $na === null);
+            $emptyB = ($nb === '' || $nb === null);
+            // 両方の値が空の場合、順序を変えない（同等と見なす）
+            if ($emptyA && $emptyB) return 0;
+            // Aが空でBが値を持つ場合、Aを後ろに配置（1を返すとAは後ろに移動）
+            if ($emptyA)            return  1;
+            // Bが空でAが値を持つ場合、Bを後ろに配置（-1を返すとAは前に移動）
+            if ($emptyB)            return -1;
+
+            // 両方数値なら昇順
+            return intval($na) - intval($nb);
+          });
+
+          // 手動でページングを行うための準備
+          $total_posts = count($posts);
+          $total_pages = ceil($total_posts / $posts_per_page);
+          $offset = ($paged - 1) * $posts_per_page;
+
+          // 現在のページに表示すべきイベントを抽出
+          $paged_posts = array_slice($posts, $offset, $posts_per_page);
+
+          // クエリオブジェクトを更新
+          $the_query->posts = $paged_posts;
+          $the_query->post_count = count($paged_posts);
+          $the_query->found_posts = $total_posts;
+          $the_query->max_num_pages = $total_pages;
+        }
         // var_dump($the_query);
         ?>
         <?php if ($the_query->have_posts()) : ?>
