@@ -704,3 +704,8 @@ function cptui_register_my_taxes() {
 	register_taxonomy( "nav_cat", [ "global_nav" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes' );
+
+// イベントスケジュールからページ属性（menu_order）のサポートを削除
+add_action('init', function() {
+  remove_post_type_support( 'event_schedule', 'page-attributes' );
+}, 20 );
