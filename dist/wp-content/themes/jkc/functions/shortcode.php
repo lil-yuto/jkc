@@ -763,3 +763,18 @@ add_shortcode('qualification2_schedule', function ($atts) {
 
   return ob_get_clean();
 });
+
+/**
+ * 検索フォームを表示するショートコード
+ *
+ * このショートコードは、parts-searchform.phpファイルの内容を読み込んで表示します。
+ * 使用例: [search_form]
+ */
+add_shortcode('search_form', function () {
+  ob_start();
+
+  // parts-searchform.phpファイルを読み込み
+  include get_template_directory() . '/parts-searchform.php';
+
+  return ob_get_clean();
+});
