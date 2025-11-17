@@ -4,8 +4,13 @@
 @use "sass:math";
 
 :root {
-  --block-margin-top: #{rem(30)};
-  --block-margin-bottom: #{rem(30)};
+  --block-margin-top: #{rem(25)};
+  --block-margin-bottom: #{rem(25)};
+
+  @include mq-down() {
+    --block-margin-top: #{rem(20)};
+    --block-margin-bottom: #{rem(20)};
+  }
 }
 
 b, strong {
