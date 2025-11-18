@@ -54,10 +54,10 @@
     background-image: linear-gradient($color-accent-green 0 50%, #FFE59B 50%);
     background-repeat: no-repeat;
     background-size: rem(6) 0.9em;
-    background-position: left center;
-    
+    background-position: left calc(50% - #{rem(7.5)});
+
+    padding-top: 0;
     padding-bottom: rem(15);
-    padding-block: rem(15);
     border-bottom: 1px solid $color-border-gray;
     @include mq-down() {
       font-size: rem(24);
