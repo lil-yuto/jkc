@@ -1,11 +1,6 @@
 @use "global" as *;
 @use "sass:math";
 
-:root {
-  --block-margin-top: #{rem(30)};
-  --block-margin-bottom: #{rem(30)};
-}
-
 html {
   scroll-behavior: smooth;
 	scroll-snap-type: y proximity;
