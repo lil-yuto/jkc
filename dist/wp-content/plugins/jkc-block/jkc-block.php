@@ -18,6 +18,17 @@ if (! defined('ABSPATH')) {
   exit; // Exit if accessed directly.
 }
 
+/**
+ * WordPress 6.9対応: ブロックアセットのオンデマンド読み込みを無効化
+ *
+ * WordPress 6.9では静的ブロック（render_callbackなし）のスタイルシートが
+ * オンデマンド読み込み機能により正しく読み込まれない問題があるため、
+ * この機能を無効化してすべてのブロックスタイルを常時読み込むようにする。
+ *
+ * @see https://developer.wordpress.org/reference/hooks/should_load_block_assets_on_demand/
+ */
+add_filter('should_load_block_assets_on_demand', '__return_false', 11);
+
 // CDN用のLity読み込み
 function jkc_block_enqueue_lity() {
   wp_enqueue_style( 'lity-css', 'https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css', array(), '2.4.1' );
