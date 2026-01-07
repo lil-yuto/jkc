@@ -209,52 +209,6 @@
       <?php endwhile; ?>
     <?php endif; ?>
 
-    <article class="p-single-breeds__group">
-
-
-      <h2 class="c-heading c-heading--lv2">グループ（FCI10グループ）別</h2>
-
-      <p class="c-text">下記のグループボタンから、ご覧になりたいグループを選択すると個々の犬について表示されます</p>
-
-      <?php
-      $button_description = array(
-        '01g' => '家畜の群れを誘導・保護する犬',
-        '02g' => '番犬、警護、作業をする犬',
-        '03g' => '穴の中に住むキツネなど小型獣用の猟犬',
-        '04g' => '地面の穴に住むアナグマや兎用の猟犬',
-        '05g' => '日本犬を含む、スピッツ(尖ったの意)系の犬',
-        '06g' => '大きな吠声と優れた嗅覚で獲物を追う獣猟犬',
-        '07g' => '獲物を探し出し、その位置を静かに示す猟犬',
-        '08g' => '7グループ以外の鳥猟犬',
-        '09g' => '家庭犬、伴侶や愛玩目的の犬',
-        '10g' => '優れた視力と走力で獲物を追跡捕獲する犬',
-      );
-      ?>
-
-      <ul class="p-single-breeds__button-items">
-        <?php
-        $taxonomy_slug = 'breed_category';
-        $term_lists = get_terms(array(
-          'taxonomy' => $taxonomy_slug,
-          'hide_empty' => false,
-        ));
-
-        foreach ($term_lists as $term_item):
-        ?>
-
-          <li class="p-singloe-breeds__button p-single-breeds-button">
-            <a class="p-single-breeds-button__link p-single-breeds-button__link--<?php echo esc_attr($term_item->slug); ?>" href="<?php echo esc_url(get_term_link($term_item->slug, $taxonomy_slug)); ?>">
-              <div class="p-single-breeds-button__contents">
-                <h5 class="p-single-breeds-button__title"><?php echo esc_html($term_item->name); ?></h5>
-                <p class="p-single-breeds-button__description"><?php echo esc_html($button_description[$term_item->slug]); ?></p>
-              </div>
-            </a>
-          </li>
-
-        <?php endforeach; ?>
-      </ul>
-    </article>
-
     <?php
     $taxonomy_slug = 'breed_tag';
     $post_type_lists = get_taxonomy($taxonomy_slug)->object_type;
@@ -303,6 +257,53 @@
       </article>
     <?php endif; ?>
     <?php wp_reset_postdata(); ?>
+
+    <article class="p-single-breeds__group">
+
+
+      <h2 class="c-heading c-heading--lv2">グループ（FCI10グループ）別</h2>
+
+      <p class="c-text">下記のグループボタンから、ご覧になりたいグループを選択すると個々の犬について表示されます</p>
+
+      <?php
+      $button_description = array(
+        '01g' => '家畜の群れを誘導・保護する犬',
+        '02g' => '番犬、警護、作業をする犬',
+        '03g' => '穴の中に住むキツネなど小型獣用の猟犬',
+        '04g' => '地面の穴に住むアナグマや兎用の猟犬',
+        '05g' => '日本犬を含む、スピッツ(尖ったの意)系の犬',
+        '06g' => '大きな吠声と優れた嗅覚で獲物を追う獣猟犬',
+        '07g' => '獲物を探し出し、その位置を静かに示す猟犬',
+        '08g' => '7グループ以外の鳥猟犬',
+        '09g' => '家庭犬、伴侶や愛玩目的の犬',
+        '10g' => '優れた視力と走力で獲物を追跡捕獲する犬',
+      );
+      ?>
+
+      <ul class="p-single-breeds__button-items">
+        <?php
+        $taxonomy_slug = 'breed_category';
+        $term_lists = get_terms(array(
+          'taxonomy' => $taxonomy_slug,
+          'hide_empty' => false,
+        ));
+
+        foreach ($term_lists as $term_item):
+        ?>
+
+          <li class="p-singloe-breeds__button p-single-breeds-button">
+            <a class="p-single-breeds-button__link p-single-breeds-button__link--<?php echo esc_attr($term_item->slug); ?>" href="<?php echo esc_url(get_term_link($term_item->slug, $taxonomy_slug)); ?>">
+              <div class="p-single-breeds-button__contents">
+                <h5 class="p-single-breeds-button__title"><?php echo esc_html($term_item->name); ?></h5>
+                <p class="p-single-breeds-button__description"><?php echo esc_html($button_description[$term_item->slug]); ?></p>
+              </div>
+            </a>
+          </li>
+
+        <?php endforeach; ?>
+      </ul>
+    </article>
+
   </div>
 
 
