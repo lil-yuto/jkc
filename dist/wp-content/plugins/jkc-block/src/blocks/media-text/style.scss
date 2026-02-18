@@ -49,4 +49,33 @@
     width: 100%;
     object-fit: cover;
   }
+
+  // インライン文字色（core/text-color）
+  .has-red-color {
+    color: $color-accent-red;
+  }
+
+  .has-green-color {
+    color: $color-accent-green;
+  }
+
+  .has-light-green-color {
+    color: $color-accent-green-light;
+  }
+
+  .has-light-red-color {
+    color: $color-accent-red-light;
+  }
+
+  .has-gray-color {
+    color: $color-accent-gray;
+  }
+
+  .has-light-gray-color {
+    color: $color-accent-gray-light;
+  }
+
+  .has-light-yellow-color {
+    color: $color-accent-yellow-light;
+  }
 }
