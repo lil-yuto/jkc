@@ -4,6 +4,10 @@ import {
 } from "@wordpress/block-editor";
 import "./editor.scss";
 
+// Note: core/list-item の parent は core/list のみ（コア仕様のため変更不可）。
+// WP 6.8 以降でリスト項目がインサーターに表示されない場合は、
+// カスタム list-item ブロックの検討または core/list のラップを検討すること。
+
 export default function Edit() {
   const blockProps = useBlockProps();
   const innerBlocksProps = useInnerBlocksProps(

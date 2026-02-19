@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "ボタン/アイテム",
   "category": "jkc-block",
-  "parent": ["jkc-block/button"],
+  "parent": ["jkc-block/button", "jkc-block/media-text"],
   "icon": {
     "src": "block-default",
     "foreground": "#0A6934"

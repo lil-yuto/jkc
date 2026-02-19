@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "リンク/アイテム",
   "category": "jkc-block",
-  "parent": ["jkc-block/text-link"],
+  "parent": ["jkc-block/text-link", "jkc-block/reference-info"],
   "icon": {
     "src": "block-default",
     "foreground": "#0A6934"

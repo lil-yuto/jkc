@@ -29,6 +29,36 @@ if (! defined('ABSPATH')) {
  */
 add_filter('should_load_block_assets_on_demand', '__return_false', 11);
 
+/**
+ * WordPress 6.8以降の親属性厳格化に対応
+ *
+ * core/list-itemブロックの親属性に、jkc-blockのリストブロックを追加する。
+ * これにより、jkc-block/list-orderedとjkc-block/list-unordered内で
+ * core/list-itemを使用できるようにする。
+ *
+ * @see https://github.com/WordPress/gutenberg/issues/70275
+ */
+add_filter('block_type_metadata_settings', function ($settings, $metadata) {
+  // core/list-itemブロックの設定を修正
+  if (isset($metadata['name']) && $metadata['name'] === 'core/list-item') {
+    // parent属性が未設定の場合は初期化
+    if (! isset($settings['parent'])) {
+      $settings['parent'] = [];
+    }
+
+    // 既存の親ブロック（core/list）を保持しつつ、jkc-blockのリストブロックを追加
+    if (! is_array($settings['parent'])) {
+      $settings['parent'] = [ $settings['parent'] ];
+    }
+
+    // jkc-blockのリストブロックを親として追加
+    $settings['parent'][] = 'jkc-block/list-ordered';
+    $settings['parent'][] = 'jkc-block/list-unordered';
+  }
+
+  return $settings;
+}, 10, 2);
+
 // CDN用のLity読み込み
 function jkc_block_enqueue_lity() {
   wp_enqueue_style( 'lity-css', 'https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css', array(), '2.4.1' );
