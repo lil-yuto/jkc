@@ -1,28 +1,32 @@
-/**
- * Use this file for JavaScript code that you want to run in the front-end
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any
- * JavaScript running in the front-end, then you should delete this file and remove
- * the `viewScript` property from `block.json`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
- */
-
 /* eslint-disable no-console */
 document.addEventListener('DOMContentLoaded', function() {
     const tabBlocks = document.querySelectorAll('.c-block-tab');
+
+    // radio inputが存在しない場合、動的に生成
+    tabBlocks.forEach((tabBlock, blockIndex) => {
+        const tabItems = tabBlock.querySelectorAll('.c-block-tab-item');
+        // data属性またはフォールバック用のgroupNameを決定
+        let fallbackGroupName = null;
+        tabItems.forEach((tabItem, itemIndex) => {
+            const label = tabItem.querySelector('label');
+            if (!label) return;
+            // 既にradio inputがあればスキップ（旧形式の投稿対応）
+            if (label.querySelector('input[type="radio"]')) return;
+
+            const groupName = tabItem.dataset.groupName;
+            const isChecked = tabItem.hasAttribute('data-checked');
+
+            // groupNameがない場合（壊れた旧投稿）はフォールバック生成
+            const name = groupName || (fallbackGroupName = fallbackGroupName || ('tab-fallback-' + blockIndex));
+            const checked = groupName ? isChecked : (itemIndex === 0);
+
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = name;
+            if (checked) radio.checked = true;
+            label.prepend(radio);
+        });
+    });
 
     tabBlocks.forEach(tabBlock => {
         const radioButtons = tabBlock.querySelectorAll('input[type="radio"]');
@@ -144,3 +148,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+/* eslint-enable no-console */

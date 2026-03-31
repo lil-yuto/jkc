@@ -1,6 +1,5 @@
 import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
 import { RichText } from "@wordpress/block-editor";
-import { useEffect } from "@wordpress/element";
 import clsx from "clsx";
 import "./editor.scss";
 
@@ -8,14 +7,6 @@ const TEMPLATE = [["jkc-block/text"]];
 
 export default function Edit({ attributes, setAttributes, isSelected }) {
   const { label, groupName, enableContentToggle, isActiveTab } = attributes;
-
-  useEffect(() => {
-    if (!groupName || groupName === "") {
-      setAttributes({
-        groupName: `tab-group-${Math.random().toString(36).substr(2, 9)}`,
-      });
-    }
-  }, [groupName, setAttributes]);
 
   const blockProps = useBlockProps({
     className: clsx("c-block-tab-item", {

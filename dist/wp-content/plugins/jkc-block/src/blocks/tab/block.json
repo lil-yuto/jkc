@@ -26,6 +26,10 @@
     "enableToggle": {
       "type": "boolean",
       "default": false
+    },
+    "groupName": {
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "jkc-block",
