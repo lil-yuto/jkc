@@ -15,8 +15,26 @@ import { useEffect, useState, useRef } from "@wordpress/element";
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
-	const { defaultActiveTab, enableToggle } = attributes;
-	const groupName = `tab-${ clientId }`;
+	const { defaultActiveTab, enableToggle, groupName } = attributes;
+	// 同じページ内の他のタブブロックのgroupNameを取得
+	const siblingGroupNames = useSelect((select) => {
+		const allBlocks = select(blockEditorStore).getBlocks();
+		return allBlocks
+			.filter(block => block.name === 'jkc-block/tab' && block.clientId !== clientId)
+			.map(block => block.attributes.groupName);
+	}, [clientId]);
+
+	// 初回またはgroupName重複時（複製対応）に新しいgroupNameを生成
+	useEffect(() => {
+		if (!groupName || siblingGroupNames.includes(groupName)) {
+			const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+				const r = Math.random() * 16 | 0;
+				return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+			});
+			setAttributes({ groupName: `tab-${uuid}` });
+		}
+	}, []);
+
 	// 現在選択されているタブの状態をReactのstateで管理
 	const [activeTabIndex, setActiveTabIndex] = useState(defaultActiveTab);
 	// タブアイテムのIDを追跡するためのref
