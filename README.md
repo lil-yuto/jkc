@@ -27,6 +27,27 @@ gulp を使って scss のコンパイル、画像圧縮、ブラウザシンク
 3. `dist/wp-content/plugins/jkc-block/src/blocks` にて、各ブロック開発を行う
 4. リリース用には、`npm run build`とコマンドを入力してビルドしたものをアップする（`dist/wp-content/plugins/jkc-block/build`）
 
+## 使い方（本番DBをローカルに取り込む場合）
+
+All-in-One WP Migration プラグインを使用します。
+
+1. 本番サイトの管理画面で「All-in-One WP Migration」→「エクスポート」→ファイルをダウンロード
+2. ローカルの管理画面（`http://localhost:8000/wp-admin`）で「All-in-One WP Migration」→「インポート」→ダウンロードしたファイルをアップロード
+3. インポート完了後、パーマリンクを一度保存する（設定 → パーマリンク → 保存）
+
+> ⚠️ インポートするとローカルのDBが本番内容で上書きされます。
+
+## 使い方（コードを本番に反映する場合）
+
+ローカルでビルド・確認が完了したファイルを本番サーバーへFTP/SFTP等でアップします。
+
+| 種別 | アップするファイル |
+|---|---|
+| PHPテンプレート | `dist/wp-content/themes/jkc/` 以下の変更したファイル |
+| CSS | `dist/wp-content/themes/jkc/assets/css/styles.css`（`npx gulp` 後） |
+| JavaScript | `dist/wp-content/themes/jkc/assets/js/script.js` |
+| カスタムブロック | `dist/wp-content/plugins/jkc-block/build/`（`npm run build` 後） |
+
 ## 作業ディレクトリについて
 
 -   sass の記述は `src/sass/` フォルダの中で行う
@@ -47,6 +68,7 @@ gulp を使って scss のコンパイル、画像圧縮、ブラウザシンク
 | `npm run db:import` | データベースをインポート |
 | `npm run db:export` | データベースをエクスポート |
 | `npx gulp` | SCSS コンパイル・画像圧縮・BrowserSync 起動 |
+
 
 ## テンプレートファイル一覧
 
