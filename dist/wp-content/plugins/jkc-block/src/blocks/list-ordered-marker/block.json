@@ -1,0 +1,46 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "jkc-block/list-ordered-marker",
+	"version": "0.1.0",
+	"title": "リスト（順序あり・マーカー指定）",
+	"category": "jkc-block",
+	"icon": {
+    "src": "editor-ol",
+    "foreground": "#0A6934"
+  },
+	"description": "階層ごとにマーカースタイルを指定できる順序付きリスト",
+	"example": {},
+	"attributes": {
+		"markerStyle1": {
+			"type": "string",
+			"default": "bold"
+		},
+		"markerStyle2": {
+			"type": "string",
+			"default": "normal"
+		},
+		"markerStyle3": {
+			"type": "string",
+			"default": "parentheses"
+		},
+		"markerStyle4": {
+			"type": "string",
+			"default": "normal"
+		},
+		"markerStyle5": {
+			"type": "string",
+			"default": "normal"
+		}
+	},
+	"supports": {
+		"html": false,
+    "customClassName": true,
+    "color": { "background": true, "text": false }
+	},
+	"textdomain": "jkc-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

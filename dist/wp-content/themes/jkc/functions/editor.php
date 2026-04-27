@@ -180,6 +180,7 @@ function allowed_block_types_all($allowed_block_types)
     "jkc-block/flow-vertical-item-text",
     "jkc-block/heading",
     "jkc-block/list-ordered",
+    "jkc-block/list-ordered-marker",
     "jkc-block/list-unordered",
     "jkc-block/media-text",
     "jkc-block/media-text-ex",

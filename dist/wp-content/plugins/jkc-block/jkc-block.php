@@ -53,6 +53,7 @@ add_filter('block_type_metadata_settings', function ($settings, $metadata) {
 
     // jkc-blockのリストブロックを親として追加
     $settings['parent'][] = 'jkc-block/list-ordered';
+    $settings['parent'][] = 'jkc-block/list-ordered-marker';
     $settings['parent'][] = 'jkc-block/list-unordered';
   }
 
@@ -79,6 +80,7 @@ function create_block_jkc_block_block_init()
     'media-text-ex',                   // 画像/テキスト
     'list-unordered',               // リスト（順序なし）
     'list-ordered',                 // リスト（順序あり）
+    'list-ordered-marker',          // リスト（順序あり・マーカー指定）
     'card-grid-1',                  // カード/1列
     'card-grid-2',                  // カード/2列
     'card-grid-3',                  // カード/3列
